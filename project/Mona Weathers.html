@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en" data-type="editorial">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Mona Weathers | Online Business Growth for Coaches</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Hanken+Grotesk:wght@400;500;600;700&family=Spectral:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #FAF4EA;
+    --bg-2: #F2E7D6;
+    --card: #FFFCF6;
+    --ink: #2A2420;
+    --ink-soft: #6E6256;
+    --line: #E6D9C6;
+    --accent: #0097B2;
+    --accent-ink: #06768C;
+    --traffic: #D99A2B;
+    --community: #2E8AA0;
+    --income: #6E8E63;
+    --font-display: 'Newsreader', Georgia, serif;
+    --font-body: 'Hanken Grotesk', system-ui, sans-serif;
+    --maxw: 1180px;
+  }
+  [data-type="sans"] {
+    --font-display: 'Hanken Grotesk', system-ui, sans-serif;
+    --font-body: 'Hanken Grotesk', system-ui, sans-serif;
+  }
+  [data-type="stately"] {
+    --font-display: 'Spectral', Georgia, serif;
+    --font-body: 'Hanken Grotesk', system-ui, sans-serif;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 18px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  h1, h2, h3 { font-family: var(--font-display); font-weight: 500; margin: 0; line-height: 1.08; letter-spacing: -0.01em; }
+  p { margin: 0; }
+  a { color: inherit; text-decoration: none; }
+  img { display: block; max-width: 100%; }
+  .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 32px; }
+  .eyebrow {
+    font-family: var(--font-body);
+    font-size: 13px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--accent-ink);
+  }
+
+  /* Buttons */
+  .btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-family: var(--font-body); font-weight: 600; font-size: 16px;
+    padding: 15px 26px; border-radius: 999px; cursor: pointer; border: 1.5px solid transparent;
+    transition: transform .18s ease, box-shadow .18s ease, background .18s ease, color .18s ease;
+  }
+  .btn-primary { background: var(--accent); color: #fff; box-shadow: 0 10px 24px -12px var(--accent); }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 16px 30px -12px var(--accent); }
+  .btn-ghost { background: transparent; color: var(--ink); border-color: var(--line); }
+  .btn-ghost:hover { border-color: var(--ink); transform: translateY(-2px); }
+  .btn svg { width: 16px; height: 16px; }
+
+  /* Nav */
+  header.nav {
+    position: sticky; top: 0; z-index: 40;
+    background: color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 76px; }
+  .brand { display: flex; align-items: center; gap: 12px; }
+  .brand .mark {
+    width: 38px; height: 38px; border-radius: 50%;
+    background: var(--accent); color: #fff;
+    display: grid; place-items: center; font-family: var(--font-display); font-weight: 600; font-size: 19px;
+  }
+  .brand .name { font-family: var(--font-display); font-size: 21px; font-weight: 600; letter-spacing: -0.01em; white-space: nowrap; }
+  .brand .name small { display: block; font-family: var(--font-body); font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-soft); margin-top: -2px; }
+  .nav-links { display: flex; align-items: center; gap: 34px; }
+  .nav-links a { font-size: 15.5px; font-weight: 500; color: var(--ink-soft); transition: color .15s; }
+  .nav-links a:hover { color: var(--ink); }
+  .nav-cta { display: flex; align-items: center; gap: 18px; }
+  @media (max-width: 860px) { .nav-links { display: none; } }
+
+  /* Hero */
+  .hero { padding: 76px 0 88px; }
+  .hero-grid { display: grid; grid-template-columns: 0.95fr 1.05fr; gap: 64px; align-items: center; }
+  .hero h1 { font-size: clamp(40px, 5.4vw, 70px); }
+  .hero h1 em { font-style: italic; color: var(--accent-ink); }
+  .hero .lead { font-size: 20px; color: var(--ink-soft); margin-top: 26px; max-width: 30ch; }
+  .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 36px; }
+  .hero-meta { display: flex; align-items: center; gap: 20px; margin-top: 40px; color: var(--ink-soft); font-size: 14.5px; }
+  .hero-meta .dot { width: 5px; height: 5px; border-radius: 50%; background: var(--line); }
+
+  .portrait-wrap { position: relative; justify-self: center; order: -1; }
+  .portrait-blob {
+    position: absolute; inset: -26px -22px auto auto; width: 300px; height: 300px; z-index: 0;
+    background: color-mix(in srgb, var(--accent) 22%, var(--bg)); border-radius: 46% 54% 58% 42% / 52% 44% 56% 48%; right: -18px; top: -22px;
+  }
+  .portrait-wrap image-slot {
+    position: relative; z-index: 1;
+    width: 380px; height: 460px;
+    box-shadow: 0 30px 60px -32px rgba(42,36,32,.45);
+  }
+  .portrait-badge {
+    position: absolute; z-index: 2; bottom: 26px; right: -26px;
+    background: var(--card); border: 1px solid var(--line); border-radius: 16px;
+    padding: 14px 18px; box-shadow: 0 18px 36px -22px rgba(42,36,32,.4);
+    display: flex; align-items: center; gap: 12px; max-width: 230px;
+  }
+  .portrait-badge .pulse { width: 10px; height: 10px; border-radius: 50%; background: var(--income); box-shadow: 0 0 0 4px color-mix(in srgb, var(--income) 22%, transparent); flex: none; }
+  .portrait-badge span { font-size: 13.5px; line-height: 1.35; color: var(--ink-soft); font-weight: 500; }
+  .portrait-badge strong { color: var(--ink); font-weight: 700; }
+  @media (max-width: 860px) {
+    .hero-grid { grid-template-columns: 1fr; gap: 48px; }
+    .portrait-wrap { order: 0; }
+    .portrait-wrap image-slot { width: 300px; height: 380px; }
+    .portrait-blob { width: 240px; height: 240px; }
+  }
+
+  /* Positioning strip */
+  .strip { background: var(--ink); color: #F4ECDF; padding: 30px 0; }
+  .strip-inner { display: flex; align-items: center; justify-content: center; gap: 26px; flex-wrap: wrap; text-align: center; }
+  .strip-inner p { font-family: var(--font-display); font-size: clamp(20px, 2.4vw, 27px); font-style: italic; font-weight: 400; }
+  .strip-inner .tag { font-family: var(--font-body); font-size: 12px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); border: 1px solid color-mix(in srgb, #F4ECDF 24%, transparent); border-radius: 999px; padding: 7px 15px; }
+
+  /* Section scaffolding */
+  section { padding: 100px 0; }
+  .sec-head { max-width: 640px; margin-bottom: 56px; }
+  .sec-head h2 { font-size: clamp(30px, 4vw, 46px); margin-top: 16px; }
+  .sec-head p { color: var(--ink-soft); font-size: 19px; margin-top: 18px; }
+
+  /* About */
+  .about { background: var(--bg-2); }
+  .about-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 70px; align-items: center; }
+  .about-quote { font-family: var(--font-display); font-size: clamp(26px, 3.2vw, 38px); line-height: 1.28; letter-spacing: -0.01em; }
+  .about-quote em { font-style: italic; color: var(--accent-ink); }
+  .about-body p + p { margin-top: 18px; color: var(--ink-soft); }
+  .about-body .lead-line { font-size: 20px; color: var(--ink); font-weight: 500; margin-bottom: 18px; }
+  .about-stats { display: flex; gap: 40px; margin-top: 34px; }
+  .about-stats .n { font-family: var(--font-display); font-size: 38px; color: var(--accent-ink); }
+  .about-stats .l { font-size: 14px; color: var(--ink-soft); margin-top: 2px; }
+  @media (max-width: 860px) { .about-grid { grid-template-columns: 1fr; gap: 40px; } }
+
+  /* Pillars */
+  .pillars-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .pillar {
+    background: var(--card); border: 1px solid var(--line); border-radius: 22px; padding: 34px 30px 36px;
+    position: relative; overflow: hidden; transition: transform .2s ease, box-shadow .2s ease;
+  }
+  .pillar:hover { transform: translateY(-6px); box-shadow: 0 26px 48px -28px rgba(42,36,32,.4); }
+  .pillar .ic { width: 54px; height: 54px; border-radius: 15px; display: grid; place-items: center; margin-bottom: 24px; }
+  .pillar .ic svg { width: 26px; height: 26px; stroke-width: 1.8; }
+  .pillar h3 { font-size: 26px; margin-bottom: 10px; }
+  .pillar p { color: var(--ink-soft); font-size: 16.5px; }
+  .pillar .kicker { font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 16px; }
+  .pillar::after { content: ""; position: absolute; left: 0; top: 0; height: 4px; width: 100%; }
+  .pillar.traffic .ic { background: color-mix(in srgb, var(--traffic) 16%, transparent); color: var(--traffic); }
+  .pillar.traffic .kicker, .pillar.traffic::after { color: var(--traffic); background: var(--traffic); }
+  .pillar.traffic .kicker { background: none; }
+  .pillar.community .ic { background: color-mix(in srgb, var(--community) 16%, transparent); color: var(--community); }
+  .pillar.community .kicker, .pillar.community::after { color: var(--community); background: var(--community); }
+  .pillar.community .kicker { background: none; }
+  .pillar.income .ic { background: color-mix(in srgb, var(--income) 16%, transparent); color: var(--income); }
+  .pillar.income .kicker, .pillar.income::after { color: var(--income); background: var(--income); }
+  .pillar.income .kicker { background: none; }
+  @media (max-width: 860px) { .pillars-grid { grid-template-columns: 1fr; } }
+
+  /* Learn */
+  .learn { background: var(--bg-2); }
+  .learn-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 40px; }
+  .learn-item { display: flex; gap: 18px; padding: 24px 0; border-bottom: 1px solid var(--line); align-items: flex-start; }
+  .learn-item .num { font-family: var(--font-display); font-size: 18px; color: var(--accent-ink); width: 34px; flex: none; padding-top: 2px; }
+  .learn-item h3 { font-size: 21px; font-weight: 600; font-family: var(--font-body); margin-bottom: 5px; letter-spacing: -0.005em; }
+  .learn-item p { color: var(--ink-soft); font-size: 16px; }
+  .learn-item.featured { background: color-mix(in srgb, var(--accent) 9%, transparent); border-bottom: 1px solid transparent; border-radius: 14px; padding: 22px 22px; }
+  .learn-item.featured .num { color: var(--accent-ink); }
+  .learn-item .badge { display: inline-block; margin-left: 10px; font-family: var(--font-body); font-size: 10.5px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #fff; background: var(--accent); padding: 3px 9px; border-radius: 99px; vertical-align: middle; }
+  @media (max-width: 860px) { .learn-grid { grid-template-columns: 1fr; } }
+
+  /* Testimonial */
+  .quote-sec { text-align: center; }
+  .quote-sec .wrap { max-width: 880px; }
+  .quote-sec blockquote { font-family: var(--font-display); font-size: clamp(26px, 3.4vw, 40px); line-height: 1.32; letter-spacing: -0.01em; margin: 0; }
+  .quote-sec .mark { font-size: 70px; color: var(--accent); line-height: 0.6; font-family: var(--font-display); }
+  .quote-attr { display: flex; align-items: center; justify-content: center; gap: 14px; margin-top: 38px; }
+  .quote-attr image-slot { width: 52px; height: 52px; }
+  .quote-attr .who { text-align: left; }
+  .quote-attr .who strong { display: block; font-weight: 700; }
+  .quote-attr .who span { font-size: 14px; color: var(--ink-soft); }
+
+  /* Video blocks */
+  .video-frame { position: relative; aspect-ratio: 16 / 9; width: 100%; border-radius: 20px; overflow: hidden; background: var(--ink); border: 1px solid var(--line); box-shadow: 0 30px 60px -34px rgba(42,36,32,.5); }
+  .video-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+  .video-ph { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; background: radial-gradient(circle at 50% 38%, color-mix(in srgb, var(--accent) 32%, var(--ink)), var(--ink)); cursor: pointer; }
+  .video-ph .play { width: 78px; height: 78px; border-radius: 50%; background: #fff; display: grid; place-items: center; box-shadow: 0 14px 32px -8px rgba(0,0,0,.5); transition: transform .18s ease; }
+  .video-ph:hover .play { transform: scale(1.07); }
+  .video-ph .play svg { width: 28px; height: 28px; color: var(--accent); margin-left: 4px; }
+  .video-ph span.lbl { color: #F2E7D6; font-size: 13.5px; font-weight: 600; letter-spacing: 0.05em; }
+  .vsl .sec-head { text-align: center; margin: 0 auto 44px; }
+  .vsl .vframe-wrap { max-width: 940px; margin: 0 auto; }
+  .testi-video { max-width: 760px; margin: 56px auto 0; }
+  .testi-video .eyebrow { display: block; margin-bottom: 18px; }
+
+  /* CTA band */
+  .cta { background: var(--ink); color: #F6EEE1; text-align: center; border-radius: 0; }
+  .cta .wrap { max-width: 760px; }
+  .cta h2 { font-size: clamp(32px, 4.6vw, 54px); }
+  .cta h2 em { font-style: italic; color: var(--accent); }
+  .cta p { color: #C9BCA8; font-size: 19px; margin: 22px auto 38px; max-width: 48ch; }
+  .cta .btn-primary { box-shadow: 0 14px 30px -10px var(--accent); }
+  .cta .row { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
+  .cta .note { margin-top: 22px; font-size: 14px; color: #9A8E7C; }
+
+  /* Connect */
+  .connect-links { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 44px 0 16px; }
+  .connect-card { display: flex; align-items: center; gap: 13px; padding: 18px 20px; border-radius: 16px; background: rgba(255,255,255,.05); border: 1px solid rgba(246,238,225,.14); text-align: left; transition: transform .18s ease, background .18s ease, border-color .18s ease; }
+  .connect-card:hover { background: rgba(255,255,255,.09); border-color: var(--accent); transform: translateY(-3px); }
+  .connect-card .ci { width: 42px; height: 42px; border-radius: 11px; display: grid; place-items: center; background: color-mix(in srgb, var(--accent) 28%, transparent); color: #fff; flex: none; }
+  .connect-card .ci svg { width: 20px; height: 20px; }
+  .connect-card strong { display: block; color: #F6EEE1; font-size: 16px; font-weight: 600; }
+  .connect-card small { color: #9A8E7C; font-size: 13px; }
+  @media (max-width: 860px) { .connect-links { grid-template-columns: repeat(2, 1fr); } }
+
+  .community-cta { display: flex; align-items: center; justify-content: space-between; gap: 24px; text-align: left; margin-top: 14px; padding: 28px 32px; border-radius: 20px; background: color-mix(in srgb, var(--accent) 18%, var(--ink)); border: 1px solid color-mix(in srgb, var(--accent) 42%, transparent); transition: transform .18s ease, border-color .18s ease; }
+  .community-cta:hover { transform: translateY(-3px); border-color: var(--accent); }
+  .community-cta .cc-kicker { font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); }
+  .community-cta strong { display: block; font-family: var(--font-display); font-weight: 500; font-size: 27px; color: #F6EEE1; margin: 7px 0 7px; }
+  .community-cta p { color: #C9BCA8; font-size: 15.5px; margin: 0; max-width: 48ch; }
+  .community-cta .cc-arrow { width: 54px; height: 54px; border-radius: 50%; background: var(--accent); color: #fff; display: grid; place-items: center; flex: none; transition: transform .18s ease; }
+  .community-cta:hover .cc-arrow { transform: translateX(4px); }
+  .community-cta .cc-arrow svg { width: 22px; height: 22px; }
+  @media (max-width: 560px) { .community-cta { flex-direction: column; align-items: flex-start; } }
+
+  /* Footer */
+  footer { padding: 64px 0 48px; border-top: 1px solid var(--line); }
+  .foot-grid { display: flex; justify-content: space-between; align-items: flex-start; gap: 40px; flex-wrap: wrap; }
+  .foot-brand { max-width: 320px; }
+  .foot-brand p { color: var(--ink-soft); font-size: 15px; margin-top: 16px; }
+  .foot-cols { display: flex; gap: 64px; flex-wrap: wrap; }
+  .foot-col h4 { font-family: var(--font-body); font-size: 13px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-soft); margin-bottom: 16px; }
+  .foot-col a { display: block; font-size: 15.5px; color: var(--ink); margin-bottom: 11px; transition: color .15s; }
+  .foot-col a:hover { color: var(--accent-ink); }
+  .foot-bottom { display: flex; justify-content: space-between; align-items: center; margin-top: 54px; padding-top: 26px; border-top: 1px solid var(--line); color: var(--ink-soft); font-size: 14px; flex-wrap: wrap; gap: 14px; }
+  .socials { display: flex; gap: 12px; }
+  .socials a { width: 38px; height: 38px; border-radius: 50%; border: 1px solid var(--line); display: grid; place-items: center; transition: all .15s; }
+  .socials a:hover { background: var(--accent); border-color: var(--accent); color: #fff; transform: translateY(-2px); }
+  .socials svg { width: 17px; height: 17px; }
+
+  #tweaks-root { position: fixed; z-index: 9000; }
+</style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="#top">
+        <span class="name">Mona Weathers</span>
+      </a>
+      <nav class="nav-links">
+        <a href="#about">About</a>
+        <a href="#pillars">The Method</a>
+        <a href="#learn">How I Help</a>
+        <a href="Work With Me.html">Work With Me</a>
+        <a href="#connect">Connect</a>
+      </nav>
+      <div class="nav-cta">
+        <a href="#connect" class="btn btn-ghost">Connect</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="top">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <span class="eyebrow">Online Business Coach</span>
+        <h1>Cut through the chaos and <em>scale what works.</em></h1>
+        <p class="lead">I help established coaches replace chaos and self-doubt with clear strategy, smart systems, and sustainable growth.</p>
+        <div class="hero-actions">
+          <a href="#pillars" class="btn btn-primary">Explore my method
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="#about" class="btn btn-ghost">How I help</a>
+        </div>
+        <div class="hero-meta">
+          <span>For coaches, consultants &amp; solopreneurs</span>
+          <span class="dot"></span>
+          <span>Strategy, systems &amp; AI</span>
+        </div>
+      </div>
+      <div class="portrait-wrap">
+        <div class="portrait-blob"></div>
+        <image-slot id="hero-portrait" shape="rounded" radius="26" src="mona-portrait.png" placeholder="Drop your portrait"></image-slot>
+      </div>
+    </div>
+  </section>
+
+  <!-- POSITIONING STRIP -->
+  <div class="strip">
+    <div class="wrap strip-inner">
+      <span class="tag">The Mission</span>
+      <p>Helping business owners move from stalled to scalable growth with structure, focus, and momentum.</p>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="wrap about-grid">
+      <div>
+        <span class="eyebrow">Meet Mona</span>
+        <p class="about-quote" style="margin-top:18px;">Most coaches don't have a <em>strategy</em> problem. They have a <em>clarity</em> problem.</p>
+      </div>
+      <div class="about-body">
+        <p class="lead-line">Too many business owners stay stuck overthinking every move, constantly changing direction, or trying to grow without the structure long-term success requires. That's where I come in.</p>
+        <p>I help coaches simplify their business, focus on proven growth activities, and use systems and AI strategically, so they can scale with more clarity, consistency, and confidence.</p>
+        <p style="color:var(--ink);font-weight:500;">Because growth becomes much easier when you stop trying to do everything and start building around what actually works.</p>
+        <div class="about-stats">
+          <div>
+            <div class="n">10+ yrs</div>
+            <div class="l">Building business online</div>
+          </div>
+          <div>
+            <div class="n">High-ticket</div>
+            <div class="l">Offer &amp; sales systems</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PILLARS -->
+  <section id="pillars">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">The Method</span>
+        <h2>Three things every growing coaching business needs.</h2>
+        <p>I focus on the levers that actually move the needle and ignore the rest. Every coaching business I work with comes back to these three.</p>
+      </div>
+      <div class="pillars-grid">
+        <div class="pillar traffic">
+          <div class="ic">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 17l6-6 4 4 8-8" stroke-linecap="round" stroke-linejoin="round"/><path d="M17 7h4v4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="kicker">Traffic</div>
+          <h3>Lead generation</h3>
+          <p>A reliable flow of the right people finding you, turning content into qualified leads, not just likes.</p>
+        </div>
+        <div class="pillar community">
+          <div class="ic">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3 2.5-5 6-5s6 2 6 5" stroke-linecap="round"/><path d="M16 5a3 3 0 0 1 0 6M21 20c0-2.4-1.4-4.2-3.5-4.8" stroke-linecap="round"/></svg>
+          </div>
+          <div class="kicker">Community</div>
+          <h3>Audience &amp; engagement</h3>
+          <p>An engaged audience and community that knows you, trusts you, and is ready to buy when you make an offer.</p>
+        </div>
+        <div class="pillar income">
+          <div class="ic">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 3v18" stroke-linecap="round"/><path d="M16.5 7c0-1.7-2-3-4.5-3S7.5 5.3 7.5 7s2 2.5 4.5 3 4.5 1.3 4.5 3-2 3-4.5 3-4.5-1.3-4.5-3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="kicker">Income</div>
+          <h3>High-ticket offers</h3>
+          <p>Offers and sales systems that convert, so your expertise turns into consistent, predictable income.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LEARN -->
+  <section class="learn" id="learn">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">How I Help</span>
+        <h2>Where I help coaches grow.</h2>
+        <p>My work centers on a handful of areas that, together, move a coaching business from stalled to scalable.</p>
+      </div>
+      <div class="learn-grid">
+        <div class="learn-item">
+          <span class="num">01</span>
+          <div>
+            <h3>Strategic business growth</h3>
+            <p>A clear plan built around the activities that actually grow your business, so you stop guessing and start moving.</p>
+          </div>
+        </div>
+        <div class="learn-item">
+          <span class="num">02</span>
+          <div>
+            <h3>Systems &amp; automation</h3>
+            <p>Repeatable systems that run in the background, so your business no longer depends on you doing everything.</p>
+          </div>
+        </div>
+        <div class="learn-item featured">
+          <span class="num">03</span>
+          <div>
+            <h3>AI integration for coaches <span class="badge">Featured</span></h3>
+            <p>From guidance on building your own AI workflows and assets to done-for-you builds, putting AI to work so you save time, sharpen your content, and scale your impact without losing your voice.</p>
+          </div>
+        </div>
+        <div class="learn-item">
+          <span class="num">04</span>
+          <div>
+            <h3>Offer clarity</h3>
+            <p>Shape offers your ideal clients instantly understand and genuinely want to buy.</p>
+          </div>
+        </div>
+        <div class="learn-item">
+          <span class="num">05</span>
+          <div>
+            <h3>Content direction</h3>
+            <p>A focused content approach that connects your message to your audience and your revenue.</p>
+          </div>
+        </div>
+        <div class="learn-item">
+          <span class="num">06</span>
+          <div>
+            <h3>Community-driven growth</h3>
+            <p>Build an engaged community that grows with you and fuels consistent, word-of-mouth growth.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIAL -->
+  <section class="quote-sec">
+    <div class="wrap">
+      <div class="mark">&ldquo;</div>
+      <blockquote>I never felt like I had a real clear path. I was just kind of making it up as I went along. Now you're giving it to me step by step, piece by piece, and it's been incredibly helpful.</blockquote>
+      <div class="quote-attr">
+        <image-slot id="testi-avatar" shape="circle" src="steve-gast.png" placeholder="Photo"></image-slot>
+        <div class="who">
+          <strong>Steve Gast</strong>
+          <span>Business Coach</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONNECT -->
+  <section class="cta" id="connect">
+    <div class="wrap">
+      <span class="eyebrow" style="color:var(--accent);">Let's Connect</span>
+      <h2 style="margin-top:18px;">Let's stay <em>in touch.</em></h2>
+      <p>Follow along for clarity-first growth, or come build alongside other coaches, consultants, and solopreneurs inside my community.</p>
+      <div class="connect-links">
+        <a class="connect-card" href="https://www.youtube.com/@MonaWeathers" target="_blank" rel="noopener">
+          <span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="2.5" y="5" width="19" height="14" rx="4"/><path d="M10 9l5 3-5 3z" fill="currentColor" stroke="none"/></svg></span>
+          <span><strong>YouTube</strong><small>Mona Weathers</small></span>
+        </a>
+        <a class="connect-card" href="https://www.linkedin.com/in/mona-weathers-060771379/" target="_blank" rel="noopener">
+          <span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M7 10v7M7 7v.01M11 17v-4a2 2 0 0 1 4 0v4" stroke-linecap="round"/></svg></span>
+          <span><strong>LinkedIn</strong><small>Mona Weathers</small></span>
+        </a>
+        <a class="connect-card" href="mailto:contact@monaweathers.com">
+          <span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M4 7l8 6 8-6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span><strong>Email</strong><small>contact@monaweathers.com</small></span>
+        </a>
+      </div>
+      <a class="community-cta" href="https://www.skool.com/next/about" target="_blank" rel="noopener">
+        <div>
+          <span class="cc-kicker">The Community</span>
+          <strong>Next Level Growth Hub</strong>
+          <p>Grow your online business with simple, repeatable systems, alongside other coaches, consultants &amp; solopreneurs.</p>
+        </div>
+        <span class="cc-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="wrap">
+      <div class="foot-grid">
+        <div class="foot-brand">
+          <a class="brand" href="#top">
+            <span class="name">Mona Weathers</span>
+          </a>
+          <p>Online business growth for coaches, consultants &amp; solopreneurs, built on clarity and simple systems.</p>
+        </div>
+        <div class="foot-cols">
+          <div class="foot-col">
+            <h4>Explore</h4>
+            <a href="#about">About Mona</a>
+            <a href="#pillars">The Method</a>
+            <a href="#learn">How I Help</a>
+            <a href="Work With Me.html">Work With Me</a>
+            <a href="#connect">Connect</a>
+          </div>
+          <div class="foot-col">
+            <h4>Connect</h4>
+            <a href="https://www.youtube.com/@MonaWeathers" target="_blank" rel="noopener">YouTube</a>
+            <a href="https://www.linkedin.com/in/mona-weathers-060771379/" target="_blank" rel="noopener">LinkedIn</a>
+            <a href="mailto:contact@monaweathers.com">contact@monaweathers.com</a>
+          </div>
+        </div>
+      </div>
+      <div class="foot-bottom">
+        <span>© 2026 Steady Systems LLC · Mona Weathers · <a href="Terms of Service.html" style="color:var(--ink-soft);">Terms of Service</a> · <a href="Privacy Policy.html" style="color:var(--ink-soft);">Privacy Policy</a></span>
+        <div class="socials">
+          <a href="https://www.youtube.com/@MonaWeathers" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="2.5" y="5" width="19" height="14" rx="4"/><path d="M10 9l5 3-5 3z" fill="currentColor" stroke="none"/></svg></a>
+          <a href="https://www.linkedin.com/in/mona-weathers-060771379/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M7 10v7M7 7v.01M11 17v-4a2 2 0 0 1 4 0v4" stroke-linecap="round"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div id="tweaks-root"></div>
+
+  <script>
+    // Replace any .video-ph that has a YouTube id (data-yt) with a live embed.
+    // Leave empty placeholders untouched until a link is added.
+    document.querySelectorAll('.video-ph[data-yt]').forEach(function (ph) {
+      var id = (ph.getAttribute('data-yt') || '').trim();
+      if (!id) return;
+      var f = document.createElement('iframe');
+      f.src = 'https://www.youtube-nocookie.com/embed/' + id;
+      f.title = 'Video';
+      f.loading = 'lazy';
+      f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+      f.allowFullscreen = true;
+      ph.parentElement.appendChild(f);
+      ph.remove();
+    });
+  </script>
+
+  <script src="image-slot.js"></script>
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+  <script type="text/babel" src="tweaks-panel.jsx"></script>
+  <script type="text/babel">
+    const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+      "accent": "#0097B2",
+      "type": "editorial"
+    }/*EDITMODE-END*/;
+
+    const ACCENTS = {
+      "#0097B2": "#06768C",
+      "#B5564B": "#8A3A31",
+      "#C2613B": "#8F4426",
+      "#C28A2E": "#8C611B"
+    };
+
+    function App() {
+      const [t, setTweak] = useTweaks(TWEAK_DEFAULTS);
+      React.useEffect(() => {
+        const root = document.documentElement;
+        root.style.setProperty('--accent', t.accent);
+        root.style.setProperty('--accent-ink', ACCENTS[t.accent] || t.accent);
+        root.setAttribute('data-type', t.type);
+      }, [t.accent, t.type]);
+
+      return (
+        <TweaksPanel title="Tweaks">
+          <TweakSection label="Accent color" />
+          <TweakColor label="Accent" value={t.accent}
+            options={Object.keys(ACCENTS)}
+            onChange={(v) => setTweak('accent', v)} />
+          <TweakSection label="Typography" />
+          <TweakRadio label="Pairing" value={t.type}
+            options={['editorial', 'sans', 'stately']}
+            onChange={(v) => setTweak('type', v)} />
+        </TweaksPanel>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById('tweaks-root')).render(<App />);
+  </script>
+</body>
+</html>
