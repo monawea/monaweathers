@@ -98,6 +98,33 @@
   .cta h2 em { font-style: italic; color: var(--accent-ink); }
   .cta p { color: var(--ink-soft); font-size: 19px; margin: 20px auto 34px; max-width: 46ch; }
 
+  /* Application form */
+  .apply { background: var(--bg-2); }
+  .apply .sec-head { max-width: 640px; margin-bottom: 48px; }
+  .apply .sec-head h2 { font-size: clamp(28px, 4vw, 42px); margin-top: 14px; }
+  .apply .sec-head p { color: var(--ink-soft); font-size: 18px; margin-top: 14px; }
+  .app-form { max-width: 720px; }
+  .field { margin-bottom: 28px; }
+  .field label { display: block; font-weight: 600; font-size: 15.5px; margin-bottom: 8px; color: var(--ink); }
+  .field label .req { color: var(--accent); margin-left: 3px; }
+  .field input, .field textarea, .field select {
+    width: 100%; font-family: var(--font-body); font-size: 16px; color: var(--ink);
+    background: var(--card); border: 1.5px solid var(--line); border-radius: 12px;
+    padding: 14px 18px; transition: border-color .15s; outline: none;
+  }
+  .field input:focus, .field textarea:focus, .field select:focus { border-color: var(--accent); }
+  .field textarea { resize: vertical; min-height: 110px; line-height: 1.55; }
+  .field select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%236E6256' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 16px center; padding-right: 44px; cursor: pointer; }
+  .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .radio-group { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 4px; }
+  .radio-group label { display: flex; align-items: center; gap: 8px; font-weight: 500; cursor: pointer; }
+  .radio-group input[type="radio"] { width: auto; accent-color: var(--accent); width: 18px; height: 18px; cursor: pointer; }
+  .field .hint { font-size: 14px; color: var(--ink-soft); margin-top: 6px; }
+  .form-submit { margin-top: 36px; }
+  .form-submit .btn { font-size: 17px; padding: 17px 34px; }
+  .form-note { font-size: 14px; color: var(--ink-soft); margin-top: 14px; }
+  @media (max-width: 600px) { .field-row { grid-template-columns: 1fr; } }
+
   /* Footer */
   footer { padding: 56px 0 44px; border-top: 1px solid var(--line); }
   .foot-inner { display: flex; justify-content: space-between; align-items: center; gap: 18px; flex-wrap: wrap; color: var(--ink-soft); font-size: 14px; }
@@ -164,7 +191,7 @@
               A repeatable roadmap in 5 days instead of months of guessing
             </li>
           </ul>
-          <a href="https://calendar.app.google/smmD8LeraG9GRRrD7" target="_blank" rel="noopener" class="btn btn-ghost">Apply for Free</a>
+          <a href="#apply" class="btn btn-ghost">Apply for Free</a>
         </div>
 
         <div class="offer feature">
@@ -263,6 +290,91 @@
         </div>
         <a href="https://www.skool.com/next/about" target="_blank" rel="noopener" class="btn btn-ghost">Join the free community</a>
       </div>
+    </div>
+  </section>
+
+  <!-- APPLICATION FORM -->
+  <section class="apply" id="apply">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">Apply Now</span>
+        <h2>Apply for the Free 1:1 Challenge</h2>
+        <p>Take a few minutes to answer honestly. This helps me understand where you are so we can make the most of your 5 days.</p>
+      </div>
+      <form class="app-form" name="challenge-application" method="POST" data-netlify="true">
+        <input type="hidden" name="form-name" value="challenge-application" />
+
+        <div class="field-row">
+          <div class="field">
+            <label for="name">Name <span class="req">*</span></label>
+            <input type="text" id="name" name="name" required placeholder="Your full name" />
+          </div>
+          <div class="field">
+            <label for="email">Email <span class="req">*</span></label>
+            <input type="email" id="email" name="email" required placeholder="your@email.com" />
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="niche">What's your coaching niche and how long have you been coaching? <span class="req">*</span></label>
+          <textarea id="niche" name="niche" required placeholder="e.g. I coach female entrepreneurs on mindset and confidence. I've been coaching for 3 years."></textarea>
+        </div>
+
+        <div class="field">
+          <label for="lead-gen">What does your current lead generation look like — what are you doing right now to attract clients? <span class="req">*</span></label>
+          <textarea id="lead-gen" name="lead_generation" required placeholder="Be as specific as you can — what platforms, strategies, or activities are you currently using?"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="consistency">On a scale of 1–10, how consistent are you with your marketing and client attraction activities? <span class="req">*</span></label>
+          <select id="consistency" name="consistency_scale" required>
+            <option value="" disabled selected>Select a number</option>
+            <option value="1">1 — Rarely consistent</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5 — Somewhat consistent</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10 — Very consistent</option>
+          </select>
+          <p class="hint">What gets in the way?</p>
+          <textarea name="consistency_barriers" placeholder="What stops you from showing up consistently?" style="margin-top:8px;"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="holding-back">What's the biggest thing holding you back from attracting premium clients right now? <span class="req">*</span></label>
+          <textarea id="holding-back" name="holding_back" required placeholder="Be honest — there are no wrong answers here."></textarea>
+        </div>
+
+        <div class="field">
+          <label for="investment">When you invest in your business growth, how do you approach it? <span class="req">*</span></label>
+          <textarea id="investment" name="investment_approach" required placeholder="Do you research thoroughly and commit fully, or do you tend to try things briefly and move on if results aren't immediate?"></textarea>
+        </div>
+
+        <div class="field">
+          <label>If this challenge gives you a clear lead generation roadmap, are you in a position to implement it within 30 days? <span class="req">*</span></label>
+          <div class="radio-group">
+            <label><input type="radio" name="ready_to_implement" value="Yes" required /> Yes</label>
+            <label><input type="radio" name="ready_to_implement" value="No" /> No</label>
+            <label><input type="radio" name="ready_to_implement" value="Possibly — depends on the plan" /> Possibly — depends on the plan</label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="vision">What would it mean for your business and your life if you had a consistent flow of premium clients? <span class="req">*</span></label>
+          <textarea id="vision" name="vision" required placeholder="Paint the picture — what changes?"></textarea>
+        </div>
+
+        <div class="form-submit">
+          <button type="submit" class="btn btn-primary">Submit your application
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <p class="form-note">I review every application personally and will follow up by email within 2 business days.</p>
+        </div>
+      </form>
     </div>
   </section>
 
