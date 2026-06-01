@@ -62,7 +62,10 @@
   .hero h1 { font-size: clamp(38px, 5.8vw, 68px); margin-top: 18px; }
   .hero h1 em { font-style: italic; color: var(--accent-ink); }
   .hero .lead { font-size: 21px; color: var(--ink-soft); margin: 26px auto 0; max-width: 52ch; }
-  .hero-actions { display: flex; justify-content: center; flex-wrap: wrap; gap: 14px; margin-top: 38px; }
+  .urgency-bar { display: inline-flex; align-items: center; gap: 10px; background: color-mix(in srgb, var(--accent) 8%, var(--bg)); border: 1px solid color-mix(in srgb, var(--accent) 25%, transparent); border-radius: 12px; padding: 12px 20px; font-size: 15px; color: var(--ink-soft); margin-top: 28px; }
+  .urgency-bar svg { width: 16px; height: 16px; flex-shrink: 0; color: var(--accent-ink); }
+  .urgency-bar strong { color: var(--ink); }
+  .hero-actions { display: flex; justify-content: center; flex-wrap: wrap; gap: 14px; margin-top: 28px; }
   .badge-open { display: inline-flex; align-items: center; gap: 8px; background: color-mix(in srgb, var(--income) 12%, var(--bg)); border: 1px solid color-mix(in srgb, var(--income) 30%, transparent); border-radius: 999px; padding: 6px 16px; font-size: 13px; font-weight: 600; color: var(--income); margin-bottom: 24px; }
   .badge-open .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--income); }
 
@@ -227,6 +230,10 @@
       <span class="eyebrow">Group Program</span>
       <h1>Next Level<br><em>Growth Cohort</em></h1>
       <p class="lead">Build the systems that turn your audience into a thriving community and consistent income. A 12-month guided experience for coaches and experts who are ready to stop guessing and start building.</p>
+      <div class="urgency-bar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2" stroke-linecap="round"/></svg>
+        <span>Next cohort onboarding: <strong>June 15 – June 30.</strong> Get your application in soon — spots are limited.</span>
+      </div>
       <div class="hero-actions">
         <a href="#apply" class="btn btn-primary">Apply to join
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
