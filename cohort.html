@@ -188,15 +188,31 @@
   .invest-price .limited { font-size: 14px; color: #9A8E7C; margin-top: 16px; }
   @media (max-width: 860px) { .invest-grid { grid-template-columns: 1fr; } }
 
-  /* Final CTA */
-  .final-cta { padding: 100px 0; text-align: center; }
-  .final-cta .wrap-narrow { }
-  .final-cta h2 { font-size: clamp(30px, 4.2vw, 50px); margin: 14px 0 20px; }
-  .final-cta h2 em { font-style: italic; color: var(--accent-ink); }
-  .final-cta .body-text { color: var(--ink-soft); font-size: 18px; max-width: 50ch; margin: 0 auto 16px; }
-  .final-cta .stacked { font-family: var(--font-display); font-size: clamp(18px, 2.4vw, 26px); font-style: italic; line-height: 1.6; color: var(--ink-soft); margin: 28px auto; max-width: 44ch; }
-  .final-cta .actions { display: flex; justify-content: center; flex-wrap: wrap; gap: 14px; margin-top: 36px; }
-  .final-cta .note { color: var(--ink-soft); font-size: 14px; margin-top: 20px; }
+  /* Application form */
+  .app-section { padding: 100px 0; }
+  .app-section .intro-text { color: var(--ink-soft); font-size: 18px; max-width: 52ch; margin: 16px 0 0; }
+  .app-section .stacked { font-family: var(--font-display); font-size: clamp(18px, 2.4vw, 26px); font-style: italic; line-height: 1.6; color: var(--ink-soft); margin: 28px 0 48px; }
+  .app-form { display: flex; flex-direction: column; gap: 0; }
+  .form-section { border-top: 1px solid var(--line); padding: 40px 0 8px; margin-bottom: 8px; }
+  .form-section-title { font-family: var(--font-display); font-size: 22px; font-weight: 500; color: var(--ink); margin: 0 0 28px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .form-field { display: flex; flex-direction: column; gap: 7px; margin-bottom: 22px; }
+  .form-field label { font-size: 15px; font-weight: 600; color: var(--ink); }
+  .form-field .hint { font-size: 14px; color: var(--ink-soft); margin: 0; }
+  .form-field input[type="text"],
+  .form-field input[type="email"],
+  .form-field input[type="url"],
+  .form-field textarea { width: 100%; background: var(--card); border: 1.5px solid var(--line); border-radius: 10px; padding: 13px 16px; font-family: var(--font-body); font-size: 16px; color: var(--ink); outline: none; transition: border-color .15s; resize: vertical; }
+  .form-field input:focus,
+  .form-field textarea:focus { border-color: var(--accent); }
+  .form-field textarea { min-height: 110px; }
+  .check-group, .radio-group { display: flex; flex-direction: column; gap: 10px; }
+  .check-group label, .radio-group label { display: flex; align-items: flex-start; gap: 11px; font-size: 16px; color: var(--ink); cursor: pointer; line-height: 1.4; font-weight: 400; }
+  .check-group input, .radio-group input { margin-top: 3px; width: 17px; height: 17px; accent-color: var(--accent); flex-shrink: 0; cursor: pointer; }
+  .form-submit { margin-top: 40px; border-top: 1px solid var(--line); padding-top: 36px; }
+  .form-submit .btn { font-size: 17px; padding: 17px 34px; }
+  .submit-note { font-size: 14px; color: var(--ink-soft); margin-top: 16px; }
+  @media (max-width: 640px) { .form-row { grid-template-columns: 1fr; } }
 
   /* Footer */
   footer { padding: 56px 0 44px; border-top: 1px solid var(--line); }
@@ -528,21 +544,164 @@
     </div>
   </section>
 
-  <!-- FINAL CTA -->
-  <section class="final-cta" id="apply">
+  <!-- APPLICATION FORM -->
+  <section class="app-section" id="apply">
     <div class="wrap-narrow">
-      <span class="eyebrow">Next Step</span>
-      <h2>Are you ready to stop guessing and <em>start building?</em></h2>
-      <p class="body-text">You probably already know where you stand. This either feels aligned — or it doesn't.</p>
-      <p class="stacked">You can keep guessing…<br>or you can build something that gives you<br>clarity, confidence, and income.</p>
-      <p class="body-text">To join the Next Level Growth Cohort, you must complete an application. This helps you get clear on where you are, what's not working, and what kind of support you actually need. If it's a good fit, you'll be invited to take the next step.</p>
-      <div class="actions">
-        <a href="#" class="btn btn-primary">Start your application
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
-        <a href="work-with-me.html" class="btn btn-ghost">See all offers</a>
-      </div>
-      <p class="note">Registration is open now. Spots are limited.</p>
+      <span class="eyebrow">Apply</span>
+      <h2>Start your application</h2>
+      <p class="intro-text">This helps you get clear on where you are, what's not working, and what kind of support you actually need. If it's a good fit, you'll be invited to take the next step.</p>
+      <p class="stacked">Registration is open now.<br>Spots are limited.</p>
+
+      <form class="app-form" action="https://formspree.io/f/mlgvqrkj" method="POST">
+
+        <!-- Contact -->
+        <div class="form-section">
+          <div class="form-row">
+            <div class="form-field">
+              <label for="name">First and Last Name</label>
+              <input type="text" id="name" name="name" required placeholder="Your full name" />
+            </div>
+            <div class="form-field">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" required placeholder="you@example.com" />
+            </div>
+          </div>
+          <div class="form-field">
+            <label for="link">Link to your business / community / content</label>
+            <p class="hint">Website, social profile, or community link (if applicable)</p>
+            <input type="url" id="link" name="link" placeholder="https://" />
+          </div>
+        </div>
+
+        <!-- Where You Are -->
+        <div class="form-section">
+          <h3 class="form-section-title">Where You Are Right Now</h3>
+
+          <div class="form-field">
+            <label>How would you describe your current business stage? <span style="font-weight:400;color:var(--ink-soft)">(Select up to 2)</span></label>
+            <div class="check-group">
+              <label><input type="checkbox" name="stage[]" value="I have an idea but haven't launched yet" /> I have an idea but haven't launched yet</label>
+              <label><input type="checkbox" name="stage[]" value="I have an offer but it's not consistent" /> I have an offer but it's not consistent</label>
+              <label><input type="checkbox" name="stage[]" value="I'm making some sales but it's inconsistent" /> I'm making some sales but it's inconsistent</label>
+              <label><input type="checkbox" name="stage[]" value="I have traction but things feel messy / unclear" /> I have traction but things feel messy / unclear</label>
+              <label><input type="checkbox" name="stage[]" value="I'm growing but want more structure and systems" /> I'm growing but want more structure and systems</label>
+            </div>
+          </div>
+
+          <div class="form-field">
+            <label for="building">What are you currently trying to build or grow?</label>
+            <p class="hint">Community, offer, content, audience, etc.</p>
+            <textarea id="building" name="building" required></textarea>
+          </div>
+
+          <div class="form-field">
+            <label for="offer">What's your current offer (or idea if not launched yet)?</label>
+            <textarea id="offer" name="offer" required></textarea>
+          </div>
+        </div>
+
+        <!-- Where You Feel Stuck -->
+        <div class="form-section">
+          <h3 class="form-section-title">Where You Feel Stuck</h3>
+
+          <div class="form-field">
+            <label>Where do you feel stuck? <span style="font-weight:400;color:var(--ink-soft)">(Select all that apply)</span></label>
+            <div class="check-group">
+              <label><input type="checkbox" name="stuck[]" value="Traffic (getting the right people in)" /> Traffic (getting the right people in)</label>
+              <label><input type="checkbox" name="stuck[]" value="Community (engagement, connection, retention)" /> Community (engagement, connection, retention)</label>
+              <label><input type="checkbox" name="stuck[]" value="Income (offers, pricing, sales, launches)" /> Income (offers, pricing, sales, launches)</label>
+              <label><input type="checkbox" name="stuck[]" value="Clarity (what to focus on / what to do next)" /> Clarity (what to focus on / what to do next)</label>
+            </div>
+          </div>
+
+          <div class="form-field">
+            <label for="frustrating">What feels the most frustrating or unclear in your business right now?</label>
+            <textarea id="frustrating" name="frustrating" required></textarea>
+          </div>
+
+          <div class="form-field">
+            <label for="tried">What have you already tried?</label>
+            <p class="hint">Content, launches, communities, offers, etc.</p>
+            <textarea id="tried" name="tried"></textarea>
+          </div>
+
+          <div class="form-field">
+            <label for="toward">What are you working toward over the next 6–12 months?</label>
+            <textarea id="toward" name="toward" required></textarea>
+          </div>
+
+          <div class="form-field">
+            <label for="progress">What would "real progress" look like for you by the end of this year?</label>
+            <textarea id="progress" name="progress" required></textarea>
+          </div>
+        </div>
+
+        <!-- Fit & Readiness -->
+        <div class="form-section">
+          <h3 class="form-section-title">Fit &amp; Readiness</h3>
+
+          <div class="form-field">
+            <label for="why-cohort">Why are you interested in this cohort specifically?</label>
+            <textarea id="why-cohort" name="why_cohort" required></textarea>
+          </div>
+
+          <div class="form-field">
+            <label for="support">What kind of support do you feel like you need right now?</label>
+            <p class="hint">Strategy, accountability, clarity, structure, etc.</p>
+            <textarea id="support" name="support" required></textarea>
+          </div>
+
+          <div class="form-field">
+            <label>Be honest — how ready are you to implement and follow through?</label>
+            <div class="radio-group">
+              <label><input type="radio" name="readiness" value="I'm exploring options" required /> I'm exploring options</label>
+              <label><input type="radio" name="readiness" value="I'm interested but unsure" /> I'm interested but unsure</label>
+              <label><input type="radio" name="readiness" value="I'm ready and just need direction" /> I'm ready and just need direction</label>
+              <label><input type="radio" name="readiness" value="I'm fully committed to building this" /> I'm fully committed to building this</label>
+            </div>
+          </div>
+
+          <div class="form-field">
+            <label>Are you prepared to invest in support if it's the right fit? <span style="font-weight:400;color:var(--ink-soft)">(Investment: $5,000 for 12 months)</span></label>
+            <div class="radio-group">
+              <label><input type="radio" name="investment" value="Yes" required /> Yes</label>
+              <label><input type="radio" name="investment" value="Possibly (need more details)" /> Possibly (need more details)</label>
+              <label><input type="radio" name="investment" value="Not at this time" /> Not at this time</label>
+            </div>
+          </div>
+
+          <div class="form-field">
+            <label for="why-now">Why do you feel like now is the time to figure this out?</label>
+            <textarea id="why-now" name="why_now" required></textarea>
+          </div>
+
+          <div class="form-field">
+            <label>If this feels aligned, what would you like to do next?</label>
+            <div class="radio-group">
+              <label><input type="radio" name="next_step" value="I'd like to book a clarity call" required /> I'd like to book a clarity call</label>
+              <label><input type="radio" name="next_step" value="I'd like more information first" /> I'd like more information first</label>
+              <label><input type="radio" name="next_step" value="I'm ready to join! Send me the checkout." /> I'm ready to join! Send me the checkout.</label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Questions for Mona -->
+        <div class="form-section">
+          <h3 class="form-section-title">Questions for Mona</h3>
+          <div class="form-field">
+            <label for="questions">Include any questions you have about the cohort here.</label>
+            <textarea id="questions" name="questions" placeholder="Optional"></textarea>
+          </div>
+        </div>
+
+        <div class="form-submit">
+          <button type="submit" class="btn btn-primary">Submit application
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <p class="submit-note">Spots are limited. You'll hear back once your application has been reviewed.</p>
+        </div>
+
+      </form>
     </div>
   </section>
 
