@@ -188,6 +188,20 @@
   .invest-price .limited { font-size: 14px; color: #9A8E7C; margin-top: 16px; }
   @media (max-width: 860px) { .invest-grid { grid-template-columns: 1fr; } }
 
+  /* Testimonial */
+  .quote-sec { padding: 100px 0 24px; text-align: center; }
+  .quote-sec .mark { font-size: 70px; color: var(--accent); line-height: 0.6; font-family: var(--font-display); }
+  .quote-sec blockquote { font-family: var(--font-display); font-size: clamp(20px, 2.6vw, 28px); font-style: italic; line-height: 1.55; color: var(--ink); max-width: 44ch; margin: 24px auto 0; }
+  .quote-attr { display: flex; align-items: center; justify-content: center; gap: 14px; margin-top: 38px; }
+  .testi-avatar { width: 52px; height: 52px; border-radius: 50%; object-fit: cover; flex: none; }
+  .testi-avatar.face-top { object-position: center 15%; }
+  .quote-attr .who { text-align: left; }
+  .quote-attr .who strong { display: block; font-weight: 700; }
+  .quote-attr .who span { font-size: 14px; color: var(--ink-soft); }
+  .testi-video { padding: 0 0 0; text-align: center; }
+  .video-wrap { max-width: 760px; margin: 0 auto; border-radius: 20px; overflow: hidden; box-shadow: 0 30px 60px -34px rgba(42,36,32,.4); aspect-ratio: 16/9; position: relative; }
+  .video-wrap iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+
   /* Application form */
   .app-section { padding: 100px 0; }
   .app-section .intro-text { color: var(--ink-soft); font-size: 18px; max-width: 52ch; margin: 16px 0 0; }
@@ -540,6 +554,29 @@
           </a>
           <p class="limited">Limited spots available to keep this high-touch and personalized.</p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIAL -->
+  <section class="quote-sec">
+    <div class="wrap-narrow">
+      <div class="mark">&ldquo;</div>
+      <blockquote>I felt stretched in so many directions that I was going nowhere&hellip; Now I have one business. I can see end to end the customer journey which was a bit fuzzy before. I have a clearer vision on the journey and how I can serve my customer&hellip; I know where I'm going.</blockquote>
+      <div class="quote-attr">
+        <img src="isabelle-lesschaeve.png" alt="Isabelle Lesschaeve" class="testi-avatar face-top" />
+        <div class="who">
+          <strong>Isabelle Lesschaeve</strong>
+          <span>Wine Tasting Coach &amp; Sensory Scientist</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="testi-video" style="padding: 40px 0 0;">
+    <div class="wrap-narrow">
+      <div class="video-wrap">
+        <iframe src="https://www.youtube-nocookie.com/embed/Ck-b0CkK-4A" title="Client testimonial" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
       </div>
     </div>
   </section>
