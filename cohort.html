@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Next Level Growth Cohort | Mona Weathers</title>
+<meta name="description" content="A 12-month guided experience for coaches and experts who are ready to build real systems for traffic, community, and consistent income." />
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #FAF4EA;
+    --bg-2: #F2E7D6;
+    --card: #FFFCF6;
+    --ink: #2A2420;
+    --ink-soft: #6E6256;
+    --line: #E6D9C6;
+    --accent: #0097B2;
+    --accent-ink: #06768C;
+    --traffic: #D99A2B;
+    --community: #2E8AA0;
+    --income: #6E8E63;
+    --font-display: 'Newsreader', Georgia, serif;
+    --font-body: 'Hanken Grotesk', system-ui, sans-serif;
+    --maxw: 1180px;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 18px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 500; margin: 0; line-height: 1.1; letter-spacing: -0.01em; }
+  p { margin: 0; }
+  a { color: inherit; text-decoration: none; }
+  img { display: block; max-width: 100%; }
+  .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 32px; }
+  .wrap-narrow { max-width: 760px; margin: 0 auto; padding: 0 32px; }
+  .eyebrow { font-family: var(--font-body); font-size: 13px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent-ink); }
+
+  .btn { display: inline-flex; align-items: center; gap: 10px; font-family: var(--font-body); font-weight: 600; font-size: 16px; padding: 15px 26px; border-radius: 999px; cursor: pointer; border: 1.5px solid transparent; transition: transform .18s ease, box-shadow .18s ease; }
+  .btn-primary { background: var(--accent); color: #fff; box-shadow: 0 10px 24px -12px var(--accent); }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 16px 30px -12px var(--accent); }
+  .btn-ghost { background: transparent; color: var(--ink); border-color: var(--line); }
+  .btn-ghost:hover { border-color: var(--ink); transform: translateY(-2px); }
+  .btn-ghost-light { background: transparent; color: #F6EEE1; border-color: rgba(246,238,225,.35); }
+  .btn-ghost-light:hover { border-color: #F6EEE1; transform: translateY(-2px); }
+  .btn svg { width: 16px; height: 16px; }
+
+  /* Nav */
+  header.nav { position: sticky; top: 0; z-index: 40; background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+  .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 76px; }
+  .brand { font-family: var(--font-display); font-size: 21px; font-weight: 600; letter-spacing: -0.01em; white-space: nowrap; color: var(--ink); }
+  .nav-links { display: flex; align-items: center; gap: 34px; }
+  .nav-links a { font-size: 15.5px; font-weight: 500; color: var(--ink-soft); transition: color .15s; }
+  .nav-links a:hover { color: var(--ink); }
+  @media (max-width: 860px) { .nav-links { display: none; } }
+
+  /* Hero */
+  .hero { padding: 88px 0 80px; }
+  .hero .wrap-narrow { text-align: center; }
+  .hero h1 { font-size: clamp(38px, 5.8vw, 68px); margin-top: 18px; }
+  .hero h1 em { font-style: italic; color: var(--accent-ink); }
+  .hero .lead { font-size: 21px; color: var(--ink-soft); margin: 26px auto 0; max-width: 52ch; }
+  .hero-actions { display: flex; justify-content: center; flex-wrap: wrap; gap: 14px; margin-top: 38px; }
+  .badge-open { display: inline-flex; align-items: center; gap: 8px; background: color-mix(in srgb, var(--income) 12%, var(--bg)); border: 1px solid color-mix(in srgb, var(--income) 30%, transparent); border-radius: 999px; padding: 6px 16px; font-size: 13px; font-weight: 600; color: var(--income); margin-bottom: 24px; }
+  .badge-open .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--income); }
+
+  /* Dark narrative */
+  .narrative { background: var(--ink); color: #F4ECDF; padding: 100px 0; }
+  .narrative .wrap-narrow { }
+  .narrative .eyebrow { color: var(--accent); }
+  .narrative h2 { font-size: clamp(28px, 3.8vw, 44px); margin: 14px 0 32px; color: #F4ECDF; }
+  .narrative p { color: #C9BCA8; font-size: 18px; line-height: 1.75; margin-bottom: 18px; }
+  .narrative p strong { color: #F4ECDF; font-weight: 600; }
+  .narrative .stacked { font-family: var(--font-display); font-size: clamp(20px, 2.6vw, 28px); color: #F4ECDF; line-height: 1.6; font-style: italic; margin: 32px 0; }
+
+  /* Breakdown */
+  .breakdown { padding: 100px 0; }
+  .breakdown h2 { font-size: clamp(28px, 3.8vw, 44px); margin: 14px 0 48px; }
+  .breakdown-list { display: flex; flex-direction: column; gap: 0; }
+  .breakdown-item { display: flex; gap: 20px; padding: 28px 0; border-bottom: 1px solid var(--line); align-items: flex-start; }
+  .breakdown-item:first-child { border-top: 1px solid var(--line); }
+  .breakdown-item .icon { width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center; flex: none; background: color-mix(in srgb, var(--accent) 10%, transparent); color: var(--accent-ink); }
+  .breakdown-item .icon svg { width: 22px; height: 22px; }
+  .breakdown-item h3 { font-size: 20px; font-family: var(--font-body); font-weight: 600; margin-bottom: 6px; }
+  .breakdown-item p { color: var(--ink-soft); font-size: 16px; }
+
+  /* Who section */
+  .who-sec { background: var(--bg-2); padding: 100px 0; }
+  .who-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; margin-top: 48px; }
+  .who-quote { font-family: var(--font-display); font-size: clamp(24px, 3vw, 36px); line-height: 1.3; font-style: italic; color: var(--accent-ink); }
+  .who-body p { color: var(--ink-soft); margin-bottom: 16px; font-size: 17px; }
+  .who-body p strong { color: var(--ink); font-weight: 600; }
+  .who-body .dash-list { list-style: none; padding: 0; margin: 20px 0 0; display: flex; flex-direction: column; gap: 10px; }
+  .who-body .dash-list li { display: flex; gap: 12px; font-size: 17px; color: var(--ink); }
+  .who-body .dash-list li::before { content: "—"; color: var(--accent-ink); flex: none; }
+  @media (max-width: 860px) { .who-grid { grid-template-columns: 1fr; gap: 36px; } }
+
+  /* Pillars */
+  .pillars { padding: 100px 0; }
+  .pillars h2 { font-size: clamp(28px, 3.8vw, 44px); margin: 14px 0 14px; }
+  .pillars .sub { color: var(--ink-soft); font-size: 18px; max-width: 54ch; margin-bottom: 48px; }
+  .pillars-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+  .pillar-card { background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 32px 28px; position: relative; overflow: hidden; }
+  .pillar-card::after { content: ""; position: absolute; left: 0; top: 0; height: 4px; width: 100%; }
+  .pillar-card .kicker { font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 14px; }
+  .pillar-card h3 { font-size: 24px; margin-bottom: 10px; }
+  .pillar-card p { color: var(--ink-soft); font-size: 16px; }
+  .pillar-card.traffic .kicker { color: var(--traffic); }
+  .pillar-card.traffic::after { background: var(--traffic); }
+  .pillar-card.community .kicker { color: var(--community); }
+  .pillar-card.community::after { background: var(--community); }
+  .pillar-card.income .kicker { color: var(--income); }
+  .pillar-card.income::after { background: var(--income); }
+  @media (max-width: 860px) { .pillars-grid { grid-template-columns: 1fr; } }
+
+  /* AI section */
+  .ai-sec { background: var(--bg-2); padding: 100px 0; }
+  .ai-sec h2 { font-size: clamp(28px, 3.8vw, 44px); margin: 14px 0 16px; }
+  .ai-sec .sub { color: var(--ink-soft); font-size: 18px; max-width: 54ch; margin-bottom: 48px; }
+  .ai-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+  .ai-body p { color: var(--ink-soft); font-size: 17px; line-height: 1.75; margin-bottom: 18px; }
+  .ai-body p strong { color: var(--ink); }
+  .ai-items { display: flex; flex-direction: column; gap: 16px; }
+  .ai-item { display: flex; gap: 16px; padding: 20px 22px; background: var(--card); border: 1px solid var(--line); border-radius: 16px; align-items: flex-start; }
+  .ai-item .ic { width: 40px; height: 40px; border-radius: 10px; background: color-mix(in srgb, var(--accent) 12%, transparent); color: var(--accent-ink); display: grid; place-items: center; flex: none; }
+  .ai-item .ic svg { width: 20px; height: 20px; }
+  .ai-item h4 { font-size: 17px; font-family: var(--font-body); font-weight: 600; margin-bottom: 4px; }
+  .ai-item p { color: var(--ink-soft); font-size: 15px; }
+  @media (max-width: 860px) { .ai-grid { grid-template-columns: 1fr; gap: 36px; } }
+
+  /* Outcomes */
+  .outcomes { padding: 100px 0; }
+  .outcomes h2 { font-size: clamp(28px, 3.8vw, 44px); margin: 14px 0 48px; }
+  .outcomes-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 40px; }
+  .outcome-item { display: flex; gap: 16px; padding: 22px 0; border-bottom: 1px solid var(--line); }
+  .outcome-item svg { width: 22px; height: 22px; color: var(--accent); flex: none; margin-top: 2px; }
+  .outcome-item p { font-size: 17px; color: var(--ink); }
+  @media (max-width: 860px) { .outcomes-grid { grid-template-columns: 1fr; } }
+
+  /* How it works */
+  .how { background: var(--ink); color: #F6EEE1; padding: 100px 0; }
+  .how .eyebrow { color: var(--accent); }
+  .how h2 { font-size: clamp(28px, 3.8vw, 44px); margin: 14px 0 52px; color: #F6EEE1; }
+  .phases { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+  .phase { background: rgba(255,255,255,.05); border: 1px solid rgba(246,238,225,.12); border-radius: 22px; padding: 36px 32px; }
+  .phase .phase-label { font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
+  .phase h3 { font-size: 28px; color: #F6EEE1; margin-bottom: 24px; }
+  .phase ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px; }
+  .phase li { display: flex; gap: 12px; font-size: 16px; color: #C9BCA8; }
+  .phase li svg { width: 18px; height: 18px; color: var(--accent); flex: none; margin-top: 3px; }
+  @media (max-width: 860px) { .phases { grid-template-columns: 1fr; } }
+
+  /* For / not for */
+  .fit { background: var(--bg-2); padding: 100px 0; }
+  .fit h2 { font-size: clamp(28px, 3.8vw, 44px); margin: 14px 0 48px; }
+  .fit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+  .fit-card { background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 32px 30px; }
+  .fit-card h3 { font-size: 22px; margin-bottom: 24px; }
+  .fit-card.yes h3 { color: var(--income); }
+  .fit-card.no h3 { color: var(--ink-soft); }
+  .fit-card ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px; }
+  .fit-card li { display: flex; gap: 12px; font-size: 16.5px; color: var(--ink); }
+  .fit-card li svg { width: 18px; height: 18px; flex: none; margin-top: 3px; }
+  .fit-card.yes li svg { color: var(--income); }
+  .fit-card.no li svg { color: var(--ink-soft); }
+  @media (max-width: 860px) { .fit-grid { grid-template-columns: 1fr; } }
+
+  /* Investment */
+  .investment { background: var(--ink); color: #F6EEE1; padding: 100px 0; }
+  .investment .eyebrow { color: var(--accent); }
+  .investment h2 { font-size: clamp(28px, 3.8vw, 44px); margin: 14px 0 16px; color: #F6EEE1; }
+  .investment .sub { color: #C9BCA8; font-size: 18px; margin-bottom: 48px; max-width: 54ch; }
+  .invest-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: start; }
+  .invest-includes { background: rgba(255,255,255,.05); border: 1px solid rgba(246,238,225,.12); border-radius: 20px; padding: 36px 32px; }
+  .invest-includes h3 { font-size: 20px; color: #F6EEE1; margin-bottom: 24px; }
+  .invest-includes ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 13px; }
+  .invest-includes li { display: flex; gap: 12px; font-size: 16px; color: #C9BCA8; }
+  .invest-includes li svg { width: 18px; height: 18px; color: var(--accent); flex: none; margin-top: 3px; }
+  .invest-price { padding: 36px 32px; }
+  .invest-price .price-tag { font-family: var(--font-display); font-size: clamp(42px, 5vw, 62px); color: #F6EEE1; line-height: 1; margin-bottom: 8px; }
+  .invest-price .price-desc { color: #C9BCA8; font-size: 16px; margin-bottom: 6px; }
+  .invest-price .price-plan { color: var(--accent); font-size: 15px; font-weight: 600; margin-bottom: 32px; }
+  .invest-price .limited { font-size: 14px; color: #9A8E7C; margin-top: 16px; }
+  @media (max-width: 860px) { .invest-grid { grid-template-columns: 1fr; } }
+
+  /* Final CTA */
+  .final-cta { padding: 100px 0; text-align: center; }
+  .final-cta .wrap-narrow { }
+  .final-cta h2 { font-size: clamp(30px, 4.2vw, 50px); margin: 14px 0 20px; }
+  .final-cta h2 em { font-style: italic; color: var(--accent-ink); }
+  .final-cta .body-text { color: var(--ink-soft); font-size: 18px; max-width: 50ch; margin: 0 auto 16px; }
+  .final-cta .stacked { font-family: var(--font-display); font-size: clamp(18px, 2.4vw, 26px); font-style: italic; line-height: 1.6; color: var(--ink-soft); margin: 28px auto; max-width: 44ch; }
+  .final-cta .actions { display: flex; justify-content: center; flex-wrap: wrap; gap: 14px; margin-top: 36px; }
+  .final-cta .note { color: var(--ink-soft); font-size: 14px; margin-top: 20px; }
+
+  /* Footer */
+  footer { padding: 56px 0 44px; border-top: 1px solid var(--line); }
+  .foot-inner { display: flex; justify-content: space-between; align-items: center; gap: 18px; flex-wrap: wrap; color: var(--ink-soft); font-size: 14px; }
+  .foot-inner a { color: var(--ink); transition: color .15s; }
+  .foot-inner a:hover { color: var(--accent-ink); }
+  .foot-inner .links { display: flex; gap: 22px; flex-wrap: wrap; }
+</style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="index.html">Mona Weathers</a>
+      <nav class="nav-links">
+        <a href="index.html#about">About</a>
+        <a href="index.html#pillars">The Method</a>
+        <a href="index.html#learn">How I Help</a>
+        <a href="work-with-me.html">Work With Me</a>
+        <a href="index.html#connect">Connect</a>
+      </nav>
+      <a href="#apply" class="btn btn-primary">Apply Now</a>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap-narrow">
+      <div class="badge-open"><span class="dot"></span> Registration Open Now</div>
+      <span class="eyebrow">Group Program</span>
+      <h1>Next Level<br><em>Growth Cohort</em></h1>
+      <p class="lead">Build the systems that turn your audience into a thriving community and consistent income. A 12-month guided experience for coaches and experts who are ready to stop guessing and start building.</p>
+      <div class="hero-actions">
+        <a href="#apply" class="btn btn-primary">Apply to join
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="#how-it-works" class="btn btn-ghost">See how it works</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- NARRATIVE -->
+  <section class="narrative">
+    <div class="wrap-narrow">
+      <span class="eyebrow">The Reality</span>
+      <h2>There are a lot of skilled coaches who aren't making money online.</h2>
+      <p>And it's not because they're not good at what they do.</p>
+      <p>They're experienced. They know their subject. They can teach and actually get people results.</p>
+      <p>But none of that automatically turns into income online.</p>
+      <div class="stacked">Because knowing how to teach<br>and knowing how to build an online business<br>are two very different skill sets.</div>
+    </div>
+  </section>
+
+  <!-- BREAKDOWN -->
+  <section class="breakdown">
+    <div class="wrap-narrow">
+      <span class="eyebrow">Where Things Break Down</span>
+      <h2>Here's what I see happening.</h2>
+      <div class="breakdown-list">
+        <div class="breakdown-item">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" stroke-linecap="round"/></svg></div>
+          <div>
+            <h3>You create a community but don't know how to lead it</h3>
+            <p>Without a clear strategy, a community stays quiet instead of driving growth.</p>
+          </div>
+        </div>
+        <div class="breakdown-item">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div>
+            <h3>You post content but have no evergreen traffic working for you</h3>
+            <p>Everything depends on constant effort with no system running in the background.</p>
+          </div>
+        </div>
+        <div class="breakdown-item">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3v18M16.5 7c0-1.7-2-3-4.5-3S7.5 5.3 7.5 7s2 2.5 4.5 3 4.5 1.3 4.5 3-2 3-4.5 3-4.5-1.3-4.5-3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div>
+            <h3>Your offers aren't structured to be clear or profitable</h3>
+            <p>Great knowledge, unclear packaging — and it costs you clients who can't see the value.</p>
+          </div>
+        </div>
+        <div class="breakdown-item">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4" stroke-linecap="round"/></svg></div>
+          <div>
+            <h3>You try to use AI but it waters down your expertise</h3>
+            <p>Without the right approach, AI creates generic content instead of amplifying what makes you distinct.</p>
+          </div>
+        </div>
+        <div class="breakdown-item">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3" stroke-linecap="round"/></svg></div>
+          <div>
+            <h3>You miss the opportunities that actually create growth</h3>
+            <p>Collaboration, visibility, and strategic networking — the things that compound — keep slipping by.</p>
+          </div>
+        </div>
+      </div>
+      <p style="margin-top:40px; font-size:19px; font-family:var(--font-display); font-style:italic; color:var(--ink-soft);">So you end up in this frustrating place where you should be making money… but aren't.</p>
+    </div>
+  </section>
+
+  <!-- WHO THIS IS FOR -->
+  <section class="who-sec">
+    <div class="wrap-narrow">
+      <span class="eyebrow">Who This Is For</span>
+      <div class="who-grid">
+        <div>
+          <p class="who-quote">"You don't need more certifications. You need help connecting the dots."</p>
+        </div>
+        <div class="who-body">
+          <p>You don't need more knowledge. You don't need to start over.</p>
+          <p>You need help turning your expertise into:</p>
+          <ul class="dash-list">
+            <li>Clear, consistent traffic</li>
+            <li>Real community that trusts you</li>
+            <li>Consistent income from offers that convert</li>
+          </ul>
+          <p style="margin-top:24px;">That's what this cohort is designed to help you do.</p>
+          <p style="margin-top:12px;"><strong>And the biggest shift?</strong> You're not building alone anymore. You're surrounded by people who get it — who are building, growing, and moving at a higher level alongside you.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PILLARS -->
+  <section class="pillars">
+    <div class="wrap">
+      <div class="wrap-narrow" style="padding:0;">
+        <span class="eyebrow">What You'll Build</span>
+        <h2>The three systems that actually matter.</h2>
+        <p class="sub">Instead of chasing random tactics, you'll focus on the areas that move the needle — and build systems that keep working.</p>
+      </div>
+      <div class="pillars-grid">
+        <div class="pillar-card traffic">
+          <div class="kicker">Traffic</div>
+          <h3>Attracting the right people</h3>
+          <p>A reliable lead generation system that works consistently — turning content into qualified leads, not just views.</p>
+        </div>
+        <div class="pillar-card community">
+          <div class="kicker">Community</div>
+          <h3>Building trust and engagement</h3>
+          <p>Lead a community that knows you, trusts you, and is ready to buy when you make an offer.</p>
+        </div>
+        <div class="pillar-card income">
+          <div class="kicker">Income</div>
+          <h3>Turning expertise into offers</h3>
+          <p>A validated, profitable offer stack aligned with your expertise and a repeatable launch system you can use again and again.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AI SECTION -->
+  <section class="ai-sec">
+    <div class="wrap-narrow">
+      <span class="eyebrow">AI Integration</span>
+      <h2>Build AI systems that support your voice, not replace it.</h2>
+      <p class="sub">Inside the cohort, you'll build the AI workflows and tools specific to your business — together, so you understand how they work and can keep using them long after.</p>
+      <div class="ai-grid">
+        <div class="ai-body">
+          <p>Most coaches either avoid AI or use it in a way that strips out everything that makes their content distinctive. There's a better way.</p>
+          <p>This isn't done-for-you. We build your AI systems together — guided, step by step — so the tools work <strong>for your voice, your offers, and your audience.</strong></p>
+          <p>By the end, you'll have AI working in the background of your business: supporting your content, sharpening your messaging, and freeing up time so you can focus on what actually requires you.</p>
+        </div>
+        <div class="ai-items">
+          <div class="ai-item">
+            <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9"/><path d="M16 3c1.5 1.5 2.5 4 2.5 6" stroke-linecap="round"/><circle cx="12" cy="12" r="3"/></svg></div>
+            <div>
+              <h4>Content workflows</h4>
+              <p>AI-assisted systems that create on-brand content without losing your voice.</p>
+            </div>
+          </div>
+          <div class="ai-item">
+            <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div>
+              <h4>Messaging &amp; offer clarity</h4>
+              <p>Custom prompts and frameworks that sharpen how you talk about what you do.</p>
+            </div>
+          </div>
+          <div class="ai-item">
+            <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 17l6-6 4 4 8-8" stroke-linecap="round" stroke-linejoin="round"/><path d="M17 7h4v4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div>
+              <h4>Lead &amp; community systems</h4>
+              <p>Automated touchpoints and workflows that keep your audience engaged without constant manual effort.</p>
+            </div>
+          </div>
+          <div class="ai-item">
+            <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14" stroke-linecap="round"/></svg></div>
+            <div>
+              <h4>Business efficiency tools</h4>
+              <p>Workflows built around how you work — saving time on the tasks that don't need to take as long as they do.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OUTCOMES -->
+  <section class="outcomes">
+    <div class="wrap-narrow">
+      <span class="eyebrow">What You'll Walk Away With</span>
+      <h2>By the end, you'll have all of this.</h2>
+      <div class="outcomes-grid">
+        <div class="outcome-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <p>A clear traffic system bringing in the right people consistently</p>
+        </div>
+        <div class="outcome-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <p>A community that builds trust and creates momentum</p>
+        </div>
+        <div class="outcome-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <p>A validated, profitable offer stack aligned with your expertise</p>
+        </div>
+        <div class="outcome-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <p>A repeatable launch system you can use again and again</p>
+        </div>
+        <div class="outcome-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <p>AI workflows and tools built around your voice and business</p>
+        </div>
+        <div class="outcome-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <p>No more second-guessing your next move</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how" id="how-it-works">
+    <div class="wrap-narrow">
+      <span class="eyebrow">How It Works</span>
+      <h2>A guided build and implementation experience.</h2>
+      <div class="phases">
+        <div class="phase">
+          <div class="phase-label">Phase 1 · Months 1–6</div>
+          <h3>Build</h3>
+          <ul>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>Private 1:1 calls</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>Weekly group coaching</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>Custom course and strategy</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>Private cohort space</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>Direct feedback and system audits</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>Guided AI system builds</li>
+          </ul>
+        </div>
+        <div class="phase">
+          <div class="phase-label">Phase 2 · Months 7–12</div>
+          <h3>Momentum</h3>
+          <ul>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>Continued coaching and support</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>Workshops and live sessions</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>Ongoing strategy and feedback</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>Refine and scale what you've built</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>Advanced AI workflow refinement</li>
+          </ul>
+          <p style="color:#9A8E7C; font-size:14.5px; margin-top:20px; font-style:italic;">This is where things start compounding.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FIT -->
+  <section class="fit">
+    <div class="wrap-narrow">
+      <span class="eyebrow">Is This Right For You?</span>
+      <h2>Be honest with yourself.</h2>
+      <div class="fit-grid">
+        <div class="fit-card yes">
+          <h3>This is for you if&hellip;</h3>
+          <ul>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>You're an experienced educator, coach, or expert</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>You have an offer or a strong idea</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>You know you should be further along</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>You're tired of trying random strategies</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>You want guidance, not just more information</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>You're ready to build something sustainable</li>
+          </ul>
+        </div>
+        <div class="fit-card no">
+          <h3>This is not for you if&hellip;</h3>
+          <ul>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14" stroke-linecap="round"/></svg>You're looking for shortcuts</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14" stroke-linecap="round"/></svg>You're not ready to implement</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14" stroke-linecap="round"/></svg>You want someone else to do the work</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14" stroke-linecap="round"/></svg>You're still figuring out what you want to build</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INVESTMENT -->
+  <section class="investment">
+    <div class="wrap-narrow">
+      <span class="eyebrow">The Investment</span>
+      <h2>You're not just paying for information.</h2>
+      <p class="sub">You're investing in speed, clarity, and direct support — and a high-level room of people building alongside you.</p>
+      <div class="invest-grid">
+        <div class="invest-includes">
+          <h3>What's inside</h3>
+          <ul>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>12 months of support and guidance</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>6 months of deep, hands-on implementation</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>6 months of refinement and momentum</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>Direct access for feedback, audits, and strategy</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>A structured system for traffic, community, and income</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>Guided AI workflow and system builds</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>A high-level cohort of people building alongside you</li>
+          </ul>
+        </div>
+        <div class="invest-price">
+          <div class="price-tag">$5,000</div>
+          <p class="price-desc">USD · 12-month program</p>
+          <p class="price-plan">Payment plan available upon request</p>
+          <a href="#apply" class="btn btn-primary">Apply to join
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <p class="limited">Limited spots available to keep this high-touch and personalized.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="final-cta" id="apply">
+    <div class="wrap-narrow">
+      <span class="eyebrow">Next Step</span>
+      <h2>Are you ready to stop guessing and <em>start building?</em></h2>
+      <p class="body-text">You probably already know where you stand. This either feels aligned — or it doesn't.</p>
+      <p class="stacked">You can keep guessing…<br>or you can build something that gives you<br>clarity, confidence, and income.</p>
+      <p class="body-text">To join the Next Level Growth Cohort, you must complete an application. This helps you get clear on where you are, what's not working, and what kind of support you actually need. If it's a good fit, you'll be invited to take the next step.</p>
+      <div class="actions">
+        <a href="#" class="btn btn-primary">Start your application
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="work-with-me.html" class="btn btn-ghost">See all offers</a>
+      </div>
+      <p class="note">Registration is open now. Spots are limited.</p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap foot-inner">
+      <a class="brand" style="font-family:var(--font-display);font-size:21px;font-weight:600;letter-spacing:-0.01em;" href="index.html">Mona Weathers</a>
+      <div class="links">
+        <a href="index.html">Home</a>
+        <a href="work-with-me.html">Work With Me</a>
+        <a href="index.html#connect">Connect</a>
+        <a href="terms.html">Terms</a>
+        <a href="privacy.html">Privacy</a>
+      </div>
+      <span>© 2026 Steady Systems LLC</span>
+    </div>
+  </footer>
+
+</body>
+</html>
