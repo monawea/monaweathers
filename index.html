@@ -201,6 +201,9 @@
 
   /* Testimonial video */
   .testi-video { padding: 0 0 40px; text-align: center; }
+  .testi-divider { display: flex; align-items: center; gap: 16px; max-width: 880px; margin: 0 auto; padding: 0 32px; }
+  .testi-divider::before, .testi-divider::after { content: ''; flex: 1; height: 1px; background: var(--line); }
+  .testi-divider span { color: var(--accent); font-size: 14px; }
   .testi-video .eyebrow { display: block; margin-bottom: 16px; }
   .testi-video h2 { font-size: clamp(26px, 3.2vw, 38px); margin-bottom: 40px; }
   .video-wrap { max-width: 760px; margin: 0 auto; border-radius: 20px; overflow: hidden; box-shadow: 0 30px 60px -34px rgba(42,36,32,.4); aspect-ratio: 16/9; position: relative; }
@@ -458,6 +461,8 @@
       </div>
     </div>
   </section>
+
+  <div class="testi-divider"><span>✦</span></div>
 
   <!-- TESTIMONIAL 2 -->
   <section class="quote-sec" style="padding-top:0; padding-bottom:24px;">
