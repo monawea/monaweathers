@@ -213,6 +213,11 @@
   .testi-video { padding: 0 0 0; text-align: center; }
   .video-wrap { max-width: 760px; margin: 0 auto; border-radius: 20px; overflow: hidden; box-shadow: 0 30px 60px -34px rgba(42,36,32,.4); aspect-ratio: 16/9; position: relative; }
   .video-wrap iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+  .video-poster { position: absolute; inset: 0; cursor: pointer; }
+  .video-poster img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .play-btn { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 68px; height: 68px; background: var(--accent); border-radius: 50%; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 32px rgba(0,151,178,0.5); transition: transform .2s, box-shadow .2s; }
+  .play-btn:hover { transform: translate(-50%, -50%) scale(1.1); box-shadow: 0 14px 40px rgba(0,151,178,0.6); }
+  .play-btn svg { width: 28px; height: 28px; fill: #fff; margin-left: 4px; }
 
   /* Application form */
   .app-section { padding: 100px 0; }
@@ -599,7 +604,10 @@
   <section class="testi-video" style="padding: 40px 0 0;">
     <div class="wrap-narrow">
       <div class="video-wrap">
-        <iframe src="https://www.youtube-nocookie.com/embed/Ck-b0CkK-4A" title="Client testimonial" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        <div class="video-poster" data-video="Ck-b0CkK-4A">
+          <img src="https://img.youtube.com/vi/Ck-b0CkK-4A/hqdefault.jpg" alt="Play Isabelle Lesschaeve testimonial" />
+          <button class="play-btn" aria-label="Play video"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+        </div>
       </div>
     </div>
   </section>
@@ -780,6 +788,17 @@
   </footer>
 
   <script>
+    document.querySelectorAll('.video-poster').forEach(function(poster) {
+      poster.addEventListener('click', function() {
+        var id = poster.dataset.video;
+        var iframe = document.createElement('iframe');
+        iframe.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1';
+        iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+        iframe.allowFullscreen = true;
+        iframe.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;border:0;';
+        poster.parentNode.replaceChild(iframe, poster);
+      });
+    });
     var btn = document.querySelector('.nav-hamburger');
     var header = document.querySelector('header.nav');
     btn.addEventListener('click', function() {
