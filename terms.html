@@ -150,5 +150,18 @@
     </div>
   </footer>
 
+  <div class="cookie-banner" id="cookieBanner">
+    <p>We use cookies and analytics to understand how our site is used. By continuing, you agree to our <a href="privacy.html">Privacy Policy</a>.</p>
+    <button onclick="(function(){localStorage.setItem('cookiesAccepted','1');document.getElementById('cookieBanner').style.display='none';})()">Got it</button>
+  </div>
+  <style>
+    .cookie-banner{position:fixed;bottom:0;left:0;right:0;z-index:999;background:var(--ink);color:#F4ECDF;padding:18px 32px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:15px;box-shadow:0 -2px 20px rgba(0,0,0,.18);}
+    .cookie-banner p{margin:0;max-width:70ch;}
+    .cookie-banner a{color:var(--accent);text-decoration:underline;}
+    .cookie-banner button{flex-shrink:0;background:var(--accent);color:#fff;border:none;border-radius:8px;padding:10px 22px;font-family:var(--font-body);font-size:15px;font-weight:600;cursor:pointer;white-space:nowrap;}
+    .cookie-banner button:hover{background:var(--accent-ink);}
+  </style>
+  <script>if(localStorage.getItem('cookiesAccepted'))document.getElementById('cookieBanner').style.display='none';</script>
+
 </body>
 </html>
