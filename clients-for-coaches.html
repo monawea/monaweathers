@@ -114,6 +114,23 @@ src="https://www.facebook.com/tr?id=1651136752612622&ev=PageView&noscript=1"
   .shadow strong { color: var(--ink); font-weight: 600; }
   @media (max-width: 640px) { .shadow-body { grid-template-columns: 1fr; } }
 
+  /* Testimonials */
+  .testimonials { padding: 80px 0; border-bottom: 1px solid var(--line); }
+  .testimonials h2 { font-size: clamp(26px, 3.6vw, 38px); margin-bottom: 12px; }
+  .testi-sub { color: var(--ink-soft); font-size: 17px; line-height: 1.7; margin-bottom: 44px; max-width: 54ch; }
+  .testi-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .testi-card { display: flex; flex-direction: column; gap: 14px; }
+  .video-wrap { position: relative; width: 100%; padding-top: 56.25%; border-radius: 14px; overflow: hidden; box-shadow: 0 8px 32px -8px rgba(42,36,32,.2); }
+  .video-placeholder { position: absolute; inset: 0; background: var(--bg-2); display: flex; align-items: center; justify-content: center; border: 1px solid var(--line); }
+  .play-btn { width: 64px; height: 64px; background: var(--accent); border-radius: 50%; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 28px rgba(0,151,178,0.45); transition: transform .2s, box-shadow .2s; }
+  .play-btn:hover { transform: scale(1.1); box-shadow: 0 12px 36px rgba(0,151,178,0.55); }
+  .play-btn svg { width: 26px; height: 26px; fill: #fff; margin-left: 4px; }
+  .testi-caption { font-size: 14px; color: var(--ink-soft); text-align: center; font-style: italic; }
+  .testi-cta { margin-top: 40px; font-size: 17px; color: var(--ink-soft); }
+  .testi-cta a { color: var(--accent-dk); font-weight: 600; text-decoration: underline; }
+  .testi-cta a:hover { color: var(--accent); }
+  @media (max-width: 600px) { .testi-grid { grid-template-columns: 1fr; } }
+
   /* Schedule */
   .schedule { padding: 80px 0; border-bottom: 1px solid var(--line); }
   .schedule h2 { font-size: clamp(26px, 3.6vw, 38px); margin-bottom: 8px; }
@@ -250,6 +267,38 @@ src="https://www.facebook.com/tr?id=1651136752612622&ev=PageView&noscript=1"
         <p>Shadow seats give you <strong>front-row access to a private 1:1 coaching experience</strong> as it unfolds. You're not watching a polished presentation. You're seeing the actual work happen in real time.</p>
         <p>Each session includes <strong>dedicated Q&amp;A and coaching time for shadow attendees</strong>, so you can apply what you're watching directly to your own business before you log off.</p>
       </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="testimonials">
+    <div class="wrap">
+      <span class="label">See it in action</span>
+      <h2>A sample of what you'll be watching.</h2>
+      <p class="testi-sub">These are real clips from past 1:1 coaching sessions. This is exactly the kind of work you'll have a front-row seat to.</p>
+      <div class="testi-grid">
+        <div class="testi-card">
+          <div class="video-wrap">
+            <div class="video-placeholder">
+              <button class="play-btn" aria-label="Play video">
+                <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+              </button>
+            </div>
+          </div>
+          <p class="testi-caption">Testimonial coming soon</p>
+        </div>
+        <div class="testi-card">
+          <div class="video-wrap">
+            <div class="video-placeholder">
+              <button class="play-btn" aria-label="Play video">
+                <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+              </button>
+            </div>
+          </div>
+          <p class="testi-caption">Testimonial coming soon</p>
+        </div>
+      </div>
+      <p class="testi-cta">Want a private 1:1 session of your own? <a href="https://monaweathers.com/work-with-me#apply">Apply to work with Mona directly.</a></p>
     </div>
   </section>
 
