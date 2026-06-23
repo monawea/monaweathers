@@ -91,9 +91,11 @@
   /* Shadow seats */
   .shadow { padding: 80px 0; background: var(--bg-2); border-bottom: 1px solid var(--line); }
   .shadow h2 { font-size: clamp(26px, 3.6vw, 38px); margin-bottom: 20px; }
-  .shadow p { color: var(--ink-soft); font-size: 18px; line-height: 1.75; max-width: 56ch; }
+  .shadow-body { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 32px; }
+  .shadow p { color: var(--ink-soft); font-size: 18px; line-height: 1.75; }
   .shadow p + p { margin-top: 14px; }
   .shadow strong { color: var(--ink); font-weight: 600; }
+  @media (max-width: 640px) { .shadow-body { grid-template-columns: 1fr; } }
 
   /* Schedule */
   .schedule { padding: 80px 0; border-bottom: 1px solid var(--line); }
@@ -132,13 +134,17 @@
   }
 
   /* FAQ */
-  .faq { padding: 80px 0; background: var(--bg-2); border-top: 1px solid var(--line); }
+  .faq { padding: 80px 0; border-top: 1px solid var(--line); }
   .faq h2 { font-size: clamp(26px, 3.6vw, 38px); margin-bottom: 44px; }
-  .faq-list { display: flex; flex-direction: column; }
-  .faq-item { border-top: 1px solid var(--line); padding: 26px 0; }
-  .faq-item:last-child { border-bottom: 1px solid var(--line); }
-  .faq-item dt { font-size: 17px; font-weight: 600; color: var(--ink); margin-bottom: 10px; }
-  .faq-item dd { margin: 0; font-size: 16px; color: var(--ink-soft); line-height: 1.7; max-width: 62ch; }
+  .faq details { border-top: 1px solid var(--line); }
+  .faq details:last-child { border-bottom: 1px solid var(--line); }
+  .faq summary { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 24px 0; font-size: 17px; font-weight: 600; color: var(--ink); cursor: pointer; list-style: none; user-select: none; }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary .icon { width: 22px; height: 22px; border: 1.5px solid var(--line); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: background .2s, border-color .2s; }
+  .faq summary .icon svg { width: 12px; height: 12px; stroke: var(--ink-soft); transition: transform .25s ease; }
+  .faq details[open] summary .icon { background: var(--accent); border-color: var(--accent); }
+  .faq details[open] summary .icon svg { transform: rotate(45deg); stroke: #fff; }
+  .faq .answer { padding: 0 0 24px; font-size: 16px; color: var(--ink-soft); line-height: 1.75; }
 
   /* Footer */
   footer { border-top: 1px solid var(--line); }
@@ -223,8 +229,10 @@
     <div class="wrap">
       <span class="label">What are shadow seats?</span>
       <h2>Watch real coaching happen, live.</h2>
-      <p>Shadow seats give you <strong>front-row access to a private 1:1 coaching experience</strong> as it unfolds. You're not watching a polished presentation. You're seeing the actual work happen in real time.</p>
-      <p>Each session includes <strong>dedicated Q&amp;A and coaching time for shadow attendees</strong>, so you can apply what you're watching directly to your own business before you log off.</p>
+      <div class="shadow-body">
+        <p>Shadow seats give you <strong>front-row access to a private 1:1 coaching experience</strong> as it unfolds. You're not watching a polished presentation. You're seeing the actual work happen in real time.</p>
+        <p>Each session includes <strong>dedicated Q&amp;A and coaching time for shadow attendees</strong>, so you can apply what you're watching directly to your own business before you log off.</p>
+      </div>
     </div>
   </section>
 
@@ -328,28 +336,41 @@
     <div class="wrap">
       <span class="label">FAQ</span>
       <h2>Common questions.</h2>
-      <dl class="faq-list">
-        <div class="faq-item">
-          <dt>What exactly are shadow seats?</dt>
-          <dd>Shadow seats give you live access to a private 1:1 coaching experience as it happens. You're watching real work unfold in real time, not a scripted presentation. Each session also includes dedicated Q&amp;A and coaching time so you can apply what you're seeing to your own business.</dd>
-        </div>
-        <div class="faq-item">
-          <dt>Is there a recording available if I can't make it live?</dt>
-          <dd>Yes. A recording of each session will be made available to everyone who purchases a shadow seat, so you won't miss anything if a session conflicts with your schedule.</dd>
-        </div>
-        <div class="faq-item">
-          <dt>Who is this challenge designed for?</dt>
-          <dd>This is best for established coaches who already have a business running but can't see a clear path to consistent high-ticket clients. If you're still in the early stages of building your business, this may not be the right fit yet.</dd>
-        </div>
-        <div class="faq-item">
-          <dt>What will I actually walk away with?</dt>
-          <dd>By the end of Day 5 you'll have a written, personalized lead generation plan you can start executing the next workday. That includes who to target, where to find them, and a repeatable weekly system for bringing in high-ticket clients.</dd>
-        </div>
-        <div class="faq-item">
-          <dt>Do I need to attend all 5 sessions?</dt>
-          <dd>You'll get the most out of it by showing up live each day, since the system builds on itself across the week. That said, recordings are available so you can catch up if you miss a session.</dd>
-        </div>
-      </dl>
+      <details>
+        <summary>
+          What exactly are shadow seats?
+          <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </summary>
+        <p class="answer">Shadow seats give you live access to a private 1:1 coaching experience as it happens. You're watching real work unfold in real time, not a scripted presentation. Each session also includes dedicated Q&amp;A and coaching time so you can apply what you're seeing to your own business.</p>
+      </details>
+      <details>
+        <summary>
+          Is there a recording available if I can't make it live?
+          <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </summary>
+        <p class="answer">Yes. A recording of each session will be made available to everyone who purchases a shadow seat, so you won't miss anything if a session conflicts with your schedule.</p>
+      </details>
+      <details>
+        <summary>
+          Who is this challenge designed for?
+          <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </summary>
+        <p class="answer">This is best for established coaches who already have a business running but can't see a clear path to consistent high-ticket clients. If you're still in the early stages of building your business, this may not be the right fit yet.</p>
+      </details>
+      <details>
+        <summary>
+          What will I actually walk away with?
+          <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </summary>
+        <p class="answer">By the end of Day 5 you'll have a written, personalized lead generation plan you can start executing the next workday. That includes who to target, where to find them, and a repeatable weekly system for bringing in high-ticket clients.</p>
+      </details>
+      <details>
+        <summary>
+          Do I need to attend all 5 sessions?
+          <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </summary>
+        <p class="answer">You'll get the most out of it by showing up live each day since the system builds on itself across the week. That said, recordings are available so you can catch up if you miss a session.</p>
+      </details>
     </div>
   </section>
 
