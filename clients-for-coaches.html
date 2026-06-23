@@ -13,43 +13,37 @@
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
 <style>
   :root {
-    --bg:       #18140F;
-    --bg-2:     #201B15;
-    --card:     #28231C;
-    --ink:      #F0E6D3;
-    --ink-soft: #8A7865;
-    --line:     rgba(240,230,211,0.09);
-    --gold:     #C9841A;
-    --gold-lt:  #E8A84A;
-    --accent:   #0097B2;
-    --accent-lt:#00B8D9;
+    --bg:        #FAF4EA;
+    --bg-2:      #F2E7D6;
+    --card:      #FFFCF6;
+    --ink:       #2A2420;
+    --ink-soft:  #6E6256;
+    --line:      #E6D9C6;
+    --accent:    #0097B2;
+    --accent-dk: #06768C;
+    --gold:      #B87216;
+    --gold-bg:   #FDF3E3;
     --font-display: 'Newsreader', Georgia, serif;
     --font-body:    'Hanken Grotesk', system-ui, sans-serif;
-    --maxw: 860px;
+    --maxw: 880px;
   }
 
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; }
   body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 18px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
-  h1, h2, h3 { font-family: var(--font-display); font-weight: 500; margin: 0; line-height: 1.06; letter-spacing: -0.02em; }
+  h1, h2, h3 { font-family: var(--font-display); font-weight: 500; margin: 0; line-height: 1.08; letter-spacing: -0.02em; }
   p { margin: 0; }
   a { color: inherit; text-decoration: none; }
   .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 32px; }
 
-  /* Buttons */
-  .btn {
-    display: inline-flex; align-items: center; justify-content: center;
-    font-family: var(--font-body); font-weight: 700; font-size: 18px;
-    padding: 20px 40px; border-radius: 999px; cursor: pointer;
-    border: none; transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
-    text-decoration: none; letter-spacing: 0.01em;
-  }
-  .btn-cta { background: var(--accent); color: #fff; box-shadow: 0 12px 32px -10px rgba(0,151,178,0.55); }
-  .btn-cta:hover { transform: translateY(-3px); box-shadow: 0 20px 40px -10px rgba(0,151,178,0.65); background: var(--accent-lt); }
+  /* Button */
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; font-family: var(--font-body); font-weight: 700; font-size: 18px; padding: 20px 42px; border-radius: 999px; cursor: pointer; border: none; transition: transform .18s, box-shadow .18s, background .18s; text-decoration: none; }
+  .btn-primary { background: var(--accent); color: #fff; box-shadow: 0 12px 32px -10px rgba(0,151,178,0.4); }
+  .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 20px 40px -10px rgba(0,151,178,0.5); }
   .btn-full { width: 100%; }
 
   /* Nav */
-  nav { position: sticky; top: 0; z-index: 40; background: color-mix(in srgb, var(--bg) 85%, transparent); backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
+  nav { position: sticky; top: 0; z-index: 40; background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
   .nav-inner { max-width: var(--maxw); margin: 0 auto; padding: 0 32px; display: flex; align-items: center; justify-content: space-between; height: 68px; }
   .brand { font-family: var(--font-display); font-size: 19px; font-weight: 600; letter-spacing: -0.01em; color: var(--ink); }
   .nav-back { display: inline-flex; align-items: center; gap: 7px; font-size: 14px; font-weight: 600; color: var(--ink-soft); transition: color .15s; }
@@ -57,89 +51,98 @@
   .nav-back svg { width: 15px; height: 15px; }
 
   /* Hero */
-  .hero { padding: 88px 0 80px; text-align: center; border-bottom: 1px solid var(--line); }
-  .hero-tag { display: inline-flex; align-items: center; gap: 8px; background: rgba(201,132,26,0.12); border: 1px solid rgba(201,132,26,0.28); border-radius: 999px; padding: 8px 18px; font-size: 13px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold-lt); margin-bottom: 32px; }
-  .hero-tag .pulse { width: 7px; height: 7px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 0 0 rgba(201,132,26,0.5); animation: pulse 2s infinite; }
-  @keyframes pulse { 0%,100%{box-shadow:0 0 0 0 rgba(201,132,26,0.5)} 50%{box-shadow:0 0 0 6px rgba(201,132,26,0)} }
-  .hero h1 { font-size: clamp(38px, 6.5vw, 72px); color: var(--ink); max-width: 14ch; margin: 0 auto 28px; }
-  .hero h1 em { font-style: italic; color: var(--gold-lt); }
-  .hero .lead { font-size: 19px; color: var(--ink-soft); max-width: 46ch; margin: 0 auto 44px; line-height: 1.7; }
-  .hero-price { margin-bottom: 32px; }
-  .hero-price .amount { font-family: var(--font-display); font-size: 52px; font-weight: 500; color: var(--ink); line-height: 1; }
-  .hero-price .amount sup { font-size: 26px; vertical-align: super; }
-  .hero-price .note { font-size: 14px; color: var(--ink-soft); margin-top: 6px; letter-spacing: 0.04em; }
-  .hero-dates { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; margin-top: 40px; }
-  .date-pill { background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 9px 14px; font-size: 13px; font-weight: 600; color: var(--ink-soft); }
-  .date-pill strong { color: var(--ink); display: block; font-size: 12px; margin-bottom: 2px; letter-spacing: 0.06em; text-transform: uppercase; }
+  .hero { padding: 80px 0 72px; border-bottom: 1px solid var(--line); }
+  .hero-inner { display: grid; grid-template-columns: 1fr auto; gap: 48px; align-items: start; }
+  .hero-tag { display: inline-flex; align-items: center; gap: 8px; background: var(--gold-bg); border: 1px solid #E8C07A; border-radius: 999px; padding: 7px 16px; font-size: 13px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 24px; }
+  .hero-tag .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--gold); }
+  .hero h1 { font-size: clamp(36px, 5.8vw, 64px); color: var(--ink); margin-bottom: 22px; }
+  .hero h1 em { font-style: italic; color: var(--accent-dk); }
+  .hero .lead { font-size: 19px; color: var(--ink-soft); line-height: 1.7; max-width: 46ch; margin-bottom: 36px; }
+  .hero-cta { }
+  .hero-dates { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 28px; }
+  .date-pill { background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 8px 14px; font-size: 13px; color: var(--ink-soft); }
+  .date-pill b { color: var(--ink); display: block; font-size: 11px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; }
+
+  /* Price card in hero */
+  .price-card { background: var(--ink); color: #F4ECDF; border-radius: 20px; padding: 32px 28px; text-align: center; min-width: 200px; flex-shrink: 0; }
+  .price-card .amount { font-family: var(--font-display); font-size: 56px; font-weight: 500; line-height: 1; }
+  .price-card .amount sup { font-size: 26px; vertical-align: super; }
+  .price-card .note { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: #9A8B77; margin-top: 6px; margin-bottom: 24px; }
+  .price-card .btn-primary { font-size: 16px; padding: 16px 24px; width: 100%; }
+
+  @media (max-width: 680px) {
+    .hero-inner { grid-template-columns: 1fr; }
+    .price-card { min-width: unset; }
+  }
+
+  /* Section label */
+  .label { font-size: 12px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent-dk); display: block; margin-bottom: 16px; }
 
   /* What you get */
   .what { padding: 80px 0; border-bottom: 1px solid var(--line); }
-  .section-label { font-size: 12px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; display: block; }
-  .what h2 { font-size: clamp(28px, 4vw, 44px); margin-bottom: 14px; }
-  .what .sub { color: var(--ink-soft); font-size: 17px; line-height: 1.7; margin-bottom: 48px; max-width: 54ch; }
-  .what .sub strong { color: var(--ink); }
-  .outcomes { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: var(--line); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; }
-  .outcome { background: var(--card); padding: 28px 26px; }
-  .outcome .n { font-family: var(--font-display); font-size: 13px; font-style: italic; color: var(--gold); margin-bottom: 10px; }
+  .what h2 { font-size: clamp(28px, 4vw, 42px); margin-bottom: 14px; }
+  .what .sub { color: var(--ink-soft); font-size: 18px; line-height: 1.7; margin-bottom: 48px; max-width: 52ch; }
+  .outcomes { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .outcome { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 26px 24px; }
+  .outcome .n { font-family: var(--font-display); font-size: 13px; font-style: italic; color: var(--accent-dk); margin-bottom: 10px; }
   .outcome p { font-size: 16px; color: var(--ink); line-height: 1.55; }
-  @media (max-width: 580px) { .outcomes { grid-template-columns: 1fr; } }
+  @media (max-width: 560px) { .outcomes { grid-template-columns: 1fr; } }
 
   /* Shadow seats */
   .shadow { padding: 80px 0; background: var(--bg-2); border-bottom: 1px solid var(--line); }
-  .shadow h2 { font-size: clamp(26px, 3.8vw, 40px); margin-bottom: 20px; }
-  .shadow p { color: var(--ink-soft); font-size: 17px; line-height: 1.75; max-width: 58ch; }
+  .shadow h2 { font-size: clamp(26px, 3.6vw, 38px); margin-bottom: 20px; }
+  .shadow p { color: var(--ink-soft); font-size: 18px; line-height: 1.75; max-width: 56ch; }
   .shadow p + p { margin-top: 14px; }
-  .shadow strong { color: var(--ink); }
+  .shadow strong { color: var(--ink); font-weight: 600; }
 
   /* Schedule */
   .schedule { padding: 80px 0; border-bottom: 1px solid var(--line); }
-  .schedule h2 { font-size: clamp(26px, 3.8vw, 40px); margin-bottom: 8px; }
+  .schedule h2 { font-size: clamp(26px, 3.6vw, 38px); margin-bottom: 8px; }
   .schedule .sub { color: var(--ink-soft); font-size: 15px; margin-bottom: 36px; }
   .sched-table { width: 100%; border-collapse: collapse; }
   .sched-table tr { border-bottom: 1px solid var(--line); }
   .sched-table tr:first-child { border-top: 1px solid var(--line); }
-  .sched-table td { padding: 18px 0; font-size: 16px; }
+  .sched-table td { padding: 18px 0; font-size: 16px; vertical-align: middle; }
   .sched-table .day { font-weight: 700; color: var(--ink); width: 120px; }
   .sched-table .date { color: var(--ink-soft); }
-  .sched-table .time { text-align: right; font-weight: 700; color: var(--gold-lt); }
+  .sched-table .time { text-align: right; font-weight: 700; color: var(--accent-dk); }
 
   /* Who + CTA */
-  .bottom { padding: 80px 0 100px; }
-  .bottom-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
-  .who h2 { font-size: clamp(24px, 3.4vw, 36px); margin-bottom: 28px; }
-  .who-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 14px; }
-  .who-list li { display: flex; gap: 12px; align-items: flex-start; font-size: 16px; color: var(--ink-soft); line-height: 1.5; }
-  .who-list li svg { width: 18px; height: 18px; color: var(--gold); flex: none; margin-top: 2px; }
-  .who-list li strong { color: var(--ink); }
+  .bottom { padding: 80px 0 96px; }
+  .bottom-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
+  .who-col h2 { font-size: clamp(24px, 3.4vw, 36px); margin-bottom: 28px; }
+  .who-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 16px; }
+  .who-list li { display: flex; gap: 12px; align-items: flex-start; font-size: 17px; color: var(--ink); line-height: 1.5; }
+  .who-list li svg { width: 20px; height: 20px; color: var(--accent); flex: none; margin-top: 2px; }
 
-  .cta-card { background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 40px 36px; position: sticky; top: 88px; }
-  .cta-card .price { font-family: var(--font-display); font-size: 64px; font-weight: 500; color: var(--ink); line-height: 1; }
-  .cta-card .price sup { font-size: 30px; vertical-align: super; }
-  .cta-card .price-note { font-size: 14px; color: var(--ink-soft); margin-top: 4px; margin-bottom: 28px; }
-  .cta-card .divider { height: 1px; background: var(--line); margin-bottom: 22px; }
-  .cta-card .perks { list-style: none; margin: 0 0 32px; padding: 0; display: flex; flex-direction: column; gap: 11px; }
-  .cta-card .perks li { display: flex; gap: 10px; align-items: flex-start; font-size: 15px; color: var(--ink-soft); line-height: 1.45; }
-  .cta-card .perks li svg { width: 16px; height: 16px; color: var(--accent-lt); flex: none; margin-top: 2px; }
-  .cta-card .fine { font-size: 13px; color: var(--ink-soft); text-align: center; margin-top: 14px; line-height: 1.5; }
-  .cta-card .fine a { color: var(--accent-lt); text-decoration: underline; }
+  .buy-card { background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 40px 36px; position: sticky; top: 80px; }
+  .buy-card .price { font-family: var(--font-display); font-size: 60px; font-weight: 500; color: var(--ink); line-height: 1; }
+  .buy-card .price sup { font-size: 28px; vertical-align: super; }
+  .buy-card .price-note { font-size: 13px; color: var(--ink-soft); letter-spacing: 0.08em; text-transform: uppercase; margin-top: 4px; margin-bottom: 24px; }
+  .buy-card hr { border: none; border-top: 1px solid var(--line); margin-bottom: 22px; }
+  .perks { list-style: none; margin: 0 0 30px; padding: 0; display: flex; flex-direction: column; gap: 12px; }
+  .perks li { display: flex; gap: 10px; align-items: flex-start; font-size: 15px; color: var(--ink-soft); line-height: 1.45; }
+  .perks li svg { width: 16px; height: 16px; color: var(--accent); flex: none; margin-top: 2px; }
+  .buy-card .fine { font-size: 13px; color: var(--ink-soft); text-align: center; margin-top: 12px; }
+  .buy-card .fine a { color: var(--accent-dk); text-decoration: underline; }
 
-  @media (max-width: 700px) {
+  @media (max-width: 680px) {
     .bottom-grid { grid-template-columns: 1fr; }
-    .cta-card { position: static; }
+    .buy-card { position: static; }
   }
 
   /* Footer */
   footer { border-top: 1px solid var(--line); }
   .foot-inner { max-width: var(--maxw); margin: 0 auto; padding: 28px 32px; display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; color: var(--ink-soft); font-size: 14px; }
   .foot-inner a { color: var(--ink-soft); }
-  .foot-inner a:hover { color: var(--ink); }
+  .foot-inner a:hover { color: var(--accent-dk); }
 
   /* Cookie banner */
-  .cookie-banner { position: fixed; bottom: 0; left: 0; right: 0; z-index: 999; background: #0D0A07; color: #C9BCA8; padding: 18px 32px; display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; font-size: 15px; box-shadow: 0 -2px 20px rgba(0,0,0,.4); border-top: 1px solid var(--line); }
+  .cookie-banner { position: fixed; bottom: 0; left: 0; right: 0; z-index: 999; background: var(--ink); color: #F4ECDF; padding: 18px 32px; display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; font-size: 15px; box-shadow: 0 -2px 20px rgba(0,0,0,.18); }
   .cookie-banner p { margin: 0; max-width: 70ch; }
-  .cookie-banner a { color: var(--accent-lt); text-decoration: underline; }
-  .cookie-banner button { flex-shrink: 0; background: var(--accent); color: #fff; border: none; border-radius: 8px; padding: 10px 22px; font-family: var(--font-body); font-size: 15px; font-weight: 600; cursor: pointer; white-space: nowrap; }
-  .cookie-banner button:hover { background: var(--accent-lt); }
+  .cookie-banner a { color: var(--accent); text-decoration: underline; }
+  .cookie-banner button { flex-shrink: 0; background: var(--accent); color: #fff; border: none; border-radius: 8px; padding: 10px 22px; font-family: var(--font-body); font-size: 15px; font-weight: 600; cursor: pointer; }
+  .cookie-banner button:hover { background: var(--accent-dk); }
 </style>
 </head>
 <body>
@@ -157,23 +160,25 @@
   <!-- Hero -->
   <section class="hero">
     <div class="wrap">
-      <div class="hero-tag">
-        <span class="pulse"></span>
-        Live · July 6–10, 2026
-      </div>
-      <h1>Map Your High-Ticket Client System in <em>5 Days</em></h1>
-      <p class="lead">Shadow a live private coaching experience — with Q&amp;A and coaching time built in for you each session.</p>
-      <div class="hero-price">
-        <div class="amount"><sup>$</sup>27</div>
-        <div class="note">ONE-TIME · ALL 5 SESSIONS</div>
-      </div>
-      <a href="#purchase" class="btn btn-cta">Claim Your Shadow Seat</a>
-      <div class="hero-dates">
-        <div class="date-pill"><strong>Mon</strong>Jul 6 · 2pm EST</div>
-        <div class="date-pill"><strong>Tue</strong>Jul 7 · 4:30pm EST</div>
-        <div class="date-pill"><strong>Wed</strong>Jul 8 · 2pm EST</div>
-        <div class="date-pill"><strong>Thu</strong>Jul 9 · 2pm EST</div>
-        <div class="date-pill"><strong>Fri</strong>Jul 10 · 2pm EST</div>
+      <div class="hero-inner">
+        <div>
+          <div class="hero-tag"><span class="dot"></span>Live · July 6–10, 2026</div>
+          <h1>Map Your High-Ticket Client System in <em>5 Days</em></h1>
+          <p class="lead">Shadow a live private coaching experience — with Q&amp;A and coaching time built in for you each session.</p>
+          <a href="#purchase" class="btn btn-primary">Claim Your Shadow Seat</a>
+          <div class="hero-dates">
+            <div class="date-pill"><b>Mon</b>Jul 6 · 2pm EST</div>
+            <div class="date-pill"><b>Tue</b>Jul 7 · 4:30pm EST</div>
+            <div class="date-pill"><b>Wed</b>Jul 8 · 2pm EST</div>
+            <div class="date-pill"><b>Thu</b>Jul 9 · 2pm EST</div>
+            <div class="date-pill"><b>Fri</b>Jul 10 · 2pm EST</div>
+          </div>
+        </div>
+        <div class="price-card">
+          <div class="amount"><sup>$</sup>27</div>
+          <div class="note">One-time · all 5 sessions</div>
+          <a href="#purchase" class="btn btn-primary">Get Access</a>
+        </div>
       </div>
     </div>
   </section>
@@ -181,9 +186,9 @@
   <!-- What you get -->
   <section class="what">
     <div class="wrap">
-      <span class="section-label">What you'll walk away with</span>
+      <span class="label">What you'll walk away with</span>
       <h2>A complete system, not just notes.</h2>
-      <p class="sub">This isn't a webinar or a workshop replay. You're watching a <strong>real high-ticket client system get built from scratch</strong> — then applying it to your own business in real time.</p>
+      <p class="sub">You're watching a real high-ticket client system get built from scratch — then applying it to your own business in real time.</p>
       <div class="outcomes">
         <div class="outcome">
           <div class="n">01</div>
@@ -208,7 +213,7 @@
   <!-- Shadow seats -->
   <section class="shadow">
     <div class="wrap">
-      <span class="section-label">What are shadow seats?</span>
+      <span class="label">What are shadow seats?</span>
       <h2>Watch real coaching happen — live.</h2>
       <p>Shadow seats give you <strong>front-row access to a private 1:1 coaching experience</strong> as it unfolds. You're not watching a polished presentation — you're seeing the actual work happen, in real time.</p>
       <p>Each session includes <strong>dedicated Q&amp;A and coaching time for shadow attendees</strong>, so you can apply what you're watching directly to your own business before you log off.</p>
@@ -218,7 +223,7 @@
   <!-- Schedule -->
   <section class="schedule">
     <div class="wrap">
-      <span class="section-label">The schedule</span>
+      <span class="label">The schedule</span>
       <h2>Five sessions. Five days.</h2>
       <p class="sub">All times Eastern. Show up live to get the most out of it.</p>
       <table class="sched-table">
@@ -255,33 +260,33 @@
   <section class="bottom" id="purchase">
     <div class="wrap">
       <div class="bottom-grid">
-        <div class="who">
-          <span class="section-label">Who this is for</span>
-          <h2>Made for coaches already in motion.</h2>
-          <ul class="who-list" style="margin-top:28px;">
+        <div class="who-col">
+          <span class="label">Who this is for</span>
+          <h2>This is for you if...</h2>
+          <ul class="who-list">
             <li>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-              You're an <strong>established coach</strong> with a business already running
+              You're an established coach with a business already running
             </li>
             <li>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-              You <strong>can't see a clear path</strong> to consistent high-ticket clients
+              You don't have a clear path to consistent high-ticket clients
             </li>
             <li>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-              You want a <strong>system</strong> — not more content or generic advice
+              You want a real system — not more content or generic advice
             </li>
             <li>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-              You learn best by <strong>watching real work happen</strong>, not hypotheticals
+              You learn best by watching real work, not hypotheticals
             </li>
           </ul>
         </div>
 
-        <div class="cta-card">
+        <div class="buy-card">
           <div class="price"><sup>$</sup>27</div>
-          <div class="price-note">ONE-TIME · ALL 5 SESSIONS</div>
-          <div class="divider"></div>
+          <div class="price-note">One-time · all 5 sessions</div>
+          <hr />
           <ul class="perks">
             <li>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
@@ -300,8 +305,8 @@
               Walk away with a plan to execute immediately
             </li>
           </ul>
-          <a href="#" class="btn btn-cta btn-full">Claim Your Shadow Seat on Skool</a>
-          <p class="fine">Skool link coming soon — <a href="/#connect">reach out</a> to be notified.</p>
+          <a href="#" class="btn btn-primary btn-full">Claim Your Shadow Seat</a>
+          <p class="fine">Link coming soon — <a href="/#connect">reach out</a> to be notified.</p>
         </div>
       </div>
     </div>
