@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<!--
+=======================================================
+  CLIENTS FOR COACHES — EVENT PAGE TEMPLATE
+=======================================================
+  HOW TO USE:
+  1. Duplicate this file and rename it (e.g. "august-workshop.html")
+  2. Update each item in this checklist, then delete this comment block
+  3. Push to GitHub — Hostinger will deploy automatically
+
+  CHECKLIST (search for EDIT to find each spot):
+  [ ] 1.  Page title (line ~27)
+  [ ] 2.  Meta description (line ~28)
+  [ ] 3.  Hero tag — "Live · [DATE RANGE]" (line ~183)
+  [ ] 4.  Event name / H1 (line ~185)
+  [ ] 5.  Lead sentence under the title (line ~186)
+  [ ] 6.  Price — appears in 3 spots (hero card, buy card x2)
+  [ ] 7.  Price note — e.g. "One-time · all 5 sessions" (3 spots)
+  [ ] 8.  Date pills in hero — one per session (lines ~190-196)
+  [ ] 9.  Schedule table — day, date, time (lines ~250-275)
+  [ ] 10. Schedule subtitle note if needed (line ~249)
+  [ ] 11. Skool purchase URL — appears on 2 buttons (search href="#")
+=======================================================
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EC1B7WJ2PE"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-EC1B7WJ2PE');</script>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1651136752612622');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1651136752612622&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+<!-- EDIT 1: Page title --><title>Map Your High-Ticket Client System in 5 Days | Clients for Coaches</title>
+<!-- EDIT 2: Meta description --><meta name="description" content="Join a live private coaching experience for $27. Walk away with a complete high-ticket client lead generation system built in 5 days." />
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg:        #FAF4EA;
+    --bg-2:      #F2E7D6;
+    --card:      #FFFCF6;
+    --ink:       #2A2420;
+    --ink-soft:  #6E6256;
+    --line:      #E6D9C6;
+    --accent:    #0097B2;
+    --accent-dk: #06768C;
+    --gold:      #B87216;
+    --gold-bg:   #FDF3E3;
+    --font-display: 'Newsreader', Georgia, serif;
+    --font-body:    'Hanken Grotesk', system-ui, sans-serif;
+    --maxw: 1080px;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 18px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  h1, h2, h3 { font-family: var(--font-display); font-weight: 500; margin: 0; line-height: 1.08; letter-spacing: -0.02em; }
+  p { margin: 0; }
+  a { color: inherit; text-decoration: none; }
+  .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 32px; }
+
+  /* Button */
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; font-family: var(--font-body); font-weight: 700; font-size: 18px; padding: 20px 42px; border-radius: 999px; cursor: pointer; border: none; transition: transform .18s, box-shadow .18s, background .18s; text-decoration: none; }
+  .btn-primary { background: var(--accent); color: #fff; box-shadow: 0 12px 32px -10px rgba(0,151,178,0.4); }
+  .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 20px 40px -10px rgba(0,151,178,0.5); }
+  .btn-full { width: 100%; }
+
+  /* Nav */
+  nav { position: sticky; top: 0; z-index: 40; background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+  .nav-inner { max-width: var(--maxw); margin: 0 auto; padding: 0 32px; display: flex; align-items: center; justify-content: space-between; height: 68px; }
+  .brand { font-family: var(--font-display); font-size: 19px; font-weight: 600; letter-spacing: -0.01em; color: var(--ink); }
+  .nav-back { display: inline-flex; align-items: center; gap: 7px; font-size: 14px; font-weight: 600; color: var(--ink-soft); transition: color .15s; }
+  .nav-back:hover { color: var(--ink); }
+  .nav-back svg { width: 15px; height: 15px; }
+
+  /* Hero */
+  .hero { padding: 80px 0 72px; border-bottom: 1px solid var(--line); }
+  .hero-inner { display: grid; grid-template-columns: 1fr auto; gap: 48px; align-items: start; }
+  .hero-tag { display: inline-flex; align-items: center; gap: 8px; background: var(--gold-bg); border: 1px solid #E8C07A; border-radius: 999px; padding: 7px 16px; font-size: 13px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 24px; }
+  .hero-tag .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--gold); }
+  .hero h1 { font-size: clamp(36px, 5.8vw, 64px); color: var(--ink); margin-bottom: 22px; }
+  .hero h1 em { font-style: italic; color: var(--accent-dk); }
+  .hero .lead { font-size: 19px; color: var(--ink-soft); line-height: 1.7; max-width: 46ch; margin-bottom: 36px; }
+  .hero-cta { }
+  .hero-dates { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 28px; }
+  .date-pill { background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 8px 14px; font-size: 13px; color: var(--ink-soft); }
+  .date-pill b { color: var(--ink); display: block; font-size: 11px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; }
+
+  /* Price card in hero */
+  .price-card { background: var(--ink); color: #F4ECDF; border-radius: 20px; padding: 32px 28px; text-align: center; min-width: 200px; flex-shrink: 0; }
+  .price-card .amount { font-family: var(--font-display); font-size: 56px; font-weight: 500; line-height: 1; }
+  .price-card .amount sup { font-size: 26px; vertical-align: super; }
+  .price-card .note { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: #9A8B77; margin-top: 6px; margin-bottom: 24px; }
+  .price-card .btn-primary { font-size: 16px; padding: 16px 24px; width: 100%; }
+
+  @media (max-width: 680px) {
+    .hero-inner { grid-template-columns: 1fr; }
+    .price-card { min-width: unset; }
+  }
+
+  /* Section label */
+  .label { font-size: 12px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent-dk); display: block; margin-bottom: 16px; }
+
+  /* What you get */
+  .what { padding: 80px 0; border-bottom: 1px solid var(--line); }
+  .what h2 { font-size: clamp(28px, 4vw, 42px); margin-bottom: 14px; }
+  .what .sub { color: var(--ink-soft); font-size: 18px; line-height: 1.7; margin-bottom: 48px; max-width: 52ch; }
+  .outcomes { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .outcome { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 26px 24px; }
+  .outcome .n { font-family: var(--font-display); font-size: 13px; font-style: italic; color: var(--accent-dk); margin-bottom: 10px; }
+  .outcome p { font-size: 16px; color: var(--ink); line-height: 1.55; }
+  @media (max-width: 560px) { .outcomes { grid-template-columns: 1fr; } }
+
+  /* Shadow seats */
+  .shadow { padding: 80px 0; background: var(--bg-2); border-bottom: 1px solid var(--line); }
+  .shadow h2 { font-size: clamp(26px, 3.6vw, 38px); margin-bottom: 20px; }
+  .shadow-body { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 32px; }
+  .shadow p { color: var(--ink-soft); font-size: 18px; line-height: 1.75; }
+  .shadow p + p { margin-top: 14px; }
+  .shadow strong { color: var(--ink); font-weight: 600; }
+  @media (max-width: 640px) { .shadow-body { grid-template-columns: 1fr; } }
+
+  /* Schedule */
+  .schedule { padding: 80px 0; border-bottom: 1px solid var(--line); }
+  .schedule h2 { font-size: clamp(26px, 3.6vw, 38px); margin-bottom: 8px; }
+  .schedule .sub { color: var(--ink-soft); font-size: 15px; margin-bottom: 36px; }
+  .sched-table { width: 100%; border-collapse: collapse; }
+  .sched-table tr { border-bottom: 1px solid var(--line); }
+  .sched-table tr:first-child { border-top: 1px solid var(--line); }
+  .sched-table td { padding: 18px 0; font-size: 16px; vertical-align: middle; }
+  .sched-table .day { font-weight: 700; color: var(--ink); width: 120px; }
+  .sched-table .date { color: var(--ink-soft); }
+  .sched-table .time { text-align: right; font-weight: 700; color: var(--accent-dk); }
+
+  /* Who + CTA */
+  .bottom { padding: 80px 0 96px; }
+  .bottom-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
+  .who-col h2 { font-size: clamp(24px, 3.4vw, 36px); margin-bottom: 28px; }
+  .who-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 16px; }
+  .who-list li { display: flex; gap: 12px; align-items: flex-start; font-size: 17px; color: var(--ink); line-height: 1.5; }
+  .who-list li svg { width: 20px; height: 20px; color: var(--accent); flex: none; margin-top: 2px; }
+
+  .buy-card { background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 40px 36px; position: sticky; top: 80px; }
+  .buy-card .price { font-family: var(--font-display); font-size: 60px; font-weight: 500; color: var(--ink); line-height: 1; }
+  .buy-card .price sup { font-size: 28px; vertical-align: super; }
+  .buy-card .price-note { font-size: 13px; color: var(--ink-soft); letter-spacing: 0.08em; text-transform: uppercase; margin-top: 4px; margin-bottom: 24px; }
+  .buy-card hr { border: none; border-top: 1px solid var(--line); margin-bottom: 22px; }
+  .perks { list-style: none; margin: 0 0 30px; padding: 0; display: flex; flex-direction: column; gap: 12px; }
+  .perks li { display: flex; gap: 10px; align-items: flex-start; font-size: 15px; color: var(--ink-soft); line-height: 1.45; }
+  .perks li svg { width: 16px; height: 16px; color: var(--accent); flex: none; margin-top: 2px; }
+  .buy-card .fine { font-size: 13px; color: var(--ink-soft); text-align: center; margin-top: 12px; }
+  .buy-card .fine a { color: var(--accent-dk); text-decoration: underline; }
+
+  @media (max-width: 680px) {
+    .bottom-grid { grid-template-columns: 1fr; }
+    .buy-card { position: static; }
+  }
+
+  /* FAQ */
+  .faq { padding: 80px 0; border-top: 1px solid var(--line); }
+  .faq h2 { font-size: clamp(26px, 3.6vw, 38px); margin-bottom: 44px; }
+  .faq details { border-top: 1px solid var(--line); }
+  .faq details:last-child { border-bottom: 1px solid var(--line); }
+  .faq summary { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 24px 0; font-size: 17px; font-weight: 600; color: var(--ink); cursor: pointer; list-style: none; user-select: none; }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary .icon { width: 22px; height: 22px; border: 1.5px solid var(--line); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: background .2s, border-color .2s; }
+  .faq summary .icon svg { width: 12px; height: 12px; stroke: var(--ink-soft); transition: transform .25s ease; }
+  .faq details[open] summary .icon { background: var(--accent); border-color: var(--accent); }
+  .faq details[open] summary .icon svg { transform: rotate(45deg); stroke: #fff; }
+  .faq .answer { padding: 0 0 24px; font-size: 16px; color: var(--ink-soft); line-height: 1.75; }
+
+  /* Footer */
+  footer { border-top: 1px solid var(--line); }
+  .foot-inner { max-width: var(--maxw); margin: 0 auto; padding: 28px 32px; display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; color: var(--ink-soft); font-size: 14px; }
+  .foot-inner a { color: var(--ink-soft); }
+  .foot-inner a:hover { color: var(--accent-dk); }
+
+  /* Cookie banner */
+  .cookie-banner { position: fixed; bottom: 0; left: 0; right: 0; z-index: 999; background: var(--ink); color: #F4ECDF; padding: 18px 32px; display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; font-size: 15px; box-shadow: 0 -2px 20px rgba(0,0,0,.18); }
+  .cookie-banner p { margin: 0; max-width: 70ch; }
+  .cookie-banner a { color: var(--accent); text-decoration: underline; }
+  .cookie-banner button { flex-shrink: 0; background: var(--accent); color: #fff; border: none; border-radius: 8px; padding: 10px 22px; font-family: var(--font-body); font-size: 15px; font-weight: 600; cursor: pointer; }
+  .cookie-banner button:hover { background: var(--accent-dk); }
+</style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-inner">
+      <span class="brand">Clients for Coaches</span>
+      <a class="nav-back" href="/">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M11 18l-6-6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        monaweathers.com
+      </a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-inner">
+        <div>
+          <!-- EDIT 3: Date range in tag -->
+          <div class="hero-tag"><span class="dot"></span>Live · July 6–10, 2026</div>
+          <!-- EDIT 4: Event name -->
+          <h1>Map Your High-Ticket Client System in <em>5 Days</em></h1>
+          <!-- EDIT 5: Lead sentence -->
+          <p class="lead">Shadow a live private coaching experience, with Q&amp;A and coaching time built in for you each session.</p>
+          <div class="hero-dates">
+            <div class="date-pill"><b>Mon</b>Jul 6 · 2pm EST</div>
+            <div class="date-pill"><b>Tue</b>Jul 7 · 4:30pm EST</div>
+            <div class="date-pill"><b>Wed</b>Jul 8 · 2pm EST</div>
+            <div class="date-pill"><b>Thu</b>Jul 9 · 2pm EST</div>
+            <div class="date-pill"><b>Fri</b>Jul 10 · 2pm EST</div>
+          </div>
+        </div>
+        <div class="price-card">
+          <div class="amount"><sup>$</sup>27</div>
+          <div class="note">One-time · all 5 sessions</div>
+          <a href="#purchase" class="btn btn-primary btn-full">Claim Your Shadow Seat</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What you get -->
+  <section class="what">
+    <div class="wrap">
+      <span class="label">What you'll walk away with</span>
+      <h2>A complete system, not just notes.</h2>
+      <p class="sub">You're watching a real high-ticket client system get built from scratch and applying it to your own business in real time.</p>
+      <div class="outcomes">
+        <div class="outcome">
+          <div class="n">01</div>
+          <p>Map out your complete high-ticket client lead generation system in 5 days</p>
+        </div>
+        <div class="outcome">
+          <div class="n">02</div>
+          <p>Know exactly who to target, where to find them, and what to do every week</p>
+        </div>
+        <div class="outcome">
+          <div class="n">03</div>
+          <p>Finish Day 5 with a written, personalized plan ready to execute your next workday</p>
+        </div>
+        <div class="outcome">
+          <div class="n">04</div>
+          <p>A repeatable roadmap built in 5 days, not months of guessing</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Shadow seats -->
+  <section class="shadow">
+    <div class="wrap">
+      <span class="label">What are shadow seats?</span>
+      <h2>Watch real coaching happen, live.</h2>
+      <div class="shadow-body">
+        <p>Shadow seats give you <strong>front-row access to a private 1:1 coaching experience</strong> as it unfolds. You're not watching a polished presentation. You're seeing the actual work happen in real time.</p>
+        <p>Each session includes <strong>dedicated Q&amp;A and coaching time for shadow attendees</strong>, so you can apply what you're watching directly to your own business before you log off.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Schedule -->
+  <section class="schedule">
+    <div class="wrap">
+      <span class="label">The schedule</span>
+      <h2>Five sessions. Five days.</h2>
+      <p class="sub">All times Eastern. Show up live to get the most out of it. Recordings will be available if you can't make a session.</p>
+      <table class="sched-table">
+        <tr>
+          <td class="day">Monday</td>
+          <td class="date">July 6, 2026</td>
+          <td class="time">2:00pm EST</td>
+        </tr>
+        <tr>
+          <td class="day">Tuesday</td>
+          <td class="date">July 7, 2026</td>
+          <td class="time">4:30pm EST</td>
+        </tr>
+        <tr>
+          <td class="day">Wednesday</td>
+          <td class="date">July 8, 2026</td>
+          <td class="time">2:00pm EST</td>
+        </tr>
+        <tr>
+          <td class="day">Thursday</td>
+          <td class="date">July 9, 2026</td>
+          <td class="time">2:00pm EST</td>
+        </tr>
+        <tr>
+          <td class="day">Friday</td>
+          <td class="date">July 10, 2026</td>
+          <td class="time">2:00pm EST</td>
+        </tr>
+      </table>
+    </div>
+  </section>
+
+  <!-- Who + CTA -->
+  <section class="bottom" id="purchase">
+    <div class="wrap">
+      <div class="bottom-grid">
+        <div class="who-col">
+          <span class="label">Who this is for</span>
+          <h2>This is for you if...</h2>
+          <ul class="who-list">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              You're an established coach with a business already running
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              You don't have a clear path to consistent high-ticket clients
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              You want a real system, not more content or generic advice
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              You learn best by watching real work, not hypotheticals
+            </li>
+          </ul>
+        </div>
+
+        <div class="buy-card">
+          <div class="price"><sup>$</sup>27</div>
+          <div class="price-note">One-time · all 5 sessions</div>
+          <hr />
+          <ul class="perks">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              Live access to all 5 shadow sessions
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              Dedicated Q&amp;A and coaching time each session
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              Watch a real high-ticket system built from scratch
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              Walk away with a plan to execute immediately
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              Recording available if you can't make it live
+            </li>
+          </ul>
+          <a href="#" class="btn btn-primary btn-full">Claim Your Shadow Seat</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq">
+    <div class="wrap">
+      <span class="label">FAQ</span>
+      <h2>Common questions.</h2>
+      <details>
+        <summary>
+          What exactly are shadow seats?
+          <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </summary>
+        <p class="answer">Shadow seats give you live access to a private 1:1 coaching experience as it happens. You're watching real work unfold in real time, not a scripted presentation. Each session also includes dedicated Q&amp;A and coaching time so you can apply what you're seeing to your own business.</p>
+      </details>
+      <details>
+        <summary>
+          Is there a recording available if I can't make it live?
+          <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </summary>
+        <p class="answer">Yes. A recording of each session will be made available to everyone who purchases a shadow seat, so you won't miss anything if a session conflicts with your schedule.</p>
+      </details>
+      <details>
+        <summary>
+          Who is this challenge designed for?
+          <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </summary>
+        <p class="answer">This is best for established coaches who already have a business running but can't see a clear path to consistent high-ticket clients. If you're still in the early stages of building your business, this may not be the right fit yet.</p>
+      </details>
+      <details>
+        <summary>
+          What will I actually walk away with?
+          <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </summary>
+        <p class="answer">By the end of Day 5 you'll have a written, personalized lead generation plan you can start executing the next workday. That includes who to target, where to find them, and a repeatable weekly system for bringing in high-ticket clients.</p>
+      </details>
+      <details>
+        <summary>
+          Do I need to attend all 5 sessions?
+          <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </summary>
+        <p class="answer">You'll get the most out of it by showing up live each day since the system builds on itself across the week. That said, recordings are available so you can catch up if you miss a session.</p>
+      </details>
+      <details>
+        <summary>
+          Do I have to be an established coach to join?
+          <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </summary>
+        <p class="answer">Not necessarily. You don't need a full client roster or years of experience, but you should have a solid idea of your offer and who you serve. If you know what you do and who it's for, you'll be able to follow along and apply the system. The sessions are worth attending even if you're still in the earlier stages of building.</p>
+      </details>
+    </div>
+  </section>
+
+  <footer>
+    <div class="foot-inner">
+      <span>© 2026 Steady Systems LLC · Mona Weathers</span>
+      <div style="display:flex;gap:20px;">
+        <a href="/terms">Terms</a>
+        <a href="/privacy">Privacy</a>
+        <a href="/">monaweathers.com</a>
+      </div>
+    </div>
+  </footer>
+
+  <div class="cookie-banner" id="cookieBanner">
+    <p>We use cookies and analytics to understand how our site is used. By continuing, you agree to our <a href="/privacy">Privacy Policy</a>.</p>
+    <button onclick="(function(){localStorage.setItem('cookiesAccepted','1');document.getElementById('cookieBanner').style.display='none';})()">Got it</button>
+  </div>
+  <script>if(localStorage.getItem('cookiesAccepted'))document.getElementById('cookieBanner').style.display='none';</script>
+
+</body>
+</html>
