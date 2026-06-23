@@ -131,6 +131,15 @@
     .buy-card { position: static; }
   }
 
+  /* FAQ */
+  .faq { padding: 80px 0; background: var(--bg-2); border-top: 1px solid var(--line); }
+  .faq h2 { font-size: clamp(26px, 3.6vw, 38px); margin-bottom: 44px; }
+  .faq-list { display: flex; flex-direction: column; }
+  .faq-item { border-top: 1px solid var(--line); padding: 26px 0; }
+  .faq-item:last-child { border-bottom: 1px solid var(--line); }
+  .faq-item dt { font-size: 17px; font-weight: 600; color: var(--ink); margin-bottom: 10px; }
+  .faq-item dd { margin: 0; font-size: 16px; color: var(--ink-soft); line-height: 1.7; max-width: 62ch; }
+
   /* Footer */
   footer { border-top: 1px solid var(--line); }
   .foot-inner { max-width: var(--maxw); margin: 0 auto; padding: 28px 32px; display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; color: var(--ink-soft); font-size: 14px; }
@@ -224,7 +233,7 @@
     <div class="wrap">
       <span class="label">The schedule</span>
       <h2>Five sessions. Five days.</h2>
-      <p class="sub">All times Eastern. Show up live to get the most out of it.</p>
+      <p class="sub">All times Eastern. Show up live to get the most out of it. Recordings will be available if you can't make a session.</p>
       <table class="sched-table">
         <tr>
           <td class="day">Monday</td>
@@ -303,10 +312,44 @@
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
               Walk away with a plan to execute immediately
             </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              Recording available if you can't make it live
+            </li>
           </ul>
           <a href="#" class="btn btn-primary btn-full">Claim Your Shadow Seat</a>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq">
+    <div class="wrap">
+      <span class="label">FAQ</span>
+      <h2>Common questions.</h2>
+      <dl class="faq-list">
+        <div class="faq-item">
+          <dt>What exactly are shadow seats?</dt>
+          <dd>Shadow seats give you live access to a private 1:1 coaching experience as it happens. You're watching real work unfold in real time, not a scripted presentation. Each session also includes dedicated Q&amp;A and coaching time so you can apply what you're seeing to your own business.</dd>
+        </div>
+        <div class="faq-item">
+          <dt>Is there a recording available if I can't make it live?</dt>
+          <dd>Yes. A recording of each session will be made available to everyone who purchases a shadow seat, so you won't miss anything if a session conflicts with your schedule.</dd>
+        </div>
+        <div class="faq-item">
+          <dt>Who is this challenge designed for?</dt>
+          <dd>This is best for established coaches who already have a business running but can't see a clear path to consistent high-ticket clients. If you're still in the early stages of building your business, this may not be the right fit yet.</dd>
+        </div>
+        <div class="faq-item">
+          <dt>What will I actually walk away with?</dt>
+          <dd>By the end of Day 5 you'll have a written, personalized lead generation plan you can start executing the next workday. That includes who to target, where to find them, and a repeatable weekly system for bringing in high-ticket clients.</dd>
+        </div>
+        <div class="faq-item">
+          <dt>Do I need to attend all 5 sessions?</dt>
+          <dd>You'll get the most out of it by showing up live each day, since the system builds on itself across the week. That said, recordings are available so you can catch up if you miss a session.</dd>
+        </div>
+      </dl>
     </div>
   </section>
 
