@@ -219,6 +219,19 @@ src="https://www.facebook.com/tr?id=1596541782072028&ev=PageView&noscript=1"
   .play-btn:hover { transform: translate(-50%, -50%) scale(1.1); box-shadow: 0 14px 40px rgba(0,151,178,0.6); }
   .play-btn svg { width: 28px; height: 28px; fill: #fff; margin-left: 4px; }
 
+  /* FAQ */
+  .faq { padding: 100px 0; }
+  .faq h2 { font-size: clamp(28px, 3.8vw, 44px); margin: 14px 0 44px; }
+  .faq details { border-top: 1px solid var(--line); }
+  .faq details:last-child { border-bottom: 1px solid var(--line); }
+  .faq summary { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 24px 0; font-size: 17px; font-weight: 600; color: var(--ink); cursor: pointer; list-style: none; user-select: none; }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary .icon { width: 22px; height: 22px; border: 1.5px solid var(--line); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: background .2s, border-color .2s; }
+  .faq summary .icon svg { width: 12px; height: 12px; stroke: var(--ink-soft); transition: transform .25s ease; }
+  .faq details[open] summary .icon { background: var(--accent); border-color: var(--accent); }
+  .faq details[open] summary .icon svg { transform: rotate(45deg); stroke: #fff; }
+  .faq .answer { padding: 0 0 24px; font-size: 16px; color: var(--ink-soft); line-height: 1.75; max-width: 68ch; }
+
   /* CTA / Reach section */
   .cta-reach { background: var(--ink); color: #F6EEE1; padding: 100px 0; text-align: center; }
   .cta-reach .eyebrow { color: var(--accent); }
@@ -554,6 +567,56 @@ src="https://www.facebook.com/tr?id=1596541782072028&ev=PageView&noscript=1"
           <button class="play-btn" aria-label="Play video"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq">
+    <div class="wrap-narrow">
+      <span class="eyebrow">FAQ</span>
+      <h2>Common questions.</h2>
+      <details>
+        <summary>
+          Who is this program designed for?
+          <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </summary>
+        <p class="answer">The Steady Growth Accelerator is for established coaches already making $2k–$5k a month who can't see a clear, repeatable path to making coaching their full-time income. You should have an offer and have sold it before. If you're still in the early stages of building, The Strong Start is a better first step.</p>
+      </details>
+      <details>
+        <summary>
+          What's the difference between The Strong Start and the full Accelerator?
+          <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </summary>
+        <p class="answer">The Strong Start is a 30-day sprint you can join before committing to anything bigger. By Day 30 you'll have a clear offer, a content system live, and at least one discovery call booked from the system. If you love it, your investment applies toward the full Accelerator and you pay only the difference. If it's not the right fit, you walk away with real momentum and zero strings attached.</p>
+      </details>
+      <details>
+        <summary>
+          How does the program work week to week?
+          <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </summary>
+        <p class="answer">In Phases 1 and 2 (Months 1–4) you'll have weekly group coaching calls with hot seats and direct feedback, monthly curriculum drops with lessons and worksheets, a monthly 1:1 touchpoint, and ongoing async support inside the community. In Phase 3 (Months 5–12), calls shift to biweekly and include quarterly reviews of your numbers and goals.</p>
+      </details>
+      <details>
+        <summary>
+          Are sessions recorded?
+          <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </summary>
+        <p class="answer">Yes. All group calls are recorded so you won't miss anything if a session conflicts with your schedule.</p>
+      </details>
+      <details>
+        <summary>
+          How much time do I need to commit each week?
+          <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </summary>
+        <p class="answer">During Phases 1 and 2, plan for a weekly group call plus time to implement — most members commit around 5–8 hours a week. Phase 3 is lighter with biweekly calls and async support as needed. The goal is to build a routine that's sustainable, not one that burns you out.</p>
+      </details>
+      <details>
+        <summary>
+          Do I need to already be making $2k–$5k a month to join?
+          <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </summary>
+        <p class="answer">That's the sweet spot this program is built for — coaches who have proof their work converts but need a system to make it consistent. If you're earlier in building, The Strong Start is a better fit. If you're already beyond that range, reach out and we can talk through whether this is right for you.</p>
+      </details>
     </div>
   </section>
 
