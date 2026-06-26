@@ -145,6 +145,18 @@ src="https://www.facebook.com/tr?id=1596541782072028&ev=PageView&noscript=1"
   .sched-table .date { color: var(--ink-soft); }
   .sched-table .time { text-align: right; font-weight: 700; color: var(--accent-dk); }
 
+  /* About */
+  .about-host { padding: 80px 0; border-bottom: 1px solid var(--line); }
+  .about-host-grid { display: grid; grid-template-columns: 300px 1fr; gap: 56px; align-items: center; }
+  .about-host-img { width: 100%; aspect-ratio: 4/5; border-radius: 20px; overflow: hidden; box-shadow: 0 16px 48px -16px rgba(42,36,32,.25); }
+  .about-host-img img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
+  .about-host-img .img-placeholder { width: 100%; height: 100%; background: var(--bg-2); display: flex; align-items: center; justify-content: center; color: var(--ink-soft); font-size: 14px; }
+  .about-host h2 { font-size: clamp(24px, 3.4vw, 36px); margin-bottom: 18px; }
+  .about-host p { color: var(--ink-soft); font-size: 17px; line-height: 1.75; }
+  .about-host p + p { margin-top: 14px; }
+  .about-host strong { color: var(--ink); font-weight: 600; }
+  @media (max-width: 680px) { .about-host-grid { grid-template-columns: 1fr; } .about-host-img { aspect-ratio: 3/2; } }
+
   /* Who + CTA */
   .bottom { padding: 80px 0 96px; }
   .bottom-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
@@ -341,6 +353,24 @@ src="https://www.facebook.com/tr?id=1596541782072028&ev=PageView&noscript=1"
   </section>
 
   <!-- Who + CTA -->
+  <!-- About -->
+  <section class="about-host">
+    <div class="wrap">
+      <div class="about-host-grid">
+        <div class="about-host-img">
+          <img src="mona-headshot.jpg" alt="Mona Weathers" />
+        </div>
+        <div>
+          <span class="label">Your coach</span>
+          <h2>Hi, I'm Mona Weathers.</h2>
+          <p>I've spent <strong>10+ years building online</strong> and I help coaches simplify their business, focus on proven growth activities, and use systems strategically — so they can scale with more clarity, consistency, and confidence.</p>
+          <p>Too many coaches stay stuck overthinking every move or constantly changing direction without the structure long-term success requires. <strong>That's exactly what this challenge is designed to fix.</strong></p>
+          <p>I specialize in high-ticket offer and sales systems. This challenge is the fastest way I know to help you build one that actually works for your business.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="bottom" id="purchase">
     <div class="wrap">
       <div class="bottom-grid">
