@@ -38,6 +38,12 @@ src="https://www.facebook.com/tr?id=1596541782072028&ev=PageView&noscript=1"
   ::selection { background: #F6D67A; }
   .btn-teal { display: inline-block; background: #0097B2; color: #fff !important; text-decoration: none; }
   .btn-teal:hover { background: #007A91; color: #fff !important; }
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; text-align: left; }
+  @media (max-width: 600px) {
+    .grid-3 { grid-template-columns: 1fr; }
+    .grid-2 { grid-template-columns: 1fr; }
+  }
 </style>
 </head>
 <body>
@@ -66,7 +72,7 @@ src="https://www.facebook.com/tr?id=1596541782072028&ev=PageView&noscript=1"
   </div>
 
   <!-- OVERVIEW STRIP -->
-  <div style="max-width:760px; margin:0 auto 72px; padding:0 32px; display:grid; grid-template-columns:repeat(3, 1fr); gap:16px;">
+  <div class="grid-3" style="max-width:760px; margin:0 auto 72px; padding:0 32px;">
     <a href="#steady-growth" style="display:block; padding:20px 18px; border-radius:14px; background:#fff; border:1px solid #E8E6E1; box-shadow:0 4px 16px rgba(0,0,0,.05);">
       <div style="width:16px; height:16px; border-radius:4px; background:#CFE0D8; margin-bottom:12px;"></div>
       <div style="font-family:'IBM Plex Mono', monospace; font-size:10.5px; color:#8A8073; margin-bottom:8px;">01 / steady-growth</div>
@@ -270,7 +276,7 @@ src="https://www.facebook.com/tr?id=1596541782072028&ev=PageView&noscript=1"
       <h2 style="font-family:'Work Sans',sans-serif; font-weight:700; font-size:clamp(24px,4vw,34px); line-height:1.2; color:#fff; margin:0 0 16px;">Whichever path feels right, let's make it official.</h2>
       <p style="font-size:15px; line-height:1.7; color:#E4F5F8; max-width:480px; margin:0 auto 44px;">You can get started right away, or book a short call with me first if you'd like to talk it through. Either way, I'm glad you're here.</p>
 
-      <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; text-align:left;">
+      <div class="grid-2">
         <div style="background:#fff; border-radius:16px; padding:28px 24px;">
           <div style="font-weight:700; font-size:19px; color:#1a1a1a; margin-bottom:8px;">Ready to go</div>
           <p style="font-size:13.5px; line-height:1.6; color:#5F6368; margin:0 0 20px;">Choose your offer above and email me to get started. You'll receive a confirmation with everything you need.</p>
