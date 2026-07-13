@@ -43,105 +43,136 @@ src="https://www.facebook.com/tr?id=1596541782072028&ev=PageView&noscript=1"
 <link rel="icon" type="image/svg+xml" href="favicon.svg" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400;1,6..72,500&family=Hanken+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
 <style>
   :root {
-    --bg:        #FAF4EA;
-    --bg-2:      #F2E7D6;
-    --card:      #FFFCF6;
-    --ink:       #2A2420;
-    --ink-soft:  #6E6256;
-    --line:      #E6D9C6;
+    --bg:        #0c0c0c;
+    --bg-2:      #181818;
+    --card:      #1e1e1e;
+    --card-2:    #242424;
+    --ink:       #f0ebe3;
+    --ink-soft:  #7a7066;
+    --ink-mid:   #b0a898;
+    --line:      #2c2820;
     --accent:    #0097B2;
-    --accent-dk: #06768C;
+    --accent-lt: #00AECC;
+    --green:     #22c55e;
+    --yellow:    #f6d67a;
     --font-display: 'Newsreader', Georgia, serif;
     --font-body:    'Hanken Grotesk', system-ui, sans-serif;
+    --font-mono:    'IBM Plex Mono', 'Courier New', monospace;
     --maxw: 1080px;
   }
 
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; }
   body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 18px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
-  h1, h2, h3 { font-family: var(--font-display); font-weight: 500; margin: 0; line-height: 1.1; letter-spacing: -0.02em; }
+  h1, h2, h3 { font-family: var(--font-display); font-weight: 500; margin: 0; line-height: 1.08; letter-spacing: -0.025em; }
   p { margin: 0; }
   a { color: inherit; text-decoration: none; }
   img { display: block; max-width: 100%; }
   .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 32px; }
   .wrap-narrow { max-width: 680px; margin: 0 auto; padding: 0 32px; }
-  .label { font-size: 12px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent-dk); display: block; margin-bottom: 16px; }
 
   /* Nav */
-  nav { position: sticky; top: 0; z-index: 40; background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
-  .nav-inner { max-width: var(--maxw); margin: 0 auto; padding: 0 32px; display: flex; align-items: center; justify-content: space-between; height: 68px; }
-  .brand { font-family: var(--font-display); font-size: 19px; font-weight: 600; letter-spacing: -0.01em; color: var(--ink); }
-  .nav-back { display: inline-flex; align-items: center; gap: 7px; font-size: 14px; font-weight: 600; color: var(--ink-soft); transition: color .15s; }
-  .nav-back:hover { color: var(--ink); }
-  .nav-back svg { width: 15px; height: 15px; }
+  nav { position: sticky; top: 0; z-index: 40; background: rgba(12,12,12,0.92); backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); }
+  .nav-inner { max-width: var(--maxw); margin: 0 auto; padding: 0 32px; display: flex; align-items: center; justify-content: space-between; height: 66px; }
+  .brand { font-family: var(--font-mono); font-size: 11.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink); display: flex; align-items: center; gap: 10px; }
+  .brand .teal-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); flex: none; }
+  .nav-link { font-family: var(--font-body); font-size: 14px; font-weight: 600; color: var(--ink-soft); transition: color .15s; display: flex; align-items: center; gap: 7px; }
+  .nav-link:hover { color: var(--ink-mid); }
+  .nav-link svg { width: 14px; height: 14px; }
 
   /* Hero */
-  .hero { padding: 80px 0 72px; text-align: center; border-bottom: 1px solid var(--line); }
-  .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: color-mix(in srgb, var(--accent) 10%, var(--bg)); border: 1px solid color-mix(in srgb, var(--accent) 25%, transparent); border-radius: 999px; padding: 7px 16px; font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent-dk); margin-bottom: 28px; }
-  .hero-badge .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); }
-  .hero h1 { font-size: clamp(36px, 5.5vw, 62px); max-width: 16ch; margin: 0 auto 24px; }
-  .hero h1 em { font-style: italic; color: var(--accent-dk); }
-  .hero .lead { font-size: 19px; color: var(--ink-soft); line-height: 1.75; max-width: 50ch; margin: 0 auto 40px; }
+  .hero { padding: 96px 0 0; }
+  .hero-inner { max-width: var(--maxw); margin: 0 auto; padding: 0 32px; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+  .hero-text { }
+  .hero-eyebrow { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); display: block; margin-bottom: 24px; }
+  .hero h1 { font-size: clamp(38px, 5.5vw, 70px); max-width: 15ch; margin-bottom: 24px; }
+  .hero h1 em { font-style: italic; }
+  .hero .lead { font-size: 17px; color: var(--ink-mid); line-height: 1.8; max-width: 42ch; margin-bottom: 40px; }
+  .hero-actions { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+  .hero-note { font-size: 13px; color: var(--ink-soft); font-style: italic; }
 
   /* Button */
-  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; font-family: var(--font-body); font-weight: 700; font-size: 17px; padding: 18px 40px; border-radius: 999px; cursor: pointer; border: none; transition: transform .18s, box-shadow .18s; text-decoration: none; }
-  .btn-primary { background: var(--accent); color: #fff; box-shadow: 0 12px 32px -10px rgba(0,151,178,0.4); }
-  .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 20px 40px -10px rgba(0,151,178,0.5); }
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; font-family: var(--font-body); font-weight: 700; font-size: 15px; padding: 16px 36px; border-radius: 999px; cursor: pointer; border: none; transition: transform .18s, box-shadow .18s, background .15s; text-decoration: none; letter-spacing: 0.03em; }
+  .btn-primary { background: var(--accent); color: #fff; box-shadow: 0 12px 40px -10px rgba(0,151,178,0.4); }
+  .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 20px 48px -10px rgba(0,151,178,0.55); background: var(--accent-lt); }
 
-  /* Screenshot section */
-  .screenshot-section { padding: 72px 0; border-bottom: 1px solid var(--line); }
-  .screenshot-wrap { max-width: 800px; margin: 0 auto; padding: 0 32px; }
-  .screenshot-label { text-align: center; margin-bottom: 32px; }
-  .screenshot-placeholder { background: var(--card); border: 1px solid var(--line); border-radius: 20px; overflow: hidden; box-shadow: 0 24px 64px -16px rgba(42,36,32,.18); }
-  .screenshot-bar { background: var(--bg-2); border-bottom: 1px solid var(--line); padding: 12px 20px; display: flex; align-items: center; gap: 8px; }
-  .screenshot-bar .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--line); }
-  .screenshot-body { padding: 36px 40px; }
-  .diag-progress { margin-bottom: 32px; }
-  .diag-progress-bar { height: 6px; background: var(--line); border-radius: 99px; margin-bottom: 8px; }
-  .diag-progress-fill { height: 100%; width: 40%; background: var(--accent); border-radius: 99px; }
-  .diag-progress-label { font-size: 12px; color: var(--ink-soft); font-weight: 600; letter-spacing: 0.06em; }
-  .diag-q { font-family: var(--font-display); font-size: clamp(18px, 2.5vw, 24px); color: var(--ink); margin-bottom: 24px; }
-  .diag-options { display: flex; flex-direction: column; gap: 10px; }
-  .diag-option { background: var(--bg); border: 1.5px solid var(--line); border-radius: 10px; padding: 14px 18px; font-size: 15px; color: var(--ink-soft); display: flex; align-items: center; gap: 12px; }
-  .diag-option.selected { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 8%, var(--bg)); color: var(--ink); }
-  .diag-option .radio { width: 18px; height: 18px; border-radius: 50%; border: 2px solid var(--line); flex: none; display: flex; align-items: center; justify-content: center; }
-  .diag-option.selected .radio { border-color: var(--accent); background: var(--accent); }
-  .diag-option.selected .radio::after { content: ''; width: 7px; height: 7px; border-radius: 50%; background: #fff; }
-  .diag-nav { display: flex; justify-content: flex-end; margin-top: 28px; }
-  .diag-btn { background: var(--accent); color: #fff; border: none; border-radius: 999px; padding: 12px 28px; font-family: var(--font-body); font-size: 15px; font-weight: 700; cursor: default; }
+  /* Score card (hero right side) */
+  .score-card { background: var(--card); border: 1px solid var(--line); border-radius: 24px; padding: 36px 32px; position: relative; }
+  .score-card-label { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-soft); display: block; margin-bottom: 28px; }
+  .score-gauge-row { display: flex; align-items: center; gap: 24px; margin-bottom: 28px; }
+  .gauge-svg { width: 110px; height: 110px; flex: none; }
+  .score-meta { }
+  .score-status { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); font-weight: 600; margin-bottom: 8px; }
+  .score-desc { font-size: 13.5px; color: var(--ink-mid); line-height: 1.55; }
+  .categories { display: flex; flex-direction: column; gap: 8px; }
+  .cat-row { display: flex; align-items: center; justify-content: space-between; background: var(--bg-2); border-radius: 12px; padding: 12px 14px; }
+  .cat-name { font-size: 13.5px; font-weight: 600; color: var(--ink); }
+  .cat-badge-green { width: 22px; height: 22px; border-radius: 50%; background: rgba(34,197,94,0.15); display: flex; align-items: center; justify-content: center; flex: none; }
+  .cat-badge-yellow { width: 22px; height: 22px; border-radius: 50%; background: rgba(246,214,122,0.12); display: flex; align-items: center; justify-content: center; flex: none; }
+  .score-card-note { margin-top: 20px; font-size: 12px; color: var(--ink-soft); text-align: center; font-style: italic; }
 
-  /* What you get */
-  .what { padding: 72px 0; border-bottom: 1px solid var(--line); }
-  .what h2 { font-size: clamp(28px, 3.8vw, 42px); margin-bottom: 12px; text-align: center; }
-  .what .sub { color: var(--ink-soft); font-size: 17px; line-height: 1.75; text-align: center; max-width: 48ch; margin: 0 auto 48px; }
-  .outcomes { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; max-width: 760px; margin: 0 auto; }
-  .outcome { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 26px 24px; }
-  .outcome .n { font-family: var(--font-display); font-size: 13px; font-style: italic; color: var(--accent-dk); margin-bottom: 10px; }
-  .outcome p { font-size: 15px; color: var(--ink); line-height: 1.55; }
-  @media (max-width: 560px) { .outcomes { grid-template-columns: 1fr; } }
+  /* Divider line below hero */
+  .hero-rule { height: 1px; background: var(--line); margin: 72px 0 0; }
+
+  /* Stats strip */
+  .stats { padding: 48px 0; border-bottom: 1px solid var(--line); }
+  .stats-inner { max-width: var(--maxw); margin: 0 auto; padding: 0 32px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+  .stat { text-align: center; }
+  .stat-num { font-family: var(--font-display); font-size: clamp(30px, 4vw, 46px); color: var(--ink); display: block; margin-bottom: 4px; }
+  .stat-lbl { font-size: 14px; color: var(--ink-soft); }
+
+  /* What you find out */
+  .what { padding: 80px 0; border-bottom: 1px solid var(--line); }
+  .section-label { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); display: block; text-align: center; margin-bottom: 18px; }
+  .what h2 { font-size: clamp(28px, 4vw, 50px); margin-bottom: 14px; text-align: center; }
+  .what .sub { color: var(--ink-mid); font-size: 17px; line-height: 1.8; text-align: center; max-width: 50ch; margin: 0 auto 52px; }
+  .outcomes { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; max-width: 780px; margin: 0 auto; }
+  .outcome { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 28px 26px; }
+  .outcome .n { font-family: var(--font-mono); font-size: 11px; color: var(--accent); margin-bottom: 12px; letter-spacing: 0.1em; }
+  .outcome p { font-size: 15px; color: var(--ink-mid); line-height: 1.65; }
+
+  /* Areas */
+  .areas { padding: 80px 0; border-bottom: 1px solid var(--line); }
+  .areas h2 { font-size: clamp(26px, 3.5vw, 44px); margin-bottom: 12px; text-align: center; }
+  .areas .sub { color: var(--ink-mid); font-size: 17px; text-align: center; max-width: 48ch; margin: 0 auto 48px; }
+  .areas-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; max-width: 760px; margin: 0 auto; }
+  .area-pill { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 20px 22px; display: flex; align-items: center; gap: 14px; }
+  .area-icon { width: 36px; height: 36px; border-radius: 10px; background: rgba(0,151,178,0.1); display: flex; align-items: center; justify-content: center; flex: none; }
+  .area-icon svg { width: 18px; height: 18px; color: var(--accent); }
+  .area-text strong { display: block; font-size: 14px; font-weight: 700; color: var(--ink); margin-bottom: 2px; }
+  .area-text span { font-size: 13px; color: var(--ink-soft); }
 
   /* Form section */
-  .form-section { padding: 80px 0 96px; }
-  .form-card { background: var(--ink); color: #F4ECDF; border-radius: 24px; padding: 56px 48px; text-align: center; max-width: 600px; margin: 0 auto; }
-  .form-card .eyebrow { font-size: 12px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent); display: block; margin-bottom: 18px; }
-  .form-card h2 { font-family: var(--font-display); font-size: clamp(26px, 3.8vw, 38px); color: #F4ECDF; margin-bottom: 14px; }
-  .form-card .sub { font-size: 16px; color: #C9BCA8; line-height: 1.7; margin-bottom: 36px; }
-
-  /* Flodesk placeholder */
-  .form-placeholder { background: rgba(255,255,255,0.06); border: 1px dashed rgba(246,238,225,0.25); border-radius: 14px; padding: 40px 24px; color: #9A8B77; font-size: 14px; }
+  .form-section { padding: 80px 0 104px; }
+  .form-card { background: var(--card); border: 1px solid var(--line); border-radius: 24px; padding: 56px 48px; text-align: center; max-width: 600px; margin: 0 auto; }
+  .form-card .eyebrow { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); display: block; margin-bottom: 18px; }
+  .form-card h2 { font-size: clamp(26px, 3.8vw, 40px); color: var(--ink); margin-bottom: 14px; }
+  .form-card .sub { font-size: 16px; color: var(--ink-mid); line-height: 1.75; margin-bottom: 36px; }
 
   /* Footer */
   footer { border-top: 1px solid var(--line); }
   .foot-inner { max-width: var(--maxw); margin: 0 auto; padding: 28px 32px; display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; color: var(--ink-soft); font-size: 14px; }
-  .foot-inner a { color: var(--ink-soft); }
-  .foot-inner a:hover { color: var(--accent-dk); }
+  .foot-inner a { color: var(--ink-soft); transition: color .15s; }
+  .foot-inner a:hover { color: var(--accent); }
 
+  /* Mobile */
+  @media (max-width: 860px) {
+    .hero-inner { grid-template-columns: 1fr; gap: 48px; padding-bottom: 64px; }
+    .score-card { max-width: 420px; }
+    .stats-inner { grid-template-columns: 1fr; gap: 24px; }
+    .stat { border-bottom: 1px solid var(--line); padding-bottom: 20px; }
+    .stat:last-child { border-bottom: none; }
+    .areas-grid { grid-template-columns: 1fr; }
+  }
   @media (max-width: 600px) {
-    .form-card { padding: 40px 28px; }
-    .screenshot-body { padding: 24px 20px; }
+    .hero { padding: 64px 0 0; }
+    .outcomes { grid-template-columns: 1fr; }
+    .form-card { padding: 40px 24px; }
+    .hero-inner { padding: 0 24px 56px; }
+    .wrap { padding: 0 24px; }
   }
 </style>
 </head>
@@ -149,8 +180,8 @@ src="https://www.facebook.com/tr?id=1596541782072028&ev=PageView&noscript=1"
 
 <nav>
   <div class="nav-inner">
-    <span class="brand">Mona Weathers</span>
-    <a class="nav-back" href="/">
+    <div class="brand"><span class="teal-dot"></span>Scaling Readiness Diagnostic</div>
+    <a class="nav-link" href="/">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M11 18l-6-6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
       monaweathers.com
     </a>
@@ -159,64 +190,80 @@ src="https://www.facebook.com/tr?id=1596541782072028&ev=PageView&noscript=1"
 
 <!-- HERO -->
 <section class="hero">
-  <div class="wrap-narrow">
-    <div class="hero-badge"><span class="dot"></span>Coming Soon &mdash; Join the Waitlist</div>
-    <h1>Is your business actually ready to <em>scale?</em></h1>
-    <p class="lead">Most coaches try to scale before the foundation is solid. The Scaling Readiness Diagnostic shows you exactly where you stand &mdash; and what to fix first.</p>
-    <a href="#waitlist" class="btn btn-primary">Join the Waitlist</a>
-  </div>
-</section>
+  <div class="hero-inner">
 
-<!-- SCREENSHOT -->
-<section class="screenshot-section">
-  <div class="screenshot-wrap">
-    <div class="screenshot-label">
-      <span class="label">A look inside</span>
-    </div>
-    <div class="screenshot-placeholder">
-      <div class="screenshot-bar">
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
-      </div>
-      <div class="screenshot-body">
-        <div class="diag-progress">
-          <div class="diag-progress-bar"><div class="diag-progress-fill"></div></div>
-          <div class="diag-progress-label">Section 2 of 5 &mdash; Client Acquisition</div>
-        </div>
-        <p class="diag-q">How do most of your clients find you right now?</p>
-        <div class="diag-options">
-          <div class="diag-option selected">
-            <div class="radio"></div>
-            Mostly referrals and word of mouth
-          </div>
-          <div class="diag-option">
-            <div class="radio"></div>
-            Social media content I post consistently
-          </div>
-          <div class="diag-option">
-            <div class="radio"></div>
-            Paid ads or outreach
-          </div>
-          <div class="diag-option">
-            <div class="radio"></div>
-            Honestly, it varies &mdash; no clear pattern
-          </div>
-        </div>
-        <div class="diag-nav">
-          <button class="diag-btn">Next &rarr;</button>
-        </div>
+    <div class="hero-text">
+      <span class="hero-eyebrow">Coming Soon &mdash; Join the Waitlist</span>
+      <h1>Are you ready to scale beyond <em>one-to-one?</em></h1>
+      <p class="lead">A short diagnostic that scores your business across four key areas &mdash; so you know exactly where you stand before you try to grow.</p>
+      <div class="hero-actions">
+        <a href="#waitlist" class="btn btn-primary">Join the Waitlist &rarr;</a>
+        <span class="hero-note">Takes about 8 minutes.</span>
       </div>
     </div>
+
+    <!-- Score card mockup -->
+    <div class="score-card">
+      <span class="score-card-label">Sample Result</span>
+
+      <div class="score-gauge-row">
+        <svg class="gauge-svg" viewBox="0 0 110 110" fill="none">
+          <!-- Track -->
+          <circle cx="55" cy="55" r="44" stroke="#2c2820" stroke-width="7" fill="none"/>
+          <!-- Progress: 74% of 2π×44 = 276.5 → 74% = 204.6 -->
+          <circle cx="55" cy="55" r="44" stroke="#0097B2" stroke-width="7" fill="none"
+            stroke-dasharray="204.6 276.5"
+            stroke-linecap="round"
+            transform="rotate(-90 55 55)"/>
+          <!-- Score -->
+          <text x="55" y="50" text-anchor="middle" font-family="Newsreader, Georgia, serif" font-size="28" fill="#f0ebe3" font-weight="400">74</text>
+          <text x="55" y="67" text-anchor="middle" font-family="Hanken Grotesk, system-ui, sans-serif" font-size="11" fill="#7a7066">/100</text>
+        </svg>
+        <div class="score-meta">
+          <div class="score-status">Ready to Scale</div>
+          <p class="score-desc">Strong foundation in most areas. One gap to close before expanding.</p>
+        </div>
+      </div>
+
+      <div class="categories">
+        <div class="cat-row">
+          <span class="cat-name">Client Clarity</span>
+          <div class="cat-badge-green">
+            <svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#22c55e" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+        </div>
+        <div class="cat-row">
+          <span class="cat-name">Offer Transformation</span>
+          <div class="cat-badge-green">
+            <svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#22c55e" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+        </div>
+        <div class="cat-row">
+          <span class="cat-name">Proof at 1:1</span>
+          <div class="cat-badge-green">
+            <svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#22c55e" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+        </div>
+        <div class="cat-row">
+          <span class="cat-name">Systems &amp; Capacity</span>
+          <div class="cat-badge-yellow">
+            <div style="width:9px;height:9px;border-radius:50%;background:#f6d67a;"></div>
+          </div>
+        </div>
+      </div>
+      <p class="score-card-note">Illustrative result &mdash; yours will reflect your actual business.</p>
+    </div>
+
   </div>
+  <div class="hero-rule"></div>
 </section>
 
-<!-- WHAT YOU GET -->
+<!-- WHAT YOU'LL FIND OUT -->
 <section class="what">
   <div class="wrap">
-    <span class="label" style="text-align:center; display:block;">What you'll find out</span>
+    <span class="section-label">What you&rsquo;ll find out</span>
     <h2>A clear picture, not a vague score.</h2>
-    <p class="sub">The diagnostic looks at the five areas that actually determine whether your business can scale &mdash; or will just get louder.</p>
+    <p class="sub">The diagnostic looks at the areas that actually determine whether your business can scale &mdash; or will just get louder and harder.</p>
     <div class="outcomes">
       <div class="outcome">
         <div class="n">01</div>
@@ -232,7 +279,54 @@ src="https://www.facebook.com/tr?id=1596541782072028&ev=PageView&noscript=1"
       </div>
       <div class="outcome">
         <div class="n">04</div>
-        <p>A prioritized list of what to fix first, so you're not guessing where to focus</p>
+        <p>A prioritized list of what to fix first, so you&rsquo;re not guessing where to focus</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOUR AREAS -->
+<section class="areas">
+  <div class="wrap">
+    <span class="section-label">The four areas</span>
+    <h2>Scored across what actually matters.</h2>
+    <p class="sub">Every answer feeds into one of four categories. You get a score for each &mdash; not just one overall number.</p>
+    <div class="areas-grid">
+      <div class="area-pill">
+        <div class="area-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" stroke-linecap="round"/></svg>
+        </div>
+        <div class="area-text">
+          <strong>Client Clarity</strong>
+          <span>Do you know exactly who you help and how?</span>
+        </div>
+      </div>
+      <div class="area-pill">
+        <div class="area-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="area-text">
+          <strong>Offer Transformation</strong>
+          <span>Is your outcome clear and worth the investment?</span>
+        </div>
+      </div>
+      <div class="area-pill">
+        <div class="area-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="area-text">
+          <strong>Proof at 1:1</strong>
+          <span>Do you have evidence your work gets results?</span>
+        </div>
+      </div>
+      <div class="area-pill">
+        <div class="area-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4" stroke-linecap="round"/></svg>
+        </div>
+        <div class="area-text">
+          <strong>Systems &amp; Capacity</strong>
+          <span>Can your operations handle more clients?</span>
+        </div>
       </div>
     </div>
   </div>
@@ -244,7 +338,7 @@ src="https://www.facebook.com/tr?id=1596541782072028&ev=PageView&noscript=1"
     <div class="form-card">
       <span class="eyebrow">Join the Waitlist</span>
       <h2>Be first to know when it drops.</h2>
-      <p class="sub">Drop your email below and I'll let you know the moment the Scaling Readiness Diagnostic is ready.</p>
+      <p class="sub">Drop your email below and I&rsquo;ll let you know the moment the Scaling Readiness Diagnostic is ready.</p>
 
       <div id="fd-form-6a557298baa84a3ee444b6ff"></div>
       <script>
