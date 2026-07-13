@@ -22,6 +22,19 @@ fbq('track', 'PageView');
 src="https://www.facebook.com/tr?id=1596541782072028&ev=PageView&noscript=1"
 /></noscript>
 <!-- End Meta Pixel Code -->
+<!-- Flodesk -->
+<script>
+  (function(w, d, t, h, s, n) {
+    w.FlodeskObject = n;
+    var fn = function() { (w[n].q = w[n].q || []).push(arguments); };
+    w[n] = w[n] || fn;
+    var f = d.getElementsByTagName(t)[0];
+    var v = '?v=' + Math.floor(new Date().getTime() / (120 * 1000)) * 60;
+    var sm = d.createElement(t); sm.async = true; sm.type = 'module'; sm.src = h + s + '.mjs' + v; f.parentNode.insertBefore(sm, f);
+    var sn = d.createElement(t); sn.async = true; sn.noModule = true; sn.src = h + s + '.js' + v; f.parentNode.insertBefore(sn, f);
+  })(window, document, 'script', 'https://assets.flodesk.com', '/universal', 'fd');
+</script>
+<!-- End Flodesk -->
 <!-- OpenAI Pixel Code -->
 <script>!function(w,d,s,u){if(w.oaiq)return;var q=function(){q.q.push(arguments)};q.q=[];w.oaiq=q;var j=d.createElement(s);j.async=1;j.src=u;var f=d.getElementsByTagName(s)[0];f.parentNode.insertBefore(j,f)}(window,document,"script","https://bzrcdn.openai.com/sdk/oaiq.min.js");oaiq("init",{pixelId:"6uDnseGUA4oEWbSawFkXim",debug:true});</script>
 <!-- End OpenAI Pixel Code -->
@@ -233,11 +246,13 @@ src="https://www.facebook.com/tr?id=1596541782072028&ev=PageView&noscript=1"
       <h2>Be first to know when it drops.</h2>
       <p class="sub">Drop your email below and I'll let you know the moment the Scaling Readiness Diagnostic is ready.</p>
 
-      <!-- FLODESK FORM — replace this placeholder with your Flodesk embed code -->
-      <div class="form-placeholder">
-        Flodesk form will go here
-      </div>
-      <!-- END FLODESK FORM -->
+      <div id="fd-form-6a557298baa84a3ee444b6ff"></div>
+      <script>
+        window.fd('form', {
+          formId: '6a557298baa84a3ee444b6ff',
+          containerEl: '#fd-form-6a557298baa84a3ee444b6ff'
+        });
+      </script>
 
     </div>
   </div>
