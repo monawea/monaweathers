@@ -151,10 +151,16 @@ src="https://www.facebook.com/tr?id=1596541782072028&ev=PageView&noscript=1"
   }
 
   /* Positioning strip */
-  .strip { background: var(--ink); color: #F4ECDF; padding: 30px 0; }
-  .strip-inner { display: flex; align-items: center; justify-content: center; gap: 26px; flex-wrap: wrap; text-align: center; }
-  .strip-inner p { font-family: var(--font-display); font-size: clamp(20px, 2.4vw, 27px); font-style: italic; font-weight: 400; }
-  .strip-inner .tag { font-family: var(--font-body); font-size: 12px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); border: 1px solid color-mix(in srgb, #F4ECDF 24%, transparent); border-radius: 999px; padding: 7px 15px; }
+  .strip { background: var(--ink); color: #F4ECDF; padding: 38px 0; }
+  .strip-inner { display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; align-items: center; }
+  .strip-item { text-align: center; padding: 0 40px; }
+  .strip-item p { font-family: var(--font-display); font-size: clamp(15px, 1.7vw, 20px); font-style: italic; font-weight: 400; line-height: 1.45; margin: 0; }
+  .strip-div { width: 1px; height: 52px; background: rgba(246,238,225,0.18); }
+  @media (max-width: 760px) {
+    .strip-inner { grid-template-columns: 1fr; gap: 28px; padding: 0 24px; }
+    .strip-div { width: 48px; height: 1px; margin: 0 auto; }
+    .strip-item { padding: 0; }
+  }
 
   /* Section scaffolding */
   section { padding: 100px 0; }
@@ -343,8 +349,17 @@ src="https://www.facebook.com/tr?id=1596541782072028&ev=PageView&noscript=1"
   <!-- POSITIONING STRIP -->
   <div class="strip">
     <div class="wrap strip-inner">
-      <span class="tag">The Mission</span>
-      <p>Helping business owners move from stalled to scalable growth with structure, focus, and momentum.</p>
+      <div class="strip-item">
+        <p>Helping Coaches Build Systems to Attract, Connect &amp; Convert Clients</p>
+      </div>
+      <div class="strip-div"></div>
+      <div class="strip-item">
+        <p>Simplifying Growth with Smart Systems &amp; AI Integration</p>
+      </div>
+      <div class="strip-div"></div>
+      <div class="strip-item">
+        <p>Leverage Time &amp; Energy for Meaningful Business Growth</p>
+      </div>
     </div>
   </div>
 
