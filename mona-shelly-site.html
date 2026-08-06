@@ -710,9 +710,9 @@ src="https://www.facebook.com/tr?id=1596541782072028&ev=PageView&noscript=1"/></
 </div>
 
 <!-- TESTIMONIAL MODAL -->
-<div id="testiModal" onclick="closeModal()" style="display:none;position:fixed;inset:0;background:rgba(25,23,19,.75);align-items:center;justify-content:center;z-index:1000;padding:24px;">
-  <div id="testiModalInner" onclick="event.stopPropagation()" style="border:2px solid #191713;border-radius:14px;padding:28px;width:min(520px,100%);max-height:90vh;overflow:auto;box-shadow:0 20px 60px rgba(0,0,0,.4);position:relative;">
-    <button onclick="closeModal()" style="position:absolute;top:14px;right:14px;width:34px;height:34px;border-radius:50%;border:2px solid #191713;background:#fff;font-size:16px;font-weight:700;cursor:pointer;line-height:1;font-family:'Space Grotesk',sans-serif;">&#215;</button>
+<div id="testiModal" onclick="closeModal()" style="display:none;position:fixed;inset:0;background:rgba(25,23,19,.85);align-items:center;justify-content:center;z-index:1000;padding:20px;">
+  <div id="testiModalInner" onclick="event.stopPropagation()" style="border:2px solid #191713;border-radius:14px;padding:28px;width:min(880px,100%);max-height:92vh;overflow:auto;box-shadow:0 20px 60px rgba(0,0,0,.5);position:relative;">
+    <button onclick="closeModal()" style="position:absolute;top:14px;right:14px;width:34px;height:34px;border-radius:50%;border:2px solid #191713;background:#fff;font-size:16px;font-weight:700;cursor:pointer;line-height:1;font-family:'Space Grotesk',sans-serif;z-index:1;">&#215;</button>
     <div id="testiModalContent"></div>
   </div>
 </div>
@@ -755,11 +755,12 @@ src="https://www.facebook.com/tr?id=1596541782072028&ev=PageView&noscript=1"/></
         '<div style=”font-size:20px;line-height:1.5;margin-bottom:20px;”>' + data.quote + '</div>' +
         '<div style=”font-family:\'IBM Plex Mono\',monospace;font-size:12px;color:' + textColor + ';”>' + data.author + '</div>';
     } else if (data.embedUrl) {
+      inner.style.padding = '14px';
       content.innerHTML =
-        '<div style=”width:100%;aspect-ratio:16/9;border-radius:10px;overflow:hidden;border:2px solid ' + borderColor + ';' + (data.author ? 'margin-bottom:16px;' : '') + '”>' +
-          '<iframe src=”' + data.embedUrl + '” style=”width:100%;height:100%;border:none;” allowfullscreen allow=”autoplay”></iframe>' +
+        '<div style=”width:100%;aspect-ratio:16/9;border-radius:8px;overflow:hidden;' + (data.author ? 'margin-bottom:14px;' : '') + '”>' +
+          '<iframe src=”' + data.embedUrl + '” style=”width:100%;height:100%;border:none;display:block;” allowfullscreen allow=”autoplay; encrypted-media”></iframe>' +
         '</div>' +
-        (data.author ? '<div style=”font-family:\'IBM Plex Mono\',monospace;font-size:12px;color:' + textColor + ';”>▶ ' + data.author + '</div>' : '');
+        (data.author ? '<div style=”font-family:\'IBM Plex Mono\',monospace;font-size:12px;color:' + textColor + ';padding:4px 2px;”>▶ ' + data.author + '</div>' : '');
     } else {
       content.innerHTML =
         '<div style=”width:100%;aspect-ratio:16/9;border-radius:10px;border:2px solid ' + borderColor + ';background:rgba(25,23,19,.06);display:flex;align-items:center;justify-content:center;' + (data.author ? 'margin-bottom:16px;' : '') + '”>' +
@@ -776,6 +777,7 @@ src="https://www.facebook.com/tr?id=1596541782072028&ev=PageView&noscript=1"/></
   function closeModal() {
     document.getElementById('testiModal').style.display = 'none';
     document.getElementById('testiModalContent').innerHTML = '';
+    document.getElementById('testiModalInner').style.padding = '28px';
     if (marqueeTrack) marqueeTrack.style.animationPlayState = 'running';
     document.body.style.overflow = '';
   }
