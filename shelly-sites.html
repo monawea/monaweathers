@@ -27,6 +27,31 @@
 
   ::selection { background: #ffcc4d; }
 
+  /* LAUNCH STRIP */
+  .launch-strip {
+    background: #ff5a36;
+    color: #f6f1e7;
+    overflow: hidden;
+    white-space: nowrap;
+    padding: 9px 0;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    position: sticky;
+    top: 0;
+    z-index: 102;
+  }
+  .launch-track {
+    display: inline-block;
+    white-space: nowrap;
+    animation: launch-scroll 30s linear infinite;
+  }
+  @keyframes launch-scroll {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-25%); }
+  }
+
   /* NAV */
   .site-nav {
     display: flex;
@@ -35,7 +60,7 @@
     padding: 16px 32px;
     border-bottom: 1px solid rgba(25,23,19,.08);
     position: sticky;
-    top: 0;
+    top: 38px;
     background: #f6f1e7;
     z-index: 100;
   }
@@ -600,6 +625,16 @@
 
 <div id="cursor-dot"></div>
 
+<!-- LAUNCH STRIP -->
+<div class="launch-strip">
+  <div class="launch-track">
+    <span>⚡ Launch pricing ends in <span class="strip-countdown">--</span> &nbsp;·&nbsp; Basic $159 &nbsp;·&nbsp; Premium $349 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+    <span>⚡ Launch pricing ends in <span class="strip-countdown">--</span> &nbsp;·&nbsp; Basic $159 &nbsp;·&nbsp; Premium $349 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+    <span>⚡ Launch pricing ends in <span class="strip-countdown">--</span> &nbsp;·&nbsp; Basic $159 &nbsp;·&nbsp; Premium $349 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+    <span>⚡ Launch pricing ends in <span class="strip-countdown">--</span> &nbsp;·&nbsp; Basic $159 &nbsp;·&nbsp; Premium $349 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+  </div>
+</div>
+
 <!-- NAV -->
 <nav class="site-nav">
   <a href="/mona-shelly-site" class="nav-brand">
@@ -822,11 +857,13 @@
     <div class="cta-label">LIMITED TIME</div>
     <h2 class="cta-headline">Launch pricing ends soon.</h2>
     <div id="countdown" class="countdown">
-      <div class="countdown-unit"><div class="countdown-num" id="cd-hours">48</div><div class="countdown-label">HOURS</div></div>
+      <div class="countdown-unit"><div class="countdown-num" id="cd-days">--</div><div class="countdown-label">DAYS</div></div>
       <div class="countdown-sep">:</div>
-      <div class="countdown-unit"><div class="countdown-num" id="cd-mins">00</div><div class="countdown-label">MINS</div></div>
+      <div class="countdown-unit"><div class="countdown-num" id="cd-hours">--</div><div class="countdown-label">HRS</div></div>
       <div class="countdown-sep">:</div>
-      <div class="countdown-unit"><div class="countdown-num" id="cd-secs">00</div><div class="countdown-label">SECS</div></div>
+      <div class="countdown-unit"><div class="countdown-num" id="cd-mins">--</div><div class="countdown-label">MINS</div></div>
+      <div class="countdown-sep">:</div>
+      <div class="countdown-unit"><div class="countdown-num" id="cd-secs">--</div><div class="countdown-label">SECS</div></div>
     </div>
     <div class="cta-sub">Basic $159 &nbsp;·&nbsp; Premium $349</div>
     <a href="#pricing" class="cta-btn">Get Your Shelly Site →</a>
@@ -874,7 +911,7 @@
      Format: 'YYYY-MM-DDTHH:MM:SS' in your local timezone, or use
      a UTC string like '2026-08-15T23:59:00-05:00'
      ============================================================ */
-  var DEADLINE = '2026-08-15T23:59:00-05:00'; // <-- CHANGE THIS
+  var DEADLINE = '2026-08-11T10:00:00-04:00'; // ends 10 AM EDT Aug 11
 
   function updateCountdown() {
     var now  = new Date().getTime();
@@ -882,20 +919,27 @@
     var diff = end - now;
 
     var el = document.getElementById('countdown');
-    if (!el) return;
 
     if (diff <= 0) {
-      el.innerHTML = '<div class="countdown-expired">Launch pricing has ended.</div>';
+      if (el) el.innerHTML = '<div class="countdown-expired">Launch pricing has ended.</div>';
+      document.querySelectorAll('.strip-countdown').forEach(function(s) { s.textContent = 'ENDED'; });
       return;
     }
 
-    var h = Math.floor(diff / (1000 * 60 * 60));
+    var d = Math.floor(diff / (1000 * 60 * 60 * 24));
+    var h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
     var m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
     var s = Math.floor((diff % (1000 * 60)) / 1000);
 
-    document.getElementById('cd-hours').textContent = String(h).padStart(2, '0');
-    document.getElementById('cd-mins').textContent  = String(m).padStart(2, '0');
-    document.getElementById('cd-secs').textContent  = String(s).padStart(2, '0');
+    if (el) {
+      document.getElementById('cd-days').textContent  = String(d).padStart(2, '0');
+      document.getElementById('cd-hours').textContent = String(h).padStart(2, '0');
+      document.getElementById('cd-mins').textContent  = String(m).padStart(2, '0');
+      document.getElementById('cd-secs').textContent  = String(s).padStart(2, '0');
+    }
+
+    var stripText = d + 'd ' + String(h).padStart(2,'0') + 'h ' + String(m).padStart(2,'0') + 'm ' + String(s).padStart(2,'0') + 's';
+    document.querySelectorAll('.strip-countdown').forEach(function(el) { el.textContent = stripText; });
   }
 
   updateCountdown();
