@@ -31,7 +31,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 32px;
+    padding: 16px 32px;
     border-bottom: 1px solid rgba(25,23,19,.08);
     position: sticky;
     top: 0;
@@ -47,14 +47,12 @@
     text-decoration: none;
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
   }
-  .nav-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: #ff5a36;
-    display: inline-block;
+  .nav-logo {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
   }
   .nav-cta {
     background: #191713;
@@ -76,7 +74,7 @@
   }
 
   /* SECTIONS */
-  section { padding: 80px 0; border-bottom: 1px solid rgba(25,23,19,.08); }
+  section { padding: 72px 0; border-bottom: 1px solid rgba(25,23,19,.08); }
   section:last-of-type { border-bottom: none; }
 
   /* REVEAL */
@@ -95,7 +93,7 @@
 
   /* HERO */
   .hero-headline {
-    font-size: clamp(32px, 5vw, 52px);
+    font-size: clamp(30px, 5vw, 50px);
     font-weight: 700;
     line-height: 1.1;
     letter-spacing: -0.02em;
@@ -107,14 +105,16 @@
   }
   .hero-body {
     font-size: 17px;
-    line-height: 1.7;
+    line-height: 1.75;
     color: rgba(25,23,19,.75);
     max-width: 640px;
   }
   .hero-body p + p { margin-top: 16px; }
-  .hero-photo-placeholder {
+
+  /* VIDEO PLACEHOLDER */
+  .video-placeholder {
     width: 100%;
-    aspect-ratio: 16/7;
+    aspect-ratio: 16/9;
     border-radius: 16px;
     border: 2px dashed rgba(25,23,19,.2);
     background: rgba(25,23,19,.04);
@@ -122,13 +122,21 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 8px;
+    gap: 12px;
     margin-top: 40px;
     color: rgba(25,23,19,.35);
     font-family: 'IBM Plex Mono', monospace;
     font-size: 12px;
   }
-  .hero-photo-placeholder svg { opacity: 0.3; }
+  .video-placeholder-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    border: 2px dashed rgba(25,23,19,.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
   /* WHY SECTION */
   .why-heading {
@@ -153,6 +161,7 @@
     line-height: 1.6;
     color: rgba(25,23,19,.8);
     margin: 32px 0;
+    font-weight: 500;
   }
 
   /* WHAT'S INCLUDED */
@@ -185,9 +194,6 @@
     border-radius: 50%;
     background: #ffcc4d;
     margin-top: 2px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     background-image: url("data:image/svg+xml,%3Csvg width='10' height='8' viewBox='0 0 10 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 4l2.5 2.5L9 1' stroke='%23191713' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-position: center;
@@ -202,7 +208,6 @@
     border-radius: 16px;
     padding: 28px;
     background: #fff;
-    position: relative;
   }
   .pricing-card.featured {
     background: #191713;
@@ -268,11 +273,10 @@
     min-width: 12px;
   }
 
-  /* PLAN / HOW IT WORKS */
+  /* PLAN */
   .plan-steps {
     display: flex;
     flex-direction: column;
-    gap: 0;
     margin-top: 12px;
   }
   .plan-step {
@@ -310,6 +314,52 @@
     color: rgba(25,23,19,.65);
   }
 
+  /* FAQ */
+  .faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-top: 12px;
+  }
+  .faq-item {
+    border-bottom: 1px solid rgba(25,23,19,.08);
+  }
+  .faq-q {
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
+    padding: 20px 0;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: #191713;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+  }
+  .faq-q:hover { color: #ff5a36; }
+  .faq-icon {
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 1;
+    min-width: 20px;
+    text-align: center;
+    transition: transform 0.2s;
+    color: #ff5a36;
+  }
+  .faq-item.open .faq-icon { transform: rotate(45deg); }
+  .faq-a {
+    display: none;
+    padding: 0 0 20px;
+    font-size: 16px;
+    line-height: 1.7;
+    color: rgba(25,23,19,.7);
+  }
+  .faq-item.open .faq-a { display: block; }
+
   /* CTA SECTION */
   .cta-section {
     background: #191713;
@@ -317,7 +367,7 @@
     padding: 60px 48px;
     text-align: center;
     color: #f6f1e7;
-    margin: 40px 0 80px;
+    margin: 40px 0 24px;
     position: relative;
     overflow: hidden;
   }
@@ -378,6 +428,20 @@
     z-index: 1;
   }
   .cta-btn:hover { background: #e0431f; transform: translateY(-2px); color: #f6f1e7; }
+  .cta-contact {
+    margin-top: 20px;
+    font-size: 14px;
+    color: rgba(246,241,231,.5);
+    font-family: 'IBM Plex Mono', monospace;
+    position: relative;
+    z-index: 1;
+  }
+  .cta-contact a {
+    color: rgba(246,241,231,.7);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(246,241,231,.3);
+  }
+  .cta-contact a:hover { color: #ffcc4d; border-bottom-color: #ffcc4d; }
 
   /* FOOTER */
   .site-footer {
@@ -398,8 +462,7 @@
     border-radius: 50%;
     background: #ff5a36;
     position: fixed;
-    top: 0;
-    left: 0;
+    top: 0; left: 0;
     pointer-events: none;
     z-index: 9999;
     transform: translate(-50%, -50%);
@@ -410,8 +473,8 @@
 
   /* RESPONSIVE */
   @media (max-width: 600px) {
-    .site-nav { padding: 16px 20px; }
-    section { padding: 56px 0; }
+    .site-nav { padding: 14px 20px; }
+    section { padding: 52px 0; }
     .pricing-grid { grid-template-columns: 1fr; }
     .cta-section { padding: 40px 24px; }
     .site-footer { flex-direction: column; gap: 8px; text-align: center; }
@@ -425,7 +488,8 @@
 <!-- NAV -->
 <nav class="site-nav">
   <a href="/mona-shelly-site" class="nav-brand">
-    <span class="nav-dot"></span>Shelly Sites
+    <img src="shelly-logo.webp" alt="Shelly Sites" class="nav-logo">
+    Shelly Sites
   </a>
   <a href="#get-started" class="nav-cta">Get Your Site →</a>
 </nav>
@@ -436,16 +500,19 @@
   <section data-reveal>
     <div class="section-label">THE PROBLEM</div>
     <h1 class="hero-headline">
-      Your linktree can't hold your business.<br>
-      <em>A full website is more than anyone needs.</em>
+      A full website is more than most coaches need.<br>
+      <em>But a linktree isn't enough.</em>
     </h1>
     <div class="hero-body">
       <p>You built your audience on video. But when someone clicks the link in your bio, they land on a linktree — a page designed for a phone screen, because that's all it was ever built for. A few buttons, no story, nothing that shows what you actually do or why you can help.</p>
       <p>The other option is worse. A full website has more pages than anyone will click through, when all a prospect really wants is the highlights — with the option to go deeper if they're interested. And almost none of them have room for the video that brought that visitor there in the first place.</p>
     </div>
-    <div class="hero-photo-placeholder">
-      <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-      <span>Photo — coming soon</span>
+    <!-- Video placeholder — replace src with YouTube embed when available -->
+    <div class="video-placeholder">
+      <div class="video-placeholder-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+      </div>
+      <span>Video — coming soon</span>
     </div>
   </section>
 
@@ -471,11 +538,11 @@
       <li>Home page, 6 sections: sidebar bio, header, reviews, services, plan, newsletter signup</li>
       <li>3 offer pages, 5 sections each, linked from the home page</li>
       <li>1 external link block (e.g. your community)</li>
-      <li>You submit your content through a simple form — text, images, and links for each section</li>
+      <li>Submit your content through a simple form — text, images, and links for each section</li>
       <li>Fully customized to your brand colors</li>
       <li>Full handoff with instructions to host it yourself — no monthly platform fees, no lock-in</li>
       <li>Support if you have questions along the way</li>
-      <li>Turnaround: 3–5 days after we receive all your site info</li>
+      <li>Turnaround: 5–7 days after we receive all your site info</li>
     </ul>
 
     <div class="pricing-grid">
@@ -530,7 +597,7 @@
         <div class="plan-num">03</div>
         <div class="plan-text">
           <strong>I build your site</strong>
-          <p>3–5 days once everything's in. You'll hear from me if I have questions.</p>
+          <p>5–7 days once everything's in. You'll hear from me if I have questions.</p>
         </div>
       </div>
       <div class="plan-step">
@@ -550,6 +617,42 @@
     </div>
   </section>
 
+  <!-- FAQ -->
+  <section data-reveal>
+    <div class="section-label">FAQ</div>
+    <h2 class="why-heading">Questions people ask before buying</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q">What do I need to provide?<span class="faq-icon">+</span></button>
+        <div class="faq-a">Your bio, headshot, offer descriptions, pricing, links (community, social, booking), and any images you want included. You'll get a simple form that walks you through each section so nothing gets missed.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">What's the difference between Basic and Premium?<span class="faq-icon">+</span></button>
+        <div class="faq-a">Both get you the same site. The difference is setup. Basic gives you the finished files and instructions — you create a Hostinger account and drop them in. Premium means I handle the Hostinger setup, domain transfer, and GitHub for you. It's done for you by the time you see it.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Do I need any technical knowledge?<span class="faq-icon">+</span></button>
+        <div class="faq-a">No. You fill out a form and I build it. Basic requires you to create a Hostinger account and upload files — it's straightforward, and the handoff instructions walk you through it. Premium skips all of that.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Can I make changes after handoff?<span class="faq-icon">+</span></button>
+        <div class="faq-a">The site is yours — you can edit the HTML files directly, or hire someone to do it. There are no revisions included after handoff, so make sure your content is ready before you submit your info.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Will it work on mobile?<span class="faq-icon">+</span></button>
+        <div class="faq-a">Yes. Every Shelly Site is built to work on both mobile and desktop. That's the whole point — it's designed for how people actually browse, whether they came from your YouTube link or found you on a laptop.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Are there ongoing fees?<span class="faq-icon">+</span></button>
+        <div class="faq-a">No ongoing fees to me. You'll need a Hostinger hosting plan (typically around $3–5/month) and your domain name renewal. That's it. No platform lock-in, no subscriptions.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">What if I have a question before I buy?<span class="faq-icon">+</span></button>
+        <div class="faq-a">Send me a message at <a href="mailto:contact@monaweathers.com" style="color:#ff5a36;text-decoration:none;border-bottom:1px solid rgba(255,90,54,.3);">contact@monaweathers.com</a> and I'll get back to you.</div>
+      </div>
+    </div>
+  </section>
+
 </div>
 
 <!-- CTA -->
@@ -561,6 +664,7 @@
     <h2 class="cta-headline">Launch pricing ends in 48 hours.</h2>
     <div class="cta-sub">Basic $159 &nbsp;·&nbsp; Premium $349</div>
     <a href="#" class="cta-btn">Get Your Shelly Site →</a>
+    <div class="cta-contact">Have a question first? <a href="mailto:contact@monaweathers.com">Send me a message</a></div>
   </div>
 </div>
 
@@ -587,6 +691,16 @@
     } else {
       observer.observe(el);
     }
+  });
+
+  /* FAQ accordion */
+  document.querySelectorAll('.faq-q').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var item = btn.parentElement;
+      var isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(function(el) { el.classList.remove('open'); });
+      if (!isOpen) item.classList.add('open');
+    });
   });
 
   /* Custom cursor dot */
