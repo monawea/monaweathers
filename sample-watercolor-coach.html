@@ -505,6 +505,66 @@ a:hover{color:#2d6b78}
 
   </main></div></div></div>
 
+<style>
+/* Wiggle on testimonial card hover */
+.scp0 { cursor: pointer; }
+.scp0:hover { animation: wiggle 0.5s ease; }
+</style>
 
+<script>
+// Accordion
+document.querySelectorAll('button[style*="justify-content: space-between"]').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    var content = btn.nextElementSibling;
+    if (!content) return;
+    var icon = btn.querySelector('span:last-child');
+    var isOpen = content.style.maxHeight && content.style.maxHeight !== '0px';
+    document.querySelectorAll('button[style*="justify-content: space-between"]').forEach(function(other) {
+      if (other !== btn) {
+        var oc = other.nextElementSibling;
+        var oi = other.querySelector('span:last-child');
+        if (oc) oc.style.maxHeight = '0px';
+        if (oi) oi.style.transform = 'rotate(0deg)';
+      }
+    });
+    if (isOpen) {
+      content.style.maxHeight = '0px';
+      if (icon) icon.style.transform = 'rotate(0deg)';
+    } else {
+      content.style.maxHeight = content.scrollHeight + 'px';
+      if (icon) icon.style.transform = 'rotate(45deg)';
+    }
+  });
+});
+
+// Video modal
+function openVideoModal() {
+  var overlay = document.createElement('div');
+  overlay.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.75);z-index:9999;display:flex;align-items:center;justify-content:center;padding:20px;cursor:pointer;';
+  var box = document.createElement('div');
+  box.style.cssText = 'background:#fff;border-radius:20px;padding:24px;max-width:640px;width:100%;position:relative;cursor:default;';
+  box.addEventListener('click', function(e) { e.stopPropagation(); });
+  var close = document.createElement('button');
+  close.innerHTML = '&times;';
+  close.style.cssText = 'position:absolute;top:10px;right:14px;background:none;border:none;font-size:28px;line-height:1;cursor:pointer;color:#33474a;padding:0;';
+  var wrap = document.createElement('div');
+  wrap.style.cssText = 'position:relative;width:100%;padding-bottom:56.25%;background:#eef4f2;border-radius:12px;overflow:hidden;';
+  var label = document.createElement('div');
+  label.innerHTML = '<div style="width:52px;height:52px;border-radius:50%;background:#3f8f9e;display:flex;align-items:center;justify-content:center;"><svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><path d="M5 3l16 9-16 9V3z"/></svg></div><div style="color:rgba(51,71,74,0.5);font-size:13px;margin-top:12px;font-family:sans-serif;">sample video placeholder</div>';
+  label.style.cssText = 'position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;';
+  wrap.appendChild(label);
+  box.appendChild(close);
+  box.appendChild(wrap);
+  overlay.appendChild(box);
+  document.body.appendChild(overlay);
+  function closeModal() { if (document.body.contains(overlay)) document.body.removeChild(overlay); }
+  overlay.addEventListener('click', closeModal);
+  close.addEventListener('click', closeModal);
+  document.addEventListener('keydown', function esc(e) { if (e.key === 'Escape') { closeModal(); document.removeEventListener('keydown', esc); } });
+}
+document.querySelectorAll('div[style*="cursor: pointer"][style*="aspect-ratio"]').forEach(function(el) {
+  el.addEventListener('click', openVideoModal);
+});
+</script>
 
 </body></html>
