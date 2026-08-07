@@ -559,12 +559,12 @@ document.querySelectorAll('button[style*="justify-content: space-between"]').for
   btn.addEventListener('click', function() {
     var content = btn.nextElementSibling;
     if (!content) return;
-    var icon = btn.querySelector('span:last-child');
+    var icon = btn.lastElementChild;
     var isOpen = content.style.maxHeight && content.style.maxHeight !== '0px';
     document.querySelectorAll('button[style*="justify-content: space-between"]').forEach(function(other) {
       if (other !== btn) {
         var oc = other.nextElementSibling;
-        var oi = other.querySelector('span:last-child');
+        var oi = other.lastElementChild;
         if (oc) oc.style.maxHeight = '0px';
         if (oi) oi.style.transform = 'rotate(0deg)';
       }
@@ -613,13 +613,12 @@ var marqueeTrack = document.querySelector('div[style*="running marquee"]');
 var marqueeOuter = document.querySelector('div[style*="overflow: hidden"][style*="-56px"]');
 if (marqueeTrack && marqueeOuter) {
   var marqueePaused = false;
-  function toggleMarquee(e) {
+  marqueeOuter.addEventListener('touchend', function(e) {
     if (e.target.closest('div[style*="cursor: pointer"][style*="aspect-ratio"]')) return;
+    e.preventDefault();
     marqueePaused = !marqueePaused;
     marqueeTrack.style.animationPlayState = marqueePaused ? 'paused' : 'running';
-  }
-  marqueeOuter.addEventListener('touchend', toggleMarquee);
-  marqueeOuter.addEventListener('click', toggleMarquee);
+  }, { passive: false });
 }
 </script>
 
