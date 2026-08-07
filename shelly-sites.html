@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EC1B7WJ2PE"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-EC1B7WJ2PE');</script>
+<script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','1596541782072028');fbq('track','PageView');</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1596541782072028&ev=PageView&noscript=1"/></noscript>
+<script>!function(w,d,s,u){if(w.oaiq)return;var q=function(){q.q.push(arguments)};q.q=[];w.oaiq=q;var j=d.createElement(s);j.async=1;j.src=u;var f=d.getElementsByTagName(s)[0];f.parentNode.insertBefore(j,f)}(window,document,"script","https://bzrcdn.openai.com/sdk/oaiq.min.js");oaiq("init",{pixelId:"6uDnseGUA4oEWbSawFkXim",debug:true});</script>
+<title>Shelly Sites — A Coach Website That Actually Works</title>
+<meta name="description" content="One site, built to work on mobile and browser, that tells your story in the order a prospect actually needs it. No tech headaches, no monthly fees." />
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #f6f1e7;
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+    color: #191713;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection { background: #ffcc4d; }
+
+  /* NAV */
+  .site-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 32px;
+    border-bottom: 1px solid rgba(25,23,19,.08);
+    position: sticky;
+    top: 0;
+    background: #f6f1e7;
+    z-index: 100;
+  }
+  .nav-brand {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: #191713;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .nav-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #ff5a36;
+    display: inline-block;
+  }
+  .nav-cta {
+    background: #191713;
+    color: #f6f1e7;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 10px 20px;
+    border-radius: 999px;
+    transition: background 0.15s;
+  }
+  .nav-cta:hover { background: #ff5a36; color: #f6f1e7; }
+
+  /* LAYOUT */
+  .page-wrap {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* SECTIONS */
+  section { padding: 80px 0; border-bottom: 1px solid rgba(25,23,19,.08); }
+  section:last-of-type { border-bottom: none; }
+
+  /* REVEAL */
+  [data-reveal] { opacity: 0; transform: translateY(24px); transition: opacity 0.55s ease, transform 0.55s ease; }
+  [data-reveal].visible { opacity: 1; transform: translateY(0); }
+
+  /* SECTION LABEL */
+  .section-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: #ff5a36;
+    margin-bottom: 14px;
+  }
+
+  /* HERO */
+  .hero-headline {
+    font-size: clamp(32px, 5vw, 52px);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 24px;
+  }
+  .hero-headline em {
+    font-style: normal;
+    color: #ff5a36;
+  }
+  .hero-body {
+    font-size: 17px;
+    line-height: 1.7;
+    color: rgba(25,23,19,.75);
+    max-width: 640px;
+  }
+  .hero-body p + p { margin-top: 16px; }
+  .hero-photo-placeholder {
+    width: 100%;
+    aspect-ratio: 16/7;
+    border-radius: 16px;
+    border: 2px dashed rgba(25,23,19,.2);
+    background: rgba(25,23,19,.04);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 40px;
+    color: rgba(25,23,19,.35);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+  }
+  .hero-photo-placeholder svg { opacity: 0.3; }
+
+  /* WHY SECTION */
+  .why-heading {
+    font-size: clamp(24px, 3.5vw, 36px);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    margin-bottom: 24px;
+  }
+  .why-body {
+    font-size: 17px;
+    line-height: 1.75;
+    color: rgba(25,23,19,.75);
+  }
+  .why-body p + p { margin-top: 18px; }
+  .callout-bar {
+    border-left: 3px solid #ff5a36;
+    padding: 16px 20px;
+    background: rgba(255,90,54,.06);
+    border-radius: 0 10px 10px 0;
+    font-size: 16px;
+    line-height: 1.6;
+    color: rgba(25,23,19,.8);
+    margin: 32px 0;
+  }
+
+  /* WHAT'S INCLUDED */
+  .included-intro {
+    font-size: 17px;
+    line-height: 1.7;
+    color: rgba(25,23,19,.75);
+    margin-bottom: 32px;
+  }
+  .includes-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 40px;
+  }
+  .includes-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 16px;
+    line-height: 1.5;
+    color: rgba(25,23,19,.8);
+  }
+  .includes-list li::before {
+    content: '';
+    width: 18px;
+    height: 18px;
+    min-width: 18px;
+    border-radius: 50%;
+    background: #ffcc4d;
+    margin-top: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url("data:image/svg+xml,%3Csvg width='10' height='8' viewBox='0 0 10 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 4l2.5 2.5L9 1' stroke='%23191713' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .pricing-card {
+    border: 2px solid #191713;
+    border-radius: 16px;
+    padding: 28px;
+    background: #fff;
+    position: relative;
+  }
+  .pricing-card.featured {
+    background: #191713;
+    color: #f6f1e7;
+  }
+  .pricing-badge {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    background: #ffcc4d;
+    color: #191713;
+    padding: 4px 10px;
+    border-radius: 999px;
+    display: inline-block;
+    margin-bottom: 16px;
+  }
+  .pricing-name {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .pricing-price {
+    font-size: 36px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: #ff5a36;
+    margin-bottom: 2px;
+  }
+  .pricing-was {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: rgba(25,23,19,.4);
+    margin-bottom: 20px;
+    text-decoration: line-through;
+  }
+  .pricing-card.featured .pricing-was { color: rgba(246,241,231,.4); }
+  .pricing-divider {
+    height: 1px;
+    background: rgba(25,23,19,.1);
+    margin: 16px 0;
+  }
+  .pricing-card.featured .pricing-divider { background: rgba(246,241,231,.15); }
+  .pricing-features {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 14px;
+    line-height: 1.5;
+    color: rgba(25,23,19,.75);
+  }
+  .pricing-card.featured .pricing-features { color: rgba(246,241,231,.75); }
+  .pricing-features li {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .pricing-features li::before {
+    content: '+';
+    font-weight: 700;
+    color: #ff5a36;
+    min-width: 12px;
+  }
+
+  /* PLAN / HOW IT WORKS */
+  .plan-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-top: 12px;
+  }
+  .plan-step {
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+    padding: 24px 0;
+    border-bottom: 1px solid rgba(25,23,19,.08);
+  }
+  .plan-step:last-child { border-bottom: none; }
+  .plan-num {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    color: #ff5a36;
+    background: rgba(255,90,54,.1);
+    width: 32px;
+    height: 32px;
+    min-width: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2px;
+  }
+  .plan-text strong {
+    font-size: 17px;
+    font-weight: 700;
+    display: block;
+    margin-bottom: 4px;
+  }
+  .plan-text p {
+    font-size: 15px;
+    line-height: 1.6;
+    color: rgba(25,23,19,.65);
+  }
+
+  /* CTA SECTION */
+  .cta-section {
+    background: #191713;
+    border-radius: 20px;
+    padding: 60px 48px;
+    text-align: center;
+    color: #f6f1e7;
+    margin: 40px 0 80px;
+    position: relative;
+    overflow: hidden;
+  }
+  .cta-blob {
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    background: #ff5a36;
+    opacity: 0.15;
+    top: -40px;
+    right: -40px;
+    pointer-events: none;
+  }
+  .cta-blob2 {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: #ffcc4d;
+    opacity: 0.12;
+    bottom: -30px;
+    left: -20px;
+    pointer-events: none;
+  }
+  .cta-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: #ffcc4d;
+    margin-bottom: 16px;
+  }
+  .cta-headline {
+    font-size: clamp(24px, 3.5vw, 36px);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    margin-bottom: 10px;
+  }
+  .cta-sub {
+    font-size: 15px;
+    color: rgba(246,241,231,.6);
+    margin-bottom: 32px;
+    font-family: 'IBM Plex Mono', monospace;
+  }
+  .cta-btn {
+    display: inline-block;
+    background: #ff5a36;
+    color: #f6f1e7;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 700;
+    padding: 16px 36px;
+    border-radius: 999px;
+    transition: background 0.15s, transform 0.15s;
+    position: relative;
+    z-index: 1;
+  }
+  .cta-btn:hover { background: #e0431f; transform: translateY(-2px); color: #f6f1e7; }
+
+  /* FOOTER */
+  .site-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 32px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: rgba(25,23,19,.4);
+    border-top: 1px solid rgba(25,23,19,.08);
+  }
+
+  /* CURSOR DOT */
+  #cursor-dot {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: #ff5a36;
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: transform 0.08s ease, opacity 0.2s;
+    mix-blend-mode: multiply;
+  }
+  @media (hover: none) { #cursor-dot { display: none; } }
+
+  /* RESPONSIVE */
+  @media (max-width: 600px) {
+    .site-nav { padding: 16px 20px; }
+    section { padding: 56px 0; }
+    .pricing-grid { grid-template-columns: 1fr; }
+    .cta-section { padding: 40px 24px; }
+    .site-footer { flex-direction: column; gap: 8px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<div id="cursor-dot"></div>
+
+<!-- NAV -->
+<nav class="site-nav">
+  <a href="/mona-shelly-site" class="nav-brand">
+    <span class="nav-dot"></span>Shelly Sites
+  </a>
+  <a href="#get-started" class="nav-cta">Get Your Site →</a>
+</nav>
+
+<div class="page-wrap">
+
+  <!-- HERO — THE PROBLEM -->
+  <section data-reveal>
+    <div class="section-label">THE PROBLEM</div>
+    <h1 class="hero-headline">
+      Your linktree can't hold your business.<br>
+      <em>A full website is more than anyone needs.</em>
+    </h1>
+    <div class="hero-body">
+      <p>You built your audience on video. But when someone clicks the link in your bio, they land on a linktree — a page designed for a phone screen, because that's all it was ever built for. A few buttons, no story, nothing that shows what you actually do or why you can help.</p>
+      <p>The other option is worse. A full website has more pages than anyone will click through, when all a prospect really wants is the highlights — with the option to go deeper if they're interested. And almost none of them have room for the video that brought that visitor there in the first place.</p>
+    </div>
+    <div class="hero-photo-placeholder">
+      <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+      <span>Photo — coming soon</span>
+    </div>
+  </section>
+
+  <!-- WHY I BUILT SHELLY SITES -->
+  <section data-reveal>
+    <div class="section-label">WHY I BUILT THIS</div>
+    <h2 class="why-heading">Why I Built Shelly Sites</h2>
+    <div class="why-body">
+      <p>I kept running into the same gap. Linktree-style pages look great on a phone and fall apart the second someone opens them on a laptop — because they were never designed for a browser, just a thumb. And they don't say enough. A visitor lands, sees a stack of buttons, and has no sense of the problem you solve, the proof you can solve it, or what working with you actually looks like.</p>
+      <p>Full custom websites solve the "not enough information" problem by overcorrecting — ten, twenty pages of content a prospect has to dig through to find the three things they actually came for.</p>
+      <div class="callout-bar">Shelly Sites sits in the middle.</div>
+      <p>One site, built to work on mobile and browser, that tells your story in the order a prospect actually needs it: the problem they have, the proof you can help, the promise of what you deliver, and the plan to get there. Same structure every time, because that structure is what makes people act — but the design, colors, and content are built around your brand, not a template you have to force your business into.</p>
+    </div>
+  </section>
+
+  <!-- WHAT'S INCLUDED — THE PROMISE -->
+  <section data-reveal>
+    <div class="section-label">THE PROMISE</div>
+    <h2 class="why-heading">What's Included</h2>
+    <p class="included-intro">If you want a site that shows visitors exactly what you do, proves you can help, and gets them to act — without the overhead of a full custom build — here's what's included.</p>
+    <ul class="includes-list">
+      <li>4 pages total: 1 home page + 3 offer pages</li>
+      <li>Home page, 6 sections: sidebar bio, header, reviews, services, plan, newsletter signup</li>
+      <li>3 offer pages, 5 sections each, linked from the home page</li>
+      <li>1 external link block (e.g. your community)</li>
+      <li>You submit your content through a simple form — text, images, and links for each section</li>
+      <li>Fully customized to your brand colors</li>
+      <li>Full handoff with instructions to host it yourself — no monthly platform fees, no lock-in</li>
+      <li>Support if you have questions along the way</li>
+      <li>Turnaround: 3–5 days after we receive all your site info</li>
+    </ul>
+
+    <div class="pricing-grid">
+      <div class="pricing-card">
+        <span class="pricing-badge">BASIC</span>
+        <div class="pricing-name">Basic</div>
+        <div class="pricing-price">$159</div>
+        <div class="pricing-was">regularly $349</div>
+        <div class="pricing-divider"></div>
+        <ul class="pricing-features">
+          <li>Everything listed above</li>
+          <li>You handle your own Hostinger setup</li>
+          <li>Drop in your files at handoff</li>
+        </ul>
+      </div>
+      <div class="pricing-card featured">
+        <span class="pricing-badge">PREMIUM</span>
+        <div class="pricing-name">Premium</div>
+        <div class="pricing-price">$349</div>
+        <div class="pricing-was">regularly $649</div>
+        <div class="pricing-divider"></div>
+        <ul class="pricing-features">
+          <li>Everything in Basic</li>
+          <li>Domain name transfer</li>
+          <li>Full initial website setup on Hostinger — done for you</li>
+          <li>GitHub setup support</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS — THE PLAN -->
+  <section data-reveal>
+    <div class="section-label">THE PLAN</div>
+    <h2 class="why-heading">How It Works</h2>
+    <div class="plan-steps">
+      <div class="plan-step">
+        <div class="plan-num">01</div>
+        <div class="plan-text">
+          <strong>Buy your Shelly Site</strong>
+          <p>Choose Basic or Premium — whichever fits where you are right now.</p>
+        </div>
+      </div>
+      <div class="plan-step">
+        <div class="plan-num">02</div>
+        <div class="plan-text">
+          <strong>Submit your info</strong>
+          <p>Fill out the form with your content, images, and links. That's it.</p>
+        </div>
+      </div>
+      <div class="plan-step">
+        <div class="plan-num">03</div>
+        <div class="plan-text">
+          <strong>I build your site</strong>
+          <p>3–5 days once everything's in. You'll hear from me if I have questions.</p>
+        </div>
+      </div>
+      <div class="plan-step">
+        <div class="plan-num">04</div>
+        <div class="plan-text">
+          <strong>You're set up to host it</strong>
+          <p>Basic: create your Hostinger account and drop in your files. Premium: it's already set up for you, domain and all.</p>
+        </div>
+      </div>
+      <div class="plan-step">
+        <div class="plan-num">05</div>
+        <div class="plan-text">
+          <strong>Your Shelly Site is live</strong>
+          <p>Yours to keep. No ongoing fees to me.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- CTA -->
+<div class="page-wrap" id="get-started">
+  <div class="cta-section" data-reveal>
+    <div class="cta-blob"></div>
+    <div class="cta-blob2"></div>
+    <div class="cta-label">LIMITED TIME</div>
+    <h2 class="cta-headline">Launch pricing ends in 48 hours.</h2>
+    <div class="cta-sub">Basic $159 &nbsp;·&nbsp; Premium $349</div>
+    <a href="#" class="cta-btn">Get Your Shelly Site →</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <span>&copy; 2026 Mona Weathers Coaching</span>
+  <a href="/mona-shelly-site" style="color:rgba(25,23,19,.4);text-decoration:none;border-bottom:1px solid rgba(25,23,19,.2);">← Back to Mona's site</a>
+</footer>
+
+<script>
+  /* Scroll reveal */
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0, rootMargin: '0px 0px 80px 0px' });
+
+  document.querySelectorAll('[data-reveal]').forEach(function(el) {
+    if (el.getBoundingClientRect().top < window.innerHeight) {
+      el.classList.add('visible');
+    } else {
+      observer.observe(el);
+    }
+  });
+
+  /* Custom cursor dot */
+  (function() {
+    var dot = document.getElementById('cursor-dot');
+    document.addEventListener('mousemove', function(e) {
+      dot.style.left = e.clientX + 'px';
+      dot.style.top = e.clientY + 'px';
+    });
+    document.addEventListener('mouseleave', function() { dot.style.opacity = '0'; });
+    document.addEventListener('mouseenter', function() { dot.style.opacity = '1'; });
+  })();
+</script>
+
+</body>
+</html>
