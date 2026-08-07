@@ -477,6 +477,58 @@
     z-index: 1;
   }
   .cta-btn:hover { background: #e0431f; transform: translateY(-2px); color: #f6f1e7; }
+  /* Countdown timer */
+  .countdown {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    margin-bottom: 28px;
+    position: relative;
+    z-index: 1;
+  }
+  .countdown-unit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+  .countdown-num {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 36px;
+    font-weight: 600;
+    color: #f6f1e7;
+    background: rgba(246,241,231,.1);
+    border: 1px solid rgba(246,241,231,.15);
+    border-radius: 10px;
+    width: 72px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: -0.02em;
+  }
+  .countdown-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    color: rgba(246,241,231,.45);
+  }
+  .countdown-sep {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 28px;
+    color: rgba(246,241,231,.3);
+    margin-top: 14px;
+    line-height: 1;
+  }
+  .countdown-expired {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 14px;
+    color: rgba(246,241,231,.5);
+    margin-bottom: 28px;
+    position: relative;
+    z-index: 1;
+  }
+
   .cta-contact {
     margin-top: 20px;
     font-size: 14px;
@@ -740,7 +792,14 @@
     <div class="cta-blob"></div>
     <div class="cta-blob2"></div>
     <div class="cta-label">LIMITED TIME</div>
-    <h2 class="cta-headline">Launch pricing ends in 48 hours.</h2>
+    <h2 class="cta-headline">Launch pricing ends soon.</h2>
+    <div id="countdown" class="countdown">
+      <div class="countdown-unit"><div class="countdown-num" id="cd-hours">48</div><div class="countdown-label">HOURS</div></div>
+      <div class="countdown-sep">:</div>
+      <div class="countdown-unit"><div class="countdown-num" id="cd-mins">00</div><div class="countdown-label">MINS</div></div>
+      <div class="countdown-sep">:</div>
+      <div class="countdown-unit"><div class="countdown-num" id="cd-secs">00</div><div class="countdown-label">SECS</div></div>
+    </div>
     <div class="cta-sub">Basic $159 &nbsp;·&nbsp; Premium $349</div>
     <a href="#" class="cta-btn">Get Your Shelly Site →</a>
     <div class="cta-contact">Have a question first? <a href="mailto:contact@monaweathers.com">Send me a message</a></div>
@@ -781,6 +840,38 @@
       if (!isOpen) item.classList.add('open');
     });
   });
+
+  /* ============================================================
+     COUNTDOWN TIMER — set DEADLINE to your launch end date/time
+     Format: 'YYYY-MM-DDTHH:MM:SS' in your local timezone, or use
+     a UTC string like '2026-08-15T23:59:00-05:00'
+     ============================================================ */
+  var DEADLINE = '2026-08-15T23:59:00-05:00'; // <-- CHANGE THIS
+
+  function updateCountdown() {
+    var now  = new Date().getTime();
+    var end  = new Date(DEADLINE).getTime();
+    var diff = end - now;
+
+    var el = document.getElementById('countdown');
+    if (!el) return;
+
+    if (diff <= 0) {
+      el.innerHTML = '<div class="countdown-expired">Launch pricing has ended.</div>';
+      return;
+    }
+
+    var h = Math.floor(diff / (1000 * 60 * 60));
+    var m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    var s = Math.floor((diff % (1000 * 60)) / 1000);
+
+    document.getElementById('cd-hours').textContent = String(h).padStart(2, '0');
+    document.getElementById('cd-mins').textContent  = String(m).padStart(2, '0');
+    document.getElementById('cd-secs').textContent  = String(s).padStart(2, '0');
+  }
+
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
 
   /* Custom cursor dot */
   (function() {
