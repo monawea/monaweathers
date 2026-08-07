@@ -24,7 +24,7 @@ When adding or fixing a hamburger menu, always use the **show by default, hide o
 - GitHub repo: https://github.com/monawea/monaweathers
 - GitHub Pages preview: https://monawea.github.io/monaweathers/
 - Production host: Hostinger (monaweathers.com) — auto-deploys from GitHub main branch
-- Git commits require: `git -c commit.gpgsign=false commit`
+- Git commits: use plain `git commit` — SSH signing is configured automatically via `/tmp/code-sign`. Do NOT use `-c commit.gpgsign=false` (that skips signing and produces unverified commits).
 - Git push requires a personal access token embedded in the URL: `git push https://<TOKEN>@github.com/monawea/monaweathers.git main`
 
 ## Forms
