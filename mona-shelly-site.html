@@ -556,6 +556,9 @@ src="https://www.facebook.com/tr?id=1596541782072028&ev=PageView&noscript=1"/></
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="https://monaweathers.com/og-mona-shelly.png">
+  <script>
+    (function(w,d,t,h,s,n){w.FlodeskObject=n;var fn=function(){(w[n].q=w[n].q||[]).push(arguments)};w[n]=w[n]||fn;var f=d.getElementsByTagName(t)[0];var v='?v='+Math.floor(new Date().getTime()/(120*1000))*60;var sm=d.createElement(t);sm.async=true;sm.type='module';sm.src=h+s+'.mjs'+v;f.parentNode.insertBefore(sm,f);var sn=d.createElement(t);sn.async=true;sn.noModule=true;sn.src=h+s+'.js'+v;f.parentNode.insertBefore(sn,f)})(window,document,'script','https://assets.flodesk.com','/universal','fd');
+  </script>
 </head>
 <body>
 
@@ -905,16 +908,43 @@ src="https://www.facebook.com/tr?id=1596541782072028&ev=PageView&noscript=1"/></
     openModal({ type: 'video', bg: '#1e1e1e', author: '', embedUrl: 'https://www.youtube.com/embed/eIDHwCMIYWg?autoplay=1&rel=0' });
   });
 
-  /* Newsletter form feedback */
+  /* Newsletter form — Flodesk */
   document.getElementById('signupForm').addEventListener('submit', function(e) {
     e.preventDefault();
     var btn = document.getElementById('signupBtn');
-    btn.textContent = "you're in ✓";
-    btn.style.background = '#2f9e8f';
-    setTimeout(function() {
-      btn.textContent = 'subscribe →';
-      btn.style.background = '';
-    }, 2400);
+    var inputs = this.querySelectorAll('input');
+    var fullName = inputs[0].value.trim();
+    var email = inputs[1].value.trim();
+    var nameParts = fullName.split(' ');
+    var firstName = nameParts[0] || '';
+    var lastName = nameParts.slice(1).join(' ') || '';
+
+    btn.textContent = 'sending…';
+    btn.disabled = true;
+
+    var result = fd('subscribe', {
+      formId: '6a7668def3274cfd94a18e83',
+      fields: { email: email, firstName: firstName, lastName: lastName }
+    });
+
+    function onSuccess() {
+      btn.textContent = "you're in ✓";
+      btn.style.background = '#2f9e8f';
+      btn.disabled = false;
+      setTimeout(function() { btn.textContent = 'subscribe →'; btn.style.background = ''; }, 2400);
+    }
+    function onError() {
+      btn.textContent = 'try again';
+      btn.style.background = '#ff5a36';
+      btn.disabled = false;
+      setTimeout(function() { btn.textContent = 'subscribe →'; btn.style.background = ''; }, 2400);
+    }
+
+    if (result && typeof result.then === 'function') {
+      result.then(onSuccess).catch(onError);
+    } else {
+      setTimeout(onSuccess, 800);
+    }
   });
 </script>
 
