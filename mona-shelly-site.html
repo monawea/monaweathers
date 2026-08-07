@@ -545,104 +545,8 @@ src="https://www.facebook.com/tr?id=1596541782072028&ev=PageView&noscript=1"/></
     .signup-form input, .signup-btn { width: 100%; }
   }
 
-  /* ---- Flodesk form overrides — match site design ---- */
+  /* ---- Flodesk form overrides ---- */
   .fd-site-form { z-index: 1; position: relative; width: 100%; }
-
-  /* Hide Flodesk's own heading, image, and description */
-  .fd-site-form h1, .fd-site-form h2, .fd-site-form h3,
-  .fd-site-form [class*="header"], .fd-site-form [class*="heading"],
-  .fd-site-form [class*="title"], .fd-site-form [class*="image"],
-  .fd-site-form [class*="logo"], .fd-site-form [class*="img"] { display: none !important; }
-
-  /* Paragraph text — hide description, keep error messages */
-  .fd-site-form p:not([class*="error"]):not([class*="message"]) { display: none !important; }
-
-  /* Transparent background on wrappers */
-  .fd-site-form, .fd-site-form > *, .fd-site-form form,
-  .fd-site-form [class*="form"], .fd-site-form [class*="wrap"],
-  .fd-site-form [class*="container"] {
-    background: transparent !important;
-    box-shadow: none !important;
-    border: none !important;
-    padding: 0 !important;
-    margin: 0 !important;
-  }
-
-  /* Horizontal flex row */
-  .fd-site-form form {
-    display: flex !important;
-    flex-direction: row !important;
-    flex-wrap: wrap !important;
-    gap: 10px !important;
-    align-items: center !important;
-  }
-
-  /* Field wrapper — no extra margin */
-  .fd-site-form [class*="field"],
-  .fd-site-form [class*="input-wrap"],
-  .fd-site-form [class*="group"] {
-    margin: 0 !important;
-    padding: 0 !important;
-    background: transparent !important;
-    border: none !important;
-  }
-
-  /* Hide labels */
-  .fd-site-form label { display: none !important; }
-
-  /* Inputs — pill style matching site */
-  .fd-site-form input[type="text"],
-  .fd-site-form input[type="email"] {
-    background: #f6f1e7 !important;
-    border: 2px solid #f6f1e7 !important;
-    border-radius: 999px !important;
-    padding: 13px 20px !important;
-    font-size: 14px !important;
-    font-family: 'Space Grotesk', sans-serif !important;
-    color: #191713 !important;
-    outline: none !important;
-    box-shadow: none !important;
-    min-width: 160px !important;
-    width: auto !important;
-  }
-  .fd-site-form input[type="email"] { min-width: 200px !important; }
-  .fd-site-form input:focus { border-color: #ffcc4d !important; }
-
-  /* Submit button — orange pill */
-  .fd-site-form button[type="submit"],
-  .fd-site-form input[type="submit"],
-  .fd-site-form [class*="submit"],
-  .fd-site-form [class*="btn"] {
-    background: #ff5a36 !important;
-    color: #191713 !important;
-    font-weight: 700 !important;
-    font-size: 14px !important;
-    border: none !important;
-    border-radius: 999px !important;
-    padding: 13px 26px !important;
-    cursor: pointer !important;
-    font-family: 'Space Grotesk', sans-serif !important;
-    box-shadow: none !important;
-    transition: background 0.15s !important;
-    width: auto !important;
-  }
-  .fd-site-form button[type="submit"]:hover,
-  .fd-site-form [class*="submit"]:hover { background: #e0431f !important; }
-
-  /* Success / thank-you message */
-  .fd-site-form [class*="success"],
-  .fd-site-form [class*="thank"] {
-    color: #f6f1e7 !important;
-    font-family: 'Space Grotesk', sans-serif !important;
-    font-size: 16px !important;
-  }
-
-  @media (max-width: 560px) {
-    .fd-site-form form { flex-direction: column !important; }
-    .fd-site-form input[type="text"],
-    .fd-site-form input[type="email"],
-    .fd-site-form button[type="submit"] { width: 100% !important; }
-  }
 </style>
   <!-- Open Graph / link preview -->
   <meta property="og:type" content="website">
@@ -1003,8 +907,58 @@ src="https://www.facebook.com/tr?id=1596541782072028&ev=PageView&noscript=1"/></
     openModal({ type: 'video', bg: '#1e1e1e', author: '', embedUrl: 'https://www.youtube.com/embed/eIDHwCMIYWg?autoplay=1&rel=0' });
   });
 
-  /* Newsletter — Flodesk */
+  /* Newsletter — Flodesk with site styling applied after render */
   fd('form', { formId: '6a7668def3274cfd94a18e83', containerEl: '#fd-form-6a7668def3274cfd94a18e83' });
+
+  var fdContainer = document.getElementById('fd-form-6a7668def3274cfd94a18e83');
+  var fdStyleObserver = new MutationObserver(function(mutations, obs) {
+    var form = fdContainer.querySelector('form');
+    if (!form) return;
+    obs.disconnect();
+
+    // Strip backgrounds/borders from all wrappers
+    fdContainer.querySelectorAll('*').forEach(function(el) {
+      var tag = el.tagName.toLowerCase();
+      if (tag !== 'input' && tag !== 'button' && tag !== 'label' && tag !== 'svg' && tag !== 'path') {
+        el.style.background    = 'transparent';
+        el.style.boxShadow     = 'none';
+        el.style.border        = 'none';
+        el.style.padding       = '0';
+        el.style.margin        = '0';
+        el.style.borderRadius  = '0';
+      }
+    });
+
+    // Horizontal flex layout on the form
+    form.style.cssText = 'display:flex;flex-direction:row;flex-wrap:wrap;gap:10px;align-items:center;background:transparent;padding:0;margin:0;';
+
+    // Hide headings and description text
+    fdContainer.querySelectorAll('h1,h2,h3,h4,p').forEach(function(el) {
+      el.style.display = 'none';
+    });
+
+    // Style inputs
+    fdContainer.querySelectorAll('input[type="text"],input[type="email"]').forEach(function(input, i) {
+      input.style.cssText = 'background:#f6f1e7;border:2px solid #f6f1e7;border-radius:999px;padding:13px 20px;font-size:14px;font-family:"Space Grotesk",sans-serif;color:#191713;outline:none;box-shadow:none;width:auto;min-width:' + (input.type === 'email' ? '200' : '150') + 'px;';
+      if (!input.placeholder || input.placeholder.trim() === '') {
+        input.placeholder = input.type === 'email' ? 'you@example.com' : 'Your name';
+      }
+    });
+
+    // Hide labels (inputs have placeholder text instead)
+    fdContainer.querySelectorAll('label').forEach(function(label) {
+      label.style.display = 'none';
+    });
+
+    // Style submit button
+    fdContainer.querySelectorAll('button[type="submit"],input[type="submit"]').forEach(function(btn) {
+      btn.style.cssText = 'background:#ff5a36;color:#191713;font-weight:700;font-size:14px;border:none;border-radius:999px;padding:13px 26px;cursor:pointer;font-family:"Space Grotesk",sans-serif;box-shadow:none;width:auto;';
+      btn.addEventListener('mouseenter', function() { this.style.background = '#e0431f'; });
+      btn.addEventListener('mouseleave', function() { this.style.background = '#ff5a36'; });
+    });
+  });
+
+  fdStyleObserver.observe(fdContainer, { childList: true, subtree: true });
 </script>
 
 </body>
