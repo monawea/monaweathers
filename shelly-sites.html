@@ -258,6 +258,8 @@
     border-radius: 16px;
     padding: 28px;
     background: #fff;
+    display: flex;
+    flex-direction: column;
   }
   .pricing-card.featured {
     background: #191713;
@@ -604,7 +606,7 @@
     <img src="shelly-logo.webp" alt="Shelly Sites" class="nav-logo">
     Shelly Sites
   </a>
-  <a href="#get-started" class="nav-cta">Get Your Site →</a>
+  <a href="#pricing" class="nav-cta">Get Your Site →</a>
 </nav>
 
 <div class="page-wrap">
@@ -688,7 +690,7 @@
       <li>Turnaround: 5–7 days after we receive all your site info</li>
     </ul>
 
-    <div class="pricing-grid">
+    <div class="pricing-grid" id="pricing">
       <div class="pricing-card">
         <span class="pricing-badge">BASIC</span>
         <div class="pricing-name">Basic</div>
@@ -700,7 +702,7 @@
           <li>You handle your own Hostinger setup</li>
           <li>Drop in your files at handoff</li>
         </ul>
-        <div style="margin-top:20px;">
+        <div style="margin-top:auto;padding-top:20px;">
           <script async src="https://js.stripe.com/v3/buy-button.js"></script>
           <stripe-buy-button
             buy-button-id="buy_btn_1U1wXvGtEAfIIiyYUPcxJwJo"
@@ -720,7 +722,7 @@
           <li>Full initial website setup on Hostinger — done for you</li>
           <li>GitHub setup support</li>
         </ul>
-        <div style="margin-top:20px;">
+        <div style="margin-top:auto;padding-top:20px;">
           <script async src="https://js.stripe.com/v3/buy-button.js"></script>
           <stripe-buy-button
             buy-button-id="buy_btn_1U1wj3GtEAfIIiyYqwbLPMk1"
@@ -827,7 +829,7 @@
       <div class="countdown-unit"><div class="countdown-num" id="cd-secs">00</div><div class="countdown-label">SECS</div></div>
     </div>
     <div class="cta-sub">Basic $159 &nbsp;·&nbsp; Premium $349</div>
-    <a href="#" class="cta-btn">Get Your Shelly Site →</a>
+    <a href="#pricing" class="cta-btn">Get Your Shelly Site →</a>
     <div class="cta-contact">Have a question first? <a href="mailto:contact@monaweathers.com">Send me a message</a></div>
   </div>
 </div>
