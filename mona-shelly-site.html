@@ -469,6 +469,22 @@ src="https://www.facebook.com/tr?id=1596541782072028&ev=PageView&noscript=1"/></
   }
 
   /* Mobile */
+  #cursor-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #ff5a36;
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: transform 0.08s ease, opacity 0.2s;
+    mix-blend-mode: multiply;
+  }
+  @media (hover: none) { #cursor-dot { display: none; } }
+
   @media (max-width: 880px) {
     .shell { flex-direction: column; }
 
@@ -724,6 +740,9 @@ src="https://www.facebook.com/tr?id=1596541782072028&ev=PageView&noscript=1"/></
   </main>
 </div>
 
+<!-- CURSOR DOT -->
+<div id="cursor-dot"></div>
+
 <!-- TESTIMONIAL MODAL -->
 <div id="testiModal" onclick="closeModal()" style="display:none;position:fixed;inset:0;background:rgba(25,23,19,.85);align-items:center;justify-content:center;z-index:1000;padding:20px;">
   <div id="testiModalInner" onclick="event.stopPropagation()" style="border:2px solid #191713;border-radius:14px;padding:28px;width:min(880px,100%);max-height:92vh;overflow:auto;box-shadow:0 20px 60px rgba(0,0,0,.5);position:relative;">
@@ -807,6 +826,17 @@ src="https://www.facebook.com/tr?id=1596541782072028&ev=PageView&noscript=1"/></
     document.body.style.overflow = '';
   }
   document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeModal(); });
+
+  /* Custom cursor dot */
+  (function() {
+    var dot = document.getElementById('cursor-dot');
+    document.addEventListener('mousemove', function(e) {
+      dot.style.left = e.clientX + 'px';
+      dot.style.top = e.clientY + 'px';
+    });
+    document.addEventListener('mouseenter', function() { dot.style.opacity = '1'; });
+    document.addEventListener('mouseleave', function() { dot.style.opacity = '0'; });
+  })();
 
   document.getElementById('vslBtn').addEventListener('click', function() {
     openModal({ type: 'video', bg: '#1e1e1e', author: '', embedUrl: 'https://www.youtube.com/embed/eIDHwCMIYWg?autoplay=1&rel=0' });
