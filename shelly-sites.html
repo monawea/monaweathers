@@ -187,12 +187,9 @@
   }
   .sample-preview {
     width: 100%;
-    aspect-ratio: 4/3;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    height: 260px;
+    overflow: hidden;
   }
-  .sample-preview-icon { font-size: 48px; }
   .sample-info {
     padding: 18px 20px;
     border-top: 2px solid #191713;
@@ -587,23 +584,23 @@
     <p class="included-intro">Two examples built with the same structure — different brands, different coaches, same result.</p>
     <div class="samples-grid">
       <a href="/sample-travel-consultant" class="sample-card" target="_blank" rel="noopener">
-        <div class="sample-preview" style="background:linear-gradient(135deg,#ece0c8 0%,#d4b896 100%);">
-          <div class="sample-preview-icon">✈️</div>
+        <div class="sample-preview">
+          <img src="sample-travel-preview.png" alt="Travel Consultant sample site mobile view" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;">
         </div>
         <div class="sample-info">
           <div class="sample-name">Travel Consultant</div>
           <div class="sample-style">Retro Analog</div>
-          <span class="sample-link">view sample →</span>
+          <span class="sample-link">click here to view full page →</span>
         </div>
       </a>
       <a href="/sample-watercolor-coach" class="sample-card" target="_blank" rel="noopener">
-        <div class="sample-preview" style="background:linear-gradient(135deg,#e8f4f0 0%,#b8ddd4 100%);">
-          <div class="sample-preview-icon">🎨</div>
+        <div class="sample-preview">
+          <img src="sample-watercolor-preview.png" alt="Watercolor Coach sample site mobile view" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;">
         </div>
         <div class="sample-info">
           <div class="sample-name">Watercolor Coach</div>
           <div class="sample-style">Soft Pastel</div>
-          <span class="sample-link">view sample →</span>
+          <span class="sample-link">click here to view full page →</span>
         </div>
       </a>
     </div>
