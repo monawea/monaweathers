@@ -220,7 +220,7 @@ a:hover{color:#8f3324}
 </style>
 <style id="ss-responsive">
 @media (max-width: 860px) {
-  /* Shell: stack vertically */
+  /* Stack sidebar above main */
   div[data-dc-tpl] > aside {
     width: 100% !important;
     min-width: 0 !important;
@@ -231,37 +231,39 @@ a:hover{color:#8f3324}
     top: auto !important;
     flex: 0 0 auto !important;
   }
-  /* Make the shell flex column */
   aside[data-dc-tpl] ~ main[data-dc-tpl],
   aside[data-dc-tpl] + main[data-dc-tpl] { width: 100% !important; }
   aside[data-dc-tpl] { order: 0 !important; }
+  div[style*="flex-direction: row"] { flex-direction: column !important; }
 
-  /* Force the flex container column */
-  div[style*="flex-direction: row"] {
-    flex-direction: column !important;
-  }
-
-  /* Main content full width */
+  /* Main full width — no overflow-x:hidden so marquee bleed works */
   main[data-dc-tpl] {
     width: 100% !important;
     min-width: 0 !important;
     padding: 32px 20px !important;
-    overflow-x: hidden !important;
   }
 
-  /* Prevent fixed-width children from overflowing */
-  main[data-dc-tpl] * {
-    max-width: 100% !important;
-    min-width: 0 !important;
-    box-sizing: border-box !important;
+  /* Images only */
+  main[data-dc-tpl] img { max-width: 100% !important; height: auto !important; }
+
+  /* Marquee: match bleed margin to mobile padding (20px instead of 56px) */
+  div[style*="overflow: hidden"][style*="-56px"] {
+    margin-left: -20px !important;
+    margin-right: -20px !important;
   }
 
-  /* Images */
-  img { max-width: 100% !important; height: auto !important; }
+  /* Let the marquee track be its natural scroll width */
+  div[style*="max-content"] {
+    width: max-content !important;
+    max-width: none !important;
+  }
 
-  /* Body */
+  /* Body clips any true overflow */
   body { overflow-x: hidden !important; }
 }
+
+/* Speed up marquee from 30s → 18s */
+div[style*="running marquee"] { animation-duration: 18s !important; }
 </style>
 </head>
 <body>
