@@ -544,6 +544,105 @@ src="https://www.facebook.com/tr?id=1596541782072028&ev=PageView&noscript=1"/></
     .signup-form { flex-direction: column; }
     .signup-form input, .signup-btn { width: 100%; }
   }
+
+  /* ---- Flodesk form overrides — match site design ---- */
+  .fd-site-form { z-index: 1; position: relative; width: 100%; }
+
+  /* Hide Flodesk's own heading, image, and description */
+  .fd-site-form h1, .fd-site-form h2, .fd-site-form h3,
+  .fd-site-form [class*="header"], .fd-site-form [class*="heading"],
+  .fd-site-form [class*="title"], .fd-site-form [class*="image"],
+  .fd-site-form [class*="logo"], .fd-site-form [class*="img"] { display: none !important; }
+
+  /* Paragraph text — hide description, keep error messages */
+  .fd-site-form p:not([class*="error"]):not([class*="message"]) { display: none !important; }
+
+  /* Transparent background on wrappers */
+  .fd-site-form, .fd-site-form > *, .fd-site-form form,
+  .fd-site-form [class*="form"], .fd-site-form [class*="wrap"],
+  .fd-site-form [class*="container"] {
+    background: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  /* Horizontal flex row */
+  .fd-site-form form {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    gap: 10px !important;
+    align-items: center !important;
+  }
+
+  /* Field wrapper — no extra margin */
+  .fd-site-form [class*="field"],
+  .fd-site-form [class*="input-wrap"],
+  .fd-site-form [class*="group"] {
+    margin: 0 !important;
+    padding: 0 !important;
+    background: transparent !important;
+    border: none !important;
+  }
+
+  /* Hide labels */
+  .fd-site-form label { display: none !important; }
+
+  /* Inputs — pill style matching site */
+  .fd-site-form input[type="text"],
+  .fd-site-form input[type="email"] {
+    background: #f6f1e7 !important;
+    border: 2px solid #f6f1e7 !important;
+    border-radius: 999px !important;
+    padding: 13px 20px !important;
+    font-size: 14px !important;
+    font-family: 'Space Grotesk', sans-serif !important;
+    color: #191713 !important;
+    outline: none !important;
+    box-shadow: none !important;
+    min-width: 160px !important;
+    width: auto !important;
+  }
+  .fd-site-form input[type="email"] { min-width: 200px !important; }
+  .fd-site-form input:focus { border-color: #ffcc4d !important; }
+
+  /* Submit button — orange pill */
+  .fd-site-form button[type="submit"],
+  .fd-site-form input[type="submit"],
+  .fd-site-form [class*="submit"],
+  .fd-site-form [class*="btn"] {
+    background: #ff5a36 !important;
+    color: #191713 !important;
+    font-weight: 700 !important;
+    font-size: 14px !important;
+    border: none !important;
+    border-radius: 999px !important;
+    padding: 13px 26px !important;
+    cursor: pointer !important;
+    font-family: 'Space Grotesk', sans-serif !important;
+    box-shadow: none !important;
+    transition: background 0.15s !important;
+    width: auto !important;
+  }
+  .fd-site-form button[type="submit"]:hover,
+  .fd-site-form [class*="submit"]:hover { background: #e0431f !important; }
+
+  /* Success / thank-you message */
+  .fd-site-form [class*="success"],
+  .fd-site-form [class*="thank"] {
+    color: #f6f1e7 !important;
+    font-family: 'Space Grotesk', sans-serif !important;
+    font-size: 16px !important;
+  }
+
+  @media (max-width: 560px) {
+    .fd-site-form form { flex-direction: column !important; }
+    .fd-site-form input[type="text"],
+    .fd-site-form input[type="email"],
+    .fd-site-form button[type="submit"] { width: 100% !important; }
+  }
 </style>
   <!-- Open Graph / link preview -->
   <meta property="og:type" content="website">
@@ -779,11 +878,7 @@ src="https://www.facebook.com/tr?id=1596541782072028&ev=PageView&noscript=1"/></
         </div>
       </div>
       <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:rgba(246,241,231,.6);z-index:1;">Watch: how we'll get you there in 3 minutes</div>
-      <form class="signup-form" id="signupForm" novalidate>
-        <input type="text" placeholder="Your name" required />
-        <input type="email" placeholder="you@example.com" required />
-        <button type="submit" class="signup-btn" id="signupBtn">subscribe &rarr;</button>
-      </form>
+      <div id="fd-form-6a7668def3274cfd94a18e83" class="fd-site-form"></div>
     </section>
 
     <!-- FOOTER -->
@@ -908,31 +1003,8 @@ src="https://www.facebook.com/tr?id=1596541782072028&ev=PageView&noscript=1"/></
     openModal({ type: 'video', bg: '#1e1e1e', author: '', embedUrl: 'https://www.youtube.com/embed/eIDHwCMIYWg?autoplay=1&rel=0' });
   });
 
-  /* Newsletter form — Flodesk */
-  document.getElementById('signupForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    var btn = document.getElementById('signupBtn');
-    var inputs = this.querySelectorAll('input');
-    var fullName = inputs[0].value.trim();
-    var email    = inputs[1].value.trim();
-    var parts    = fullName.split(' ');
-
-    btn.textContent = 'sending…';
-    btn.disabled = true;
-
-    fd('subscribe', {
-      formId: '6a7668def3274cfd94a18e83',
-      email: email,
-      fields: { first_name: parts[0] || '', last_name: parts.slice(1).join(' ') || '' }
-    });
-
-    setTimeout(function() {
-      btn.textContent = "you're in ✓";
-      btn.style.background = '#2f9e8f';
-      btn.disabled = false;
-      setTimeout(function() { btn.textContent = 'subscribe →'; btn.style.background = ''; }, 2400);
-    }, 800);
-  });
+  /* Newsletter — Flodesk */
+  fd('form', { formId: '6a7668def3274cfd94a18e83', containerEl: '#fd-form-6a7668def3274cfd94a18e83' });
 </script>
 
 </body>
