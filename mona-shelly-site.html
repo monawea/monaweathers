@@ -779,7 +779,11 @@ src="https://www.facebook.com/tr?id=1596541782072028&ev=PageView&noscript=1"/></
         </div>
       </div>
       <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:rgba(246,241,231,.6);z-index:1;">Watch: how we'll get you there in 3 minutes</div>
-      <div id="fd-form-6a7668def3274cfd94a18e83"></div>
+      <form class="signup-form" id="signupForm" novalidate>
+        <input type="text" placeholder="Your name" required />
+        <input type="email" placeholder="you@example.com" required />
+        <button type="submit" class="signup-btn" id="signupBtn">subscribe &rarr;</button>
+      </form>
     </section>
 
     <!-- FOOTER -->
@@ -904,8 +908,31 @@ src="https://www.facebook.com/tr?id=1596541782072028&ev=PageView&noscript=1"/></
     openModal({ type: 'video', bg: '#1e1e1e', author: '', embedUrl: 'https://www.youtube.com/embed/eIDHwCMIYWg?autoplay=1&rel=0' });
   });
 
-  /* Newsletter — Flodesk */
-  fd('form', { formId: '6a7668def3274cfd94a18e83', containerEl: '#fd-form-6a7668def3274cfd94a18e83' });
+  /* Newsletter form — Flodesk */
+  document.getElementById('signupForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    var btn = document.getElementById('signupBtn');
+    var inputs = this.querySelectorAll('input');
+    var fullName = inputs[0].value.trim();
+    var email    = inputs[1].value.trim();
+    var parts    = fullName.split(' ');
+
+    btn.textContent = 'sending…';
+    btn.disabled = true;
+
+    fd('subscribe', {
+      formId: '6a7668def3274cfd94a18e83',
+      email: email,
+      fields: { first_name: parts[0] || '', last_name: parts.slice(1).join(' ') || '' }
+    });
+
+    setTimeout(function() {
+      btn.textContent = "you're in ✓";
+      btn.style.background = '#2f9e8f';
+      btn.disabled = false;
+      setTimeout(function() { btn.textContent = 'subscribe →'; btn.style.background = ''; }, 2400);
+    }, 800);
+  });
 </script>
 
 </body>
