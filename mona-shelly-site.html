@@ -351,6 +351,32 @@ src="https://www.facebook.com/tr?id=1596541782072028&ev=PageView&noscript=1"/></
     gap: 4px;
   }
 
+  /* Plan section */
+  .plan-heading { font-size: clamp(26px, 3.5vw, 36px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 8px; }
+  .plan-sub { font-size: 15px; color: rgba(25,23,19,0.55); margin-bottom: 28px; }
+  .plan-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .plan-card {
+    background: #fff;
+    border: 2px solid #191713;
+    border-radius: 18px;
+    padding: 28px 26px;
+    box-shadow: 4px 4px 0 rgba(25,23,19,0.08);
+  }
+  .plan-card-step {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    color: #2f9e8f;
+    margin-bottom: 10px;
+  }
+  .plan-card-title { font-size: 20px; font-weight: 700; margin-bottom: 10px; line-height: 1.2; }
+  .plan-card-body { font-size: 15px; line-height: 1.65; color: rgba(25,23,19,0.65); }
+
   /* Newsletter signup */
   .signup-section {
     background: #191713;
@@ -505,6 +531,7 @@ src="https://www.facebook.com/tr?id=1596541782072028&ev=PageView&noscript=1"/></
     .marquee-outer { margin: 0 -24px; }
 
     .projects-grid { grid-template-columns: 1fr; }
+    .plan-cards { grid-template-columns: 1fr; }
 
     .signup-section { padding: 32px 24px; }
 
@@ -696,6 +723,30 @@ src="https://www.facebook.com/tr?id=1596541782072028&ev=PageView&noscript=1"/></
             <span class="project-card-cta">check it out →</span>
           </div>
         </a>
+      </div>
+    </section>
+
+    <!-- THE PLAN -->
+    <section data-reveal style="display:flex;flex-direction:column;gap:4px;">
+      <div class="section-label">THE PLAN</div>
+      <div class="plan-heading">Here's what working together looks like.</div>
+      <div class="plan-sub">No guesswork, no overwhelm, just a clear next step.</div>
+      <div class="plan-cards">
+        <div class="plan-card">
+          <div class="plan-card-step">STEP  1</div>
+          <div class="plan-card-title">Book a call</div>
+          <div class="plan-card-body">We talk through where you're stuck and what you're trying to build.</div>
+        </div>
+        <div class="plan-card">
+          <div class="plan-card-step">STEP  2</div>
+          <div class="plan-card-title">Get your plan</div>
+          <div class="plan-card-body">A clear path for your offer, systems, and next moves, tailored to you.</div>
+        </div>
+        <div class="plan-card">
+          <div class="plan-card-step">STEP  3</div>
+          <div class="plan-card-title">Execute with support</div>
+          <div class="plan-card-body">Coaching, community, and tools keep you moving instead of stuck.</div>
+        </div>
       </div>
     </section>
 
