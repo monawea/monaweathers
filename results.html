@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Client Results — Mona Weathers</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{min-height:100%}
+body{background:#f6f1e7;color:#191713;font-family:'Space Grotesk',system-ui,sans-serif;font-size:16px;line-height:1.6;overflow-x:hidden}
+a{color:#191713;text-decoration:none}
+
+/* NAV */
+.nav{display:flex;align-items:center;justify-content:space-between;padding:20px 24px;max-width:840px;margin:0 auto;}
+.nav-home{font-family:'IBM Plex Mono',monospace;font-size:13px;color:#191713;opacity:0.7;transition:opacity 0.15s;}
+.nav-home:hover{opacity:1}
+.nav-tag{font-family:'IBM Plex Mono',monospace;font-size:11px;color:rgba(25,23,19,0.4);}
+
+/* WRAPPER */
+.page{max-width:840px;margin:0 auto;padding:0 24px 100px;}
+
+/* HERO */
+.hero{padding:40px 0 64px;}
+.hero-label{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.08em;color:#ff5a36;margin-bottom:16px;}
+.hero-headline{font-size:clamp(36px,6vw,56px);font-weight:700;line-height:1.1;letter-spacing:-0.02em;margin-bottom:20px;}
+.hero-sub{font-size:17px;color:rgba(25,23,19,0.65);max-width:560px;line-height:1.7;}
+.hero-divider{margin-top:48px;border:none;border-top:2px solid rgba(25,23,19,0.12);}
+
+/* CLIENT SECTION */
+.client{padding:56px 0;border-bottom:2px solid rgba(25,23,19,0.1);}
+.client:last-child{border-bottom:none;}
+
+.client-header{display:flex;align-items:center;gap:14px;margin-bottom:32px;}
+.client-avatar{width:44px;height:44px;border-radius:50%;background:#191713;color:#f6f1e7;font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;flex:0 0 auto;}
+.client-meta{}
+.client-name{font-size:18px;font-weight:700;line-height:1.2;}
+.client-role{font-family:'IBM Plex Mono',monospace;font-size:11px;color:rgba(25,23,19,0.5);letter-spacing:0.05em;margin-top:2px;}
+
+.client-body{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start;}
+@media(max-width:640px){.client-body{grid-template-columns:1fr;gap:24px;}}
+
+.client-story{}
+.story-label{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.08em;color:rgba(25,23,19,0.45);margin-bottom:8px;}
+.story-text{font-size:15px;color:rgba(25,23,19,0.75);line-height:1.75;margin-bottom:20px;}
+
+.worked-on{margin-bottom:20px;}
+.worked-on-label{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.08em;color:rgba(25,23,19,0.45);margin-bottom:10px;}
+.worked-on ul{list-style:none;display:flex;flex-direction:column;gap:8px;}
+.worked-on li{display:flex;gap:10px;align-items:flex-start;font-size:14px;color:rgba(25,23,19,0.75);}
+.worked-on li::before{content:'→';font-family:'IBM Plex Mono',monospace;color:#ff5a36;font-size:12px;flex:0 0 auto;margin-top:2px;}
+
+.quote-block{background:#fff;border:2px solid #191713;border-radius:4px;padding:20px 22px;transform:rotate(-0.4deg);box-shadow:3px 3px 0 rgba(25,23,19,0.1);}
+.quote-mark{font-size:28px;line-height:1;color:#ff5a36;font-weight:700;margin-bottom:6px;}
+.quote-text{font-size:15px;line-height:1.65;color:#191713;font-style:italic;}
+.quote-author{display:flex;align-items:center;gap:8px;margin-top:14px;}
+.quote-initials{width:28px;height:28px;border-radius:50%;background:#191713;color:#f6f1e7;font-family:'IBM Plex Mono',monospace;font-size:10px;display:flex;align-items:center;justify-content:center;flex:0 0 auto;}
+.quote-name{font-family:'IBM Plex Mono',monospace;font-size:11px;color:rgba(25,23,19,0.55);}
+
+.client-media{display:flex;flex-direction:column;gap:14px;}
+
+/* MEDIA PLACEHOLDERS */
+.media-placeholder{background:rgba(25,23,19,0.05);border:1.5px dashed rgba(25,23,19,0.2);border-radius:8px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;cursor:pointer;transition:background 0.15s;}
+.media-placeholder:hover{background:rgba(25,23,19,0.08);}
+.media-placeholder.video{padding-bottom:56.25%;position:relative;width:100%;}
+.media-placeholder.video .inner{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;}
+.media-placeholder.screenshot{height:160px;}
+.media-placeholder.screenshot-tall{height:200px;}
+.play-btn{width:52px;height:52px;border-radius:50%;background:rgba(25,23,19,0.7);display:flex;align-items:center;justify-content:center;}
+.placeholder-label{font-family:'IBM Plex Mono',monospace;font-size:10px;color:rgba(25,23,19,0.35);letter-spacing:0.05em;}
+.screenshot-icon{font-size:22px;opacity:0.25;}
+.screenshot-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+
+/* CTA */
+.cta-section{padding:64px 0 0;text-align:center;}
+.cta-label{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.08em;color:rgba(25,23,19,0.45);margin-bottom:16px;}
+.cta-headline{font-size:clamp(28px,5vw,40px);font-weight:700;letter-spacing:-0.02em;margin-bottom:12px;}
+.cta-sub{font-size:15px;color:rgba(25,23,19,0.6);margin-bottom:28px;}
+.cta-btn{display:inline-block;background:#ff5a36;color:#fff;font-family:'Space Grotesk',system-ui,sans-serif;font-weight:700;font-size:15px;padding:14px 32px;border-radius:999px;transition:background 0.15s,transform 0.15s;}
+.cta-btn:hover{background:#e0431f;transform:translateY(-2px);}
+
+/* FOOTER NAV */
+.footer-nav{margin-top:80px;border-top:2px solid rgba(25,23,19,0.1);padding-top:40px;}
+.footer-nav-label{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.05em;color:rgba(25,23,19,0.4);margin-bottom:16px;}
+.footer-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;}
+.footer-card{text-decoration:none;color:#191713;background:#fff;border:2px solid #191713;border-radius:12px;padding:16px 18px;display:block;transition:transform 0.15s;}
+.footer-card:hover{transform:translateY(-2px);}
+.footer-card-title{font-weight:700;font-size:14px;margin-bottom:3px;}
+.footer-card-sub{font-size:12px;color:rgba(25,23,19,0.55);}
+.copyright{margin-top:28px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:rgba(25,23,19,0.3);}
+
+/* MOBILE */
+@media(max-width:600px){
+  .nav{padding:16px 20px;}
+  .page{padding:0 20px 80px;}
+  .hero{padding:28px 0 48px;}
+  .client{padding:40px 0;}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="/mona-shelly-site" class="nav-home">← Home</a>
+  <div class="nav-tag">built with Shelly Sites</div>
+</nav>
+
+<div class="page">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-label">CLIENT RESULTS</div>
+    <h1 class="hero-headline">Real coaches.<br>Real progress.</h1>
+    <p class="hero-sub">Here's what working together actually looks like — in their words, and in the work.</p>
+    <hr class="hero-divider">
+  </div>
+
+  <!-- ── STEVE GAST ── -->
+  <div class="client">
+    <div class="client-header">
+      <div class="client-avatar">SG</div>
+      <div class="client-meta">
+        <div class="client-name">Steve Gast</div>
+        <div class="client-role">BUSINESS COACH</div>
+      </div>
+    </div>
+
+    <div class="client-body">
+      <div class="client-story">
+        <div class="story-label">THE SITUATION</div>
+        <p class="story-text">Steve had a growing community but no monetization plan and no real systems holding it together. He was doing everything himself, burning out, and attracting clients that weren't the right fit.</p>
+
+        <div class="worked-on">
+          <div class="worked-on-label">WHAT WE WORKED ON</div>
+          <ul>
+            <li>Offer clarity and pricing structure</li>
+            <li>Client attraction and lead conversion systems</li>
+            <li>Closing process to bring in the right people</li>
+          </ul>
+        </div>
+
+        <div class="quote-block">
+          <div class="quote-mark">"</div>
+          <div class="quote-text">Mona stepped in and helped me restructure everything. Now I'm attracting and closing the clients I actually want to work with in a very low stress, low pressure way. I seriously can't recommend her enough to anyone looking to scale their business and make it more manageable.</div>
+          <div class="quote-author">
+            <div class="quote-initials">SG</div>
+            <div class="quote-name">Steve Gast, Business Coach</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="client-media">
+        <!-- Video testimonial -->
+        <div class="media-placeholder video">
+          <div class="inner">
+            <div class="play-btn">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="#f6f1e7"><path d="M5 3l16 9-16 9V3z"/></svg>
+            </div>
+            <div class="placeholder-label">VIDEO TESTIMONIAL</div>
+          </div>
+        </div>
+        <!-- Screenshots -->
+        <div class="screenshot-grid">
+          <div class="media-placeholder screenshot">
+            <div class="screenshot-icon">🖼</div>
+            <div class="placeholder-label">SCREENSHOT</div>
+          </div>
+          <div class="media-placeholder screenshot">
+            <div class="screenshot-icon">🖼</div>
+            <div class="placeholder-label">SCREENSHOT</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── ISABELLE LESSCHAEVE ── -->
+  <div class="client">
+    <div class="client-header">
+      <div class="client-avatar">IL</div>
+      <div class="client-meta">
+        <div class="client-name">Isabelle Lesschaeve</div>
+        <div class="client-role">WINE TASTING COACH</div>
+      </div>
+    </div>
+
+    <div class="client-body">
+      <div class="client-story">
+        <div class="story-label">THE SITUATION</div>
+        <p class="story-text">Isabelle had deep expertise but no clear path forward for her business. She knew what she offered — she just couldn't see where it was all going or how to build momentum toward a bigger vision.</p>
+
+        <div class="worked-on">
+          <div class="worked-on-label">WHAT WE WORKED ON</div>
+          <ul>
+            <li>Business direction and long-term vision</li>
+            <li>Mapping the client journey from start to finish</li>
+            <li>Content and positioning to reflect her expertise</li>
+          </ul>
+        </div>
+
+        <div class="quote-block">
+          <div class="quote-mark">"</div>
+          <div class="quote-text">I have a clearer vision on the journey. I know where I'm going and what steps to take to get there — that clarity was the thing I was missing.</div>
+          <div class="quote-author">
+            <div class="quote-initials">IL</div>
+            <div class="quote-name">Isabelle Lesschaeve, Wine Tasting Coach</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="client-media">
+        <div class="media-placeholder video">
+          <div class="inner">
+            <div class="play-btn">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="#f6f1e7"><path d="M5 3l16 9-16 9V3z"/></svg>
+            </div>
+            <div class="placeholder-label">VIDEO TESTIMONIAL</div>
+          </div>
+        </div>
+        <div class="screenshot-grid">
+          <div class="media-placeholder screenshot">
+            <div class="screenshot-icon">🖼</div>
+            <div class="placeholder-label">SCREENSHOT</div>
+          </div>
+          <div class="media-placeholder screenshot">
+            <div class="screenshot-icon">🖼</div>
+            <div class="placeholder-label">SCREENSHOT</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── ALEXA LEITNER ── -->
+  <div class="client">
+    <div class="client-header">
+      <div class="client-avatar">AL</div>
+      <div class="client-meta">
+        <div class="client-name">Alexa Leitner</div>
+        <div class="client-role">LINGUIST &amp; LANGUAGE TEACHER</div>
+      </div>
+    </div>
+
+    <div class="client-body">
+      <div class="client-story">
+        <div class="story-label">THE SITUATION</div>
+        <p class="story-text">Alexa is an expert in her field — but being an expert and running a business are two completely different skill sets. She needed support translating her knowledge into something she could actually sell and scale.</p>
+
+        <div class="worked-on">
+          <div class="worked-on-label">WHAT WE WORKED ON</div>
+          <ul>
+            <li>Packaging expertise into a sellable offer</li>
+            <li>Building business skills alongside subject mastery</li>
+            <li>Creating a path to sustainable income from her work</li>
+          </ul>
+        </div>
+
+        <div class="quote-block">
+          <div class="quote-mark">"</div>
+          <div class="quote-text">I know my subject inside out — but Mona understood that building a business is a different skill set. She met me where I was and helped me close that gap.</div>
+          <div class="quote-author">
+            <div class="quote-initials">AL</div>
+            <div class="quote-name">Alexa Leitner, Language Teacher</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="client-media">
+        <div class="media-placeholder video">
+          <div class="inner">
+            <div class="play-btn">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="#f6f1e7"><path d="M5 3l16 9-16 9V3z"/></svg>
+            </div>
+            <div class="placeholder-label">VIDEO TESTIMONIAL</div>
+          </div>
+        </div>
+        <div class="screenshot-grid">
+          <div class="media-placeholder screenshot">
+            <div class="screenshot-icon">🖼</div>
+            <div class="placeholder-label">SCREENSHOT</div>
+          </div>
+          <div class="media-placeholder screenshot">
+            <div class="screenshot-icon">🖼</div>
+            <div class="placeholder-label">SCREENSHOT</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── JANET ── -->
+  <div class="client">
+    <div class="client-header">
+      <div class="client-avatar">J</div>
+      <div class="client-meta">
+        <div class="client-name">Janet</div>
+        <div class="client-role">COACH · ROLE PLACEHOLDER</div>
+      </div>
+    </div>
+
+    <div class="client-body">
+      <div class="client-story">
+        <div class="story-label">THE SITUATION</div>
+        <p class="story-text" style="color:rgba(25,23,19,0.35);font-style:italic;">Janet's story goes here — what was happening before, where she felt stuck, what she was missing.</p>
+
+        <div class="worked-on">
+          <div class="worked-on-label">WHAT WE WORKED ON</div>
+          <ul>
+            <li style="color:rgba(25,23,19,0.35);">Placeholder — area 1</li>
+            <li style="color:rgba(25,23,19,0.35);">Placeholder — area 2</li>
+            <li style="color:rgba(25,23,19,0.35);">Placeholder — area 3</li>
+          </ul>
+        </div>
+
+        <div class="quote-block" style="opacity:0.45;">
+          <div class="quote-mark">"</div>
+          <div class="quote-text">Janet's testimonial quote goes here.</div>
+          <div class="quote-author">
+            <div class="quote-initials">J</div>
+            <div class="quote-name">Janet, Coach</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="client-media">
+        <div class="media-placeholder video">
+          <div class="inner">
+            <div class="play-btn" style="background:rgba(25,23,19,0.25);">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="#f6f1e7"><path d="M5 3l16 9-16 9V3z"/></svg>
+            </div>
+            <div class="placeholder-label">VIDEO TESTIMONIAL</div>
+          </div>
+        </div>
+        <div class="screenshot-grid">
+          <div class="media-placeholder screenshot">
+            <div class="screenshot-icon">🖼</div>
+            <div class="placeholder-label">SCREENSHOT</div>
+          </div>
+          <div class="media-placeholder screenshot">
+            <div class="screenshot-icon">🖼</div>
+            <div class="placeholder-label">SCREENSHOT</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-section">
+    <div class="cta-label">READY TO START?</div>
+    <h2 class="cta-headline">You could be next.</h2>
+    <p class="cta-sub">Book a call and let's figure out your starting point.</p>
+    <a href="/work-with-me" class="cta-btn">Work With Me →</a>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer-nav">
+    <div class="footer-nav-label">EXPLORE MORE</div>
+    <div class="footer-cards">
+      <a href="/coaching" class="footer-card">
+        <div class="footer-card-title">Coaching</div>
+        <div class="footer-card-sub">The Strong Start program →</div>
+      </a>
+      <a href="https://www.skool.com/clients/about" class="footer-card">
+        <div class="footer-card-title">Community</div>
+        <div class="footer-card-sub">Learn alongside other coaches →</div>
+      </a>
+      <a href="/shelly-sites" class="footer-card">
+        <div class="footer-card-title">Shelly Sites</div>
+        <div class="footer-card-sub">Templates and tools →</div>
+      </a>
+    </div>
+    <div class="copyright">© Mona Weathers</div>
+  </div>
+
+</div>
+
+<script>
+// Video modal
+document.querySelectorAll('.media-placeholder.video').forEach(function(el) {
+  el.addEventListener('click', function() {
+    var overlay = document.createElement('div');
+    overlay.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:9999;display:flex;align-items:center;justify-content:center;padding:20px;cursor:pointer;';
+    var box = document.createElement('div');
+    box.style.cssText = 'background:#f6f1e7;border-radius:8px;padding:24px;max-width:700px;width:100%;position:relative;cursor:default;border:2px solid #191713;';
+    box.addEventListener('click', function(e){e.stopPropagation();});
+    var close = document.createElement('button');
+    close.innerHTML = '&times;';
+    close.style.cssText = 'position:absolute;top:10px;right:14px;background:none;border:none;font-size:28px;line-height:1;cursor:pointer;color:#191713;padding:0;font-family:IBM Plex Mono,monospace;';
+    var wrap = document.createElement('div');
+    wrap.style.cssText = 'position:relative;width:100%;padding-bottom:56.25%;background:rgba(25,23,19,0.06);border-radius:4px;overflow:hidden;border:1.5px dashed rgba(25,23,19,0.25);';
+    var label = document.createElement('div');
+    label.innerHTML = '<div style="width:60px;height:60px;border-radius:50%;background:rgba(25,23,19,0.7);display:flex;align-items:center;justify-content:center;"><svg width="20" height="20" viewBox="0 0 24 24" fill="#f6f1e7"><path d="M5 3l16 9-16 9V3z"/></svg></div><div style="color:rgba(25,23,19,0.4);font-family:IBM Plex Mono,monospace;font-size:11px;margin-top:12px;letter-spacing:0.05em;">VIDEO PLACEHOLDER</div>';
+    label.style.cssText = 'position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;';
+    wrap.appendChild(label);
+    box.appendChild(close);
+    box.appendChild(wrap);
+    overlay.appendChild(box);
+    document.body.appendChild(overlay);
+    function closeModal(){if(document.body.contains(overlay))document.body.removeChild(overlay);}
+    overlay.addEventListener('click',closeModal);
+    close.addEventListener('click',closeModal);
+    document.addEventListener('keydown',function esc(e){if(e.key==='Escape'){closeModal();document.removeEventListener('keydown',esc);}});
+  });
+});
+</script>
+
+</body>
+</html>
