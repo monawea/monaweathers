@@ -164,6 +164,58 @@
     font-weight: 500;
   }
 
+  /* SAMPLE SITES */
+  .samples-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 8px;
+  }
+  .sample-card {
+    border: 2px solid #191713;
+    border-radius: 16px;
+    overflow: hidden;
+    text-decoration: none;
+    color: #191713;
+    transition: transform 0.15s, box-shadow 0.15s;
+    display: block;
+  }
+  .sample-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(25,23,19,.12);
+    color: #191713;
+  }
+  .sample-preview {
+    width: 100%;
+    aspect-ratio: 4/3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .sample-preview-icon { font-size: 48px; }
+  .sample-info {
+    padding: 18px 20px;
+    border-top: 2px solid #191713;
+    background: #fff;
+  }
+  .sample-name {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 2px;
+  }
+  .sample-style {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: rgba(25,23,19,.5);
+    margin-bottom: 12px;
+  }
+  .sample-link {
+    font-size: 13px;
+    font-weight: 600;
+    color: #ff5a36;
+  }
+  @media (max-width: 500px) { .samples-grid { grid-template-columns: 1fr; } }
+
   /* WHAT'S INCLUDED */
   .included-intro {
     font-size: 17px;
@@ -525,6 +577,35 @@
       <p>Full custom websites solve the "not enough information" problem by overcorrecting — ten, twenty pages of content a prospect has to dig through to find the three things they actually came for.</p>
       <div class="callout-bar">Shelly Sites sits in the middle.</div>
       <p>One site, built to work on mobile and browser, that tells your story in the order a prospect actually needs it: the problem they have, the proof you can help, the promise of what you deliver, and the plan to get there. Same structure every time, because that structure is what makes people act — but the design, colors, and content are built around your brand, not a template you have to force your business into.</p>
+    </div>
+  </section>
+
+  <!-- SAMPLE SITES -->
+  <section data-reveal>
+    <div class="section-label">SEE IT IN ACTION</div>
+    <h2 class="why-heading">Sample Shelly Sites</h2>
+    <p class="included-intro">Two examples built with the same structure — different brands, different coaches, same result.</p>
+    <div class="samples-grid">
+      <a href="/sample-travel-consultant" class="sample-card" target="_blank" rel="noopener">
+        <div class="sample-preview" style="background:linear-gradient(135deg,#ece0c8 0%,#d4b896 100%);">
+          <div class="sample-preview-icon">✈️</div>
+        </div>
+        <div class="sample-info">
+          <div class="sample-name">Travel Consultant</div>
+          <div class="sample-style">Retro Analog</div>
+          <span class="sample-link">view sample →</span>
+        </div>
+      </a>
+      <a href="/sample-watercolor-coach" class="sample-card" target="_blank" rel="noopener">
+        <div class="sample-preview" style="background:linear-gradient(135deg,#e8f4f0 0%,#b8ddd4 100%);">
+          <div class="sample-preview-icon">🎨</div>
+        </div>
+        <div class="sample-info">
+          <div class="sample-name">Watercolor Coach</div>
+          <div class="sample-style">Soft Pastel</div>
+          <span class="sample-link">view sample →</span>
+        </div>
+      </a>
     </div>
   </section>
 
