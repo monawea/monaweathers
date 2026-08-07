@@ -262,8 +262,8 @@ a:hover{color:#8f3324}
   body { overflow-x: hidden !important; }
 }
 
-/* Speed up marquee from 30s → 18s */
-div[style*="running marquee"] { animation-duration: 18s !important; }
+/* Marquee speed */
+div[style*="running marquee"] { animation-duration: 25s !important; }
 </style>
 </head>
 <body>
@@ -608,17 +608,18 @@ document.querySelectorAll('div[style*="cursor: pointer"][style*="aspect-ratio"]'
   el.addEventListener('click', openVideoModal);
 });
 
-// Marquee pause on tap
+// Marquee tap to pause / tap again to resume
 var marqueeTrack = document.querySelector('div[style*="running marquee"]');
-if (marqueeTrack) {
-  var resumeTimer;
-  function pauseMarquee() {
-    clearTimeout(resumeTimer);
-    marqueeTrack.style.animationPlayState = 'paused';
-    resumeTimer = setTimeout(function() { marqueeTrack.style.animationPlayState = 'running'; }, 2000);
+var marqueeOuter = document.querySelector('div[style*="overflow: hidden"][style*="-56px"]');
+if (marqueeTrack && marqueeOuter) {
+  var marqueePaused = false;
+  function toggleMarquee(e) {
+    if (e.target.closest('div[style*="cursor: pointer"][style*="aspect-ratio"]')) return;
+    marqueePaused = !marqueePaused;
+    marqueeTrack.style.animationPlayState = marqueePaused ? 'paused' : 'running';
   }
-  marqueeTrack.addEventListener('touchstart', pauseMarquee, { passive: true });
-  marqueeTrack.addEventListener('click', pauseMarquee);
+  marqueeOuter.addEventListener('touchend', toggleMarquee);
+  marqueeOuter.addEventListener('click', toggleMarquee);
 }
 </script>
 
