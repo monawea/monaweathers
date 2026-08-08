@@ -174,16 +174,9 @@ a{color:#191713;text-decoration:none}
             </div>
           </div>
         </div>
-        <!-- Screenshots -->
-        <div class="screenshot-grid">
-          <div class="media-placeholder screenshot">
-            <div class="screenshot-icon">🖼</div>
-            <div class="placeholder-label">SCREENSHOT</div>
-          </div>
-          <div class="media-placeholder screenshot">
-            <div class="screenshot-icon">🖼</div>
-            <div class="placeholder-label">SCREENSHOT</div>
-          </div>
+        <!-- Screenshot lightbox -->
+        <div class="screenshot-lightbox" data-img="steve-gast-site.png" data-alt="Steve Gast website screenshot" style="cursor:pointer;border-radius:10px;overflow:hidden;border:2px solid #191713;box-shadow:4px 4px 0 rgba(25,23,19,0.1);">
+          <img src="steve-gast-site.png" alt="Steve Gast website screenshot" style="width:100%;display:block;" onerror="this.parentElement.style.cssText+='display:flex;align-items:center;justify-content:center;height:160px;background:rgba(25,23,19,0.05);';this.style.display='none';this.parentElement.innerHTML='<div style=\'text-align:center;font-family:IBM Plex Mono,monospace;font-size:10px;color:rgba(25,23,19,0.35);letter-spacing:0.05em;\'>🖼<br><br>SCREENSHOT<br>coming soon</div>';">
         </div>
       </div>
     </div>
@@ -351,6 +344,26 @@ a{color:#191713;text-decoration:none}
 </div>
 
 <script>
+// Screenshot lightbox
+document.querySelectorAll('.screenshot-lightbox').forEach(function(el) {
+  el.addEventListener('click', function() {
+    var img = el.dataset.img;
+    var alt = el.dataset.alt || '';
+    var overlay = document.createElement('div');
+    overlay.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.88);z-index:9999;display:flex;align-items:center;justify-content:center;padding:20px;cursor:zoom-out;';
+    var image = document.createElement('img');
+    image.src = img;
+    image.alt = alt;
+    image.style.cssText = 'max-width:100%;max-height:90vh;border-radius:8px;box-shadow:0 20px 60px rgba(0,0,0,0.5);cursor:default;';
+    image.addEventListener('click', function(e){e.stopPropagation();});
+    overlay.appendChild(image);
+    document.body.appendChild(overlay);
+    function closeModal(){if(document.body.contains(overlay))document.body.removeChild(overlay);}
+    overlay.addEventListener('click',closeModal);
+    document.addEventListener('keydown',function esc(e){if(e.key==='Escape'){closeModal();document.removeEventListener('keydown',esc);}});
+  });
+});
+
 // Video modal
 document.querySelectorAll('.media-placeholder.video').forEach(function(el) {
   el.addEventListener('click', function() {
