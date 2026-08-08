@@ -234,11 +234,16 @@ src="https://www.facebook.com/tr?id=1596541782072028&ev=PageView&noscript=1"/></
     .marquee-outer:hover .marquee-track {
       animation-play-state: paused;
     }
+    .testi-card:hover {
+      box-shadow: 0 8px 24px rgba(25,23,19,0.18);
+      transform: translateY(-3px) rotate(var(--card-rotate, 0deg));
+    }
   }
 
   .testi-card {
     border: 2px solid #191713;
     border-radius: 4px;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
     width: 240px;
     flex: none;
     box-shadow: 4px 4px 0 rgba(25,23,19,0.12);
@@ -620,7 +625,7 @@ src="https://www.facebook.com/tr?id=1596541782072028&ev=PageView&noscript=1"/></
       <div class="marquee-outer">
         <div class="marquee-track" id="marqueeTrack">
           <!-- Cards duplicated for seamless loop -->
-          <div class="testi-card testi-card-text" style="background:#ffcc4d;transform:rotate(-1deg);cursor:pointer;" onclick="openModal({type:'text',bg:'#ffcc4d',quote:'I just never felt like I had a real clear path. I was just kind of making it up as I went along… You’re giving it to me step by step, piece by piece. And it’s been incredibly helpful.',author:'Steve Gast'})">
+          <div class="testi-card testi-card-text" style="background:#ffcc4d;transform:rotate(-1deg);cursor:pointer;" data-bg="#ffcc4d" data-quote="I just never felt like I had a real clear path. I was just kind of making it up as I went along… You’re giving it to me step by step, piece by piece. And it’s been incredibly helpful." data-author="Steve Gast">
             <div class="testi-quote-mark">"</div>
             <div class="testi-quote-body">I just never felt like I had a real clear path. I was just kind of making it up as I went along&hellip; You&rsquo;re giving it to me step by step, piece by piece. And it&rsquo;s been incredibly helpful.</div>
             <div class="testi-author">Steve Gast</div>
@@ -637,12 +642,12 @@ src="https://www.facebook.com/tr?id=1596541782072028&ev=PageView&noscript=1"/></
             <div class="testi-author">&#9654; Steve Gast</div>
             <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:rgba(25,23,19,0.5);margin-top:-4px;">Video Confidence &amp; Personal Branding Coach</div>
           </div>
-          <div class="testi-card testi-card-text" style="background:#7dd3c0;transform:rotate(-0.5deg);cursor:pointer;" onclick="openModal({type:'text',bg:'#7dd3c0',quote:'I have a clearer vision on the journey and how I can serve my customer… I know where I'm going.',author:'Isabelle Lesschaeve'})">
+          <div class="testi-card testi-card-text" style="background:#7dd3c0;transform:rotate(-0.5deg);cursor:pointer;" data-bg="#7dd3c0" data-quote="I have a clearer vision on the journey and how I can serve my customer… I know where I'm going." data-author="Isabelle Lesschaeve">
             <div class="testi-quote-mark">"</div>
             <div class="testi-quote-body">I have a clearer vision on the journey and how I can serve my customer&hellip; I know where I&rsquo;m going.</div>
             <div class="testi-author">Isabelle Lesschaeve</div>
           </div>
-          <div class="testi-card testi-card-text" style="background:#fff;transform:rotate(1deg);cursor:pointer;" onclick="openModal({type:'text',bg:'#fff',quote:'I know my subject inside out — but Mona understood that building a business is a different skill set. She asked the right questions, identified my blind spots, and helped me set the right priorities without overwhelming me.',author:'Alexa Leitner'})">
+          <div class="testi-card testi-card-text" style="background:#fff;transform:rotate(1deg);cursor:pointer;" data-bg="#fff" data-quote="I know my subject inside out — but Mona understood that building a business is a different skill set. She asked the right questions, identified my blind spots, and helped me set the right priorities without overwhelming me." data-author="Alexa Leitner">
             <div class="testi-quote-mark">"</div>
             <div class="testi-quote-body">I know my subject inside out &mdash; but Mona understood that building a business is a different skill set. She asked the right questions, identified my blind spots, and helped me set the right priorities without overwhelming me.</div>
             <div class="testi-author">Alexa Leitner</div>
@@ -660,7 +665,7 @@ src="https://www.facebook.com/tr?id=1596541782072028&ev=PageView&noscript=1"/></
             <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:rgba(25,23,19,0.5);margin-top:-4px;">Wine Tasting Coach</div>
           </div>
           <!-- Duplicate for seamless loop -->
-          <div class="testi-card testi-card-text" style="background:#ffcc4d;transform:rotate(-1deg);cursor:pointer;" onclick="openModal({type:'text',bg:'#ffcc4d',quote:'I just never felt like I had a real clear path. I was just kind of making it up as I went along… You’re giving it to me step by step, piece by piece. And it’s been incredibly helpful.',author:'Steve Gast'})">
+          <div class="testi-card testi-card-text" style="background:#ffcc4d;transform:rotate(-1deg);cursor:pointer;" data-bg="#ffcc4d" data-quote="I just never felt like I had a real clear path. I was just kind of making it up as I went along… You’re giving it to me step by step, piece by piece. And it’s been incredibly helpful." data-author="Steve Gast">
             <div class="testi-quote-mark">"</div>
             <div class="testi-quote-body">I just never felt like I had a real clear path. I was just kind of making it up as I went along&hellip; You&rsquo;re giving it to me step by step, piece by piece. And it&rsquo;s been incredibly helpful.</div>
             <div class="testi-author">Steve Gast</div>
@@ -677,12 +682,12 @@ src="https://www.facebook.com/tr?id=1596541782072028&ev=PageView&noscript=1"/></
             <div class="testi-author">&#9654; Steve Gast</div>
             <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:rgba(25,23,19,0.5);margin-top:-4px;">Video Confidence &amp; Personal Branding Coach</div>
           </div>
-          <div class="testi-card testi-card-text" style="background:#7dd3c0;transform:rotate(-0.5deg);cursor:pointer;" onclick="openModal({type:'text',bg:'#7dd3c0',quote:'I have a clearer vision on the journey and how I can serve my customer… I know where I'm going.',author:'Isabelle Lesschaeve'})">
+          <div class="testi-card testi-card-text" style="background:#7dd3c0;transform:rotate(-0.5deg);cursor:pointer;" data-bg="#7dd3c0" data-quote="I have a clearer vision on the journey and how I can serve my customer… I know where I'm going." data-author="Isabelle Lesschaeve">
             <div class="testi-quote-mark">"</div>
             <div class="testi-quote-body">I have a clearer vision on the journey and how I can serve my customer&hellip; I know where I&rsquo;m going.</div>
             <div class="testi-author">Isabelle Lesschaeve</div>
           </div>
-          <div class="testi-card testi-card-text" style="background:#fff;transform:rotate(1deg);cursor:pointer;" onclick="openModal({type:'text',bg:'#fff',quote:'I know my subject inside out — but Mona understood that building a business is a different skill set. She asked the right questions, identified my blind spots, and helped me set the right priorities without overwhelming me.',author:'Alexa Leitner'})">
+          <div class="testi-card testi-card-text" style="background:#fff;transform:rotate(1deg);cursor:pointer;" data-bg="#fff" data-quote="I know my subject inside out — but Mona understood that building a business is a different skill set. She asked the right questions, identified my blind spots, and helped me set the right priorities without overwhelming me." data-author="Alexa Leitner">
             <div class="testi-quote-mark">"</div>
             <div class="testi-quote-body">I know my subject inside out &mdash; but Mona understood that building a business is a different skill set. She asked the right questions, identified my blind spots, and helped me set the right priorities without overwhelming me.</div>
             <div class="testi-author">Alexa Leitner</div>
@@ -909,6 +914,13 @@ src="https://www.facebook.com/tr?id=1596541782072028&ev=PageView&noscript=1"/></
     document.body.style.overflow = '';
   }
   document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeModal(); });
+
+  /* Text card click-to-expand (data attrs avoid apostrophe quoting bugs) */
+  document.querySelectorAll('.testi-card-text[data-quote]').forEach(function(card) {
+    card.addEventListener('click', function() {
+      openModal({ type: 'text', bg: card.dataset.bg, quote: card.dataset.quote, author: card.dataset.author });
+    });
+  });
 
   /* Mobile touch: pause marquee on touch, resume after lift unless modal opened */
   var marqueeOuter = document.querySelector('.marquee-outer');
