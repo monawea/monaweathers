@@ -51,8 +51,8 @@ src="https://www.facebook.com/tr?id=1596541782072028&ev=PageView&noscript=1"/></
   }
 
   @keyframes marquee {
-    from { transform: translateX(0); }
-    to { transform: translateX(-50%); }
+    from { transform: translate3d(0, 0, 0); }
+    to { transform: translate3d(-50%, 0, 0); }
   }
 
   /* Shell layout */
@@ -226,9 +226,10 @@ src="https://www.facebook.com/tr?id=1596541782072028&ev=PageView&noscript=1"/></
     padding: 0 56px;
     animation: marquee 32s linear infinite;
     will-change: transform;
+    backface-visibility: hidden;
   }
 
-  /* Only pause on hover for devices that support true hover (not mobile tap) */
+  /* Pause on hover for true pointer devices only (not mobile tap) */
   @media (hover: hover) {
     .marquee-outer:hover .marquee-track {
       animation-play-state: paused;
@@ -908,6 +909,21 @@ src="https://www.facebook.com/tr?id=1596541782072028&ev=PageView&noscript=1"/></
     document.body.style.overflow = '';
   }
   document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeModal(); });
+
+  /* Mobile touch: pause marquee on touch, resume after lift unless modal opened */
+  var marqueeOuter = document.querySelector('.marquee-outer');
+  if (marqueeOuter && marqueeTrack) {
+    marqueeOuter.addEventListener('touchstart', function() {
+      marqueeTrack.style.animationPlayState = 'paused';
+    }, { passive: true });
+    marqueeOuter.addEventListener('touchend', function() {
+      setTimeout(function() {
+        if (document.getElementById('testiModal').style.display !== 'flex') {
+          marqueeTrack.style.animationPlayState = 'running';
+        }
+      }, 150);
+    }, { passive: true });
+  }
 
   /* Custom cursor dot */
   (function() {
