@@ -318,12 +318,12 @@ a{color:#191713;text-decoration:none}
       </div>
 
       <div class="client-media">
-        <div class="media-placeholder video">
-          <div class="inner">
-            <div class="play-btn" style="background:rgba(25,23,19,0.25);">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="#f6f1e7"><path d="M5 3l16 9-16 9V3z"/></svg>
+        <div style="position:relative;width:100%;max-width:320px;aspect-ratio:9/16;border-radius:12px;overflow:hidden;cursor:pointer;background:#000;" onclick="this.innerHTML='<iframe src=\'https://www.youtube.com/embed/-n54lbkB5jo?autoplay=1&rel=0\' style=\'position:absolute;inset:0;width:100%;height:100%;border:none;\' allowfullscreen allow=\'autoplay; encrypted-media\'></iframe>'">
+          <img src="https://img.youtube.com/vi/-n54lbkB5jo/hqdefault.jpg" alt="Janet video testimonial" style="width:100%;height:100%;object-fit:cover;display:block;">
+          <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;">
+            <div style="width:56px;height:56px;border-radius:50%;background:#ff5a36;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(0,0,0,.4);">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="#191713"><path d="M5 3l16 9-16 9V3z"/></svg>
             </div>
-            <div class="placeholder-label">VIDEO TESTIMONIAL</div>
           </div>
         </div>
         <div class="screenshot-grid">
