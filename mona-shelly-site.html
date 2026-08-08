@@ -907,80 +907,8 @@ src="https://www.facebook.com/tr?id=1596541782072028&ev=PageView&noscript=1"/></
     openModal({ type: 'video', bg: '#1e1e1e', author: '', embedUrl: 'https://www.youtube.com/embed/eIDHwCMIYWg?autoplay=1&rel=0' });
   });
 
-  /* Newsletter — Flodesk with site styling */
+  /* Newsletter — Flodesk */
   fd('form', { formId: '6a7670d7f6a3ec722d6455d8', containerEl: '#fd-form-6a7670d7f6a3ec722d6455d8' });
-
-  function applyFdStyles() {
-    var c = document.getElementById('fd-form-6a7670d7f6a3ec722d6455d8');
-    if (!c) return;
-    var form = c.querySelector('form');
-    if (!form) return;
-
-    // Horizontal flex on the form itself
-    form.style.setProperty('display', 'flex', 'important');
-    form.style.setProperty('flex-direction', 'row', 'important');
-    form.style.setProperty('flex-wrap', 'wrap', 'important');
-    form.style.setProperty('gap', '10px', 'important');
-    form.style.setProperty('align-items', 'center', 'important');
-    form.style.setProperty('background', 'transparent', 'important');
-    form.style.setProperty('padding', '0', 'important');
-    form.style.setProperty('margin', '0', 'important');
-
-    // Make wrapper divs transparent to layout so inputs join the flex row directly
-    form.querySelectorAll('div').forEach(function(d) {
-      d.style.setProperty('display', 'contents', 'important');
-    });
-
-    // Hide headings and description
-    c.querySelectorAll('h1,h2,h3,h4,p').forEach(function(el) {
-      el.style.setProperty('display', 'none', 'important');
-    });
-
-    // Hide labels
-    c.querySelectorAll('label').forEach(function(el) {
-      el.style.setProperty('display', 'none', 'important');
-    });
-
-    // Style inputs
-    c.querySelectorAll('input[type="text"],input[type="email"]').forEach(function(input) {
-      input.style.setProperty('background', '#f6f1e7', 'important');
-      input.style.setProperty('border', '2px solid #f6f1e7', 'important');
-      input.style.setProperty('border-radius', '999px', 'important');
-      input.style.setProperty('padding', '13px 20px', 'important');
-      input.style.setProperty('font-size', '14px', 'important');
-      input.style.setProperty('font-family', '"Space Grotesk", sans-serif', 'important');
-      input.style.setProperty('color', '#191713', 'important');
-      input.style.setProperty('outline', 'none', 'important');
-      input.style.setProperty('box-shadow', 'none', 'important');
-      input.style.setProperty('width', 'auto', 'important');
-      input.style.setProperty('min-width', input.type === 'email' ? '200px' : '150px', 'important');
-      if (!input.placeholder || !input.placeholder.trim()) {
-        input.placeholder = input.type === 'email' ? 'you@example.com' : 'Your name';
-      }
-    });
-
-    // Style submit button
-    c.querySelectorAll('button[type="submit"],input[type="submit"]').forEach(function(btn) {
-      btn.style.setProperty('background', '#ff5a36', 'important');
-      btn.style.setProperty('color', '#191713', 'important');
-      btn.style.setProperty('font-weight', '700', 'important');
-      btn.style.setProperty('font-size', '14px', 'important');
-      btn.style.setProperty('border', 'none', 'important');
-      btn.style.setProperty('border-radius', '999px', 'important');
-      btn.style.setProperty('padding', '13px 26px', 'important');
-      btn.style.setProperty('cursor', 'pointer', 'important');
-      btn.style.setProperty('font-family', '"Space Grotesk", sans-serif', 'important');
-      btn.style.setProperty('box-shadow', 'none', 'important');
-      btn.style.setProperty('width', 'auto', 'important');
-    });
-  }
-
-  // Reapply every 300ms for 6 seconds to win against Flodesk's async rendering
-  var fdTick = 0;
-  var fdTimer = setInterval(function() {
-    applyFdStyles();
-    if (++fdTick >= 20) clearInterval(fdTimer);
-  }, 300);
 </script>
 
 </body>
