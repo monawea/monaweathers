@@ -921,6 +921,24 @@ src="https://www.facebook.com/tr?id=1596541782072028&ev=PageView&noscript=1"/></
 
   /* Newsletter — Flodesk */
   fd('form', { formId: '6a7670d7f6a3ec722d6455d8', containerEl: '#fd-form-6a7670d7f6a3ec722d6455d8' });
+
+  (function() {
+    var c = document.getElementById('fd-form-6a7670d7f6a3ec722d6455d8');
+    function stripWrappers() {
+      var el = c.firstElementChild;
+      while (el) {
+        el.style.setProperty('margin', '0', 'important');
+        el.style.setProperty('padding', '0', 'important');
+        el.style.setProperty('max-width', 'none', 'important');
+        el.style.setProperty('text-align', 'left', 'important');
+        el.style.setProperty('box-shadow', 'none', 'important');
+        el = el.firstElementChild;
+        if (el && el.tagName.toLowerCase() === 'form') break;
+      }
+    }
+    var obs = new MutationObserver(function() { stripWrappers(); });
+    obs.observe(c, { childList: true, subtree: true });
+  })();
 </script>
 
 </body>
