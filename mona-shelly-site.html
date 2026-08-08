@@ -225,10 +225,14 @@ src="https://www.facebook.com/tr?id=1596541782072028&ev=PageView&noscript=1"/></
     width: max-content;
     padding: 0 56px;
     animation: marquee 32s linear infinite;
+    will-change: transform;
   }
 
-  .marquee-outer:hover .marquee-track {
-    animation-play-state: paused;
+  /* Only pause on hover for devices that support true hover (not mobile tap) */
+  @media (hover: hover) {
+    .marquee-outer:hover .marquee-track {
+      animation-play-state: paused;
+    }
   }
 
   .testi-card {
