@@ -275,8 +275,11 @@ a:hover{color:#2d6b78}
     overflow-x: hidden !important;
   }
 
-  /* Prevent fixed-width children from overflowing */
-  main[data-dc-tpl] * {
+  /* Prevent fixed-width containers from overflowing */
+  main[data-dc-tpl] div,
+  main[data-dc-tpl] section,
+  main[data-dc-tpl] article,
+  main[data-dc-tpl] figure {
     max-width: 100% !important;
     min-width: 0 !important;
     box-sizing: border-box !important;
@@ -284,6 +287,21 @@ a:hover{color:#2d6b78}
 
   /* Images */
   img { max-width: 100% !important; height: auto !important; }
+
+  /* Allow text to scale naturally — never squish below readable size */
+  main[data-dc-tpl] p,
+  main[data-dc-tpl] h1,
+  main[data-dc-tpl] h2,
+  main[data-dc-tpl] h3,
+  main[data-dc-tpl] h4,
+  main[data-dc-tpl] span,
+  main[data-dc-tpl] li,
+  main[data-dc-tpl] a {
+    min-width: 0 !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    font-size: revert !important;
+  }
 
   /* Body */
   body { overflow-x: hidden !important; }
