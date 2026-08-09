@@ -142,6 +142,30 @@
   .offer-sub:first-of-type { margin-top: 4px; }
   .checklist { list-style: none; padding: 0; margin: 0; }
   .checklist li { margin-bottom: 8px; font-size: 0.92rem; }
+  .section-divider {
+    text-align: center;
+    position: relative;
+    margin: 28px 0 20px;
+  }
+  .section-divider::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: var(--border);
+  }
+  .section-divider span {
+    position: relative;
+    background: var(--bg);
+    padding: 0 14px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
   .actions {
     position: sticky;
     bottom: 0;
@@ -192,7 +216,7 @@
 
   <div class="callout">
     <strong>Before you fill this out — create &amp; share a files folder:</strong>
-    Create a Google Drive folder for your files (name it something like "[Your Name] – Shelly Site Files"), upload your headshot, screenshots, proof images, and any brand assets there, then share it with me (Viewer access is enough). Name each file clearly (e.g. "headshot.jpg," "offer1-proof.png") so I know what's what.
+    Create a Google Drive folder for your files (name it something like "[Your Name] – Shelly Site Files"), upload your headshot, screenshots, proof images, and any brand assets there, then share it with me (Viewer access is enough). Name each file clearly (e.g. "headshot.jpg," "page1-proof.png") so I know what's what.
   </div>
 
   <div class="callout" id="restoreBanner">
@@ -308,174 +332,7 @@
     </section>
 
     <section class="form-section">
-      <h2>3. Your Story &amp; Overall Proof</h2>
-      <div class="field" data-question="Who do you help and how?">
-        <label class="q" for="whoHow">In one sentence, who do you help and how?</label>
-        <textarea id="whoHow" name="whoHow" required></textarea>
-      </div>
-      <div class="field" data-question="Client's pain point">
-        <label class="q" for="painPoint">Describe your ideal client's pain point in their own words — what are they struggling with right before they find you?</label>
-        <textarea id="painPoint" name="painPoint" required></textarea>
-      </div>
-      <div class="field" data-question="How do you fix it?">
-        <label class="q" for="theFix">How do you fix it? Your approach or method, in plain language</label>
-        <textarea id="theFix" name="theFix" required></textarea>
-      </div>
-      <div class="field" data-question="Client results / transformations">
-        <label class="q" for="clientResults">Share 2–3 client results or transformations (specific outcomes, numbers, or before/after stories)</label>
-        <textarea id="clientResults" name="clientResults" required></textarea>
-      </div>
-      <div class="field" data-question="Your own results">
-        <label class="q" for="ownResults">Have you gotten results yourself using your own method? If so, describe them</label>
-        <textarea id="ownResults" name="ownResults"></textarea>
-      </div>
-      <div class="field" data-question="Testimonials">
-        <label class="q" for="testimonials">Paste 3–5 testimonials, one per line, with name + role (or write "keep anonymous")</label>
-        <textarea id="testimonials" name="testimonials" required></textarea>
-        <div class="file-hint">Proof images (screenshots, income proof, before/afters): upload to shared folder → "Proof &amp; Results"</div>
-      </div>
-    </section>
-
-    <!-- Page 1, 2, 3 -->
-    <section class="form-section" data-offer="1">
-      <h2>4. Page 1</h2>
-      <div class="field" data-question="Offer name"><label class="q">Offer name</label><input type="text" name="offer1_name" required></div>
-      <div class="field" data-question="Price to display"><label class="q">Price to display (leave blank to omit)</label><input type="text" name="offer1_price"></div>
-      <div class="field" data-question="Home page preview card blurb">
-        <label class="q">Home page preview card — one short sentence teasing this offer (shows in the 4-card grid on your home page, alongside your other pages)</label>
-        <input type="text" name="offer1_cardBlurb" required>
-      </div>
-      <p class="offer-sub">02 · Hero</p>
-      <div class="field" data-question="Hero headline"><label class="q">Hero headline — the big line naming the problem or promise (e.g. "Stop drowning in DMs, start booking clients")</label><input type="text" name="offer1_heroHeadline" required></div>
-      <div class="field" data-question="Hero subheadline"><label class="q">Hero subheadline — one sentence expanding on that promise</label><input type="text" name="offer1_heroSubhead" required></div>
-      <p class="offer-sub">03 · Video</p>
-      <div class="field" data-question="Video link"><label class="q">YouTube video link (demo, VSL, or intro)</label><input type="url" name="offer1_video"></div>
-      <div class="field" data-question="CTA button text"><label class="q">CTA button text below the video (repeats as your closing CTA too — flag if you want different copy there)</label><input type="text" name="offer1_cta" required></div>
-      <div class="field" data-question="CTA link"><label class="q">Link this CTA button should go to</label><input type="url" name="offer1_link" required></div>
-      <p class="offer-sub">04 · Offer Details</p>
-      <div class="field" data-question="Offer details headline"><label class="q">Offer details headline (e.g. "What's Included")</label><input type="text" name="offer1_detailsHeadline" required></div>
-      <div class="field" data-question="Offer details description">
-        <label class="q">How this offer solves the problem — your approach, format, deliverables, timeline</label>
-        <textarea name="offer1_detailsDescription" required></textarea>
-        <div class="file-hint">Additional images: upload to shared folder → "Page 1"</div>
-      </div>
-      <div class="field" data-question="Track/Option 1 name"><label class="q">Track / Option 1 name (optional — only if this offer has multiple tracks or tiers)</label><input type="text" name="offer1_track1"></div>
-      <div class="field" data-question="Track/Option 2 name"><label class="q">Track / Option 2 name (optional)</label><input type="text" name="offer1_track2"></div>
-      <div class="field" data-question="Track/Option 3 name"><label class="q">Track / Option 3 name (optional)</label><input type="text" name="offer1_track3"></div>
-      <div class="field" data-question="Expandable full details"><label class="q">Extra detail for the expandable "full details" toggle (optional — only if there's more than fits above)</label><textarea name="offer1_fullDetails"></textarea></div>
-      <p class="offer-sub">05 · Testimonial</p>
-      <div class="field" data-question="Featured testimonial quote">
-        <label class="q">Featured testimonial quote for this offer</label>
-        <textarea name="offer1_testimonialQuote" required></textarea>
-        <div class="file-hint">Proof images/screenshots: upload to shared folder → "Page 1"</div>
-      </div>
-      <div class="field" data-question="Testimonial name and title"><label class="q">Testimonial name &amp; title</label><input type="text" name="offer1_testimonialNameTitle" required></div>
-      <div class="field" data-question="Other results or proof notes"><label class="q">Any other results, numbers, or proof worth including? (optional)</label><textarea name="offer1_resultsNotes"></textarea></div>
-      <p class="offer-sub">06 · Closing CTA</p>
-      <p class="section-note">Repeats the CTA button from the Video section above — no need to re-enter it.</p>
-      <p class="offer-sub">07 · Related Links / Footer</p>
-      <div class="field" data-question="Related links override"><label class="q">"Looking for something else?" links — leave blank to auto-link to your other 2 pages, or describe what you'd rather link here</label><input type="text" name="offer1_relatedLinks"></div>
-    </section>
-
-    <section class="form-section" data-offer="2">
-      <h2>5. Page 2</h2>
-      <div class="field" data-question="Offer name"><label class="q">Offer name</label><input type="text" name="offer2_name" required></div>
-      <div class="field" data-question="Price to display"><label class="q">Price to display (leave blank to omit)</label><input type="text" name="offer2_price"></div>
-      <div class="field" data-question="Home page preview card blurb">
-        <label class="q">Home page preview card — one short sentence teasing this offer (shows in the 4-card grid on your home page, alongside your other pages)</label>
-        <input type="text" name="offer2_cardBlurb" required>
-      </div>
-      <p class="offer-sub">02 · Hero</p>
-      <div class="field" data-question="Hero headline"><label class="q">Hero headline — the big line naming the problem or promise (e.g. "Stop drowning in DMs, start booking clients")</label><input type="text" name="offer2_heroHeadline" required></div>
-      <div class="field" data-question="Hero subheadline"><label class="q">Hero subheadline — one sentence expanding on that promise</label><input type="text" name="offer2_heroSubhead" required></div>
-      <p class="offer-sub">03 · Video</p>
-      <div class="field" data-question="Video link"><label class="q">YouTube video link (demo, VSL, or intro)</label><input type="url" name="offer2_video"></div>
-      <div class="field" data-question="CTA button text"><label class="q">CTA button text below the video (repeats as your closing CTA too — flag if you want different copy there)</label><input type="text" name="offer2_cta" required></div>
-      <div class="field" data-question="CTA link"><label class="q">Link this CTA button should go to</label><input type="url" name="offer2_link" required></div>
-      <p class="offer-sub">04 · Offer Details</p>
-      <div class="field" data-question="Offer details headline"><label class="q">Offer details headline (e.g. "What's Included")</label><input type="text" name="offer2_detailsHeadline" required></div>
-      <div class="field" data-question="Offer details description">
-        <label class="q">How this offer solves the problem — your approach, format, deliverables, timeline</label>
-        <textarea name="offer2_detailsDescription" required></textarea>
-        <div class="file-hint">Additional images: upload to shared folder → "Page 2"</div>
-      </div>
-      <div class="field" data-question="Track/Option 1 name"><label class="q">Track / Option 1 name (optional — only if this offer has multiple tracks or tiers)</label><input type="text" name="offer2_track1"></div>
-      <div class="field" data-question="Track/Option 2 name"><label class="q">Track / Option 2 name (optional)</label><input type="text" name="offer2_track2"></div>
-      <div class="field" data-question="Track/Option 3 name"><label class="q">Track / Option 3 name (optional)</label><input type="text" name="offer2_track3"></div>
-      <div class="field" data-question="Expandable full details"><label class="q">Extra detail for the expandable "full details" toggle (optional — only if there's more than fits above)</label><textarea name="offer2_fullDetails"></textarea></div>
-      <p class="offer-sub">05 · Testimonial</p>
-      <div class="field" data-question="Featured testimonial quote">
-        <label class="q">Featured testimonial quote for this offer</label>
-        <textarea name="offer2_testimonialQuote" required></textarea>
-        <div class="file-hint">Proof images/screenshots: upload to shared folder → "Page 2"</div>
-      </div>
-      <div class="field" data-question="Testimonial name and title"><label class="q">Testimonial name &amp; title</label><input type="text" name="offer2_testimonialNameTitle" required></div>
-      <div class="field" data-question="Other results or proof notes"><label class="q">Any other results, numbers, or proof worth including? (optional)</label><textarea name="offer2_resultsNotes"></textarea></div>
-      <p class="offer-sub">06 · Closing CTA</p>
-      <p class="section-note">Repeats the CTA button from the Video section above — no need to re-enter it.</p>
-      <p class="offer-sub">07 · Related Links / Footer</p>
-      <div class="field" data-question="Related links override"><label class="q">"Looking for something else?" links — leave blank to auto-link to your other 2 pages, or describe what you'd rather link here</label><input type="text" name="offer2_relatedLinks"></div>
-    </section>
-
-    <section class="form-section" data-offer="3">
-      <h2>6. Page 3</h2>
-      <div class="field" data-question="Offer name"><label class="q">Offer name</label><input type="text" name="offer3_name" required></div>
-      <div class="field" data-question="Price to display"><label class="q">Price to display (leave blank to omit)</label><input type="text" name="offer3_price"></div>
-      <div class="field" data-question="Home page preview card blurb">
-        <label class="q">Home page preview card — one short sentence teasing this offer (shows in the 4-card grid on your home page, alongside your other pages)</label>
-        <input type="text" name="offer3_cardBlurb" required>
-      </div>
-      <p class="offer-sub">02 · Hero</p>
-      <div class="field" data-question="Hero headline"><label class="q">Hero headline — the big line naming the problem or promise (e.g. "Stop drowning in DMs, start booking clients")</label><input type="text" name="offer3_heroHeadline" required></div>
-      <div class="field" data-question="Hero subheadline"><label class="q">Hero subheadline — one sentence expanding on that promise</label><input type="text" name="offer3_heroSubhead" required></div>
-      <p class="offer-sub">03 · Video</p>
-      <div class="field" data-question="Video link"><label class="q">YouTube video link (demo, VSL, or intro)</label><input type="url" name="offer3_video"></div>
-      <div class="field" data-question="CTA button text"><label class="q">CTA button text below the video (repeats as your closing CTA too — flag if you want different copy there)</label><input type="text" name="offer3_cta" required></div>
-      <div class="field" data-question="CTA link"><label class="q">Link this CTA button should go to</label><input type="url" name="offer3_link" required></div>
-      <p class="offer-sub">04 · Offer Details</p>
-      <div class="field" data-question="Offer details headline"><label class="q">Offer details headline (e.g. "What's Included")</label><input type="text" name="offer3_detailsHeadline" required></div>
-      <div class="field" data-question="Offer details description">
-        <label class="q">How this offer solves the problem — your approach, format, deliverables, timeline</label>
-        <textarea name="offer3_detailsDescription" required></textarea>
-        <div class="file-hint">Additional images: upload to shared folder → "Page 3"</div>
-      </div>
-      <div class="field" data-question="Track/Option 1 name"><label class="q">Track / Option 1 name (optional — only if this offer has multiple tracks or tiers)</label><input type="text" name="offer3_track1"></div>
-      <div class="field" data-question="Track/Option 2 name"><label class="q">Track / Option 2 name (optional)</label><input type="text" name="offer3_track2"></div>
-      <div class="field" data-question="Track/Option 3 name"><label class="q">Track / Option 3 name (optional)</label><input type="text" name="offer3_track3"></div>
-      <div class="field" data-question="Expandable full details"><label class="q">Extra detail for the expandable "full details" toggle (optional — only if there's more than fits above)</label><textarea name="offer3_fullDetails"></textarea></div>
-      <p class="offer-sub">05 · Testimonial</p>
-      <div class="field" data-question="Featured testimonial quote">
-        <label class="q">Featured testimonial quote for this offer</label>
-        <textarea name="offer3_testimonialQuote" required></textarea>
-        <div class="file-hint">Proof images/screenshots: upload to shared folder → "Page 3"</div>
-      </div>
-      <div class="field" data-question="Testimonial name and title"><label class="q">Testimonial name &amp; title</label><input type="text" name="offer3_testimonialNameTitle" required></div>
-      <div class="field" data-question="Other results or proof notes"><label class="q">Any other results, numbers, or proof worth including? (optional)</label><textarea name="offer3_resultsNotes"></textarea></div>
-      <p class="offer-sub">06 · Closing CTA</p>
-      <p class="section-note">Repeats the CTA button from the Video section above — no need to re-enter it.</p>
-      <p class="offer-sub">07 · Related Links / Footer</p>
-      <div class="field" data-question="Related links override"><label class="q">"Looking for something else?" links — leave blank to auto-link to your other 2 pages, or describe what you'd rather link here</label><input type="text" name="offer3_relatedLinks"></div>
-    </section>
-
-    <section class="form-section">
-      <h2>7. Newsletter</h2>
-      <div class="field" data-question="What do subscribers get?"><label class="q">What do subscribers get for signing up?</label><input type="text" name="newsletterOffer" required></div>
-      <div class="field" data-question="Email service provider"><label class="q">Which email service provider do you use? (Mailchimp, ConvertKit, Flodesk, etc.)</label><input type="text" name="esp" required></div>
-      <div class="field" data-question="Existing signup form?">
-        <label class="q">Do you have an existing signup form built with your provider?</label>
-        <div class="radio-group">
-          <label><input type="radio" name="signupFormType" value="Yes, embed/form code" required> Yes, embed/form code</label>
-          <label><input type="radio" name="signupFormType" value="Yes, just a link"> Yes, just a link</label>
-          <label><input type="radio" name="signupFormType" value="No, need help"> No, need help</label>
-        </div>
-      </div>
-      <div class="field" data-question="Embed code"><label class="q">If embed code, paste the full code here</label><textarea name="embedCode"></textarea></div>
-      <div class="field" data-question="Signup link"><label class="q">If just a link, paste it here</label><input type="url" name="signupLink"></div>
-      <div class="field" data-question="Newsletter video link"><label class="q">YouTube video link, if you want one in this section</label><input type="url" name="newsletterVideo"></div>
-    </section>
-
-    <section class="form-section">
-      <h2>8. Branding &amp; Style</h2>
+      <h2>3. Branding &amp; Style</h2>
       <div class="field" data-question="Existing brand colors?">
         <label class="q">Do you have existing brand colors?</label>
         <div class="radio-group">
@@ -523,13 +380,182 @@
     </section>
 
     <section class="form-section">
-      <h2>9. Links &amp; Socials</h2>
+      <h2>4. Your Story &amp; Overall Proof</h2>
+      <div class="field" data-question="Who do you help and how?">
+        <label class="q" for="whoHow">In one sentence, who do you help and how?</label>
+        <textarea id="whoHow" name="whoHow" required></textarea>
+      </div>
+      <div class="field" data-question="Client's pain point">
+        <label class="q" for="painPoint">Describe your ideal client's pain point in their own words — what are they struggling with right before they find you?</label>
+        <textarea id="painPoint" name="painPoint" required></textarea>
+      </div>
+      <div class="field" data-question="How do you fix it?">
+        <label class="q" for="theFix">How do you fix it? Your approach or method, in plain language</label>
+        <textarea id="theFix" name="theFix" required></textarea>
+      </div>
+      <div class="field" data-question="Client results / transformations">
+        <label class="q" for="clientResults">Share 2–3 client results or transformations (specific outcomes, numbers, or before/after stories)</label>
+        <textarea id="clientResults" name="clientResults" required></textarea>
+      </div>
+      <div class="field" data-question="Your own results">
+        <label class="q" for="ownResults">Have you gotten results yourself using your own method? If so, describe them</label>
+        <textarea id="ownResults" name="ownResults"></textarea>
+      </div>
+      <div class="field" data-question="Testimonials">
+        <label class="q" for="testimonials">Paste 3–5 testimonials, one per line, with name + role (or write "keep anonymous")</label>
+        <textarea id="testimonials" name="testimonials" required></textarea>
+        <div class="file-hint">Proof images (screenshots, income proof, before/afters): upload to shared folder → "Proof &amp; Results"</div>
+      </div>
+    </section>
+
+    <section class="form-section">
+      <h2>5. Newsletter</h2>
+      <div class="field" data-question="What do subscribers get?"><label class="q">What do subscribers get for signing up?</label><input type="text" name="newsletterOffer" required></div>
+      <div class="field" data-question="Email service provider"><label class="q">Which email service provider do you use? (Mailchimp, ConvertKit, Flodesk, etc.)</label><input type="text" name="esp" required></div>
+      <div class="field" data-question="Existing signup form?">
+        <label class="q">Do you have an existing signup form built with your provider?</label>
+        <div class="radio-group">
+          <label><input type="radio" name="signupFormType" value="Yes, embed/form code" required> Yes, embed/form code</label>
+          <label><input type="radio" name="signupFormType" value="Yes, just a link"> Yes, just a link</label>
+          <label><input type="radio" name="signupFormType" value="No, need help"> No, need help</label>
+        </div>
+      </div>
+      <div class="field" data-question="Embed code"><label class="q">If embed code, paste the full code here</label><textarea name="embedCode"></textarea></div>
+      <div class="field" data-question="Signup link"><label class="q">If just a link, paste it here</label><input type="url" name="signupLink"></div>
+      <div class="field" data-question="Newsletter video link"><label class="q">YouTube video link, if you want one in this section</label><input type="url" name="newsletterVideo"></div>
+    </section>
+
+    <section class="form-section">
+      <h2>6. Links &amp; Socials</h2>
       <p class="section-note">The External Link Block below is your 4th home page preview card — it fills the last of the 4 slots alongside your 3 pages.</p>
       <div class="field" data-question="Social media links"><label class="q">Social media links (one per line)</label><textarea name="socialLinks"></textarea></div>
       <div class="field" data-question="Community link"><label class="q">Community link (Skool, Facebook group, etc.)</label><input type="url" name="communityLink"></div>
       <div class="field" data-question="External link block card title"><label class="q">Home page preview card title for this 4th card (e.g. "Join the Community")</label><input type="text" name="externalLinkTitle" required></div>
       <div class="field" data-question="External link block card blurb"><label class="q">One short sentence teasing this card</label><input type="text" name="externalLinkBlurb" required></div>
       <div class="field" data-question="External link block destination"><label class="q">What should this card link to?</label><input type="url" name="externalLink" required></div>
+    </section>
+
+    <div class="section-divider"><span>Your Offer Pages</span></div>
+
+    <!-- Page 1, 2, 3 -->
+    <section class="form-section" data-offer="1">
+      <h2>7. Page 1</h2>
+      <div class="field" data-question="Offer name"><label class="q">Offer name</label><input type="text" name="offer1_name" required></div>
+      <div class="field" data-question="Price to display"><label class="q">Price to display (leave blank to omit)</label><input type="text" name="offer1_price"></div>
+      <div class="field" data-question="Home page preview card blurb">
+        <label class="q">Home page preview card — one short sentence teasing this offer (shows in the 4-card grid on your home page, alongside your other pages)</label>
+        <input type="text" name="offer1_cardBlurb" required>
+      </div>
+      <p class="offer-sub">02 · Hero</p>
+      <div class="field" data-question="Hero headline"><label class="q">Hero headline — the big line naming the problem or promise (e.g. "Stop drowning in DMs, start booking clients")</label><input type="text" name="offer1_heroHeadline" required></div>
+      <div class="field" data-question="Hero subheadline"><label class="q">Hero subheadline — one sentence expanding on that promise</label><input type="text" name="offer1_heroSubhead" required></div>
+      <p class="offer-sub">03 · Video</p>
+      <div class="field" data-question="Video link"><label class="q">YouTube video link (demo, VSL, or intro)</label><input type="url" name="offer1_video"></div>
+      <div class="field" data-question="CTA button text"><label class="q">CTA button text below the video (repeats as your closing CTA too — flag if you want different copy there)</label><input type="text" name="offer1_cta" required></div>
+      <div class="field" data-question="CTA link"><label class="q">Link this CTA button should go to</label><input type="url" name="offer1_link" required></div>
+      <p class="offer-sub">04 · Offer Details</p>
+      <div class="field" data-question="Offer details headline"><label class="q">Offer details headline (e.g. "What's Included")</label><input type="text" name="offer1_detailsHeadline" required></div>
+      <div class="field" data-question="Offer details description">
+        <label class="q">How this offer solves the problem — your approach, format, deliverables, timeline</label>
+        <textarea name="offer1_detailsDescription" required></textarea>
+        <div class="file-hint">Additional images: upload to shared folder → "Page 1"</div>
+      </div>
+      <div class="field" data-question="Track/Option 1 name"><label class="q">Track / Option 1 name (optional — only if this offer has multiple tracks or tiers)</label><input type="text" name="offer1_track1"></div>
+      <div class="field" data-question="Track/Option 2 name"><label class="q">Track / Option 2 name (optional)</label><input type="text" name="offer1_track2"></div>
+      <div class="field" data-question="Track/Option 3 name"><label class="q">Track / Option 3 name (optional)</label><input type="text" name="offer1_track3"></div>
+      <div class="field" data-question="Expandable full details"><label class="q">Extra detail for the expandable "full details" toggle (optional — only if there's more than fits above)</label><textarea name="offer1_fullDetails"></textarea></div>
+      <p class="offer-sub">05 · Testimonial</p>
+      <div class="field" data-question="Featured testimonial quote">
+        <label class="q">Featured testimonial quote for this offer</label>
+        <textarea name="offer1_testimonialQuote" required></textarea>
+        <div class="file-hint">Proof images/screenshots: upload to shared folder → "Page 1"</div>
+      </div>
+      <div class="field" data-question="Testimonial name and title"><label class="q">Testimonial name &amp; title</label><input type="text" name="offer1_testimonialNameTitle" required></div>
+      <div class="field" data-question="Other results or proof notes"><label class="q">Any other results, numbers, or proof worth including? (optional)</label><textarea name="offer1_resultsNotes"></textarea></div>
+      <p class="offer-sub">06 · Closing CTA</p>
+      <p class="section-note">Repeats the CTA button from the Video section above — no need to re-enter it.</p>
+      <p class="offer-sub">07 · Related Links / Footer</p>
+      <div class="field" data-question="Related links override"><label class="q">"Looking for something else?" links — leave blank to auto-link to your other 2 pages, or describe what you'd rather link here</label><input type="text" name="offer1_relatedLinks"></div>
+    </section>
+
+    <section class="form-section" data-offer="2">
+      <h2>8. Page 2</h2>
+      <div class="field" data-question="Offer name"><label class="q">Offer name</label><input type="text" name="offer2_name" required></div>
+      <div class="field" data-question="Price to display"><label class="q">Price to display (leave blank to omit)</label><input type="text" name="offer2_price"></div>
+      <div class="field" data-question="Home page preview card blurb">
+        <label class="q">Home page preview card — one short sentence teasing this offer (shows in the 4-card grid on your home page, alongside your other pages)</label>
+        <input type="text" name="offer2_cardBlurb" required>
+      </div>
+      <p class="offer-sub">02 · Hero</p>
+      <div class="field" data-question="Hero headline"><label class="q">Hero headline — the big line naming the problem or promise (e.g. "Stop drowning in DMs, start booking clients")</label><input type="text" name="offer2_heroHeadline" required></div>
+      <div class="field" data-question="Hero subheadline"><label class="q">Hero subheadline — one sentence expanding on that promise</label><input type="text" name="offer2_heroSubhead" required></div>
+      <p class="offer-sub">03 · Video</p>
+      <div class="field" data-question="Video link"><label class="q">YouTube video link (demo, VSL, or intro)</label><input type="url" name="offer2_video"></div>
+      <div class="field" data-question="CTA button text"><label class="q">CTA button text below the video (repeats as your closing CTA too — flag if you want different copy there)</label><input type="text" name="offer2_cta" required></div>
+      <div class="field" data-question="CTA link"><label class="q">Link this CTA button should go to</label><input type="url" name="offer2_link" required></div>
+      <p class="offer-sub">04 · Offer Details</p>
+      <div class="field" data-question="Offer details headline"><label class="q">Offer details headline (e.g. "What's Included")</label><input type="text" name="offer2_detailsHeadline" required></div>
+      <div class="field" data-question="Offer details description">
+        <label class="q">How this offer solves the problem — your approach, format, deliverables, timeline</label>
+        <textarea name="offer2_detailsDescription" required></textarea>
+        <div class="file-hint">Additional images: upload to shared folder → "Page 2"</div>
+      </div>
+      <div class="field" data-question="Track/Option 1 name"><label class="q">Track / Option 1 name (optional — only if this offer has multiple tracks or tiers)</label><input type="text" name="offer2_track1"></div>
+      <div class="field" data-question="Track/Option 2 name"><label class="q">Track / Option 2 name (optional)</label><input type="text" name="offer2_track2"></div>
+      <div class="field" data-question="Track/Option 3 name"><label class="q">Track / Option 3 name (optional)</label><input type="text" name="offer2_track3"></div>
+      <div class="field" data-question="Expandable full details"><label class="q">Extra detail for the expandable "full details" toggle (optional — only if there's more than fits above)</label><textarea name="offer2_fullDetails"></textarea></div>
+      <p class="offer-sub">05 · Testimonial</p>
+      <div class="field" data-question="Featured testimonial quote">
+        <label class="q">Featured testimonial quote for this offer</label>
+        <textarea name="offer2_testimonialQuote" required></textarea>
+        <div class="file-hint">Proof images/screenshots: upload to shared folder → "Page 2"</div>
+      </div>
+      <div class="field" data-question="Testimonial name and title"><label class="q">Testimonial name &amp; title</label><input type="text" name="offer2_testimonialNameTitle" required></div>
+      <div class="field" data-question="Other results or proof notes"><label class="q">Any other results, numbers, or proof worth including? (optional)</label><textarea name="offer2_resultsNotes"></textarea></div>
+      <p class="offer-sub">06 · Closing CTA</p>
+      <p class="section-note">Repeats the CTA button from the Video section above — no need to re-enter it.</p>
+      <p class="offer-sub">07 · Related Links / Footer</p>
+      <div class="field" data-question="Related links override"><label class="q">"Looking for something else?" links — leave blank to auto-link to your other 2 pages, or describe what you'd rather link here</label><input type="text" name="offer2_relatedLinks"></div>
+    </section>
+
+    <section class="form-section" data-offer="3">
+      <h2>9. Page 3</h2>
+      <div class="field" data-question="Offer name"><label class="q">Offer name</label><input type="text" name="offer3_name" required></div>
+      <div class="field" data-question="Price to display"><label class="q">Price to display (leave blank to omit)</label><input type="text" name="offer3_price"></div>
+      <div class="field" data-question="Home page preview card blurb">
+        <label class="q">Home page preview card — one short sentence teasing this offer (shows in the 4-card grid on your home page, alongside your other pages)</label>
+        <input type="text" name="offer3_cardBlurb" required>
+      </div>
+      <p class="offer-sub">02 · Hero</p>
+      <div class="field" data-question="Hero headline"><label class="q">Hero headline — the big line naming the problem or promise (e.g. "Stop drowning in DMs, start booking clients")</label><input type="text" name="offer3_heroHeadline" required></div>
+      <div class="field" data-question="Hero subheadline"><label class="q">Hero subheadline — one sentence expanding on that promise</label><input type="text" name="offer3_heroSubhead" required></div>
+      <p class="offer-sub">03 · Video</p>
+      <div class="field" data-question="Video link"><label class="q">YouTube video link (demo, VSL, or intro)</label><input type="url" name="offer3_video"></div>
+      <div class="field" data-question="CTA button text"><label class="q">CTA button text below the video (repeats as your closing CTA too — flag if you want different copy there)</label><input type="text" name="offer3_cta" required></div>
+      <div class="field" data-question="CTA link"><label class="q">Link this CTA button should go to</label><input type="url" name="offer3_link" required></div>
+      <p class="offer-sub">04 · Offer Details</p>
+      <div class="field" data-question="Offer details headline"><label class="q">Offer details headline (e.g. "What's Included")</label><input type="text" name="offer3_detailsHeadline" required></div>
+      <div class="field" data-question="Offer details description">
+        <label class="q">How this offer solves the problem — your approach, format, deliverables, timeline</label>
+        <textarea name="offer3_detailsDescription" required></textarea>
+        <div class="file-hint">Additional images: upload to shared folder → "Page 3"</div>
+      </div>
+      <div class="field" data-question="Track/Option 1 name"><label class="q">Track / Option 1 name (optional — only if this offer has multiple tracks or tiers)</label><input type="text" name="offer3_track1"></div>
+      <div class="field" data-question="Track/Option 2 name"><label class="q">Track / Option 2 name (optional)</label><input type="text" name="offer3_track2"></div>
+      <div class="field" data-question="Track/Option 3 name"><label class="q">Track / Option 3 name (optional)</label><input type="text" name="offer3_track3"></div>
+      <div class="field" data-question="Expandable full details"><label class="q">Extra detail for the expandable "full details" toggle (optional — only if there's more than fits above)</label><textarea name="offer3_fullDetails"></textarea></div>
+      <p class="offer-sub">05 · Testimonial</p>
+      <div class="field" data-question="Featured testimonial quote">
+        <label class="q">Featured testimonial quote for this offer</label>
+        <textarea name="offer3_testimonialQuote" required></textarea>
+        <div class="file-hint">Proof images/screenshots: upload to shared folder → "Page 3"</div>
+      </div>
+      <div class="field" data-question="Testimonial name and title"><label class="q">Testimonial name &amp; title</label><input type="text" name="offer3_testimonialNameTitle" required></div>
+      <div class="field" data-question="Other results or proof notes"><label class="q">Any other results, numbers, or proof worth including? (optional)</label><textarea name="offer3_resultsNotes"></textarea></div>
+      <p class="offer-sub">06 · Closing CTA</p>
+      <p class="section-note">Repeats the CTA button from the Video section above — no need to re-enter it.</p>
+      <p class="offer-sub">07 · Related Links / Footer</p>
+      <div class="field" data-question="Related links override"><label class="q">"Looking for something else?" links — leave blank to auto-link to your other 2 pages, or describe what you'd rather link here</label><input type="text" name="offer3_relatedLinks"></div>
     </section>
 
     <section class="form-section">
@@ -749,7 +775,7 @@
     const html = `<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>
     <head><meta charset='utf-8'><title>Shelly Site Intake</title></head>
     <body>${buildSummaryHTML()}</body></html>`;
-    const blob = new Blob(['\ufeff', html], { type: 'application/msword' });
+    const blob = new Blob(['﻿', html], { type: 'application/msword' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
