@@ -910,8 +910,19 @@
 <!-- FOOTER -->
 <footer class="site-footer">
   <span>&copy; 2026 Mona Weathers Coaching</span>
-  <a href="/mona-shelly-site" style="color:rgba(25,23,19,.4);text-decoration:none;border-bottom:1px solid rgba(25,23,19,.2);">← Back to Mona's site</a>
+  <span style="display:flex;gap:16px;align-items:center;flex-wrap:wrap;">
+    <a href="/privacy" style="color:rgba(25,23,19,.4);text-decoration:none;border-bottom:1px solid rgba(25,23,19,.2);">Privacy Policy</a>
+    <a href="/terms" style="color:rgba(25,23,19,.4);text-decoration:none;border-bottom:1px solid rgba(25,23,19,.2);">Terms</a>
+    <a href="/mona-shelly-site" style="color:rgba(25,23,19,.4);text-decoration:none;border-bottom:1px solid rgba(25,23,19,.2);">← Back to Mona's site</a>
+  </span>
 </footer>
+
+<!-- Cookie notice -->
+<div id="cookie-bar" style="position:fixed;bottom:0;left:0;right:0;background:rgba(25,23,19,0.92);color:rgba(246,241,231,0.8);font-family:'IBM Plex Mono',monospace;font-size:11px;padding:10px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px;z-index:9999;backdrop-filter:blur(4px);">
+  <span>This site uses Google Analytics to understand how visitors use it. <a href="/privacy" style="color:#ff5a36;text-decoration:none;border-bottom:1px solid rgba(255,90,54,.4);">Privacy policy</a></span>
+  <button onclick="document.getElementById('cookie-bar').style.display='none';localStorage.setItem('cookie-ok','1')" style="background:#ff5a36;color:#f6f1e7;border:none;border-radius:6px;padding:5px 12px;font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;cursor:pointer;white-space:nowrap;">Got it</button>
+</div>
+<script>if(localStorage.getItem('cookie-ok'))document.getElementById('cookie-bar').style.display='none';</script>
 
 <script>
   /* Scroll reveal */
