@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shelly Site — Client Intake</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<style>
+  :root {
+    --bg: #FAF7F2;
+    --panel: #FFFFFF;
+    --text: #26221E;
+    --muted: #6B655D;
+    --accent: #C1502E;   /* change this to match your brand */
+    --border: #E4DED4;
+    --radius: 10px;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+  }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 40px 20px 100px; }
+  h1 { font-size: 1.7rem; margin: 0 0 6px; }
+  .subtitle { color: var(--muted); margin: 0 0 28px; font-size: 0.98rem; }
+  .callout {
+    background: #FFF3EC;
+    border: 1px solid #F0D9CB;
+    border-radius: var(--radius);
+    padding: 16px 18px;
+    margin-bottom: 32px;
+    font-size: 0.95rem;
+  }
+  .callout strong { display: block; margin-bottom: 4px; }
+  .callout a { color: var(--accent); font-weight: 600; word-break: break-all; }
+  .ref-callout {
+    background: #EDF2F4;
+    border-color: #CBD9DD;
+  }
+  .ref-callout a { word-break: normal; }
+  .form-section {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px 26px;
+    margin-bottom: 20px;
+  }
+  .form-section h2 {
+    font-size: 1.05rem;
+    margin: 0 0 4px;
+  }
+  .section-note {
+    color: var(--muted);
+    font-size: 0.88rem;
+    margin: 0 0 16px;
+  }
+  .field { margin-bottom: 16px; }
+  .field:last-child { margin-bottom: 0; }
+  .field > label.q {
+    display: block;
+    font-weight: 600;
+    font-size: 0.92rem;
+    margin-bottom: 6px;
+  }
+  .field input[type="text"],
+  .field input[type="email"],
+  .field input[type="url"],
+  .field textarea {
+    width: 100%;
+    padding: 9px 11px;
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    font-size: 0.95rem;
+    font-family: inherit;
+    color: var(--text);
+    background: #fff;
+  }
+  .field textarea { min-height: 70px; resize: vertical; }
+  .field input:focus, .field textarea:focus {
+    outline: 2px solid var(--accent);
+    outline-offset: 1px;
+  }
+  .radio-group, .checkbox-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 18px;
+  }
+  .radio-group label, .checkbox-group label {
+    font-weight: 400;
+    font-size: 0.92rem;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .file-hint {
+    font-size: 0.85rem;
+    color: var(--muted);
+    background: #F4F0EA;
+    border-radius: 6px;
+    padding: 6px 10px;
+    margin-top: 6px;
+  }
+  .folder-guide {
+    margin-top: 14px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 14px;
+    background: #FAF8F4;
+  }
+  .folder-guide summary {
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.9rem;
+    list-style: none;
+  }
+  .folder-guide summary::-webkit-details-marker { display: none; }
+  .folder-guide summary::before { content: "▸ "; }
+  .folder-guide[open] summary::before { content: "▾ "; }
+  .folder-tree {
+    margin-top: 10px;
+    font-size: 0.88rem;
+    line-height: 1.7;
+  }
+  .folder-tree .folder { font-weight: 600; color: var(--text); }
+  .folder-tree .file { color: var(--muted); }
+  .folder-tree .tree-indent {
+    margin-left: 14px;
+    padding-left: 14px;
+    border-left: 1px solid var(--border);
+  }
+  .offer-sub {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    color: var(--accent);
+    font-weight: 700;
+    margin: 20px 0 8px;
+  }
+  .offer-sub:first-of-type { margin-top: 4px; }
+  .checklist { list-style: none; padding: 0; margin: 0; }
+  .checklist li { margin-bottom: 8px; font-size: 0.92rem; }
+  .actions {
+    position: sticky;
+    bottom: 0;
+    background: linear-gradient(to top, var(--bg) 70%, transparent);
+    padding: 20px 0 10px;
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  button {
+    font-family: inherit;
+    font-size: 0.95rem;
+    font-weight: 600;
+    padding: 12px 20px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+  }
+  #downloadPdfBtn { background: var(--accent); color: #fff; }
+  #downloadWordBtn { background: #fff; color: var(--text); border: 1px solid var(--border); }
+  #saveProgressBtn { background: #fff; color: var(--text); border: 1px solid var(--border); }
+  #statusMsg { font-size: 0.88rem; color: var(--muted); margin-top: 8px; min-height: 1.2em; }
+  .save-warning { font-size: 0.82rem; color: var(--muted); margin: 6px 0 0; }
+  #restoreBanner { display: none; }
+  #restoreBanner button {
+    margin-right: 8px;
+    padding: 7px 14px;
+    font-size: 0.88rem;
+  }
+  #pdfSummary { display: none; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Shelly Site — Client Intake</h1>
+  <p class="subtitle">Fill this out completely, then download it and send it to me. Turnaround is 7–10 days after I have everything.</p>
+
+  <div class="callout ref-callout">
+    <strong>📎 See the site structure first:</strong>
+    Take a look at the wireframes below so you know what each section of your site will look like before you answer the questions — the sidebar becomes your photo + bio, "Header" becomes your hero section, "Reviews" becomes testimonials, and so on.
+    <br><br>
+    <a href="Shelly_Sites_Wireframe.pdf" target="_blank" rel="noopener">View Desktop Wireframe (PDF)</a>
+    &nbsp;·&nbsp;
+    <a href="Shelly_Sites_Wireframe_Mobile.pdf" target="_blank" rel="noopener">View Mobile Wireframe (PDF)</a>
+    &nbsp;·&nbsp;
+    <a href="Shelly_Sites_Wireframe_Landing_Page.pdf" target="_blank" rel="noopener">View Offer Landing Page Wireframe (PDF)</a>
+  </div>
+
+  <div class="callout">
+    <strong>Before you fill this out — create &amp; share a files folder:</strong>
+    Create a Google Drive folder for your files (name it something like "[Your Name] – Shelly Site Files"), upload your headshot, screenshots, proof images, and any brand assets there, then share it with me (Viewer access is enough). Name each file clearly (e.g. "headshot.jpg," "offer1-proof.png") so I know what's what.
+  </div>
+
+  <div class="callout" id="restoreBanner">
+    <strong>We found a saved draft on this browser</strong> (saved <span id="savedAtText"></span>).
+    <br><br>
+    <button type="button" id="restoreBtn">Restore it</button>
+    <button type="button" id="discardBtn">Start fresh</button>
+  </div>
+
+  <form id="intakeForm">
+
+    <section class="form-section">
+      <h2>Your Files Folder</h2>
+      <div class="field" data-question="Shared Drive folder link">
+        <label class="q" for="driveFolderLink">Paste the link to the folder you shared with me</label>
+        <input type="url" id="driveFolderLink" name="driveFolderLink" required>
+      </div>
+
+      <details class="folder-guide">
+        <summary>📁 See a suggested folder structure</summary>
+        <div class="folder-tree">
+          <div class="folder">📁 [Your name] – Shelly Site Files</div>
+          <div class="tree-indent">
+            <div class="folder">📁 Headshot</div>
+            <div class="tree-indent"><div class="file">🖼 headshot.jpg</div></div>
+
+            <div class="folder">📁 Proof &amp; Results</div>
+            <div class="tree-indent">
+              <div class="file">🖼 testimonial-screenshot-1.png</div>
+              <div class="file">🖼 income-proof.png</div>
+              <div class="file">🖼 before-after.png</div>
+            </div>
+
+            <div class="folder">📁 Offer 1</div>
+            <div class="tree-indent">
+              <div class="file">🖼 offer1-proof.png</div>
+              <div class="file">🖼 offer1-detail-image.png</div>
+            </div>
+
+            <div class="folder">📁 Offer 2</div>
+            <div class="tree-indent">
+              <div class="file">🖼 offer2-proof.png</div>
+              <div class="file">🖼 offer2-detail-image.png</div>
+            </div>
+
+            <div class="folder">📁 Offer 3</div>
+            <div class="tree-indent">
+              <div class="file">🖼 offer3-proof.png</div>
+              <div class="file">🖼 offer3-detail-image.png</div>
+            </div>
+
+            <div class="folder">📁 Brand Assets</div>
+            <div class="tree-indent"><div class="file">🖼 logo.png</div></div>
+          </div>
+        </div>
+        <p class="section-note" style="margin-top:10px;">Names don't need to match exactly — just keep them clear (not "IMG_4821.jpg") so I know what's what.</p>
+      </details>
+    </section>
+
+    <section class="form-section">
+      <h2>1. The Basics</h2>
+      <div class="field" data-question="Full name">
+        <label class="q" for="fullName">Full name</label>
+        <input type="text" id="fullName" name="fullName" required>
+      </div>
+      <div class="field" data-question="Title / tagline">
+        <label class="q" for="tagline">Title / tagline (e.g. "Life Coach for Overwhelmed Moms")</label>
+        <input type="text" id="tagline" name="tagline" required>
+      </div>
+      <div class="field" data-question="Contact email">
+        <label class="q" for="contactEmail">Contact email for your site's buttons</label>
+        <input type="email" id="contactEmail" name="contactEmail" required>
+        <div class="file-hint">Headshot: upload to the shared folder, named "headshot"</div>
+      </div>
+    </section>
+
+    <section class="form-section">
+      <h2>2. Which tier did you buy?</h2>
+      <div class="field" data-question="Which tier did you buy?">
+        <label class="q">Tier</label>
+        <div class="radio-group">
+          <label><input type="radio" name="tier" value="Basic" required> Basic</label>
+          <label><input type="radio" name="tier" value="Premium"> Premium</label>
+        </div>
+      </div>
+    </section>
+
+    <section class="form-section" id="premiumSection">
+      <h2>Premium: Domain &amp; Hosting</h2>
+      <p class="section-note">Only fill this out if you selected Premium above.</p>
+      <div class="field" data-question="Do you already own a domain?">
+        <label class="q">Do you already own a domain?</label>
+        <div class="radio-group">
+          <label><input type="radio" name="ownDomain" value="Yes"> Yes</label>
+          <label><input type="radio" name="ownDomain" value="No, need help buying one"> No, need help buying one</label>
+        </div>
+      </div>
+      <div class="field" data-question="If yes, what's the domain?">
+        <label class="q" for="domainName">If yes, what's the domain?</label>
+        <input type="text" id="domainName" name="domainName">
+      </div>
+      <div class="field" data-question="Who is it registered with?">
+        <label class="q" for="registrar">Who is it registered with?</label>
+        <input type="text" id="registrar" name="registrar">
+      </div>
+      <div class="field" data-question="Do you have login access to that registrar account?">
+        <label class="q">Do you have login access to that registrar account?</label>
+        <div class="radio-group">
+          <label><input type="radio" name="registrarAccess" value="Yes"> Yes</label>
+          <label><input type="radio" name="registrarAccess" value="No"> No</label>
+        </div>
+      </div>
+    </section>
+
+    <section class="form-section">
+      <h2>3. Your Story &amp; Overall Proof</h2>
+      <div class="field" data-question="Who do you help and how?">
+        <label class="q" for="whoHow">In one sentence, who do you help and how?</label>
+        <textarea id="whoHow" name="whoHow" required></textarea>
+      </div>
+      <div class="field" data-question="Client's pain point">
+        <label class="q" for="painPoint">Describe your ideal client's pain point in their own words — what are they struggling with right before they find you?</label>
+        <textarea id="painPoint" name="painPoint" required></textarea>
+      </div>
+      <div class="field" data-question="How do you fix it?">
+        <label class="q" for="theFix">How do you fix it? Your approach or method, in plain language</label>
+        <textarea id="theFix" name="theFix" required></textarea>
+      </div>
+      <div class="field" data-question="Client results / transformations">
+        <label class="q" for="clientResults">Share 2–3 client results or transformations (specific outcomes, numbers, or before/after stories)</label>
+        <textarea id="clientResults" name="clientResults" required></textarea>
+      </div>
+      <div class="field" data-question="Your own results">
+        <label class="q" for="ownResults">Have you gotten results yourself using your own method? If so, describe them</label>
+        <textarea id="ownResults" name="ownResults"></textarea>
+      </div>
+      <div class="field" data-question="Testimonials">
+        <label class="q" for="testimonials">Paste 3–5 testimonials, one per line, with name + role (or write "keep anonymous")</label>
+        <textarea id="testimonials" name="testimonials" required></textarea>
+        <div class="file-hint">Proof images (screenshots, income proof, before/afters): upload to shared folder → "Proof &amp; Results"</div>
+      </div>
+    </section>
+
+    <!-- Offer 1, 2, 3 -->
+    <section class="form-section" data-offer="1">
+      <h2>4. Offer 1</h2>
+      <div class="field" data-question="Offer name"><label class="q">Offer name</label><input type="text" name="offer1_name" required></div>
+      <div class="field" data-question="Price to display"><label class="q">Price to display (leave blank to omit)</label><input type="text" name="offer1_price"></div>
+      <div class="field" data-question="Home page preview card blurb">
+        <label class="q">Home page preview card — one short sentence teasing this offer (this is what shows on the home page card that links here, separate from the full page below)</label>
+        <input type="text" name="offer1_cardBlurb" required>
+      </div>
+      <p class="offer-sub">02 · Hero</p>
+      <div class="field" data-question="Hero headline"><label class="q">Hero headline — the big line naming the problem or promise (e.g. "Stop drowning in DMs, start booking clients")</label><input type="text" name="offer1_heroHeadline" required></div>
+      <div class="field" data-question="Hero subheadline"><label class="q">Hero subheadline — one sentence expanding on that promise</label><input type="text" name="offer1_heroSubhead" required></div>
+      <p class="offer-sub">03 · Video</p>
+      <div class="field" data-question="Video link"><label class="q">YouTube video link (demo, VSL, or intro)</label><input type="url" name="offer1_video"></div>
+      <div class="field" data-question="CTA button text"><label class="q">CTA button text below the video (repeats as your closing CTA too — flag if you want different copy there)</label><input type="text" name="offer1_cta" required></div>
+      <div class="field" data-question="CTA link"><label class="q">Link this CTA button should go to</label><input type="url" name="offer1_link" required></div>
+      <p class="offer-sub">04 · Offer Details</p>
+      <div class="field" data-question="Offer details headline"><label class="q">Offer details headline (e.g. "What's Included")</label><input type="text" name="offer1_detailsHeadline" required></div>
+      <div class="field" data-question="Offer details description">
+        <label class="q">How this offer solves the problem — your approach, format, deliverables, timeline</label>
+        <textarea name="offer1_detailsDescription" required></textarea>
+        <div class="file-hint">Additional images: upload to shared folder → "Offer 1"</div>
+      </div>
+      <div class="field" data-question="Track/Option 1 name"><label class="q">Track / Option 1 name (optional — only if this offer has multiple tracks or tiers)</label><input type="text" name="offer1_track1"></div>
+      <div class="field" data-question="Track/Option 2 name"><label class="q">Track / Option 2 name (optional)</label><input type="text" name="offer1_track2"></div>
+      <div class="field" data-question="Track/Option 3 name"><label class="q">Track / Option 3 name (optional)</label><input type="text" name="offer1_track3"></div>
+      <div class="field" data-question="Expandable full details"><label class="q">Extra detail for the expandable "full details" toggle (optional — only if there's more than fits above)</label><textarea name="offer1_fullDetails"></textarea></div>
+      <p class="offer-sub">05 · Testimonial</p>
+      <div class="field" data-question="Featured testimonial quote">
+        <label class="q">Featured testimonial quote for this offer</label>
+        <textarea name="offer1_testimonialQuote" required></textarea>
+        <div class="file-hint">Proof images/screenshots: upload to shared folder → "Offer 1"</div>
+      </div>
+      <div class="field" data-question="Testimonial name and title"><label class="q">Testimonial name &amp; title</label><input type="text" name="offer1_testimonialNameTitle" required></div>
+      <div class="field" data-question="Other results or proof notes"><label class="q">Any other results, numbers, or proof worth including? (optional)</label><textarea name="offer1_resultsNotes"></textarea></div>
+      <p class="offer-sub">06 · Closing CTA</p>
+      <p class="section-note">Repeats the CTA button from the Video section above — no need to re-enter it.</p>
+      <p class="offer-sub">07 · Related Links / Footer</p>
+      <div class="field" data-question="Related links override"><label class="q">"Looking for something else?" links — leave blank to auto-link to your other 2 offer pages, or describe what you'd rather link here</label><input type="text" name="offer1_relatedLinks"></div>
+    </section>
+
+    <section class="form-section" data-offer="2">
+      <h2>5. Offer 2</h2>
+      <div class="field" data-question="Offer name"><label class="q">Offer name</label><input type="text" name="offer2_name" required></div>
+      <div class="field" data-question="Price to display"><label class="q">Price to display (leave blank to omit)</label><input type="text" name="offer2_price"></div>
+      <div class="field" data-question="Home page preview card blurb">
+        <label class="q">Home page preview card — one short sentence teasing this offer (this is what shows on the home page card that links here, separate from the full page below)</label>
+        <input type="text" name="offer2_cardBlurb" required>
+      </div>
+      <p class="offer-sub">02 · Hero</p>
+      <div class="field" data-question="Hero headline"><label class="q">Hero headline — the big line naming the problem or promise (e.g. "Stop drowning in DMs, start booking clients")</label><input type="text" name="offer2_heroHeadline" required></div>
+      <div class="field" data-question="Hero subheadline"><label class="q">Hero subheadline — one sentence expanding on that promise</label><input type="text" name="offer2_heroSubhead" required></div>
+      <p class="offer-sub">03 · Video</p>
+      <div class="field" data-question="Video link"><label class="q">YouTube video link (demo, VSL, or intro)</label><input type="url" name="offer2_video"></div>
+      <div class="field" data-question="CTA button text"><label class="q">CTA button text below the video (repeats as your closing CTA too — flag if you want different copy there)</label><input type="text" name="offer2_cta" required></div>
+      <div class="field" data-question="CTA link"><label class="q">Link this CTA button should go to</label><input type="url" name="offer2_link" required></div>
+      <p class="offer-sub">04 · Offer Details</p>
+      <div class="field" data-question="Offer details headline"><label class="q">Offer details headline (e.g. "What's Included")</label><input type="text" name="offer2_detailsHeadline" required></div>
+      <div class="field" data-question="Offer details description">
+        <label class="q">How this offer solves the problem — your approach, format, deliverables, timeline</label>
+        <textarea name="offer2_detailsDescription" required></textarea>
+        <div class="file-hint">Additional images: upload to shared folder → "Offer 2"</div>
+      </div>
+      <div class="field" data-question="Track/Option 1 name"><label class="q">Track / Option 1 name (optional — only if this offer has multiple tracks or tiers)</label><input type="text" name="offer2_track1"></div>
+      <div class="field" data-question="Track/Option 2 name"><label class="q">Track / Option 2 name (optional)</label><input type="text" name="offer2_track2"></div>
+      <div class="field" data-question="Track/Option 3 name"><label class="q">Track / Option 3 name (optional)</label><input type="text" name="offer2_track3"></div>
+      <div class="field" data-question="Expandable full details"><label class="q">Extra detail for the expandable "full details" toggle (optional — only if there's more than fits above)</label><textarea name="offer2_fullDetails"></textarea></div>
+      <p class="offer-sub">05 · Testimonial</p>
+      <div class="field" data-question="Featured testimonial quote">
+        <label class="q">Featured testimonial quote for this offer</label>
+        <textarea name="offer2_testimonialQuote" required></textarea>
+        <div class="file-hint">Proof images/screenshots: upload to shared folder → "Offer 2"</div>
+      </div>
+      <div class="field" data-question="Testimonial name and title"><label class="q">Testimonial name &amp; title</label><input type="text" name="offer2_testimonialNameTitle" required></div>
+      <div class="field" data-question="Other results or proof notes"><label class="q">Any other results, numbers, or proof worth including? (optional)</label><textarea name="offer2_resultsNotes"></textarea></div>
+      <p class="offer-sub">06 · Closing CTA</p>
+      <p class="section-note">Repeats the CTA button from the Video section above — no need to re-enter it.</p>
+      <p class="offer-sub">07 · Related Links / Footer</p>
+      <div class="field" data-question="Related links override"><label class="q">"Looking for something else?" links — leave blank to auto-link to your other 2 offer pages, or describe what you'd rather link here</label><input type="text" name="offer2_relatedLinks"></div>
+    </section>
+
+    <section class="form-section" data-offer="3">
+      <h2>6. Offer 3</h2>
+      <div class="field" data-question="Offer name"><label class="q">Offer name</label><input type="text" name="offer3_name" required></div>
+      <div class="field" data-question="Price to display"><label class="q">Price to display (leave blank to omit)</label><input type="text" name="offer3_price"></div>
+      <div class="field" data-question="Home page preview card blurb">
+        <label class="q">Home page preview card — one short sentence teasing this offer (this is what shows on the home page card that links here, separate from the full page below)</label>
+        <input type="text" name="offer3_cardBlurb" required>
+      </div>
+      <p class="offer-sub">02 · Hero</p>
+      <div class="field" data-question="Hero headline"><label class="q">Hero headline — the big line naming the problem or promise (e.g. "Stop drowning in DMs, start booking clients")</label><input type="text" name="offer3_heroHeadline" required></div>
+      <div class="field" data-question="Hero subheadline"><label class="q">Hero subheadline — one sentence expanding on that promise</label><input type="text" name="offer3_heroSubhead" required></div>
+      <p class="offer-sub">03 · Video</p>
+      <div class="field" data-question="Video link"><label class="q">YouTube video link (demo, VSL, or intro)</label><input type="url" name="offer3_video"></div>
+      <div class="field" data-question="CTA button text"><label class="q">CTA button text below the video (repeats as your closing CTA too — flag if you want different copy there)</label><input type="text" name="offer3_cta" required></div>
+      <div class="field" data-question="CTA link"><label class="q">Link this CTA button should go to</label><input type="url" name="offer3_link" required></div>
+      <p class="offer-sub">04 · Offer Details</p>
+      <div class="field" data-question="Offer details headline"><label class="q">Offer details headline (e.g. "What's Included")</label><input type="text" name="offer3_detailsHeadline" required></div>
+      <div class="field" data-question="Offer details description">
+        <label class="q">How this offer solves the problem — your approach, format, deliverables, timeline</label>
+        <textarea name="offer3_detailsDescription" required></textarea>
+        <div class="file-hint">Additional images: upload to shared folder → "Offer 3"</div>
+      </div>
+      <div class="field" data-question="Track/Option 1 name"><label class="q">Track / Option 1 name (optional — only if this offer has multiple tracks or tiers)</label><input type="text" name="offer3_track1"></div>
+      <div class="field" data-question="Track/Option 2 name"><label class="q">Track / Option 2 name (optional)</label><input type="text" name="offer3_track2"></div>
+      <div class="field" data-question="Track/Option 3 name"><label class="q">Track / Option 3 name (optional)</label><input type="text" name="offer3_track3"></div>
+      <div class="field" data-question="Expandable full details"><label class="q">Extra detail for the expandable "full details" toggle (optional — only if there's more than fits above)</label><textarea name="offer3_fullDetails"></textarea></div>
+      <p class="offer-sub">05 · Testimonial</p>
+      <div class="field" data-question="Featured testimonial quote">
+        <label class="q">Featured testimonial quote for this offer</label>
+        <textarea name="offer3_testimonialQuote" required></textarea>
+        <div class="file-hint">Proof images/screenshots: upload to shared folder → "Offer 3"</div>
+      </div>
+      <div class="field" data-question="Testimonial name and title"><label class="q">Testimonial name &amp; title</label><input type="text" name="offer3_testimonialNameTitle" required></div>
+      <div class="field" data-question="Other results or proof notes"><label class="q">Any other results, numbers, or proof worth including? (optional)</label><textarea name="offer3_resultsNotes"></textarea></div>
+      <p class="offer-sub">06 · Closing CTA</p>
+      <p class="section-note">Repeats the CTA button from the Video section above — no need to re-enter it.</p>
+      <p class="offer-sub">07 · Related Links / Footer</p>
+      <div class="field" data-question="Related links override"><label class="q">"Looking for something else?" links — leave blank to auto-link to your other 2 offer pages, or describe what you'd rather link here</label><input type="text" name="offer3_relatedLinks"></div>
+    </section>
+
+    <section class="form-section">
+      <h2>7. Newsletter</h2>
+      <div class="field" data-question="What do subscribers get?"><label class="q">What do subscribers get for signing up?</label><input type="text" name="newsletterOffer" required></div>
+      <div class="field" data-question="Email service provider"><label class="q">Which email service provider do you use? (Mailchimp, ConvertKit, Flodesk, etc.)</label><input type="text" name="esp" required></div>
+      <div class="field" data-question="Existing signup form?">
+        <label class="q">Do you have an existing signup form built with your provider?</label>
+        <div class="radio-group">
+          <label><input type="radio" name="signupFormType" value="Yes, embed/form code" required> Yes, embed/form code</label>
+          <label><input type="radio" name="signupFormType" value="Yes, just a link"> Yes, just a link</label>
+          <label><input type="radio" name="signupFormType" value="No, need help"> No, need help</label>
+        </div>
+      </div>
+      <div class="field" data-question="Embed code"><label class="q">If embed code, paste the full code here</label><textarea name="embedCode"></textarea></div>
+      <div class="field" data-question="Signup link"><label class="q">If just a link, paste it here</label><input type="url" name="signupLink"></div>
+      <div class="field" data-question="Newsletter video link"><label class="q">YouTube video link, if you want one in this section</label><input type="url" name="newsletterVideo"></div>
+    </section>
+
+    <section class="form-section">
+      <h2>8. Branding &amp; Style</h2>
+      <div class="field" data-question="Existing brand colors?">
+        <label class="q">Do you have existing brand colors?</label>
+        <div class="radio-group">
+          <label><input type="radio" name="hasColors" value="Yes, exact colors" required> Yes, exact colors</label>
+          <label><input type="radio" name="hasColors" value="General palette in mind"> General palette in mind</label>
+          <label><input type="radio" name="hasColors" value="No, pick for me"> No, pick for me</label>
+        </div>
+      </div>
+      <div class="field" data-question="List your colors"><label class="q">If yes, list them — hex codes preferred (e.g. #1A1A2E), or describe</label><textarea name="colorList"></textarea></div>
+      <div class="field" data-question="Brand fonts?">
+        <label class="q">Do you have brand fonts?</label>
+        <div class="radio-group">
+          <label><input type="radio" name="hasFonts" value="Yes" required> Yes</label>
+          <label><input type="radio" name="hasFonts" value="No, pick for me"> No, pick for me</label>
+        </div>
+      </div>
+      <div class="field" data-question="List your fonts"><label class="q">If yes, what are they? (Google Font names, or describe)</label><input type="text" name="fontList"></div>
+      <div class="field" data-question="Brand style">
+        <label class="q">What style best fits your brand? (check any)</label>
+        <div class="checkbox-group">
+          <label><input type="checkbox" name="style" value="Fun & Playful"> Fun &amp; Playful</label>
+          <label><input type="checkbox" name="style" value="Professional & Polished"> Professional &amp; Polished</label>
+          <label><input type="checkbox" name="style" value="Clean & Minimal"> Clean &amp; Minimal</label>
+          <label><input type="checkbox" name="style" value="Bold & Edgy"> Bold &amp; Edgy</label>
+          <label><input type="checkbox" name="style" value="Warm & Approachable"> Warm &amp; Approachable</label>
+          <label><input type="checkbox" name="style" value="Luxury & Elevated"> Luxury &amp; Elevated</label>
+          <label><input type="checkbox" name="style" value="Other"> Other</label>
+        </div>
+      </div>
+      <div class="field" data-question="Other style, describe"><label class="q">If "Other," describe the vibe</label><input type="text" name="styleOther"></div>
+      <div class="field" data-question="Preset if no exact colors">
+        <label class="q">If you don't have exact colors, which preset fits best?</label>
+        <div class="radio-group">
+          <label><input type="radio" name="presetVariant" value="Warm & Direct (cream/black/coral)"> Warm &amp; Direct (cream/black/coral)</label>
+          <label><input type="radio" name="presetVariant" value="Night Owl (deep purple/neon)"> Night Owl (deep purple/neon)</label>
+          <label><input type="radio" name="presetVariant" value="Soft Pastel (blush/plum/mint)"> Soft Pastel (blush/plum/mint)</label>
+          <label><input type="radio" name="presetVariant" value="Pick for me"> Pick for me</label>
+        </div>
+      </div>
+      <div class="field" data-question="Other brand references">
+        <label class="q">Anything else about your brand to match (logo, existing site, Pinterest board)?</label>
+        <input type="text" name="brandOther">
+        <div class="file-hint">Logo / brand assets: upload to shared folder → "Brand Assets"</div>
+      </div>
+    </section>
+
+    <section class="form-section">
+      <h2>9. Links &amp; Socials</h2>
+      <p class="section-note">The External Link Block below is your 4th home page preview card — it fills the last of the 4 slots alongside your 3 offers.</p>
+      <div class="field" data-question="Social media links"><label class="q">Social media links (one per line)</label><textarea name="socialLinks"></textarea></div>
+      <div class="field" data-question="Community link"><label class="q">Community link (Skool, Facebook group, etc.)</label><input type="url" name="communityLink"></div>
+      <div class="field" data-question="External link block card title"><label class="q">Home page preview card title for this 4th card (e.g. "Join the Community")</label><input type="text" name="externalLinkTitle" required></div>
+      <div class="field" data-question="External link block card blurb"><label class="q">One short sentence teasing this card</label><input type="text" name="externalLinkBlurb" required></div>
+      <div class="field" data-question="External link block destination"><label class="q">What should this card link to?</label><input type="url" name="externalLink" required></div>
+    </section>
+
+    <section class="form-section">
+      <h2>10. Anything Else</h2>
+      <div class="field" data-question="Anything else?"><label class="q">Anything else I should know before building?</label><textarea name="anythingElse"></textarea></div>
+    </section>
+
+    <section class="form-section">
+      <h2>Files checklist</h2>
+      <ul class="checklist">
+        <li>☐ Headshot uploaded</li>
+        <li>☐ Proof/results images uploaded</li>
+        <li>☐ Offer 1 images uploaded (if any)</li>
+        <li>☐ Offer 2 images uploaded (if any)</li>
+        <li>☐ Offer 3 images uploaded (if any)</li>
+        <li>☐ Brand assets/logo uploaded (if any)</li>
+      </ul>
+    </section>
+
+    <div class="actions">
+      <div style="width:100%;">
+        <button type="button" id="saveProgressBtn">💾 Save Progress</button>
+        <p class="save-warning">⚠️ This only saves on <em>this browser, on this device</em> — if you clear your cache/history, switch browsers, or use a different device, it'll be gone. For safety, download a copy (PDF or Word) once you're done or periodically while filling this out.</p>
+        <button type="button" id="downloadPdfBtn">Download as PDF</button>
+        <button type="button" id="downloadWordBtn">Download as Word Doc</button>
+        <div id="statusMsg"></div>
+      </div>
+    </div>
+  </form>
+
+  <div id="pdfSummary"></div>
+</div>
+
+<script>
+  const form = document.getElementById('intakeForm');
+  const premiumSection = document.getElementById('premiumSection');
+  const statusMsg = document.getElementById('statusMsg');
+
+  function updatePremiumVisibility() {
+    const selected = form.querySelector('input[name="tier"]:checked');
+    premiumSection.style.display = (selected && selected.value === 'Premium') ? '' : 'none';
+  }
+  form.querySelectorAll('input[name="tier"]').forEach(r => r.addEventListener('change', updatePremiumVisibility));
+  updatePremiumVisibility();
+
+  function escapeHtml(str) {
+    return String(str)
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  }
+
+  function extractAnswer(fieldEl) {
+    const textInput = fieldEl.querySelector('input[type="text"], input[type="email"], input[type="url"]');
+    if (textInput) return textInput.value.trim();
+    const textarea = fieldEl.querySelector('textarea');
+    if (textarea) return textarea.value.trim();
+    const radios = fieldEl.querySelectorAll('input[type="radio"]');
+    if (radios.length) {
+      const checked = fieldEl.querySelector('input[type="radio"]:checked');
+      return checked ? checked.value : '';
+    }
+    const checkboxes = fieldEl.querySelectorAll('input[type="checkbox"]');
+    if (checkboxes.length) {
+      const checked = [...fieldEl.querySelectorAll('input[type="checkbox"]:checked')].map(c => c.value);
+      return checked.join(', ');
+    }
+    return '';
+  }
+
+  function buildSummaryHTML() {
+    let html = '<h1 style="font-family:sans-serif;">Shelly Site Client Intake</h1>';
+    document.querySelectorAll('.form-section').forEach(section => {
+      if (section.style.display === 'none') return;
+      const heading = section.querySelector('h2');
+      if (!heading) return;
+      html += `<h2 style="font-family:sans-serif;border-bottom:1px solid #ccc;padding-bottom:4px;">${escapeHtml(heading.textContent)}</h2>`;
+      section.querySelectorAll('.offer-sub, .field').forEach(el => {
+        if (el.classList.contains('offer-sub')) {
+          html += `<p style="font-family:sans-serif;font-weight:700;margin-top:14px;margin-bottom:2px;">${escapeHtml(el.textContent)}</p>`;
+          return;
+        }
+        const q = el.dataset.question;
+        if (!q) return;
+        const a = extractAnswer(el) || '(not provided)';
+        html += `<p style="font-family:sans-serif;margin:0 0 10px;"><strong>${escapeHtml(q)}:</strong><br>${escapeHtml(a).replace(/\n/g, '<br>')}</p>`;
+      });
+    });
+    return html;
+  }
+
+  function timestampedName(ext) {
+    const d = new Date();
+    const pad = n => String(n).padStart(2, '0');
+    return `shelly-site-intake-${d.getFullYear()}${pad(d.getMonth()+1)}${pad(d.getDate())}.${ext}`;
+  }
+
+  const DRAFT_KEY = 'shellySiteIntakeDraft';
+  const DRAFT_SAVED_AT_KEY = 'shellySiteIntakeDraftSavedAt';
+
+  function collectFormData() {
+    const data = {};
+    const fd = new FormData(form);
+    for (const [key, value] of fd.entries()) {
+      if (data[key] === undefined) {
+        data[key] = value;
+      } else if (Array.isArray(data[key])) {
+        data[key].push(value);
+      } else {
+        data[key] = [data[key], value];
+      }
+    }
+    return data;
+  }
+
+  function saveProgress() {
+    try {
+      const data = collectFormData();
+      localStorage.setItem(DRAFT_KEY, JSON.stringify(data));
+      localStorage.setItem(DRAFT_SAVED_AT_KEY, new Date().toISOString());
+      statusMsg.textContent = 'Saved on this browser at ' + new Date().toLocaleTimeString() + '. Remember: this only lives here — download a copy too if you want a real backup.';
+    } catch (e) {
+      statusMsg.textContent = "Couldn't save — this browser may be blocking local storage (common in private/incognito mode). Please download a copy instead so you don't lose your answers.";
+    }
+  }
+
+  function restoreProgress() {
+    let raw;
+    try {
+      raw = localStorage.getItem(DRAFT_KEY);
+    } catch (e) {
+      return;
+    }
+    if (!raw) return;
+    let data;
+    try {
+      data = JSON.parse(raw);
+    } catch (e) {
+      return;
+    }
+    Object.keys(data).forEach(name => {
+      const values = Array.isArray(data[name]) ? data[name] : [data[name]];
+      const els = form.querySelectorAll('[name="' + name + '"]');
+      els.forEach(el => {
+        if (el.type === 'checkbox' || el.type === 'radio') {
+          el.checked = values.includes(el.value);
+        } else {
+          el.value = values[0];
+        }
+      });
+    });
+    updatePremiumVisibility();
+    statusMsg.textContent = 'Restored your saved draft from this browser.';
+  }
+
+  function discardSavedProgress() {
+    try {
+      localStorage.removeItem(DRAFT_KEY);
+      localStorage.removeItem(DRAFT_SAVED_AT_KEY);
+    } catch (e) { /* ignore */ }
+  }
+
+  document.getElementById('saveProgressBtn').addEventListener('click', saveProgress);
+
+  (function checkForSavedDraft() {
+    let raw;
+    try {
+      raw = localStorage.getItem(DRAFT_KEY);
+    } catch (e) {
+      return;
+    }
+    if (!raw) return;
+    let savedAt;
+    try {
+      savedAt = localStorage.getItem(DRAFT_SAVED_AT_KEY);
+    } catch (e) {
+      savedAt = null;
+    }
+    document.getElementById('savedAtText').textContent = savedAt ? new Date(savedAt).toLocaleString() : 'earlier';
+    document.getElementById('restoreBanner').style.display = 'block';
+  })();
+
+  document.getElementById('restoreBtn').addEventListener('click', () => {
+    restoreProgress();
+    document.getElementById('restoreBanner').style.display = 'none';
+  });
+
+  document.getElementById('discardBtn').addEventListener('click', () => {
+    discardSavedProgress();
+    document.getElementById('restoreBanner').style.display = 'none';
+    statusMsg.textContent = 'Starting fresh — the saved draft was cleared.';
+  });
+
+  document.getElementById('downloadPdfBtn').addEventListener('click', () => {
+    if (!form.reportValidity()) {
+      statusMsg.textContent = 'Please fill in the required fields highlighted above.';
+      return;
+    }
+    statusMsg.textContent = 'Generating PDF…';
+    const summaryEl = document.getElementById('pdfSummary');
+    summaryEl.innerHTML = buildSummaryHTML();
+    summaryEl.style.display = 'block';
+    html2pdf().from(summaryEl).set({
+      margin: 15,
+      filename: timestampedName('pdf'),
+      html2canvas: { scale: 2 },
+      jsPDF: { unit: 'pt', format: 'letter' }
+    }).save().then(() => {
+      summaryEl.style.display = 'none';
+      statusMsg.textContent = 'PDF downloaded — attach it to an email to send it over.';
+    });
+  });
+
+  document.getElementById('downloadWordBtn').addEventListener('click', () => {
+    if (!form.reportValidity()) {
+      statusMsg.textContent = 'Please fill in the required fields highlighted above.';
+      return;
+    }
+    const html = `<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>
+    <head><meta charset='utf-8'><title>Shelly Site Intake</title></head>
+    <body>${buildSummaryHTML()}</body></html>`;
+    const blob = new Blob(['\ufeff', html], { type: 'application/msword' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = timestampedName('doc');
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+    statusMsg.textContent = 'Word doc downloaded — attach it to an email to send it over.';
+  });
+</script>
+</body>
+</html>
