@@ -807,6 +807,180 @@ src="https://www.facebook.com/tr?id=1596541782072028&ev=PageView&noscript=1"/></
       <div id="fd-form-6a7670d7f6a3ec722d6455d8" class="fd-site-form"></div>
     </section>
 
+    <!-- THOUGHTS FOR TODAY -->
+    <style>
+  .tft {
+    --tft-cream: #F5F1E8;
+    --tft-card: #FFFDF7;
+    --tft-border: #DDD6C7;
+    --tft-rule: #E6E0D2;
+    --tft-ink: #1B1A18;
+    --tft-body: #55503F;
+    --tft-muted: #8A8578;
+    --tft-coral: #ff5a36;
+    --tft-coral-ink: #B33C18;
+    --tft-display: 'Space Grotesk', system-ui, sans-serif;
+    --tft-mono: 'IBM Plex Mono', ui-monospace, monospace;
+
+    background: var(--tft-cream);
+    padding: 56px 24px 72px;
+  }
+
+  .tft-inner {
+    max-width: 860px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+  }
+
+  .tft-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .tft-label {
+    font-family: var(--tft-mono);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--tft-coral-ink);
+  }
+
+  .tft-status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 90, 54, 0.12);
+    border-radius: 999px;
+    padding: 6px 12px;
+    font-family: var(--tft-mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--tft-coral-ink);
+  }
+
+  .tft-status::before {
+    content: "";
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--tft-coral);
+  }
+
+  .tft-card {
+    background: var(--tft-card);
+    border: 1px solid var(--tft-border);
+    border-radius: 22px;
+    padding: 34px 38px;
+    display: flex;
+    gap: 22px;
+    align-items: flex-start;
+  }
+
+  .tft-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: 50% 26%;
+    flex: none;
+    background: var(--tft-border);
+  }
+
+  .tft-body {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    min-width: 0;
+  }
+
+  .tft-meta {
+    display: flex;
+    align-items: baseline;
+    gap: 9px;
+    flex-wrap: wrap;
+  }
+
+  .tft-name {
+    font-family: var(--tft-display);
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--tft-ink);
+  }
+
+  .tft-handle {
+    font-family: var(--tft-mono);
+    font-size: 12px;
+    color: var(--tft-muted);
+  }
+
+  .tft-lead {
+    margin: 0;
+    font-family: var(--tft-display);
+    font-size: 23px;
+    line-height: 1.45;
+    color: var(--tft-ink);
+    text-wrap: pretty;
+  }
+
+  .tft-note {
+    margin: 0;
+    font-family: var(--tft-display);
+    font-size: 16px;
+    line-height: 1.65;
+    color: var(--tft-body);
+    text-wrap: pretty;
+  }
+
+  .tft-foot {
+    border-top: 1px solid var(--tft-rule);
+    padding-top: 14px;
+    font-family: var(--tft-mono);
+    font-size: 12px;
+    color: var(--tft-muted);
+  }
+
+  @media (max-width: 640px) {
+    .tft { padding: 36px 16px 48px; }
+    .tft-card { padding: 22px; gap: 0; flex-direction: column; }
+    .tft-card .tft-avatar { width: 44px; height: 44px; }
+    .tft-mobile-row { display: flex; gap: 12px; align-items: center; }
+    .tft-lead { font-size: 19px; }
+    .tft-note { font-size: 15px; }
+  }
+</style>
+
+<section class="tft" id="thoughts">
+  <div class="tft-inner">
+    <div class="tft-head">
+      <div class="tft-label">Thoughts for Today</div>
+      <div class="tft-status">Posted today</div>
+    </div>
+
+    <div class="tft-card">
+      <img class="tft-avatar" src="/mona-shelly-photo.png" alt="Mona Weathers" width="60" height="60">
+      <div class="tft-body">
+        <div class="tft-meta">
+          <span class="tft-name">Mona Weathers</span>
+          <span class="tft-handle">@monaweathers &middot; <time datetime="2026-08-20">20 Aug</time></span>
+        </div>
+
+        <p class="tft-lead">Most coaches don't need a better strategy. They need to stop restarting the one they already picked.</p>
+        <p class="tft-note">Three weeks in is when it stops being fun and starts being work. That's not a signal to change direction &mdash; that's the whole job showing up.</p>
+
+        <div class="tft-foot">New thought most mornings</div>
+      </div>
+    </div>
+  </div>
+</section>
+
     <!-- FOOTER -->
     <footer class="site-footer">
       <div>&copy; 2026 Mona Weathers Coaching</div>
