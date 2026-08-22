@@ -3,11 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-EC1B7WJ2PE"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-EC1B7WJ2PE');</script>
-<script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','1596541782072028');fbq('track','PageView');</script>
-<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1596541782072028&ev=PageView&noscript=1"/></noscript>
-<script>!function(w,d,s,u){if(w.oaiq)return;var q=function(){q.q.push(arguments)};q.q=[];w.oaiq=q;var j=d.createElement(s);j.async=1;j.src=u;var f=d.getElementsByTagName(s)[0];f.parentNode.insertBefore(j,f)}(window,document,"script","https://bzrcdn.openai.com/sdk/oaiq.min.js");oaiq("init",{pixelId:"6uDnseGUA4oEWbSawFkXim",debug:true});</script>
+<script>
+window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+!function(f){if(f.fbq)return;var n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[]}(window);
+!function(w){if(w.oaiq)return;var q=function(){q.q.push(arguments)};q.q=[];w.oaiq=q}(window);
+window._loadTracking=function(){if(window._tl)return;window._tl=1;var s=document.createElement('script');s.async=1;s.src='https://www.googletagmanager.com/gtag/js?id=G-EC1B7WJ2PE';document.head.appendChild(s);s.onload=function(){gtag('js',new Date());gtag('config','G-EC1B7WJ2PE');};fbq('init','1596541782072028');fbq('track','PageView');var f=document.createElement('script');f.async=1;f.src='https://connect.facebook.net/en_US/fbevents.js';document.head.appendChild(f);oaiq('init',{pixelId:'6uDnseGUA4oEWbSawFkXim'});var o=document.createElement('script');o.async=1;o.src='https://bzrcdn.openai.com/sdk/oaiq.min.js';document.head.appendChild(o);};
+if(localStorage.getItem('cookie-ok')==='1'||localStorage.getItem('cookiesAccepted')==='1')window._loadTracking();
+</script>
 <title>Shelly Sites — A Coach Website That Actually Works</title>
 <meta name="description" content="One site, built to work on mobile and browser, that tells your story in the order a prospect actually needs it. No tech headaches, no monthly fees." />
 <link rel="icon" type="image/x-icon" href="favicon.ico" />
@@ -936,7 +938,10 @@
 <!-- Cookie notice -->
 <div id="cookie-bar" style="position:fixed;bottom:0;left:0;right:0;background:rgba(25,23,19,0.92);color:rgba(246,241,231,0.8);font-family:'IBM Plex Mono',monospace;font-size:11px;padding:10px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px;z-index:9999;backdrop-filter:blur(4px);">
   <span>This site uses Google Analytics to understand how visitors use it. <a href="/privacy" style="color:#ff5a36;text-decoration:none;border-bottom:1px solid rgba(255,90,54,.4);">Privacy policy</a></span>
-  <button onclick="document.getElementById('cookie-bar').style.display='none';localStorage.setItem('cookie-ok','1')" style="background:#ff5a36;color:#f6f1e7;border:none;border-radius:6px;padding:5px 12px;font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;cursor:pointer;white-space:nowrap;">Got it</button>
+  <div style="display:flex;gap:8px;flex-shrink:0;">
+    <button onclick="(function(){localStorage.setItem('cookie-ok','0');document.getElementById('cookie-bar').style.display='none';})()" style="background:transparent;color:rgba(246,241,231,0.6);border:1px solid rgba(246,241,231,0.3);border-radius:6px;padding:5px 12px;font-family:'IBM Plex Mono',monospace;font-size:11px;cursor:pointer;white-space:nowrap;">Decline</button>
+    <button onclick="(function(){localStorage.setItem('cookie-ok','1');document.getElementById('cookie-bar').style.display='none';window._loadTracking&&window._loadTracking();})()" style="background:#ff5a36;color:#f6f1e7;border:none;border-radius:6px;padding:5px 12px;font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;cursor:pointer;white-space:nowrap;">Accept</button>
+  </div>
 </div>
 <script>if(localStorage.getItem('cookie-ok'))document.getElementById('cookie-bar').style.display='none';</script>
 

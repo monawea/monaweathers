@@ -3,28 +3,13 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-EC1B7WJ2PE"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-EC1B7WJ2PE');</script>
-<!-- Meta Pixel Code -->
 <script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '1596541782072028');
-fbq('track', 'PageView');
+window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+!function(f){if(f.fbq)return;var n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[]}(window);
+!function(w){if(w.oaiq)return;var q=function(){q.q.push(arguments)};q.q=[];w.oaiq=q}(window);
+window._loadTracking=function(){if(window._tl)return;window._tl=1;var s=document.createElement('script');s.async=1;s.src='https://www.googletagmanager.com/gtag/js?id=G-EC1B7WJ2PE';document.head.appendChild(s);s.onload=function(){gtag('js',new Date());gtag('config','G-EC1B7WJ2PE');};fbq('init','1596541782072028');fbq('track','PageView');var f=document.createElement('script');f.async=1;f.src='https://connect.facebook.net/en_US/fbevents.js';document.head.appendChild(f);oaiq('init',{pixelId:'6uDnseGUA4oEWbSawFkXim'});oaiq('measure','contents_viewed',{type:'contents'});var o=document.createElement('script');o.async=1;o.src='https://bzrcdn.openai.com/sdk/oaiq.min.js';document.head.appendChild(o);};
+if(localStorage.getItem('cookie-ok')==='1'||localStorage.getItem('cookiesAccepted')==='1')window._loadTracking();
 </script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1596541782072028&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
-<!-- OpenAI Pixel Code -->
-<script>!function(w,d,s,u){if(w.oaiq)return;var q=function(){q.q.push(arguments)};q.q=[];w.oaiq=q;var j=d.createElement(s);j.async=1;j.src=u;var f=d.getElementsByTagName(s)[0];f.parentNode.insertBefore(j,f)}(window,document,"script","https://bzrcdn.openai.com/sdk/oaiq.min.js");oaiq("init",{pixelId:"6uDnseGUA4oEWbSawFkXim",debug:true});oaiq("measure","contents_viewed",{type:"contents"});</script>
-<!-- End OpenAI Pixel Code -->
 <title>Get High-Ticket Coaching Clients in 5 Days | Mona Weathers</title>
 <meta name="description" content="Join a live private coaching experience for $27. Walk away with a complete high-ticket client lead generation system built in 5 days." />
 <link rel="icon" type="image/x-icon" href="favicon.ico" />
@@ -497,7 +482,10 @@ src="https://www.facebook.com/tr?id=1596541782072028&ev=PageView&noscript=1"
 
   <div class="cookie-banner" id="cookieBanner">
     <p>We use cookies and analytics to understand how our site is used. By continuing, you agree to our <a href="/privacy">Privacy Policy</a>.</p>
-    <button onclick="(function(){localStorage.setItem('cookiesAccepted','1');document.getElementById('cookieBanner').style.display='none';})()">Got it</button>
+    <div style="display:flex;gap:8px;flex-shrink:0;">
+      <button class="cookie-decline" onclick="(function(){localStorage.setItem('cookie-ok','0');document.getElementById('cookieBanner').style.display='none';})()">Decline</button>
+      <button onclick="(function(){localStorage.setItem('cookie-ok','1');document.getElementById('cookieBanner').style.display='none';window._loadTracking&&window._loadTracking();})()">Accept</button>
+    </div>
   </div>
   <script>
     document.querySelectorAll('.video-poster').forEach(function(poster) {
@@ -512,7 +500,8 @@ src="https://www.facebook.com/tr?id=1596541782072028&ev=PageView&noscript=1"
       });
     });
   </script>
-  <script>if(localStorage.getItem('cookiesAccepted'))document.getElementById('cookieBanner').style.display='none';</script>
+  <style>.cookie-decline{background:transparent!important;color:#F4ECDF!important;border:1px solid rgba(244,236,223,0.3)!important;}.cookie-decline:hover{background:rgba(244,236,223,0.1)!important;}</style>
+  <script>if(localStorage.getItem('cookie-ok')||localStorage.getItem('cookiesAccepted'))document.getElementById('cookieBanner').style.display='none';</script>
 
 </body>
 </html>
