@@ -1,0 +1,974 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DEEP Content Calendar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,500;0,6..72,700;1,6..72,500&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<style>
+  :root {
+    --bg: #FAF4EA;
+    --ink: #1C1815;
+    --ink-soft: #6E6256;
+    --card: #FFFCF6;
+    --line: #1C1815;
+    --accent: #0097B2;
+    --accent-ink: #06768C;
+    --traffic: #D99A2B;
+    --community: #2E8AA0;
+    --income: #6E8E63;
+    --highlight: #F5CD4E;
+    --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Hanken Grotesk', sans-serif;
+    display: flex;
+    justify-content: center;
+    padding: 56px 20px 80px;
+  }
+
+  .wrap { width: 100%; max-width: 920px; }
+
+  header { text-align: center; margin-bottom: 30px; }
+
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    letter-spacing: 0.06em;
+    color: var(--accent-ink);
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 12px;
+  }
+
+  h1 {
+    font-family: 'Newsreader', serif;
+    font-weight: 600;
+    font-size: 2.4rem;
+    line-height: 1.15;
+    margin: 0 0 14px;
+  }
+
+  h1 .hl {
+    background: var(--highlight);
+    padding: 2px 10px;
+    display: inline-block;
+    transform: rotate(-1deg);
+    border-radius: 3px;
+  }
+
+  .tagline { color: var(--ink-soft); font-size: 1.05rem; margin: 0 0 26px; }
+
+  h2 {
+    font-family: 'Newsreader', serif;
+    font-weight: 600;
+    font-size: 1.5rem;
+    margin: 0 0 6px;
+  }
+
+  .section-intro { color: var(--ink-soft); font-size: 0.95rem; margin: 0 0 20px; }
+
+  .video-section { margin-bottom: 40px; text-align: center; }
+
+  .video-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 0.9rem;
+    border: 2px solid var(--line);
+    border-radius: 999px;
+    padding: 11px 22px;
+    background: #fff;
+    color: var(--ink);
+    text-decoration: none;
+    box-shadow: 2px 2px 0 var(--line);
+    transition: transform 0.1s ease, box-shadow 0.1s ease;
+  }
+
+  .video-link:hover { transform: translateY(-2px); box-shadow: 3px 3px 0 var(--line); }
+  .video-link:focus-visible { outline: 3px solid var(--accent-ink); outline-offset: 2px; }
+
+  @media print {
+    .video-section { display: none !important; }
+  }
+
+  .customize-panel {
+    background: var(--card);
+    border: 2px solid var(--line);
+    border-radius: 16px;
+    padding: 24px 26px;
+    margin-bottom: 30px;
+    box-shadow: 3px 3px 0 var(--line);
+  }
+
+  .customize-intro { color: var(--ink-soft); font-size: 0.92rem; margin: 0 0 18px; }
+
+  .customize-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(105px, 1fr));
+    gap: 12px;
+  }
+
+  .day-select-group { display: flex; flex-direction: column; gap: 6px; }
+
+  .day-select-group label {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    color: var(--ink-soft);
+  }
+
+  .day-select-group select {
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 0.82rem;
+    border: 2px solid var(--line);
+    border-radius: 8px;
+    padding: 7px 8px;
+    background: #fff;
+    color: var(--ink);
+    cursor: pointer;
+  }
+
+  .day-select-group select:focus-visible { outline: 3px solid var(--accent-ink); outline-offset: 2px; }
+
+  .controls {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+  }
+
+  .ctrl-btn {
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 0.82rem;
+    border: 2px solid var(--line);
+    border-radius: 999px;
+    padding: 9px 18px;
+    background: #fff;
+    color: var(--ink);
+    cursor: pointer;
+    box-shadow: 2px 2px 0 var(--line);
+    transition: transform 0.1s ease, box-shadow 0.1s ease;
+  }
+
+  .ctrl-btn:hover { transform: translateY(-2px); box-shadow: 3px 3px 0 var(--line); }
+  .ctrl-btn:focus-visible { outline: 3px solid var(--accent-ink); outline-offset: 2px; }
+  .ctrl-btn.active { background: var(--highlight); }
+
+  .calendar {
+    display: grid;
+    grid-template-columns: 54px repeat(7, 1fr);
+    gap: 2px;
+    background: var(--line);
+    border: 2px solid var(--line);
+    border-radius: 14px;
+    overflow: hidden;
+    margin-bottom: 26px;
+    box-shadow: 3px 3px 0 var(--line);
+  }
+
+  .corner { background: var(--card); }
+
+  .day-head {
+    background: var(--card);
+    text-align: center;
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    color: var(--ink-soft);
+    padding: 10px 4px;
+  }
+
+  .week-label {
+    background: var(--card);
+    font-family: 'Newsreader', serif;
+    font-weight: 600;
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+  }
+
+  .cell {
+    background: var(--card);
+    min-height: 150px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .cell.open-day { background: var(--bg); }
+
+  .tag-sm {
+    display: inline-block;
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    border: 2px solid var(--line);
+    border-radius: 999px;
+    padding: 1px 7px;
+  }
+
+  .tag-document { background: var(--community); color: #fff; }
+  .tag-educate { background: var(--income); color: #fff; }
+  .tag-entertain { background: var(--traffic); color: #1C1815; }
+  .tag-promote { background: var(--accent); color: #fff; }
+
+  .cell-input {
+    flex: 1;
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 0.9rem;
+    line-height: 1.45;
+    outline: none;
+    border-radius: 6px;
+    padding: 4px;
+  }
+
+  .cell-input:empty:before {
+    content: attr(data-placeholder);
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--ink-soft);
+    opacity: 0.6;
+  }
+
+  .cell-input:focus { background: rgba(0, 151, 178, 0.08); }
+
+  .legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    justify-content: center;
+    margin-bottom: 8px;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.85rem;
+    max-width: 210px;
+  }
+
+  .legend-note {
+    text-align: center;
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    color: var(--ink-soft);
+    margin: 16px 0 50px;
+  }
+
+  .write-section { text-align: center; }
+
+  .week-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 26px;
+    flex-wrap: wrap;
+  }
+
+  .write-panel { display: none; text-align: left; }
+  .write-panel.active { display: block; }
+
+  .write-empty {
+    text-align: center;
+    font-family: var(--mono);
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+    padding: 30px 10px;
+  }
+
+  .write-day {
+    background: var(--card);
+    border: 2px solid var(--line);
+    border-radius: 14px;
+    padding: 18px 20px;
+    margin-bottom: 18px;
+    box-shadow: 3px 3px 0 var(--line);
+  }
+
+  .write-day-head {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+
+  .write-day-name {
+    font-family: 'Newsreader', serif;
+    font-weight: 600;
+    font-size: 1.05rem;
+  }
+
+  .write-box {
+    min-height: 150px;
+    border: 2px dashed var(--line);
+    border-radius: 10px;
+    padding: 14px;
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 0.98rem;
+    line-height: 1.55;
+    outline: none;
+  }
+
+  .write-box:empty:before {
+    content: attr(data-placeholder);
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    color: var(--ink-soft);
+    opacity: 0.6;
+  }
+
+  .write-box:focus { background: rgba(0, 151, 178, 0.05); }
+
+  .write-actions { display: flex; gap: 8px; margin-top: 10px; flex-wrap: wrap; }
+
+  .mini-btn {
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 0.72rem;
+    border: 2px solid var(--line);
+    border-radius: 999px;
+    padding: 5px 12px;
+    background: #fff;
+    color: var(--ink);
+    cursor: pointer;
+    box-shadow: 1.5px 1.5px 0 var(--line);
+    transition: transform 0.1s ease;
+  }
+
+  .mini-btn:hover { transform: translateY(-1px); }
+  .mini-btn:focus-visible { outline: 3px solid var(--accent-ink); outline-offset: 2px; }
+
+  .cfc-card {
+    background: var(--card);
+    border: 2px solid var(--line);
+    border-radius: 16px;
+    padding: 26px 26px 20px;
+    margin-top: 50px;
+    box-shadow: 3px 3px 0 var(--line);
+  }
+
+  .cfc-card h3 {
+    font-family: 'Newsreader', serif;
+    font-weight: 600;
+    font-size: 1.3rem;
+    margin: 0 0 10px;
+  }
+
+  .cfc-card p {
+    margin: 0 0 16px;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: var(--ink);
+  }
+
+  .cfc-divider { border-top: 2px dashed var(--line); margin: 0 0 14px; }
+
+  .cfc-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .cfc-tag {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    border: 2px solid var(--line);
+    border-radius: 999px;
+    padding: 4px 14px;
+    background: var(--community);
+    color: #fff;
+  }
+
+  .cfc-link {
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  .cfc-link:hover { color: var(--accent-ink); }
+  .cfc-link:focus-visible { outline: 3px solid var(--accent-ink); outline-offset: 2px; }
+
+  .site-footer {
+    text-align: center;
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    color: var(--ink-soft);
+    margin-top: 40px;
+  }
+
+  .site-footer a { color: var(--ink-soft); text-decoration: underline; }
+  .site-footer a:hover { color: var(--accent-ink); }
+
+  @media print {
+    .site-footer { display: none !important; }
+  }
+
+  @media print {
+    .cfc-card { display: none !important; }
+  }
+
+  @media print {
+    .controls, .week-tabs, .write-actions, .customize-panel { display: none !important; }
+    .cell-input:empty:before, .write-box:empty:before { content: ""; }
+    .write-panel { display: block !important; page-break-before: always; }
+    body { padding: 0 10px; }
+  }
+
+  @media (max-width: 720px) {
+    .calendar { grid-template-columns: 30px repeat(7, 1fr); font-size: 0.85rem; }
+    .cell { min-height: 100px; padding: 6px; }
+    .day-head { font-size: 0.58rem; padding: 6px 2px; }
+    .tag-sm { font-size: 0.54rem; padding: 1px 5px; }
+    .cell-input { font-size: 0.76rem; }
+    h1 { font-size: 1.9rem; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <span class="eyebrow">plan your month</span>
+    <h1>The DEEP <span class="hl">Content Calendar</span></h1>
+    <p class="tagline">Your own planner. Set the rhythm your way, then fill it in.</p>
+  </header>
+
+  <section class="video-section">
+    <a class="video-link" href="YOUTUBE-LINK-COMING-SOON" target="_blank" rel="noopener">How to use this calendar &rarr;</a>
+  </section>
+
+  <div class="customize-panel">
+    <h2>Customize your rhythm</h2>
+    <p class="customize-intro">This is just a starting point. Assign any pillar to any day, or mark a day open.</p>
+    <div class="customize-grid" id="customizeGrid"></div>
+  </div>
+
+  <div class="controls">
+    <button class="ctrl-btn" id="saveBtn">Save to this browser</button>
+    <button class="ctrl-btn" id="copyBtn">Copy my plan</button>
+    <button class="ctrl-btn" id="pdfBtn">Download as PDF</button>
+    <button class="ctrl-btn" id="printBtn">Print this page</button>
+  </div>
+  <p class="legend-note" style="margin-bottom:26px;">// saves only to this browser and device. Clearing your browser data, or opening this on a different browser or device, will lose it &mdash; use "Copy my plan" to keep a backup somewhere safe.</p>
+
+  <div class="calendar" id="calendar"></div>
+
+  <div class="legend">
+    <div class="legend-item"><span class="tag-sm tag-educate">Edu</span> Educate — teach something people can use today</div>
+    <div class="legend-item"><span class="tag-sm tag-document">Doc</span> Document — show real, current progress</div>
+    <div class="legend-item"><span class="tag-sm tag-entertain">Ent</span> Entertain — earn attention before asking for anything</div>
+    <div class="legend-item"><span class="tag-sm tag-promote">Pro</span> Promote — make a clear, specific ask</div>
+  </div>
+  <p class="legend-note">// open days have no pillar assigned, use them for rest or overflow</p>
+
+  <section class="write-section">
+    <span class="eyebrow">draft your posts</span>
+    <h2>Write this week's posts</h2>
+    <p class="section-intro">Same rhythm, more room. Turn each idea above into the real thing.</p>
+
+    <div class="week-tabs" id="weekTabs">
+      <button class="ctrl-btn active" data-week="1">Week 1</button>
+      <button class="ctrl-btn" data-week="2">Week 2</button>
+      <button class="ctrl-btn" data-week="3">Week 3</button>
+      <button class="ctrl-btn" data-week="4">Week 4</button>
+    </div>
+
+    <div id="writePanels"></div>
+  </section>
+
+  <div class="cfc-card">
+    <span class="eyebrow">want more than a plan?</span>
+    <h3>Clients for Coaches</h3>
+    <p>Monthly live workshops where you build the systems and use the AI to actually attract high-ticket clients, not just plan around them.</p>
+    <hr class="cfc-divider">
+    <div class="cfc-footer">
+      <span class="cfc-tag">Clients for Coaches</span>
+      <a class="cfc-link" href="https://www.skool.com/clients/about" target="_blank" rel="noopener">check it out &rarr;</a>
+    </div>
+  </div>
+
+  <footer class="site-footer">&copy; 2026 Steady Systems LLC &middot; <a href="https://monaweathers.com/mona-shelly-site" target="_blank" rel="noopener">Mona Weathers</a></footer>
+</div>
+
+<script>
+  const dayNames = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+  const tagClass = { document: 'tag-document', educate: 'tag-educate', entertain: 'tag-entertain', promote: 'tag-promote' };
+  const pillarLabel = { document: 'Doc', educate: 'Edu', entertain: 'Ent', promote: 'Pro' };
+  const pillarFullName = { document: 'Document', educate: 'Educate', entertain: 'Entertain', promote: 'Promote' };
+  const pillarPurpose = {
+    document: "builds real connection by showing your actual journey, not a highlight reel",
+    educate: "proves you know what you're talking about by solving a real problem, in public",
+    entertain: "earns attention and shares before you ask anyone for anything",
+    promote: "turns interest into action with a clear, specific offer"
+  };
+
+  // single source of truth: which pillar (or none) each day of the week carries
+  let dayPillars = {
+    Monday: 'educate',
+    Tuesday: 'document',
+    Wednesday: 'entertain',
+    Thursday: 'promote',
+    Friday: 'educate',
+    Saturday: '',
+    Sunday: ''
+  };
+
+  let activeWeek = 1;
+
+  // content the user types, keyed "week|day" -> text. Independent of the DOM so re-renders never lose it.
+  const ideaStore = {};
+  const postStore = {};
+  const storeKey = (w, d) => w + '|' + d;
+
+  function buildAIPrompt(pillar, idea, draft, dayName) {
+    let prompt = "I'm writing a " + pillarFullName[pillar] + " post for " + dayName + " using the DEEP content framework. This day is about: " + pillarPurpose[pillar] + ".\n\n";
+    prompt += idea
+      ? "Here's my idea: " + idea + "\n\n"
+      : "I haven't written an idea yet. Suggest one that fits this purpose, then write from it.\n\n";
+    prompt += draft
+      ? "Here's what I've drafted so far, polish and tighten it:\n" + draft + "\n\n"
+      : "Write a full draft from this idea.\n\n";
+    prompt += "Give me two things: a short writing guide (the structure and key points, in order), then a ready-to-paste draft that follows it. Keep sentences short and varied, make the first two lines earn the read, use contractions, and skip corporate phrases or rhetorical questions as openers. Don't add a call to action unless I ask for one.";
+    return prompt;
+  }
+
+  function showCopyFallback(text) {
+    const overlay = document.createElement('div');
+    overlay.style.cssText = 'position:fixed;inset:0;background:rgba(28,24,21,0.55);display:flex;align-items:center;justify-content:center;z-index:9999;padding:20px;';
+
+    const box = document.createElement('div');
+    box.style.cssText = 'background:var(--card);border:2px solid var(--line);border-radius:14px;padding:22px;max-width:520px;width:100%;box-shadow:4px 5px 0 var(--line);';
+
+    const msg = document.createElement('p');
+    msg.style.cssText = 'font-family:var(--mono);font-size:0.8rem;color:var(--ink-soft);margin:0 0 12px;';
+    msg.textContent = "This browser blocked automatic copying. It's selected below, press Cmd+C or Ctrl+C to copy it.";
+
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.readOnly = true;
+    ta.style.cssText = 'width:100%;min-height:200px;font-family:var(--mono);font-size:0.8rem;padding:10px;border:2px solid var(--line);border-radius:8px;resize:vertical;';
+
+    const closeBtn = document.createElement('button');
+    closeBtn.className = 'ctrl-btn';
+    closeBtn.textContent = 'Close';
+    closeBtn.style.marginTop = '14px';
+    closeBtn.addEventListener('click', () => overlay.remove());
+
+    box.appendChild(msg);
+    box.appendChild(ta);
+    box.appendChild(closeBtn);
+    overlay.appendChild(box);
+    document.body.appendChild(overlay);
+
+    ta.focus();
+    ta.select();
+  }
+
+  async function copyToClipboard(text, btn, emptyMessage) {
+    const original = btn.textContent;
+    if (!text || !text.trim()) {
+      btn.textContent = emptyMessage || 'Nothing to copy';
+      setTimeout(() => { btn.textContent = original; }, 1400);
+      return;
+    }
+    let copied = false;
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      try { await navigator.clipboard.writeText(text); copied = true; } catch (e) { copied = false; }
+    }
+    if (!copied) {
+      try {
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        ta.style.position = 'fixed';
+        ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.focus();
+        ta.select();
+        copied = document.execCommand('copy');
+        document.body.removeChild(ta);
+      } catch (e) { copied = false; }
+    }
+    if (copied) {
+      btn.textContent = 'Copied';
+      setTimeout(() => { btn.textContent = original; }, 1400);
+    } else {
+      showCopyFallback(text);
+    }
+  }
+
+  function renderCalendar() {
+    const calendar = document.getElementById('calendar');
+    calendar.innerHTML = '';
+
+    const corner = document.createElement('div');
+    corner.className = 'corner';
+    calendar.appendChild(corner);
+
+    dayNames.forEach(d => {
+      const head = document.createElement('div');
+      head.className = 'day-head';
+      head.textContent = d.slice(0, 3);
+      calendar.appendChild(head);
+    });
+
+    for (let w = 1; w <= 4; w++) {
+      const label = document.createElement('div');
+      label.className = 'week-label';
+      label.textContent = 'Week ' + w;
+      calendar.appendChild(label);
+
+      dayNames.forEach(day => {
+        const pillar = dayPillars[day];
+        const cell = document.createElement('div');
+        cell.className = 'cell' + (pillar ? '' : ' open-day');
+
+        if (pillar) {
+          const tag = document.createElement('span');
+          tag.className = 'tag-sm ' + tagClass[pillar];
+          tag.textContent = pillarLabel[pillar];
+          cell.appendChild(tag);
+        }
+
+        const input = document.createElement('div');
+        input.className = 'cell-input';
+        input.contentEditable = 'true';
+        input.setAttribute('role', 'textbox');
+        input.setAttribute('aria-multiline', 'true');
+        input.dataset.placeholder = pillar ? 'tap to add your idea' : 'optional';
+        input.innerText = ideaStore[storeKey(w, day)] || '';
+        input.addEventListener('input', () => { ideaStore[storeKey(w, day)] = input.innerText; });
+        cell.appendChild(input);
+
+        calendar.appendChild(cell);
+      });
+    }
+  }
+
+  function renderWritePanels() {
+    const writePanels = document.getElementById('writePanels');
+    writePanels.innerHTML = '';
+
+    for (let w = 1; w <= 4; w++) {
+      const panel = document.createElement('div');
+      panel.className = 'write-panel' + (w === activeWeek ? ' active' : '');
+      panel.dataset.weekPanel = w;
+
+      const activeDays = dayNames.filter(d => dayPillars[d]);
+
+      if (activeDays.length === 0) {
+        const empty = document.createElement('p');
+        empty.className = 'write-empty';
+        empty.textContent = '// no content days set this week, adjust the rhythm above';
+        panel.appendChild(empty);
+      }
+
+      activeDays.forEach(dayName => {
+        const pillar = dayPillars[dayName];
+        const day = document.createElement('div');
+        day.className = 'write-day';
+
+        const head = document.createElement('div');
+        head.className = 'write-day-head';
+        const name = document.createElement('span');
+        name.className = 'write-day-name';
+        name.textContent = dayName;
+        head.appendChild(name);
+        const tag = document.createElement('span');
+        tag.className = 'tag-sm ' + tagClass[pillar];
+        tag.textContent = pillarLabel[pillar];
+        head.appendChild(tag);
+        day.appendChild(head);
+
+        const box = document.createElement('div');
+        box.className = 'write-box';
+        box.contentEditable = 'true';
+        box.setAttribute('role', 'textbox');
+        box.setAttribute('aria-multiline', 'true');
+        box.dataset.placeholder = 'write ' + dayName.toLowerCase() + "'s post here...";
+        box.innerText = postStore[storeKey(w, dayName)] || '';
+        box.addEventListener('input', () => { postStore[storeKey(w, dayName)] = box.innerText; });
+        day.appendChild(box);
+
+        const actions = document.createElement('div');
+        actions.className = 'write-actions';
+
+        const copyPostBtn = document.createElement('button');
+        copyPostBtn.className = 'mini-btn';
+        copyPostBtn.textContent = 'Copy post';
+        copyPostBtn.addEventListener('click', () => {
+          copyToClipboard(postStore[storeKey(w, dayName)] || '', copyPostBtn, 'Nothing written yet');
+        });
+
+        const copyPromptBtn = document.createElement('button');
+        copyPromptBtn.className = 'mini-btn';
+        copyPromptBtn.textContent = 'Copy AI prompt';
+        copyPromptBtn.addEventListener('click', () => {
+          const idea = ideaStore[storeKey(w, dayName)] || '';
+          const draft = postStore[storeKey(w, dayName)] || '';
+          const prompt = buildAIPrompt(pillar, idea, draft, dayName);
+          copyToClipboard(prompt, copyPromptBtn, 'Nothing to copy');
+        });
+
+        actions.appendChild(copyPostBtn);
+        actions.appendChild(copyPromptBtn);
+        day.appendChild(actions);
+
+        panel.appendChild(day);
+      });
+
+      writePanels.appendChild(panel);
+    }
+  }
+
+  function renderAll() {
+    renderCalendar();
+    renderWritePanels();
+  }
+
+  function buildCustomizePanel() {
+    const grid = document.getElementById('customizeGrid');
+    grid.innerHTML = '';
+    dayNames.forEach(day => {
+      const group = document.createElement('div');
+      group.className = 'day-select-group';
+
+      const label = document.createElement('label');
+      label.textContent = day.slice(0, 3);
+      label.setAttribute('for', 'select-' + day);
+      group.appendChild(label);
+
+      const select = document.createElement('select');
+      select.id = 'select-' + day;
+      [
+        ['', 'Open'],
+        ['educate', 'Educate'],
+        ['document', 'Document'],
+        ['entertain', 'Entertain'],
+        ['promote', 'Promote']
+      ].forEach(([value, text]) => {
+        const opt = document.createElement('option');
+        opt.value = value;
+        opt.textContent = text;
+        if (dayPillars[day] === value) opt.selected = true;
+        select.appendChild(opt);
+      });
+
+      select.addEventListener('change', () => {
+        dayPillars[day] = select.value;
+        renderAll();
+      });
+
+      group.appendChild(select);
+      grid.appendChild(group);
+    });
+  }
+
+  function collectPlanData() {
+    const weeks = [];
+    let hasContent = false;
+    for (let w = 1; w <= 4; w++) {
+      const days = [];
+      dayNames.forEach(day => {
+        const idea = ideaStore[storeKey(w, day)] || '';
+        const post = postStore[storeKey(w, day)] || '';
+        if (idea || post) {
+          days.push({ day, pillar: dayPillars[day], idea, post });
+          hasContent = true;
+        }
+      });
+      if (days.length) weeks.push({ week: w, days });
+    }
+    return { weeks, hasContent };
+  }
+
+  function buildPlanText() {
+    const { weeks, hasContent } = collectPlanData();
+    let out = '';
+    weeks.forEach(w => {
+      out += 'WEEK ' + w.week + '\n';
+      w.days.forEach(d => {
+        out += d.day + '\n';
+        if (d.idea) out += '  Idea: ' + d.idea + '\n';
+        if (d.post) out += '  Post: ' + d.post + '\n';
+      });
+      out += '\n';
+    });
+    return { text: out.trim(), hasContent };
+  }
+
+  function downloadTextFile(text) {
+    const blob = new Blob([text], { type: 'text/plain' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'deep-content-calendar.txt';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  }
+
+  function downloadAsPDF() {
+    const btn = document.getElementById('pdfBtn');
+    const original = btn.textContent;
+    const { weeks, hasContent } = collectPlanData();
+
+    if (!hasContent) {
+      btn.textContent = 'Add an idea first';
+      setTimeout(() => { btn.textContent = original; }, 1600);
+      return;
+    }
+
+    if (window.jspdf && window.jspdf.jsPDF) {
+      try {
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF({ unit: 'pt', format: 'letter' });
+        const marginX = 54;
+        const pageHeight = doc.internal.pageSize.getHeight();
+        const maxWidth = doc.internal.pageSize.getWidth() - marginX * 2;
+        let y = 64;
+
+        doc.setFont('helvetica', 'bold');
+        doc.setFontSize(18);
+        doc.text('My DEEP Content Calendar', marginX, y);
+        y += 30;
+
+        weeks.forEach(w => {
+          if (y > pageHeight - 90) { doc.addPage(); y = 64; }
+          doc.setFont('helvetica', 'bold');
+          doc.setFontSize(14);
+          doc.text('Week ' + w.week, marginX, y);
+          y += 22;
+
+          w.days.forEach(d => {
+            if (y > pageHeight - 100) { doc.addPage(); y = 64; }
+            doc.setFont('helvetica', 'bold');
+            doc.setFontSize(11);
+            doc.text(d.day + '  (' + pillarFullName[d.pillar] + ')', marginX, y);
+            y += 16;
+
+            doc.setFont('helvetica', 'normal');
+            doc.setFontSize(10);
+            [['Idea: ', d.idea], ['Post: ', d.post]].forEach(([prefix, val]) => {
+              if (!val) return;
+              const lines = doc.splitTextToSize(prefix + val, maxWidth);
+              lines.forEach(line => {
+                if (y > pageHeight - 60) { doc.addPage(); y = 64; }
+                doc.text(line, marginX, y);
+                y += 14;
+              });
+            });
+            y += 10;
+          });
+          y += 8;
+        });
+
+        doc.save('deep-content-calendar.pdf');
+        btn.textContent = 'Downloaded';
+        setTimeout(() => { btn.textContent = original; }, 1600);
+        return;
+      } catch (e) {
+        // fall through to text fallback below
+      }
+    }
+
+    // fallback if the PDF library didn't load
+    const { text } = buildPlanText();
+    downloadTextFile(text);
+    btn.textContent = 'Downloaded as text';
+    setTimeout(() => { btn.textContent = original; }, 1800);
+  }
+
+  document.getElementById('pdfBtn').addEventListener('click', downloadAsPDF);
+
+
+  document.getElementById('copyBtn').addEventListener('click', () => {
+    const btn = document.getElementById('copyBtn');
+    const { text, hasContent } = buildPlanText();
+    if (!hasContent) {
+      copyToClipboard('', btn, 'Add an idea first');
+      return;
+    }
+    copyToClipboard(text, btn);
+  });
+
+  document.getElementById('printBtn').addEventListener('click', () => window.print());
+
+  document.getElementById('weekTabs').addEventListener('click', (e) => {
+    const btn = e.target.closest('button');
+    if (!btn) return;
+    activeWeek = parseInt(btn.dataset.week, 10);
+    document.querySelectorAll('#weekTabs .ctrl-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.write-panel').forEach(p => {
+      p.classList.toggle('active', parseInt(p.dataset.weekPanel, 10) === activeWeek);
+    });
+  });
+
+  const STORAGE_KEY = 'deepCalendarSave_v1';
+
+  function saveToBrowser() {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify({ dayPillars, ideaStore, postStore }));
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  function loadFromBrowser() {
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (!raw) return false;
+      const data = JSON.parse(raw);
+      if (data.dayPillars) dayPillars = data.dayPillars;
+      if (data.ideaStore) Object.assign(ideaStore, data.ideaStore);
+      if (data.postStore) Object.assign(postStore, data.postStore);
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  document.getElementById('saveBtn').addEventListener('click', () => {
+    const btn = document.getElementById('saveBtn');
+    const original = btn.textContent;
+    const ok = saveToBrowser();
+    btn.textContent = ok ? 'Saved' : "Can't save here";
+    setTimeout(() => { btn.textContent = original; }, 1800);
+  });
+
+  loadFromBrowser();
+  buildCustomizePanel();
+  renderAll();
+</script>
+</body>
+</html>
