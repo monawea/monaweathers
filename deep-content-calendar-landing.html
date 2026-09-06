@@ -1,0 +1,346 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The DEEP Content Calendar — $5</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,500;0,6..72,700;1,6..72,500&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #FAF4EA;
+    --ink: #1C1815;
+    --ink-soft: #6E6256;
+    --card: #FFFCF6;
+    --line: #1C1815;
+    --accent: #0097B2;
+    --accent-ink: #06768C;
+    --traffic: #D99A2B;
+    --community: #2E8AA0;
+    --income: #6E8E63;
+    --highlight: #F5CD4E;
+    --coral: #E8795A;
+    --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Hanken Grotesk', sans-serif;
+    display: flex;
+    justify-content: center;
+    padding: 56px 20px 80px;
+  }
+
+  .wrap { width: 100%; max-width: 680px; }
+
+  header { text-align: center; margin-bottom: 34px; position: relative; }
+
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    letter-spacing: 0.06em;
+    color: var(--accent-ink);
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 12px;
+  }
+
+  h1 {
+    font-family: 'Newsreader', serif;
+    font-weight: 600;
+    font-size: 2.5rem;
+    line-height: 1.15;
+    margin: 0 0 14px;
+  }
+
+  h1 .hl {
+    background: var(--highlight);
+    padding: 2px 10px;
+    display: inline-block;
+    transform: rotate(-1deg);
+    border-radius: 3px;
+  }
+
+  .tagline { color: var(--ink-soft); font-size: 1.08rem; margin: 0 0 6px; }
+
+  h2 {
+    font-family: 'Newsreader', serif;
+    font-weight: 600;
+    font-size: 1.5rem;
+    margin: 0 0 10px;
+  }
+
+  .section-intro { color: var(--ink-soft); font-size: 0.95rem; margin: 0 0 20px; }
+
+  section { margin-bottom: 40px; }
+
+  .video-frame {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%;
+    background: var(--card);
+    border: 2px solid var(--line);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 3px 3px 0 var(--line);
+  }
+
+  .video-frame iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+
+  .video-placeholder {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+    font-family: var(--mono);
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+  }
+
+  .about-card {
+    background: var(--card);
+    border: 2px solid var(--line);
+    border-radius: 16px;
+    padding: 28px 26px 24px;
+    box-shadow: 3px 3px 0 var(--line);
+  }
+
+  .about-card p { font-size: 0.98rem; line-height: 1.6; margin: 0 0 18px; }
+  .about-card p:last-of-type { margin-bottom: 0; }
+
+  .feature-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .feature-list li {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    padding: 12px 0;
+    border-top: 2px dashed var(--line);
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  .feature-list li:first-child { border-top: none; padding-top: 0; }
+
+  .feature-list li::before {
+    content: '';
+    flex-shrink: 0;
+    width: 10px;
+    height: 10px;
+    border-radius: 3px;
+    background: var(--accent);
+    margin-top: 6px;
+    transform: rotate(8deg);
+  }
+
+  .sample-strip {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    padding-bottom: 6px;
+  }
+
+  .sample-day {
+    flex: 0 0 auto;
+    width: 148px;
+    background: var(--card);
+    border: 2px solid var(--line);
+    border-radius: 12px;
+    padding: 12px;
+    box-shadow: 2px 2px 0 var(--line);
+  }
+
+  .sample-day-name {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    display: block;
+    margin-bottom: 6px;
+  }
+
+  .tag-sm {
+    display: inline-block;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    border: 2px solid var(--line);
+    border-radius: 999px;
+    padding: 1px 8px;
+    margin-bottom: 8px;
+  }
+
+  .tag-document { background: var(--community); color: #fff; }
+  .tag-educate { background: var(--income); color: #fff; }
+  .tag-entertain { background: var(--traffic); color: #1C1815; }
+  .tag-promote { background: var(--accent); color: #fff; }
+
+  .sample-idea {
+    font-family: 'Newsreader', serif;
+    font-size: 0.85rem;
+    line-height: 1.4;
+    margin: 0;
+  }
+
+  .buy-card {
+    position: relative;
+    background: var(--card);
+    border: 2px solid var(--line);
+    border-radius: 16px;
+    padding: 40px 30px 30px;
+    text-align: center;
+    box-shadow: 4px 5px 0 var(--line);
+    margin-bottom: 30px;
+  }
+
+  .buy-price {
+    position: absolute;
+    top: -20px;
+    right: 26px;
+    font-family: 'Newsreader', serif;
+    font-weight: 700;
+    font-size: 2rem;
+    line-height: 1;
+    border: 2px solid var(--line);
+    border-radius: 999px;
+    padding: 10px 22px;
+    background: var(--highlight);
+    color: #1C1815;
+    transform: rotate(5deg);
+    box-shadow: 3px 3px 0 var(--line);
+  }
+
+  .buy-btn {
+    display: inline-block;
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 1rem;
+    border: 2px solid var(--line);
+    border-radius: 999px;
+    padding: 14px 28px;
+    background: var(--coral);
+    color: #1C1815;
+    text-decoration: none;
+    box-shadow: 3px 3px 0 var(--line);
+    transition: transform 0.1s ease, box-shadow 0.1s ease;
+  }
+
+  .buy-btn:hover { transform: translateY(-2px); box-shadow: 4px 4px 0 var(--line); }
+  .buy-btn:focus-visible { outline: 3px solid var(--accent-ink); outline-offset: 2px; }
+
+  .buy-note {
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    color: var(--ink-soft);
+    margin-top: 16px;
+  }
+
+  .site-footer {
+    text-align: center;
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    color: var(--ink-soft);
+  }
+
+  .site-footer a { color: var(--ink-soft); text-decoration: underline; }
+  .site-footer a:hover { color: var(--accent-ink); }
+
+  @media (max-width: 480px) {
+    h1 { font-size: 2rem; }
+    .buy-price { font-size: 1.5rem; padding: 8px 16px; right: 16px; top: -18px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <span class="eyebrow">for coaches, consultants &amp; experts</span>
+    <h1>The DEEP <span class="hl">Content Calendar</span></h1>
+    <p class="tagline">Stop staring at a blank content calendar. Build your whole month in one sitting.</p>
+  </header>
+
+  <section class="video-frame">
+    <!-- Replace this placeholder with your YouTube embed, e.g.:
+    <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID" title="Inside the DEEP Content Calendar" allowfullscreen></iframe>
+    -->
+    <p class="video-placeholder">// paste your YouTube embed here</p>
+  </section>
+
+  <section class="about-card">
+    <span class="eyebrow">what it is</span>
+    <h2>A real month, mapped out your way</h2>
+    <p>The free DEEP Generator hands you one prompt at a time. The Content Calendar is the full system, four weeks laid out in a real calendar grid, built on the same four pillars, but yours to customize and actually write in.</p>
+    <ul class="feature-list">
+      <li>Assign any pillar, Document, Educate, Entertain, or Promote, to any day, or mark a day open</li>
+      <li>Type your ideas straight into the calendar, then write the full post below it</li>
+      <li>Built-in AI prompt button turns any idea into a ready-to-paste draft using your favorite AI tool</li>
+      <li>Copy a single day, copy your whole plan, or download the entire month as a PDF</li>
+      <li>Save your progress right in your browser so you can come back and keep going</li>
+    </ul>
+  </section>
+
+  <section>
+    <span class="eyebrow">a sample week</span>
+    <h2>What a week could look like</h2>
+    <p class="section-intro">Every day's pillar is yours to change, this is just a starting rhythm.</p>
+    <div class="sample-strip">
+      <div class="sample-day">
+        <span class="sample-day-name">Monday</span>
+        <span class="tag-sm tag-educate">Edu</span>
+        <p class="sample-idea">Break down a tool stack you use every week.</p>
+      </div>
+      <div class="sample-day">
+        <span class="sample-day-name">Tuesday</span>
+        <span class="tag-sm tag-document">Doc</span>
+        <p class="sample-idea">Share a real number that proves progress.</p>
+      </div>
+      <div class="sample-day">
+        <span class="sample-day-name">Wednesday</span>
+        <span class="tag-sm tag-entertain">Ent</span>
+        <p class="sample-idea">Ask an easy either-or question.</p>
+      </div>
+      <div class="sample-day">
+        <span class="sample-day-name">Thursday</span>
+        <span class="tag-sm tag-promote">Pro</span>
+        <p class="sample-idea">Share a client win, end with a way in.</p>
+      </div>
+      <div class="sample-day">
+        <span class="sample-day-name">Friday</span>
+        <span class="tag-sm tag-educate">Edu</span>
+        <p class="sample-idea">Answer the question you get asked most.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="buy-card">
+    <span class="buy-price">$5</span>
+    <span class="eyebrow">get instant access</span>
+    <h2>Build your month today</h2>
+    <p class="section-intro">One-time payment, yours to keep.</p>
+    <a class="buy-btn" href="PASTE-YOUR-CHECKOUT-LINK-HERE">Get the Content Calendar</a>
+    <p class="buy-note">// paste your checkout link here</p>
+  </div>
+
+  <footer class="site-footer">&copy; 2026 Steady Systems LLC &middot; <a href="https://monaweathers.com/mona-shelly-site" target="_blank" rel="noopener">Mona Weathers</a></footer>
+</div>
+</body>
+</html>
