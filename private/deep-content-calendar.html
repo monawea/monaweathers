@@ -490,17 +490,13 @@
   .site-footer a:hover { color: var(--accent-ink); }
 
   @media print {
-    .site-footer { display: none !important; }
-  }
-
-  @media print {
-    .cfc-card { display: none !important; }
-  }
-
-  @media print {
-    .controls, .week-tabs, .write-actions, .customize-panel { display: none !important; }
+    .site-footer, .cfc-card, .controls, .week-tabs, .write-actions,
+    .customize-panel, .video-section, #genToggle, .mini-gen-panel { display: none !important; }
     .cell-input:empty:before, .write-box:empty:before { content: ""; }
-    .write-panel { display: block !important; page-break-before: always; }
+    .write-panel { display: block !important; }
+    .write-section { page-break-before: always; }
+    .write-day { page-break-inside: avoid; }
+    .cell { min-height: auto; }
     body { padding: 0 10px; }
   }
 
