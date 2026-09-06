@@ -294,6 +294,13 @@
     font-family: 'Newsreader', serif;
     font-weight: 600;
     font-size: 1.5rem;
+    margin: 0 0 14px;
+  }
+
+  .guide-why {
+    font-size: 0.94rem;
+    line-height: 1.5;
+    color: var(--ink-soft);
     margin: 0 0 22px;
   }
 
@@ -324,6 +331,63 @@
     margin: 0 0 18px;
   }
 
+  .howto {
+    background: var(--card);
+    border: 2px solid var(--line);
+    border-radius: 16px;
+    padding: 28px 26px 24px;
+    margin-bottom: 34px;
+    box-shadow: 3px 3px 0 var(--line);
+  }
+
+  .howto .eyebrow { margin-bottom: 8px; }
+
+  .howto h2 {
+    font-family: 'Newsreader', serif;
+    font-weight: 600;
+    font-size: 1.5rem;
+    margin: 0 0 20px;
+  }
+
+  .howto-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    counter-reset: step;
+  }
+
+  .howto-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    margin-bottom: 16px;
+  }
+
+  .howto-list li:last-child { margin-bottom: 0; }
+
+  .howto-list li::before {
+    counter-increment: step;
+    content: counter(step);
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    border: 2px solid var(--line);
+    border-radius: 50%;
+    background: var(--highlight);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Newsreader', serif;
+    font-weight: 700;
+    font-size: 0.92rem;
+  }
+
+  .howto-text {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    padding-top: 3px;
+  }
+
   @media (prefers-reduced-motion: reduce) {
     .pillar, .prompt-card, .prompt-actions button { transition: none; }
     .pillar:nth-child(1), .pillar:nth-child(2), .pillar:nth-child(3), .pillar:nth-child(4) { transform: none; }
@@ -348,6 +412,7 @@
   <section class="guide">
     <span class="eyebrow">the framework</span>
     <h2>What each pillar actually does</h2>
+    <p class="guide-why">Post the same type of content every day and people tune out, or it starts to feel like a lecture, a highlight reel, or one long ad. Rotating through all four keeps every post doing a different job.</p>
 
     <div class="guide-row">
       <span class="tag tag-document">Document</span>
@@ -375,6 +440,16 @@
       <p class="guide-purpose">Turns interest into action with a clear, specific offer.</p>
       <p class="guide-angles">lead magnets &middot; paid offers &middot; workshops & events &middot; social proof</p>
     </div>
+  </section>
+
+  <section class="howto">
+    <span class="eyebrow">how to use it</span>
+    <h2>Three steps, that's it</h2>
+    <ol class="howto-list">
+      <li><span class="howto-text"><strong>Pick a pillar.</strong> Whatever day it is, whatever you feel like posting.</span></li>
+      <li><span class="howto-text"><strong>Draw a prompt.</strong> Don't like it? Draw again, there's no limit.</span></li>
+      <li><span class="howto-text"><strong>Go write.</strong> The prompt is a starting point, not a script. Make it yours.</span></li>
+    </ol>
   </section>
 
   <div class="pillars">
