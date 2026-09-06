@@ -170,6 +170,67 @@
   .ctrl-btn:focus-visible { outline: 3px solid var(--accent-ink); outline-offset: 2px; }
   .ctrl-btn.active { background: var(--highlight); }
 
+  .mini-gen-panel { margin-bottom: 30px; }
+
+  .mini-gen-pillars {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 14px;
+  }
+
+  .mini-pillar-btn {
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 0.82rem;
+    border: 2px solid var(--line);
+    border-radius: 999px;
+    padding: 8px 16px;
+    cursor: pointer;
+    color: #fff;
+    box-shadow: 2px 2px 0 var(--line);
+    transition: transform 0.1s ease;
+  }
+
+  .mini-pillar-btn:hover { transform: translateY(-2px); }
+  .mini-pillar-btn:focus-visible { outline: 3px solid var(--accent-ink); outline-offset: 2px; }
+  .mini-pillar-btn.document { background: var(--community); }
+  .mini-pillar-btn.educate { background: var(--income); }
+  .mini-pillar-btn.entertain { background: var(--traffic); color: #1C1815; }
+  .mini-pillar-btn.promote { background: var(--accent); }
+
+  .mini-gen-card {
+    background: var(--card);
+    border: 2px solid var(--line);
+    border-radius: 14px;
+    padding: 20px 24px;
+    box-shadow: 3px 3px 0 var(--line);
+    text-align: center;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  .mini-gen-placeholder {
+    font-family: var(--mono);
+    font-size: 0.82rem;
+    color: var(--ink-soft);
+    margin: 0;
+  }
+
+  .mini-gen-text {
+    font-family: 'Newsreader', serif;
+    font-size: 1.1rem;
+    line-height: 1.45;
+    margin: 0 0 16px;
+  }
+
+  .mini-gen-actions { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
+
+  @media print {
+    #genToggle, .mini-gen-panel { display: none !important; }
+  }
+
   .calendar {
     display: grid;
     grid-template-columns: 54px repeat(7, 1fr);
@@ -478,6 +539,21 @@
     <button class="ctrl-btn" id="printBtn">Print this page</button>
   </div>
   <p class="legend-note" style="margin-bottom:26px;">// saves only to this browser and device. Clearing your browser data, or opening this on a different browser or device, will lose it &mdash; use "Copy my plan" to keep a backup somewhere safe.</p>
+
+  <div style="text-align:center; margin-bottom:16px;">
+    <button class="ctrl-btn" id="genToggle">Need a prompt? Open the generator</button>
+  </div>
+  <div class="mini-gen-panel" id="genPanel" hidden>
+    <div class="mini-gen-pillars">
+      <button class="mini-pillar-btn document" data-pillar="document">Document</button>
+      <button class="mini-pillar-btn educate" data-pillar="educate">Educate</button>
+      <button class="mini-pillar-btn entertain" data-pillar="entertain">Entertain</button>
+      <button class="mini-pillar-btn promote" data-pillar="promote">Promote</button>
+    </div>
+    <div class="mini-gen-card" id="miniGenCard">
+      <p class="mini-gen-placeholder">// pick a pillar above to draw a prompt</p>
+    </div>
+  </div>
 
   <div class="calendar" id="calendar"></div>
 
@@ -965,6 +1041,141 @@
     btn.textContent = ok ? 'Saved' : "Can't save here";
     setTimeout(() => { btn.textContent = original; }, 1800);
   });
+
+  // ==== Mini prompt generator ====
+  const miniPrompts = {
+    document: [
+      "Share a number that proves real progress this week (reach, revenue, or a personal milestone).",
+      "Post about a habit you're building right now, mid-progress, not the finished version.",
+      "Show the messy middle of your workday, the part nobody usually sees.",
+      "Talk about a goal outside of work you're chasing right now.",
+      "Point to something that used to be hard for you and now feels routine.",
+      "Give a plain update on where your business actually stands this month.",
+      "Share a mistake from this week and what it taught you.",
+      "Write to yourself a year ago. What would you want them to know?",
+      "Post a quick voice-note style update from wherever you are right now.",
+      "Share a personal routine that shapes how you run your business.",
+      "Show a screenshot of a real result, and explain what actually went into getting it.",
+      "Talk about a decision you're still not sure was right.",
+      "Share what a normal Tuesday looks like for you right now.",
+      "Post about something you almost quit on, and why you didn't.",
+      "Show your workspace or setup exactly as it looks today.",
+      "Talk about a season you're in right now, personally or in the business.",
+      "Share a small win that wouldn't make it into a highlight reel, but mattered to you.",
+      "Post about something you changed your mind on this year.",
+      "Give an honest answer to 'how's business, really?'",
+      "Share a moment from outside of work that shaped how you're showing up this week."
+    ],
+    educate: [
+      "Break down the exact steps for something you do that trips other people up.",
+      "Show your tool stack for one part of the business, and explain why each piece is there.",
+      "Share a prompt or workflow you use often, with a screenshot.",
+      "Call out a myth in your industry that wastes people's time or money.",
+      "Explain something everyone assumes is complicated but really isn't.",
+      "Walk through how you decide whether to say yes to something.",
+      "Compare two ways of solving the same problem and say which one wins.",
+      "Share the one thing you wish someone told you before you started.",
+      "Turn a question you get asked constantly into a full answer.",
+      "Show the before and after of a process you simplified.",
+      "Explain a term your industry uses that confuses newcomers.",
+      "Share the checklist you run through before you launch or send anything.",
+      "Break down what actually goes into pricing something, step by step.",
+      "Show how you organize your week so nothing falls through.",
+      "Explain the difference between two options people often confuse.",
+      "Share a shortcut that saves you real time, and how you found it.",
+      "Walk through what you'd do differently if you were starting from zero today.",
+      "Explain why a common piece of advice in your field is incomplete.",
+      "Show the exact structure you use for a recurring task or deliverable.",
+      "Answer the question that always comes up in a first conversation with a client."
+    ],
+    entertain: [
+      "Write a one-liner about something everyone in your field secretly relates to.",
+      "Bring up a throwback that connects to what you do now.",
+      "Share an observation about a habit or trend you keep noticing.",
+      "Ask an easy opinion question with two obvious camps.",
+      "Poke fun at a common contradiction people live with in their work.",
+      "Share the inside joke that only people in your world would get.",
+      "Ask people to finish the sentence: 'You know you're in this field when...'",
+      "Give a quick take on something trending, loosely tied to your world.",
+      "Post the most relatable complaint from your week, kept light.",
+      "Share a two-sentence story that makes people nod along.",
+      "Ask people which side of a harmless debate they're on, and why.",
+      "Share the most common excuse you hear, and say it back with a wink.",
+      "Post about a small daily annoyance that everyone in your world deals with.",
+      "Compare what people think this job looks like to what it actually looks like.",
+      "Ask your audience to share their most-used emoji, tool, or phrase, and see what comes back.",
+      "Share an old-school reference that still holds up today.",
+      "Post a lighthearted confession that's true for more people than they'd admit.",
+      "Ask a this-or-that question that's actually hard to answer.",
+      "Share the moment something didn't go as planned, told for laughs.",
+      "Post about a phrase or saying you can't stand, and why."
+    ],
+    promote: [
+      "Share a client win, and end with a clear way to work with you.",
+      "Announce your free resource and name the one problem it solves.",
+      "Invite people to your next live session, in plain language.",
+      "Share a testimonial, then let it lead into your offer.",
+      "Say exactly who your program is for, and who it's not for.",
+      "Open the doors to something, and give it a real deadline.",
+      "Walk through one client's transformation, start to finish.",
+      "Post the simplest CTA you can write: what to do, what happens next.",
+      "Show what's included in your offer, without over-explaining it.",
+      "Answer the objection you hear most, then point to the offer.",
+      "Share a behind-the-scenes look at what's inside your paid community or program.",
+      "Post a countdown to a live event, and say what someone will walk away with.",
+      "Share the results of a recent workshop or training, and invite people to the next one.",
+      "Write a post built entirely around one client quote.",
+      "Share the moment a lead magnet turned into a real client win.",
+      "Post about a spot opening up, and who should raise their hand.",
+      "Share what changes for someone the day after they join your program.",
+      "Write a post that names the exact outcome your offer delivers, nothing vague.",
+      "Share a comparison of where a client started and where they are now.",
+      "Post a simple recap of a recent win, and close with how to get the same result."
+    ]
+  };
+
+  let miniLastIndex = {};
+
+  function drawMiniPrompt(pillar) {
+    const arr = miniPrompts[pillar];
+    let idx;
+    do {
+      idx = Math.floor(Math.random() * arr.length);
+    } while (arr.length > 1 && idx === miniLastIndex[pillar]);
+    miniLastIndex[pillar] = idx;
+    const text = arr[idx];
+
+    const card = document.getElementById('miniGenCard');
+    card.innerHTML =
+      '<p class="mini-gen-text">' + text + '</p>' +
+      '<div class="mini-gen-actions">' +
+        '<button class="mini-btn" id="miniAnotherBtn">Draw another</button>' +
+        '<button class="mini-btn" id="miniCopyBtn">Copy</button>' +
+      '</div>';
+
+    document.getElementById('miniAnotherBtn').addEventListener('click', () => drawMiniPrompt(pillar));
+    document.getElementById('miniCopyBtn').addEventListener('click', (e) => {
+      copyToClipboard(text, e.target, 'Nothing to copy');
+    });
+  }
+
+  document.querySelectorAll('.mini-pillar-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.mini-pillar-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      drawMiniPrompt(btn.dataset.pillar);
+    });
+  });
+
+  document.getElementById('genToggle').addEventListener('click', () => {
+    const panel = document.getElementById('genPanel');
+    const btn = document.getElementById('genToggle');
+    const opening = panel.hidden;
+    panel.hidden = !opening;
+    btn.textContent = opening ? 'Hide the generator' : 'Need a prompt? Open the generator';
+    if (opening) panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  });
+  // ==== End mini prompt generator ====
 
   loadFromBrowser();
   buildCustomizePanel();
