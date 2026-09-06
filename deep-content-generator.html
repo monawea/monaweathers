@@ -634,11 +634,14 @@
     });
   }
 
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
   pillarButtons.forEach(btn => {
     btn.addEventListener('click', () => {
       pillarButtons.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
       render(btn.dataset.pillar);
+      promptCard.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth', block: 'center' });
     });
   });
 </script>
