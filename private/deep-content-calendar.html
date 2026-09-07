@@ -264,14 +264,17 @@
 
   .week-label {
     background: var(--card);
-    font-family: 'Newsreader', serif;
-    font-weight: 600;
-    font-size: 0.85rem;
+    font-family: var(--mono);
+    font-weight: 700;
+    font-size: 0.62rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    color: var(--ink-soft);
     display: flex;
     align-items: center;
     justify-content: center;
-    writing-mode: vertical-rl;
-    text-orientation: mixed;
+    text-align: center;
+    padding: 4px 2px;
   }
 
   .cell {
@@ -716,7 +719,7 @@
     for (let w = 1; w <= 4; w++) {
       const label = document.createElement('div');
       label.className = 'week-label';
-      label.textContent = 'Week ' + w;
+      label.textContent = 'W' + w;
       calendar.appendChild(label);
 
       dayNames.forEach(day => {
