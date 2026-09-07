@@ -97,17 +97,47 @@
     border: 0;
   }
 
-  .video-placeholder {
+  .video-overlay {
     position: absolute;
     inset: 0;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    text-align: center;
-    padding: 20px;
+    gap: 18px;
+    background: var(--card);
+    cursor: pointer;
+  }
+
+  .video-overlay:hover .play-btn { transform: scale(1.08); }
+
+  .play-btn {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: var(--ink);
+    border: 2px solid var(--ink);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 4px 4px 0 rgba(28,24,21,0.18);
+    transition: transform 0.15s ease;
+    flex-shrink: 0;
+  }
+
+  .play-btn svg {
+    width: 28px;
+    height: 28px;
+    fill: var(--card);
+    margin-left: 4px;
+  }
+
+  .video-overlay-label {
     font-family: var(--mono);
-    font-size: 0.85rem;
+    font-size: 0.78rem;
     color: var(--ink-soft);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
   }
 
   .pillar-preview {
@@ -219,9 +249,32 @@
     <p class="tagline">The free content prompt tool for coaches, consultants, and experts. Pick a pillar, draw a prompt, go write the post.</p>
   </header>
 
-  <div class="video-frame">
-    <iframe src="https://www.youtube.com/embed/dPBf_1IV6mw" title="How the DEEP Content Generator works" allowfullscreen></iframe>
+  <div class="video-frame" id="videoFrame">
+    <div class="video-overlay" id="videoOverlay" role="button" aria-label="Play video" tabindex="0">
+      <div class="play-btn">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8 5v14l11-7z"/></svg>
+      </div>
+      <span class="video-overlay-label">Watch how it works</span>
+    </div>
   </div>
+  <script>
+    (function() {
+      var overlay = document.getElementById('videoOverlay');
+      function loadVideo() {
+        var frame = document.getElementById('videoFrame');
+        var iframe = document.createElement('iframe');
+        iframe.src = 'https://www.youtube.com/embed/dPBf_1IV6mw?autoplay=1';
+        iframe.title = 'How the DEEP Content Generator works';
+        iframe.allow = 'autoplay; fullscreen';
+        iframe.allowFullscreen = true;
+        iframe.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;border:0;';
+        overlay.remove();
+        frame.appendChild(iframe);
+      }
+      overlay.addEventListener('click', loadVideo);
+      overlay.addEventListener('keydown', function(e) { if (e.key === 'Enter' || e.key === ' ') loadVideo(); });
+    })();
+  </script>
 
   <div class="whats-inside">
     <div class="pillar-preview">
