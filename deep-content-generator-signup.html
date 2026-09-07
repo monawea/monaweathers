@@ -200,44 +200,57 @@
     margin-bottom: 30px;
   }
 
-  .signup-form-placeholder {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
+  #fd-form-6a9efb51122f2d7afe7fb369 {
     max-width: 340px;
     margin: 0 auto;
   }
 
-  .fake-input {
-    font-family: inherit;
-    font-size: 0.95rem;
-    padding: 13px 16px;
-    border: 2px solid var(--line);
-    border-radius: 999px;
-    background: #fff;
-    color: var(--ink-soft);
-    text-align: center;
+  #fd-form-6a9efb51122f2d7afe7fb369 form,
+  #fd-form-6a9efb51122f2d7afe7fb369 .fd-form-cs-ib {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
   }
 
-  .signup-btn {
-    font-family: inherit;
-    font-weight: 700;
-    font-size: 0.98rem;
-    border: 2px solid var(--line);
-    border-radius: 999px;
-    padding: 13px 22px;
-    background: var(--coral);
-    color: #1C1815;
-    box-shadow: 3px 3px 0 var(--line);
-    cursor: not-allowed;
-    opacity: 0.9;
+  #fd-form-6a9efb51122f2d7afe7fb369 input[type="text"],
+  #fd-form-6a9efb51122f2d7afe7fb369 input[type="email"] {
+    font-family: 'Hanken Grotesk', sans-serif !important;
+    font-size: 0.95rem !important;
+    padding: 13px 16px !important;
+    border: 2px solid var(--line) !important;
+    border-radius: 999px !important;
+    background: #fff !important;
+    color: var(--ink) !important;
+    text-align: center !important;
+    width: 100% !important;
+    box-shadow: none !important;
+    outline: none !important;
   }
 
-  .signup-note {
-    font-family: var(--mono);
-    font-size: 0.76rem;
-    color: var(--ink-soft);
-    margin: 14px 0 0;
+  #fd-form-6a9efb51122f2d7afe7fb369 button[type="submit"],
+  #fd-form-6a9efb51122f2d7afe7fb369 .fd-btn {
+    font-family: 'Hanken Grotesk', sans-serif !important;
+    font-weight: 700 !important;
+    font-size: 0.98rem !important;
+    border: 2px solid var(--line) !important;
+    border-radius: 999px !important;
+    padding: 13px 22px !important;
+    background: var(--coral) !important;
+    color: #1C1815 !important;
+    box-shadow: 3px 3px 0 var(--line) !important;
+    cursor: pointer !important;
+    width: 100% !important;
+    transition: transform 0.1s ease !important;
+  }
+
+  #fd-form-6a9efb51122f2d7afe7fb369 button[type="submit"]:hover,
+  #fd-form-6a9efb51122f2d7afe7fb369 .fd-btn:hover {
+    transform: translateY(-2px) !important;
+  }
+
+  #fd-form-6a9efb51122f2d7afe7fb369 label,
+  #fd-form-6a9efb51122f2d7afe7fb369 .fd-form-label {
+    display: none !important;
   }
 
   footer {
