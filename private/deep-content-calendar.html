@@ -231,6 +231,12 @@
     #genToggle, .mini-gen-panel { display: none !important; }
   }
 
+  .calendar-scroll {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin-bottom: 26px;
+  }
+
   .calendar {
     display: grid;
     grid-template-columns: 54px repeat(7, 1fr);
@@ -239,8 +245,8 @@
     border: 2px solid var(--line);
     border-radius: 14px;
     overflow: hidden;
-    margin-bottom: 26px;
     box-shadow: 3px 3px 0 var(--line);
+    min-width: 600px;
   }
 
   .corner { background: var(--card); }
@@ -501,11 +507,6 @@
   }
 
   @media (max-width: 720px) {
-    .calendar { grid-template-columns: 30px repeat(7, 1fr); font-size: 0.85rem; }
-    .cell { min-height: 100px; padding: 6px; }
-    .day-head { font-size: 0.58rem; padding: 6px 2px; }
-    .tag-sm { font-size: 0.54rem; padding: 1px 5px; }
-    .cell-input { font-size: 0.76rem; }
     h1 { font-size: 1.9rem; }
   }
 </style>
@@ -552,7 +553,7 @@
     </div>
   </div>
 
-  <div class="calendar" id="calendar"></div>
+  <div class="calendar-scroll"><div class="calendar" id="calendar"></div></div>
 
   <div class="legend">
     <div class="legend-item"><span class="tag-sm tag-educate">Edu</span> Educate — teach something people can use today</div>
