@@ -758,16 +758,7 @@
       panel.className = 'write-panel' + (w === activeWeek ? ' active' : '');
       panel.dataset.weekPanel = w;
 
-      const activeDays = dayNames.filter(d => dayPillars[d]);
-
-      if (activeDays.length === 0) {
-        const empty = document.createElement('p');
-        empty.className = 'write-empty';
-        empty.textContent = '// no content days set this week, adjust the rhythm above';
-        panel.appendChild(empty);
-      }
-
-      activeDays.forEach(dayName => {
+      dayNames.forEach(dayName => {
         const pillar = dayPillars[dayName];
         const day = document.createElement('div');
         day.className = 'write-day';
@@ -778,10 +769,12 @@
         name.className = 'write-day-name';
         name.textContent = dayName;
         head.appendChild(name);
-        const tag = document.createElement('span');
-        tag.className = 'tag-sm ' + tagClass[pillar];
-        tag.textContent = pillarLabel[pillar];
-        head.appendChild(tag);
+        if (pillar) {
+          const tag = document.createElement('span');
+          tag.className = 'tag-sm ' + tagClass[pillar];
+          tag.textContent = pillarLabel[pillar];
+          head.appendChild(tag);
+        }
         day.appendChild(head);
 
         const box = document.createElement('div');
