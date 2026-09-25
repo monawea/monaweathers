@@ -1,0 +1,537 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>
+window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+!function(f){if(f.fbq)return;var n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[]}(window);
+!function(w){if(w.oaiq)return;var q=function(){q.q.push(arguments)};q.q=[];w.oaiq=q}(window);
+window._loadTracking=function(){if(window._tl)return;window._tl=1;var s=document.createElement('script');s.async=1;s.src='https://www.googletagmanager.com/gtag/js?id=G-EC1B7WJ2PE';document.head.appendChild(s);s.onload=function(){gtag('js',new Date());gtag('config','G-EC1B7WJ2PE');};fbq('init','1596541782072028');fbq('track','PageView');var f=document.createElement('script');f.async=1;f.src='https://connect.facebook.net/en_US/fbevents.js';document.head.appendChild(f);oaiq('init',{pixelId:'6uDnseGUA4oEWbSawFkXim'});var o=document.createElement('script');o.async=1;o.src='https://bzrcdn.openai.com/sdk/oaiq.min.js';document.head.appendChild(o);};
+if(localStorage.getItem('cookie-ok')==='1'||localStorage.getItem('cookiesAccepted')==='1')window._loadTracking();
+</script>
+<title>YouTube Link Optimizer</title>
+<meta name="description" content="Fix your YouTube links for Skool view counts and subscribe prompts. Paste your link, copy the fixed version, done.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Mona Weathers">
+<meta property="og:title" content="YouTube Link Optimizer">
+<meta property="og:description" content="Fix your YouTube links for Skool view counts and subscribe prompts. Free tool.">
+<meta property="og:url" content="https://monaweathers.com/youtube-link-optimizer">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,500;0,6..72,700;1,6..72,500&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #FAF4EA;
+    --ink: #1C1815;
+    --ink-soft: #6E6256;
+    --card: #FFFCF6;
+    --line: #1C1815;
+    --accent: #0097B2;
+    --accent-ink: #06768C;
+    --traffic: #D99A2B;
+    --community: #2E8AA0;
+    --highlight: #F5CD4E;
+    --coral: #E8795A;
+    --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Hanken Grotesk', sans-serif;
+    display: flex;
+    justify-content: center;
+    padding: 56px 20px 80px;
+  }
+
+  .wrap { width: 100%; max-width: 660px; display: flex; flex-direction: column; gap: 32px; }
+
+  header { text-align: center; }
+
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    letter-spacing: 0.06em;
+    color: var(--accent-ink);
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 12px;
+  }
+
+  h1 {
+    font-family: 'Newsreader', serif;
+    font-weight: 600;
+    font-size: clamp(2rem, 6vw, 2.8rem);
+    line-height: 1.1;
+    margin: 0 0 12px;
+  }
+
+  h1 .hl {
+    background: var(--highlight);
+    padding: 2px 10px;
+    display: inline-block;
+    transform: rotate(-1.5deg);
+    border-radius: 3px;
+  }
+
+  .tagline { color: var(--ink-soft); font-size: 1.05rem; margin: 0; }
+
+  .card {
+    background: var(--card);
+    border: 2.5px solid var(--line);
+    border-radius: 16px;
+    box-shadow: 5px 5px 0 var(--line);
+    padding: 26px 28px;
+  }
+
+  .card-label {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent-ink);
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  h2 {
+    font-family: 'Newsreader', serif;
+    font-weight: 600;
+    font-size: 1.55rem;
+    line-height: 1.2;
+    margin: 0 0 10px;
+  }
+
+  .card p { font-size: 0.97rem; line-height: 1.65; color: var(--ink-soft); margin: 0; }
+
+  /* Home tool cards */
+  .tool-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+
+  .tool-card {
+    background: var(--card);
+    border: 2.5px solid var(--line);
+    border-radius: 16px;
+    box-shadow: 5px 5px 0 var(--line);
+    padding: 20px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    cursor: pointer;
+    text-align: left;
+    font-family: 'Hanken Grotesk', sans-serif;
+    color: var(--ink);
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+
+  .tool-card:nth-child(1) { transform: rotate(-1deg); }
+  .tool-card:nth-child(2) { transform: rotate(1deg); }
+  .tool-card:hover { transform: translate(-2px, -2px) rotate(0deg); box-shadow: 7px 7px 0 var(--line); }
+
+  .pill {
+    align-self: flex-start;
+    border: 2px solid var(--line);
+    border-radius: 999px;
+    padding: 3px 12px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .pill-skool { background: var(--community); color: #fff; }
+  .pill-sub { background: var(--traffic); color: var(--ink); }
+
+  .tool-card-title {
+    font-family: 'Newsreader', serif;
+    font-weight: 600;
+    font-size: 1.35rem;
+    line-height: 1.2;
+  }
+
+  .tool-card-desc { font-size: 0.93rem; color: var(--ink-soft); line-height: 1.5; }
+
+  .tool-card-cta {
+    border-top: 2px dashed var(--line);
+    padding-top: 10px;
+    text-align: right;
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    color: var(--ink-soft);
+  }
+
+  /* Steps */
+  .steps { display: flex; flex-direction: column; gap: 16px; }
+  .step { display: flex; gap: 14px; align-items: center; }
+  .step-num {
+    width: 30px; height: 30px;
+    border-radius: 50%;
+    background: var(--highlight);
+    border: 2px solid var(--line);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Newsreader', serif;
+    font-weight: 700;
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+  .step p { font-size: 0.97rem; line-height: 1.5; margin: 0; }
+
+  /* Tool panel */
+  .field { display: flex; flex-direction: column; gap: 8px; }
+
+  .field input {
+    width: 100%;
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 1rem;
+    color: var(--ink);
+    background: var(--bg);
+    border: 2px solid var(--line);
+    border-radius: 10px;
+    padding: 13px 15px;
+    outline: none;
+    transition: background 0.1s, box-shadow 0.1s;
+  }
+
+  .field input:focus { background: #fff; box-shadow: 3px 3px 0 var(--highlight); }
+  .field input::placeholder { color: var(--ink-soft); }
+
+  .error-msg { font-size: 0.87rem; color: #B42318; font-weight: 500; }
+
+  .result-box {
+    background: var(--bg);
+    border: 2px dashed var(--line);
+    border-radius: 10px;
+    padding: 13px 15px;
+    min-height: 52px;
+    font-size: 0.93rem;
+    line-height: 1.6;
+    word-break: break-all;
+  }
+
+  .result-box.has-result { font-family: var(--mono); font-size: 0.88rem; }
+  .result-box.empty { color: var(--ink-soft); }
+
+  .divider { border: none; border-top: 2px dashed var(--line); margin: 4px 0; }
+
+  .copy-btn {
+    align-self: flex-start;
+    margin-top: 8px;
+    padding: 11px 24px;
+    border-radius: 999px;
+    border: 2.5px solid var(--line);
+    background: var(--highlight);
+    color: var(--ink);
+    box-shadow: 3px 3px 0 var(--line);
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.1s, box-shadow 0.1s;
+  }
+
+  .copy-btn:hover:not(:disabled) { transform: translate(-1px, -1px); box-shadow: 4px 4px 0 var(--line); }
+  .copy-btn:active:not(:disabled) { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--line); }
+  .copy-btn:disabled { opacity: 0.4; cursor: default; }
+  .copy-btn.copied { background: #9CC58A; }
+
+  .back-btn {
+    align-self: flex-start;
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    color: var(--ink-soft);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .back-btn:hover { color: var(--ink); }
+
+  .tip-card {
+    background: var(--card);
+    border: 2.5px solid var(--line);
+    border-radius: 16px;
+    padding: 18px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    transform: rotate(-0.5deg);
+  }
+
+  /* Subscribe CTA */
+  .sub-cta {
+    background: var(--highlight);
+    border: 2.5px solid var(--line);
+    border-radius: 16px;
+    box-shadow: 5px 5px 0 var(--line);
+    padding: 22px 24px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 16px 20px;
+  }
+
+  .sub-cta-text { flex: 1 1 220px; }
+  .sub-cta-text strong { font-family: 'Newsreader', serif; font-weight: 600; font-size: 1.3rem; display: block; margin-bottom: 4px; }
+  .sub-cta-text span { font-size: 0.93rem; color: var(--ink-soft); }
+
+  .sub-cta a {
+    padding: 11px 22px;
+    border-radius: 999px;
+    border: 2.5px solid var(--line);
+    background: var(--ink);
+    color: var(--card);
+    font-size: 0.93rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: background 0.1s, color 0.1s;
+    white-space: nowrap;
+  }
+
+  .sub-cta a:hover { background: var(--card); color: var(--ink); }
+
+  footer {
+    text-align: center;
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    color: var(--ink-soft);
+  }
+
+  footer a { color: var(--ink-soft); text-decoration: underline; }
+  footer a:hover { color: var(--accent-ink); }
+
+  [hidden] { display: none !important; }
+
+  /* Cookie banner */
+  .cookie-banner{position:fixed;bottom:0;left:0;right:0;z-index:999;background:#1C1815;color:#F4ECDF;padding:18px 32px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:15px;box-shadow:0 -2px 20px rgba(0,0,0,.18);}
+  .cookie-banner p{margin:0;max-width:70ch;}
+  .cookie-banner a{color:#0097B2;text-decoration:underline;}
+  .cookie-banner button{flex-shrink:0;background:#0097B2;color:#fff;border:none;border-radius:8px;padding:10px 22px;font-size:15px;font-weight:600;cursor:pointer;white-space:nowrap;}
+  .cookie-banner button:hover{background:#06768C;}
+  .cookie-decline{background:transparent!important;color:#F4ECDF!important;border:1px solid rgba(244,236,223,0.3)!important;}
+  .cookie-decline:hover{background:rgba(244,236,223,0.1)!important;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <span class="eyebrow">free tool</span>
+    <h1>YouTube <span class="hl">Link Optimizer</span></h1>
+    <p class="tagline">Pick a tool. Paste your link. Copy and go.</p>
+  </header>
+
+  <!-- HOME VIEW -->
+  <div id="view-home">
+    <div class="card" style="margin-bottom: 20px;">
+      <span class="card-label">Why you need this</span>
+      <h2>Make sure your views get counted on YouTube</h2>
+      <p>When you share a regular YouTube link in Skool, those watches may not count toward your views. A few extra characters fix that — and the subscribe link turns every click into a chance to grow your channel.</p>
+    </div>
+
+    <div class="card" style="margin-bottom: 20px;">
+      <span class="card-label">How to use it</span>
+      <h2 style="margin-bottom: 18px;">Three steps, that's it</h2>
+      <div class="steps">
+        <div class="step"><span class="step-num">1</span><p><strong>Pick a tool.</strong> Skool views or subscribe prompt.</p></div>
+        <div class="step"><span class="step-num">2</span><p><strong>Paste your link.</strong> We fix it up instantly.</p></div>
+        <div class="step"><span class="step-num">3</span><p><strong>Copy it.</strong> Drop it wherever you're sharing.</p></div>
+      </div>
+    </div>
+
+    <div class="tool-grid">
+      <button class="tool-card" onclick="goTo('skool')">
+        <span class="pill pill-skool">Skool</span>
+        <span class="tool-card-title">View counter</span>
+        <span class="tool-card-desc">Make sure your views get counted on YouTube when you embed videos in Skool.</span>
+        <span class="tool-card-cta">fix my link →</span>
+      </button>
+      <button class="tool-card" onclick="goTo('sub')">
+        <span class="pill pill-sub">Subscribe</span>
+        <span class="tool-card-title">Subscribe window link</span>
+        <span class="tool-card-desc">Turn your channel link into one that opens a subscribe prompt.</span>
+        <span class="tool-card-cta">fix my link →</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- TOOL VIEW -->
+  <div id="view-tool" hidden>
+    <button class="back-btn" onclick="goTo('home')" style="margin-bottom: 20px;">← back to tools</button>
+
+    <div class="card" style="display: flex; flex-direction: column; gap: 22px;">
+      <div>
+        <span id="tool-pill" class="pill" style="margin-bottom: 10px;"></span>
+        <h2 id="tool-title" style="margin: 10px 0 8px;"></h2>
+        <p id="tool-desc"></p>
+      </div>
+
+      <hr class="divider">
+
+      <div class="field">
+        <span class="card-label" id="tool-input-label"></span>
+        <input type="text" id="tool-input" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+        <span class="error-msg" id="tool-error" hidden>Please enter a valid YouTube link.</span>
+      </div>
+
+      <div class="field">
+        <span class="card-label" id="tool-result-label"></span>
+        <div class="result-box empty" id="tool-result"></div>
+        <button class="copy-btn" id="copy-btn" disabled onclick="copyResult()">Copy link</button>
+      </div>
+    </div>
+
+    <div class="tip-card" id="skool-tip" hidden style="margin-top: 20px;">
+      <span class="card-label">Livestream tip</span>
+      <p style="font-size: 0.93rem; line-height: 1.6; color: var(--ink-soft); margin: 0;">Open the livestream page on YouTube and copy the link from your browser's address bar. Skool doesn't recognise YouTube's share links for livestreams.</p>
+    </div>
+  </div>
+
+  <!-- SUBSCRIBE CTA (always visible) -->
+  <div class="sub-cta">
+    <div class="sub-cta-text">
+      <strong>Need help attracting clients?</strong>
+      <span>Subscribe on YouTube for tips on building smarter, not harder.</span>
+    </div>
+    <a href="https://www.youtube.com/@MonaWeathers?sub_confirmation=1" target="_blank" rel="noopener">Subscribe →</a>
+  </div>
+
+  <footer>// brought to you by <a href="https://www.skool.com/clients/about" target="_blank" rel="noopener">Clients for Coaches</a> &middot; <a href="https://monaweathers.com">monaweathers.com</a></footer>
+
+</div>
+
+<div class="cookie-banner" id="cookieBanner">
+  <p>We use cookies and analytics to understand how our site is used. By continuing, you agree to our <a href="/privacy">Privacy Policy</a>.</p>
+  <div style="display:flex;gap:8px;flex-shrink:0;">
+    <button class="cookie-decline" onclick="(function(){localStorage.setItem('cookie-ok','0');document.getElementById('cookieBanner').style.display='none';})()">Decline</button>
+    <button onclick="(function(){localStorage.setItem('cookie-ok','1');document.getElementById('cookieBanner').style.display='none';window._loadTracking&&window._loadTracking();})()">Accept</button>
+  </div>
+</div>
+<script>if(localStorage.getItem('cookie-ok')||localStorage.getItem('cookiesAccepted'))document.getElementById('cookieBanner').style.display='none';</script>
+
+<script>
+  var currentTool = 'skool';
+  var currentResult = '';
+
+  var tools = {
+    skool: {
+      pill: 'Skool', pillClass: 'pill-skool',
+      title: 'Skool view counter',
+      desc: "Make sure your views get counted on YouTube. A regular YouTube link embedded in Skool may not add to your view count. Paste your link and we'll add the right characters so every watch in Skool counts.",
+      inputLabel: 'Your YouTube link',
+      placeholder: 'https://youtu.be/… or youtube.com/watch?v=…',
+      resultLabel: 'Skool-ready link',
+      empty: 'Paste a YouTube link above to get started'
+    },
+    sub: {
+      pill: 'Subscribe', pillClass: 'pill-sub',
+      title: 'Subscribe window link',
+      desc: "Paste your channel page link (e.g. youtube.com/@yourchannel). We'll convert it so a subscribe prompt appears when someone clicks it.",
+      inputLabel: 'Your channel link',
+      placeholder: 'https://www.youtube.com/@yourchannel',
+      resultLabel: 'Subscribe link',
+      empty: 'Paste your channel link above to get started'
+    }
+  };
+
+  function parseURL(raw) {
+    try { return new URL(raw.startsWith('http') ? raw : 'https://' + raw); } catch { return null; }
+  }
+
+  function buildResult(kind, raw) {
+    raw = raw.trim();
+    if (!raw) return { empty: true };
+    var u = parseURL(raw);
+    if (!u || !(u.hostname.includes('youtube.com') || u.hostname.includes('youtu.be'))) return { error: true };
+    if (kind === 'skool') {
+      var base = raw.replace(/[?&]views.*$/, '');
+      return { out: base + (u.hostname.includes('youtu.be') ? '?views' : (base.includes('?') ? '&views' : '?views')) };
+    }
+    return { out: raw.split('?')[0] + '?sub_confirmation=1' };
+  }
+
+  function goTo(page) {
+    var home = document.getElementById('view-home');
+    var tool = document.getElementById('view-tool');
+    if (page === 'home') {
+      home.hidden = false;
+      tool.hidden = true;
+    } else {
+      currentTool = page;
+      home.hidden = true;
+      tool.hidden = false;
+      var t = tools[page];
+      var pill = document.getElementById('tool-pill');
+      pill.textContent = t.pill;
+      pill.className = 'pill ' + t.pillClass;
+      document.getElementById('tool-title').textContent = t.title;
+      document.getElementById('tool-desc').textContent = t.desc;
+      document.getElementById('tool-input-label').textContent = t.inputLabel;
+      document.getElementById('tool-input').placeholder = t.placeholder;
+      document.getElementById('tool-input').value = '';
+      document.getElementById('tool-result-label').textContent = t.resultLabel;
+      document.getElementById('tool-error').hidden = true;
+      document.getElementById('skool-tip').hidden = (page !== 'skool');
+      updateResult('');
+      document.getElementById('tool-input').focus();
+      window.scrollTo(0, 0);
+    }
+  }
+
+  function updateResult(raw) {
+    var r = buildResult(currentTool, raw);
+    var resultEl = document.getElementById('tool-result');
+    var errorEl = document.getElementById('tool-error');
+    var copyBtn = document.getElementById('copy-btn');
+
+    errorEl.hidden = !r.error;
+
+    if (r.out) {
+      currentResult = r.out;
+      resultEl.textContent = r.out;
+      resultEl.className = 'result-box has-result';
+      copyBtn.disabled = false;
+    } else {
+      currentResult = '';
+      resultEl.textContent = r.error ? 'Waiting for a valid link…' : tools[currentTool].empty;
+      resultEl.className = 'result-box empty';
+      copyBtn.disabled = true;
+    }
+  }
+
+  function copyResult() {
+    if (!currentResult) return;
+    var btn = document.getElementById('copy-btn');
+    var done = function() {
+      btn.textContent = 'Copied ✓';
+      btn.classList.add('copied');
+      clearTimeout(window._copyT);
+      window._copyT = setTimeout(function() {
+        btn.textContent = 'Copy link';
+        btn.classList.remove('copied');
+      }, 2000);
+    };
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(currentResult).then(done);
+    } else {
+      var ta = document.createElement('textarea');
+      ta.value = currentResult;
+      ta.style.position = 'fixed'; ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select(); document.execCommand('copy');
+      document.body.removeChild(ta);
+      done();
+    }
+  }
+
+  document.getElementById('tool-input').addEventListener('input', function() {
+    updateResult(this.value);
+  });
+</script>
+</body>
+</html>
