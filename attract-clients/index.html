@@ -204,7 +204,7 @@ input,textarea{font:inherit}
         <div style="background:#1B1A17;color:#FAF3EA;border:2.5px solid #1B1A17;border-radius:22px;box-shadow:8px 8px 0 #E8604C;padding:clamp(28px,5vw,56px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:40px;align-items:center">
           <div style="display:flex;flex-direction:column;gap:18px">
             <div style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.08em;color:#F5CD4E">{{ greeting }}</div>
-            <h1 style="margin:0;font-family:'Crimson Pro',serif;font-weight:700;font-size:clamp(46px,6vw,76px);line-height:1"><span style="background:#F5CD4E;color:#1B1A17;padding:0 12px;border-radius:6px">{{ profile.name }}</span></h1>
+            <h1 style="margin:0;font-family:'Crimson Pro',serif;font-weight:700;font-size:clamp(36px,8vw,76px);line-height:1.1;word-break:break-word"><span style="background:#F5CD4E;color:#1B1A17;padding:0 12px;border-radius:6px;box-decoration-break:clone;-webkit-box-decoration-break:clone">{{ profile.name }}</span></h1>
             <div style="font-family:'Crimson Pro',serif;font-weight:600;font-style:italic;font-size:26px;line-height:1.25;color:#FAF3EA">{{ profile.tagline }}</div>
             <p style="margin:0;font-size:18px;line-height:1.6;color:#D9D0C2;text-wrap:pretty">{{ profile.body }}</p>
           </div>
@@ -212,9 +212,9 @@ input,textarea{font:inherit}
             <div style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.08em;color:#1F6F7A">YOUR SCORE</div>
             <div style="display:flex;align-items:baseline;gap:8px"><span style="font-family:'Crimson Pro',serif;font-weight:700;font-size:88px;line-height:.9">{{ score }}</span><span style="font-family:'JetBrains Mono',monospace;font-size:16px">/ 48</span></div>
             <div style="position:relative;height:16px;border:2px solid #1B1A17;border-radius:999px;overflow:hidden;background:#FAF3EA"><div style="height:100%;background:#E8604C;width:{{ scorePct }}"></div></div>
-            <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;font-family:'JetBrains Mono',monospace;font-size:12px">
+            <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;font-family:'JetBrains Mono',monospace;font-size:10px">
               <sc-for list="{{ bands }}" as="b" hint-placeholder-count="3">
-                <div style="display:flex;flex-direction:column;gap:2px;padding:6px 8px;border-radius:8px;border:2px solid {{ b.bd }};background:{{ b.bg }}"><span style="font-weight:600">{{ b.name }}</span><span>{{ b.range }}</span></div>
+                <div style="display:flex;flex-direction:column;gap:2px;padding:5px 5px;border-radius:8px;border:2px solid {{ b.bd }};background:{{ b.bg }};overflow:hidden"><span style="font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ b.name }}</span><span>{{ b.range }}</span></div>
               </sc-for>
             </div>
           </div>
