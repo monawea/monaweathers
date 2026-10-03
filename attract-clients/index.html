@@ -291,7 +291,7 @@ class Component extends DCLogic {
       ctaEyebrow: 'LET\'S CLOSE THE GAPS TOGETHER', ctaTitle: 'Join the Clients for Coaches community', ctaBody: 'Get the support, feedback and accountability to fix your weak spots, alongside coaches and consultants building steady client attraction too.', ctaButton: 'Join Clients for Coaches →', urlProp: 'communityUrl' },
     { max: 48, name: 'Magnetic', tagline: 'Your setup is working. Now let\'s make it work without you pushing.',
       body: 'You\'ve built a real client attraction system. Your message is clear, people trust you and leads keep coming in. Your next level is about refining and scaling, with more of the right clients, less effort and room to raise your prices.',
-      ctaEyebrow: 'READY FOR MORE?', ctaTitle: 'Apply to work with Mona', ctaBody: 'My coaching program helps established coaches and consultants fine-tune what\'s working, so they can fill their calendar with ideal clients and grow without burning out.', ctaButton: 'Apply now →', urlProp: 'applyUrl' },
+      ctaEyebrow: 'READY FOR MORE?', ctaTitle: 'Apply to work with Mona', ctaBody: 'My coaching program helps established coaches and consultants fine-tune what\'s working, so they can fill their calendar with ideal clients and grow without burning out.', ctaButton: 'Apply now →', urlProp: 'applyUrl', url: 'https://monaweathers.com/coaching' },
   ];
   OPTS = [['Yes', 2], ['Sometimes', 1], ['Not yet', 0]];
   get Q() { return this._q || (this._q = this.P.flatMap((p, pi) => p.items.map((text, ii) => ({ id: p.key + ii, text, p, pi })))); }
