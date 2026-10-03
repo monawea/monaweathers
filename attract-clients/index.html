@@ -285,7 +285,7 @@ class Component extends DCLogic {
   PROFILES = [
     { max: 19, name: 'The Hidden Gem', tagline: 'You\'re great at what you do. People just can\'t find you yet.',
       body: 'Your clients love working with you. The trouble is that your setup isn\'t doing any of the attracting yet, so most clients come from referrals or luck. The good news is that the foundations are the easiest part to fix, and small changes here make a big difference.',
-      ctaEyebrow: 'YOUR NEXT STEP', ctaTitle: 'Start with the foundations', ctaBody: 'Join my free Client Attraction email series. Short, doable lessons that cover clarity, your offer and messaging, one step at a time.', ctaButton: 'Send me the free series →', urlProp: 'freeSeriesUrl' },
+      ctaEyebrow: 'YOUR NEXT STEP', ctaTitle: 'Start with the foundations', ctaBody: 'Watch my free YouTube playlist. Short videos covering the foundations — clarity, your offer, and messaging — so the right clients can actually find you.', ctaButton: 'Watch the free playlist →', urlProp: 'freeSeriesUrl', url: 'https://youtube.com/playlist?list=PLeO-cEy-IdWU&si=Pc2bnkaQOAwX8SIT' },
     { max: 35, name: 'Almost There', tagline: 'The pieces are in place. They just aren\'t connected yet.',
       body: 'You\'re doing lots of things right, like showing up and helping people, but a few missing pieces keep clients from arriving consistently. Fixing those two or three weak spots is usually what turns an up-and-down business into a steady one.',
       ctaEyebrow: 'LET\'S CLOSE THE GAPS TOGETHER', ctaTitle: 'Join the Clients for Coaches community', ctaBody: 'Get the support, feedback and accountability to fix your weak spots, alongside coaches and consultants building steady client attraction too.', ctaButton: 'Join Clients for Coaches →', urlProp: 'communityUrl' },
@@ -424,7 +424,7 @@ class Component extends DCLogic {
       },
       greeting: name ? 'HERE\'S WHERE YOU STAND, ' + name.toUpperCase() : 'YOUR CLIENT ATTRACTION PROFILE',
       score, scorePct: Math.round(score / 48 * 100) + '%',
-      profile: { ...profile, ctaUrl: this.props[profile.urlProp] || (profile.urlProp === 'communityUrl' ? 'https://www.skool.com/clients/about' : '#') },
+      profile: { ...profile, ctaUrl: this.props[profile.urlProp] || profile.url || (profile.urlProp === 'communityUrl' ? 'https://www.skool.com/clients/about' : '#') },
       bands: [['Hidden Gem', '0–19'], ['Almost There', '20–35'], ['Magnetic', '36–48']].map(([n, r]) => {
         const on = profile.name.indexOf(n) >= 0;
         return { name: n, range: r, bg: on ? '#F5CD4E' : 'transparent', bd: on ? '#1B1A17' : '#D9D0C2' };
