@@ -30,7 +30,7 @@ input,textarea{font:inherit}
   body:not(.pp){background:#fff!important}
   body.pp{background:#fff!important}
   body.pp>*:not(#__plan){display:none!important}
-  body.pp #__plan{display:block!important;font-family:'Hanken Grotesk',sans-serif;font-size:11pt;color:#1B1A17;line-height:1.65}
+  body.pp #__plan{display:block!important;position:static!important;left:auto!important;width:auto!important;height:auto!important;overflow:visible!important;font-family:'Hanken Grotesk',sans-serif;font-size:11pt;color:#1B1A17;line-height:1.65}
   body.pp #__plan h1{font-family:'Crimson Pro',serif;font-size:28pt;font-weight:700;margin:0 0 6px;line-height:1.05}
   body.pp #__plan h2{font-family:'Crimson Pro',serif;font-size:19pt;font-weight:700;margin:0 0 10px;line-height:1.1}
   body.pp #__plan .lbl{font-family:'JetBrains Mono',monospace;font-size:8pt;letter-spacing:.12em;color:#5A544B;margin-bottom:3px}
@@ -466,6 +466,7 @@ class Component extends DCLogic {
         const bdHtml = per.map(x => { const [st] = statusOf(x.score); return `<tr><td>${x.p.name}</td><td class="sc">${x.score}/6</td><td class="st">${st}</td></tr>`; }).join('');
         const el = document.createElement('div');
         el.id = '__plan';
+        el.style.cssText = 'position:fixed;left:-10000px;top:0;width:1px;height:1px;overflow:hidden';
         el.innerHTML = `<div class="lbl">Client Attraction Assessment</div><div class="lbl" style="margin-top:1px">monaweathers.com/attract-clients</div><hr>${nm ? `<div class="lbl" style="margin-bottom:2px">Results for</div><div style="font-family:'Crimson Pro',serif;font-weight:700;font-size:17pt;margin-bottom:14px">${nm}</div>` : ''}<div class="lbl">Your profile</div><h1>${profile.name}</h1><div class="tgl">${profile.tagline}</div><p>${profile.body}</p><div style="margin-top:14px"><div class="lbl">Your score</div><span class="sc-big">${score}</span><span class="sc-of"> / 48</span></div><hr><h2>Top 3 next steps</h2><p style="color:#5A544B;margin-bottom:16px">Your lowest-scoring areas. Fixing these first will make the biggest difference.</p>${fxHtml}<hr><h2>Full breakdown</h2><p style="color:#5A544B">Each area scored out of 6.</p><table>${bdHtml}</table><div class="note">monaweathers.com/attract-clients</div>`;
         document.body.appendChild(el);
         document.body.classList.add('pp');
