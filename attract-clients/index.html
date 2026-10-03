@@ -53,6 +53,8 @@ input,textarea{font:inherit}
   body.pp #__plan .st{font-family:'JetBrains Mono',monospace;font-size:8pt;width:88px;text-align:right;letter-spacing:.05em}
   body.pp #__plan .note{font-family:'JetBrains Mono',monospace;font-size:8pt;color:#8B857D;margin-top:30px;padding-top:14px;border-top:1px solid #E5DDD0}
 }
+@keyframes mag-pulse{0%,100%{filter:drop-shadow(0 0 3px rgba(232,96,76,.25))}50%{filter:drop-shadow(0 0 12px rgba(232,96,76,.65))}}
+@keyframes mag-dotup{0%{opacity:0;transform:translateY(0)}12%{opacity:.9}100%{opacity:0;transform:translateY(-32px)}}
 </style>
 </helmet>
 
@@ -203,6 +205,23 @@ input,textarea{font:inherit}
       <div data-screen-label="Results" style="display:flex;flex-direction:column;gap:64px">
         <div style="background:#1B1A17;color:#FAF3EA;border:2.5px solid #1B1A17;border-radius:22px;box-shadow:8px 8px 0 #E8604C;padding:clamp(28px,5vw,56px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:40px;align-items:center">
           <div style="display:flex;flex-direction:column;gap:18px">
+            <sc-if value="{{ isMagnetic }}">
+              <div style="position:relative;width:130px;flex:none;margin-bottom:4px">
+                <svg viewBox="0 0 140 122" width="130" height="114" style="animation:mag-pulse 2.5s ease-in-out infinite;display:block" aria-hidden="true">
+                  <path d="M10,118 L10,50 A60,50 0 0 0 130,50 L130,118 L108,118 L108,56 A38,34 0 0 0 32,56 L32,118 Z" fill="#FAF3EA"/>
+                  <rect x="10" y="82" width="22" height="36" fill="#E8604C"/>
+                  <rect x="108" y="82" width="22" height="36" fill="#F5CD4E"/>
+                  <path d="M10,118 L10,50 A60,50 0 0 0 130,50 L130,118 L108,118 L108,56 A38,34 0 0 0 32,56 L32,118 Z" fill="none" stroke="#1B1A17" stroke-width="2.5"/>
+                  <line x1="10" y1="82" x2="32" y2="82" stroke="#1B1A17" stroke-width="2.5"/>
+                  <line x1="108" y1="82" x2="130" y2="82" stroke="#1B1A17" stroke-width="2.5"/>
+                  <text x="21" y="105" text-anchor="middle" fill="white" font-weight="800" font-size="13" font-family="'Hanken Grotesk',sans-serif">N</text>
+                  <text x="119" y="105" text-anchor="middle" fill="#1B1A17" font-weight="800" font-size="13" font-family="'Hanken Grotesk',sans-serif">S</text>
+                </svg>
+                <div style="position:absolute;width:8px;height:8px;border-radius:50%;background:#E8604C;bottom:-8px;left:15px;animation:mag-dotup 2s ease-in infinite"></div>
+                <div style="position:absolute;width:8px;height:8px;border-radius:50%;background:#F5CD4E;bottom:-8px;left:107px;animation:mag-dotup 2s ease-in .75s infinite"></div>
+                <div style="position:absolute;width:6px;height:6px;border-radius:50%;background:#FAF3EA;opacity:.7;bottom:-8px;left:62px;animation:mag-dotup 2s ease-in 1.4s infinite"></div>
+              </div>
+            </sc-if>
             <div style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.08em;color:#F5CD4E">{{ greeting }}</div>
             <h1 style="margin:0;font-family:'Crimson Pro',serif;font-weight:700;font-size:clamp(36px,8vw,76px);line-height:1.1;word-break:break-word"><span style="background:#F5CD4E;color:#1B1A17;padding:0 12px;border-radius:6px;box-decoration-break:clone;-webkit-box-decoration-break:clone">{{ profile.name }}</span></h1>
             <div style="font-family:'Crimson Pro',serif;font-weight:600;font-style:italic;font-size:26px;line-height:1.25;color:#FAF3EA">{{ profile.tagline }}</div>
@@ -421,7 +440,7 @@ class Component extends DCLogic {
     const fixes = [...per].sort((x, y) => x.score - y.score || x.pi - y.pi).slice(0, 3).map((x, i) => ({ n: i + 1, tag: x.p.tag, bg: x.p.bg, fg: x.p.fg, ...x.p.fix }));
     const name = (member && member.name) || this.state.firstName;
     return {
-      isIntro: screen === 'intro', isQuiz: screen === 'quiz', notQuiz: screen !== 'quiz', isGate: screen === 'gate', isResults: screen === 'results', notQuizOrGate: screen !== 'quiz' && screen !== 'gate',
+      isIntro: screen === 'intro', isQuiz: screen === 'quiz', notQuiz: screen !== 'quiz', isGate: screen === 'gate', isResults: screen === 'results', notQuizOrGate: screen !== 'quiz' && screen !== 'gate', isMagnetic: screen === 'results' && !!profile && profile.max === 48,
       startLabel: done && screen !== 'results' ? 'See my results' : screen === 'results' ? 'Retake' : answeredCount ? 'Continue' : 'Get my score',
       start: () => {
         if (screen === 'results') return this.retake();
