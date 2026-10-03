@@ -24,6 +24,12 @@ if(localStorage.getItem('cookie-ok')==='1'||localStorage.getItem('cookiesAccepte
 body{margin:0;background:#FAF3EA;color:#1B1A17;font-family:'Hanken Grotesk',sans-serif}
 a{color:#1F6F7A}a:hover{color:#E8604C}
 input,textarea{font:inherit}
+@media print{
+  header,footer,#cookieBanner,.no-print{display:none!important}
+  body{background:#fff!important}
+  main{padding:0!important}
+  @page{margin:1.2cm}
+}
 </style>
 </helmet>
 
@@ -233,6 +239,7 @@ input,textarea{font:inherit}
           </div>
           <div style="display:flex;flex-direction:column;gap:14px;align-items:flex-start">
             <a href="{{ profile.ctaUrl }}" target="_blank" rel="noopener" style="text-decoration:none;color:#1B1A17;background:#E8604C;border:2.5px solid #1B1A17;border-radius:999px;padding:16px 28px;font-weight:700;font-size:18px;box-shadow:4px 4px 0 #1B1A17">{{ profile.ctaButton }}</a>
+            <span onClick="{{ download }}" style="cursor:pointer;font-family:'JetBrains Mono',monospace;font-size:14px;border-bottom:2px dashed #1B1A17">↓ Download your plan</span>
             <span onClick="{{ retake }}" style="cursor:pointer;font-family:'JetBrains Mono',monospace;font-size:14px;border-bottom:2px dashed #1B1A17">retake the assessment ↺</span>
           </div>
         </div>
@@ -432,6 +439,7 @@ class Component extends DCLogic {
       fixes,
       breakdown: per.map((x, i) => { const [status, sbg, sfg, bar] = statusOf(x.score); return { name: x.p.name, score: x.score, pct: Math.round(x.score / 6 * 100) + '%', status, sbg, sfg, bar, border: i < per.length - 1 ? '2px dashed #1B1A17' : '0' }; }),
       retake: () => this.retake(),
+      download: () => window.print(),
       homeUrl: this.props.homeUrl || 'https://monaweathers.com/',
     };
   }
