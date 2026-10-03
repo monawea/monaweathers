@@ -24,6 +24,8 @@ if(localStorage.getItem('cookie-ok')==='1'||localStorage.getItem('cookiesAccepte
 body{margin:0;background:#FAF3EA;color:#1B1A17;font-family:'Hanken Grotesk',sans-serif}
 a{color:#1F6F7A}a:hover{color:#E8604C}
 input,textarea{font:inherit}
+.q-opts{display:grid;gap:12px;grid-template-columns:1fr}
+@media(min-width:500px){.q-opts{grid-template-columns:repeat(3,1fr)}}
 @page{margin:2cm 2cm 2.5cm}
 @media print{
   body:not(.pp) header,body:not(.pp) footer,body:not(.pp) #cookieBanner,body:not(.pp) .no-print{display:none!important}
@@ -161,7 +163,7 @@ input,textarea{font:inherit}
         <div style="background:#FFFCF6;border:2.5px solid #1B1A17;border-radius:18px;box-shadow:6px 6px 0 #1B1A17;padding:clamp(24px,4vw,44px);display:flex;flex-direction:column;gap:26px">
           <div style="display:flex;justify-content:space-between;align-items:center;gap:12px"><span style="font-size:13px;font-weight:700;color:{{ q.fg }};background:{{ q.bg }};border:2px solid #1B1A17;border-radius:999px;padding:4px 12px">{{ q.tag }}</span><span style="font-family:'JetBrains Mono',monospace;font-size:14px">{{ q.num }}</span></div>
           <div style="font-family:'Crimson Pro',serif;font-weight:700;font-size:clamp(28px,4vw,40px);line-height:1.12;text-wrap:pretty;min-height:2.3em">{{ q.text }}</div>
-          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:12px">
+          <div class="q-opts">
             <sc-for list="{{ q.options }}" as="o" hint-placeholder-count="3">
               <sc-if value="{{ o.on }}">
                 <span onClick="{{ o.pick }}" style="cursor:pointer;text-align:center;border:2.5px solid #1B1A17;border-radius:999px;padding:16px;font-weight:700;font-size:18px;background:#F5CD4E;box-shadow:1px 1px 0 #1B1A17;transform:translate(2px,2px)">{{ o.label }}</span>
