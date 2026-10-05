@@ -22,8 +22,8 @@ if(localStorage.getItem('cookie-ok')==='1'||localStorage.getItem('cookiesAccepte
     --soft: #5A544B;
     --muted: #6B645A;
     --rule: #1B1A17;
-    --hl: #F5CD4E;
-    --hl-ink: #1B1A17;
+    --hl: #2D8196;
+    --hl-ink: #ffffff;
     --coral: #E8604C;
     --teal: #1F6F7A;
     --tint: #FAF3EA;
@@ -34,13 +34,13 @@ if(localStorage.getItem('cookie-ok')==='1'||localStorage.getItem('cookiesAccepte
   @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) {
       --desk: #15140F; --paper: #1F1D18; --ink: #F3ECE0; --soft: #C9C0B2; --muted: #A79E90;
-      --rule: #F3ECE0; --hl: #D4A820; --hl-ink: #1B1A17; --coral: #EE7562; --teal: #5FB3BE; --tint: #2A2721;
+      --rule: #F3ECE0; --hl: #2D8196; --hl-ink: #ffffff; --coral: #EE7562; --teal: #5FB3BE; --tint: #2A2721;
       color-scheme: dark;
     }
   }
   :root[data-theme="dark"] {
     --desk: #15140F; --paper: #1F1D18; --ink: #F3ECE0; --soft: #C9C0B2; --muted: #A79E90;
-    --rule: #F3ECE0; --hl: #D4A820; --hl-ink: #1B1A17; --coral: #EE7562; --teal: #5FB3BE; --tint: #2A2721;
+    --rule: #F3ECE0; --hl: #2D8196; --hl-ink: #ffffff; --coral: #EE7562; --teal: #5FB3BE; --tint: #2A2721;
     color-scheme: dark;
   }
 
@@ -82,7 +82,7 @@ if(localStorage.getItem('cookie-ok')==='1'||localStorage.getItem('cookiesAccepte
 
   .table-scroll { overflow-x: auto; border: 2px solid var(--rule); border-radius: 12px; }
   table { border-collapse: collapse; width: 100%; min-width: 520px; font-size: 15.5px; line-height: 1.45; }
-  th { text-align: left; font-family: var(--mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink); background: var(--hl); padding: 12px 14px; border-bottom: 2px solid var(--rule); }
+  th { text-align: left; font-family: var(--mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--teal); background: var(--tint); padding: 12px 14px; border-bottom: 2px solid var(--rule); }
   td { padding: 12px 14px; border-top: 1px solid color-mix(in srgb, var(--rule) 22%, transparent); vertical-align: top; }
   td:first-child { font-weight: 700; white-space: nowrap; }
   .size { display: inline-block; font-family: var(--mono); font-size: 11px; letter-spacing: .06em; text-transform: uppercase; border: 1.5px solid var(--rule); border-radius: 999px; padding: 2px 9px; }
