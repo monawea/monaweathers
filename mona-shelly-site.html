@@ -16,7 +16,7 @@ if(localStorage.getItem('cookie-ok')==='1'||localStorage.getItem('cookiesAccepte
 <link rel="icon" type="image/webp" href="shelly-logo.webp" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,600;0,700;1,600&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <!-- Open Graph / link preview -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Mona Weathers">
@@ -41,15 +41,14 @@ if(localStorage.getItem('cookie-ok')==='1'||localStorage.getItem('cookiesAccepte
     --soft:       #5A544B;
     --muted:      #6B645A;
     --dim:        #BDB4A5;
-    --coral:      #0097B2;
-    --yellow:     #B87216;
-    --gold-bg:    #FDF3E3;
-    --teal:       #06768C;
-    --teal-2:     #0097B2;
+    --coral:      #E8604C;
+    --yellow:     #F5CD4E;
+    --teal:       #1F6F7A;
+    --teal-2:     #2D8196;
     --sage:       #6E8B5E;
     --sidebar-bg: #191713;
     --sidebar-fg: #FAF3EA;
-    --serif:      'Newsreader', Georgia, serif;
+    --serif:      'Crimson Pro', Georgia, serif;
     --sans:       'Hanken Grotesk', system-ui, sans-serif;
     --mono:       'JetBrains Mono', ui-monospace, monospace;
   }
@@ -204,8 +203,8 @@ if(localStorage.getItem('cookie-ok')==='1'||localStorage.getItem('cookiesAccepte
     letter-spacing: -.015em;
   }
   .hl {
-    background: var(--gold-bg);
-    color: var(--yellow);
+    background: var(--yellow);
+    color: var(--ink);
     padding: 2px 8px;
     border-radius: 6px;
     display: inline;
@@ -317,7 +316,7 @@ if(localStorage.getItem('cookie-ok')==='1'||localStorage.getItem('cookiesAccepte
     border-radius: 999px;
     border: 2px solid var(--ink);
   }
-  .tag-yellow { background: var(--gold-bg); color: var(--yellow); border-color: #E8C07A; }
+  .tag-yellow { background: var(--yellow); color: var(--ink); }
   .tag-teal   { background: var(--teal-2); color: #fff; border-color: var(--teal-2); }
   .tag-sage   { background: var(--sage);   color: #fff; border-color: var(--sage); }
 
@@ -503,7 +502,7 @@ if(localStorage.getItem('cookie-ok')==='1'||localStorage.getItem('cookiesAccepte
       <div class="marquee-outer">
         <div class="marquee-track" id="marqueeTrack">
           <!-- Set 1 -->
-          <div class="testi-card" style="background:#FDF3E3;" data-bg="#FDF3E3" data-quote="I just never felt like I had a real clear path. I was just kind of making it up as I went along… You're giving it to me step by step, piece by piece. And it's been incredibly helpful." data-author="Steve Gast">
+          <div class="testi-card" style="background:#F5CD4E;" data-bg="#F5CD4E" data-quote="I just never felt like I had a real clear path. I was just kind of making it up as I went along… You're giving it to me step by step, piece by piece. And it's been incredibly helpful." data-author="Steve Gast">
             <div class="testi-quote-mark">"</div>
             <div class="testi-quote-body">I just never felt like I had a real clear path. I was just kind of making it up as I went along&hellip; You&rsquo;re giving it to me step by step, piece by piece. And it&rsquo;s been incredibly helpful.</div>
             <div class="testi-author">Steve Gast</div>
@@ -520,7 +519,7 @@ if(localStorage.getItem('cookie-ok')==='1'||localStorage.getItem('cookiesAccepte
             <div class="testi-author">&#9654; Steve Gast</div>
             <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:-4px;">Video Confidence &amp; Personal Branding Coach</div>
           </div>
-          <div class="testi-card" style="background:rgba(0,151,178,.1);" data-bg="rgba(0,151,178,.1)" data-quote="I have a clearer vision on the journey and how I can serve my customer… I know where I'm going." data-author="Isabelle Lesschaeve">
+          <div class="testi-card" style="background:rgba(45,129,150,.18);" data-bg="rgba(45,129,150,.18)" data-quote="I have a clearer vision on the journey and how I can serve my customer… I know where I'm going." data-author="Isabelle Lesschaeve">
             <div class="testi-quote-mark">"</div>
             <div class="testi-quote-body">I have a clearer vision on the journey and how I can serve my customer&hellip; I know where I&rsquo;m going.</div>
             <div class="testi-author">Isabelle Lesschaeve</div>
@@ -530,7 +529,7 @@ if(localStorage.getItem('cookie-ok')==='1'||localStorage.getItem('cookiesAccepte
             <div class="testi-quote-body">I know my subject inside out &mdash; but Mona understood that building a business is a different skill set. She asked the right questions, identified my blind spots, and helped me set the right priorities without overwhelming me.</div>
             <div class="testi-author">Alexa Leitner</div>
           </div>
-          <div class="testi-card" style="background:#FDF3E3;padding:14px;display:flex;flex-direction:column;gap:10px;" onclick="openModal({type:'video',bg:'#1e1e1e',author:'Isabelle Lesschaeve',embedUrl:'https://www.youtube.com/embed/Ck-b0CkK-4A?autoplay=1&rel=0'})">
+          <div class="testi-card" style="background:#F5CD4E;padding:14px;display:flex;flex-direction:column;gap:10px;" onclick="openModal({type:'video',bg:'#1e1e1e',author:'Isabelle Lesschaeve',embedUrl:'https://www.youtube.com/embed/Ck-b0CkK-4A?autoplay=1&rel=0'})">
             <div style="width:100%;height:140px;border-radius:8px;border:2px solid var(--ink);overflow:hidden;position:relative;">
               <img src="https://img.youtube.com/vi/Ck-b0CkK-4A/hqdefault.jpg" alt="Isabelle Lesschaeve" style="width:100%;height:100%;object-fit:cover;display:block;">
               <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;">
@@ -543,7 +542,7 @@ if(localStorage.getItem('cookie-ok')==='1'||localStorage.getItem('cookiesAccepte
             <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:-4px;">Wine Tasting Coach</div>
           </div>
           <!-- Duplicate for seamless loop -->
-          <div class="testi-card" style="background:#FDF3E3;" data-bg="#FDF3E3" data-quote="I just never felt like I had a real clear path. I was just kind of making it up as I went along… You're giving it to me step by step, piece by piece. And it's been incredibly helpful." data-author="Steve Gast">
+          <div class="testi-card" style="background:#F5CD4E;" data-bg="#F5CD4E" data-quote="I just never felt like I had a real clear path. I was just kind of making it up as I went along… You're giving it to me step by step, piece by piece. And it's been incredibly helpful." data-author="Steve Gast">
             <div class="testi-quote-mark">"</div>
             <div class="testi-quote-body">I just never felt like I had a real clear path. I was just kind of making it up as I went along&hellip; You&rsquo;re giving it to me step by step, piece by piece. And it&rsquo;s been incredibly helpful.</div>
             <div class="testi-author">Steve Gast</div>
@@ -560,7 +559,7 @@ if(localStorage.getItem('cookie-ok')==='1'||localStorage.getItem('cookiesAccepte
             <div class="testi-author">&#9654; Steve Gast</div>
             <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:-4px;">Video Confidence &amp; Personal Branding Coach</div>
           </div>
-          <div class="testi-card" style="background:rgba(0,151,178,.1);" data-bg="rgba(0,151,178,.1)" data-quote="I have a clearer vision on the journey and how I can serve my customer… I know where I'm going." data-author="Isabelle Lesschaeve">
+          <div class="testi-card" style="background:rgba(45,129,150,.18);" data-bg="rgba(45,129,150,.18)" data-quote="I have a clearer vision on the journey and how I can serve my customer… I know where I'm going." data-author="Isabelle Lesschaeve">
             <div class="testi-quote-mark">"</div>
             <div class="testi-quote-body">I have a clearer vision on the journey and how I can serve my customer&hellip; I know where I&rsquo;m going.</div>
             <div class="testi-author">Isabelle Lesschaeve</div>
@@ -570,7 +569,7 @@ if(localStorage.getItem('cookie-ok')==='1'||localStorage.getItem('cookiesAccepte
             <div class="testi-quote-body">I know my subject inside out &mdash; but Mona understood that building a business is a different skill set. She asked the right questions, identified my blind spots, and helped me set the right priorities without overwhelming me.</div>
             <div class="testi-author">Alexa Leitner</div>
           </div>
-          <div class="testi-card" style="background:#FDF3E3;padding:14px;display:flex;flex-direction:column;gap:10px;" onclick="openModal({type:'video',bg:'#1e1e1e',author:'Isabelle Lesschaeve',embedUrl:'https://www.youtube.com/embed/Ck-b0CkK-4A?autoplay=1&rel=0'})">
+          <div class="testi-card" style="background:#F5CD4E;padding:14px;display:flex;flex-direction:column;gap:10px;" onclick="openModal({type:'video',bg:'#1e1e1e',author:'Isabelle Lesschaeve',embedUrl:'https://www.youtube.com/embed/Ck-b0CkK-4A?autoplay=1&rel=0'})">
             <div style="width:100%;height:140px;border-radius:8px;border:2px solid var(--ink);overflow:hidden;position:relative;">
               <img src="https://img.youtube.com/vi/Ck-b0CkK-4A/hqdefault.jpg" alt="Isabelle Lesschaeve" style="width:100%;height:100%;object-fit:cover;display:block;">
               <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;">
@@ -696,8 +695,8 @@ if(localStorage.getItem('cookie-ok')==='1'||localStorage.getItem('cookiesAccepte
     --tft-ink:       #1B1A17;
     --tft-body:      #55503F;
     --tft-muted:     #8A8578;
-    --tft-coral:     #0097B2;
-    --tft-coral-ink: #06768C;
+    --tft-coral:     #E8604C;
+    --tft-coral-ink: #9E3820;
     --tft-display:   'Hanken Grotesk', system-ui, sans-serif;
     --tft-mono:      'JetBrains Mono', ui-monospace, monospace;
     background: var(--tft-cream);
@@ -706,7 +705,7 @@ if(localStorage.getItem('cookie-ok')==='1'||localStorage.getItem('cookiesAccepte
   .tft-inner { max-width: 860px; margin: 0 auto; display: flex; flex-direction: column; gap: 22px; }
   .tft-head { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
   .tft-label { font-family: var(--tft-mono); font-size: 13px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--tft-coral-ink); }
-  .tft-status { display: flex; align-items: center; gap: 8px; background: rgba(0,151,178,.12); border-radius: 999px; padding: 6px 12px; font-family: var(--tft-mono); font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--tft-coral-ink); }
+  .tft-status { display: flex; align-items: center; gap: 8px; background: rgba(232,96,76,.12); border-radius: 999px; padding: 6px 12px; font-family: var(--tft-mono); font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--tft-coral-ink); }
   .tft-status::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--tft-coral); }
   .tft-card { background: var(--tft-card); border: 1px solid var(--tft-border); border-radius: 22px; padding: 34px 38px; display: flex; gap: 22px; align-items: flex-start; }
   .tft-avatar { width: 60px; height: 60px; border-radius: 50%; object-fit: cover; object-position: 50% 26%; flex: none; background: var(--tft-border); }
@@ -775,10 +774,10 @@ if(localStorage.getItem('cookie-ok')==='1'||localStorage.getItem('cookiesAccepte
 
 <!-- Cookie notice -->
 <div id="cookie-bar" style="position:fixed;bottom:0;left:0;right:0;background:rgba(27,26,23,0.92);color:rgba(250,243,234,0.8);font-family:'JetBrains Mono',monospace;font-size:11px;padding:10px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px;z-index:9999;backdrop-filter:blur(4px);">
-  <span>This site uses Google Analytics to understand how visitors use it. <a href="/privacy" style="color:#0097B2;text-decoration:none;border-bottom:1px solid rgba(0,151,178,.4);">Privacy policy</a></span>
+  <span>This site uses Google Analytics to understand how visitors use it. <a href="/privacy" style="color:#E8604C;text-decoration:none;border-bottom:1px solid rgba(232,96,76,.4);">Privacy policy</a></span>
   <div style="display:flex;gap:8px;flex-shrink:0;">
     <button onclick="(function(){localStorage.setItem('cookie-ok','0');document.getElementById('cookie-bar').style.display='none';})()" style="background:transparent;color:rgba(250,243,234,0.6);border:1px solid rgba(250,243,234,0.3);border-radius:6px;padding:5px 12px;font-family:'JetBrains Mono',monospace;font-size:11px;cursor:pointer;white-space:nowrap;">Decline</button>
-    <button onclick="(function(){localStorage.setItem('cookie-ok','1');document.getElementById('cookie-bar').style.display='none';window._loadTracking&&window._loadTracking();})()" style="background:#0097B2;color:#FAF3EA;border:none;border-radius:6px;padding:5px 12px;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;cursor:pointer;white-space:nowrap;">Accept</button>
+    <button onclick="(function(){localStorage.setItem('cookie-ok','1');document.getElementById('cookie-bar').style.display='none';window._loadTracking&&window._loadTracking();})()" style="background:#E8604C;color:#FAF3EA;border:none;border-radius:6px;padding:5px 12px;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;cursor:pointer;white-space:nowrap;">Accept</button>
   </div>
 </div>
 <script>if(localStorage.getItem('cookie-ok'))document.getElementById('cookie-bar').style.display='none';</script>
@@ -816,13 +815,13 @@ if(localStorage.getItem('cookie-ok')==='1'||localStorage.getItem('cookiesAccepte
     inner.style.background = data.bg;
     var dark = data.bg === '#1e1e1e';
     var textColor = dark ? 'rgba(250,243,234,0.6)' : 'rgba(27,26,23,0.6)';
-    var borderColor = dark ? '#B87216' : '#1B1A17';
-    var playBg = dark ? '#0097B2' : 'rgba(27,26,23,0.75)';
+    var borderColor = dark ? '#F5CD4E' : '#1B1A17';
+    var playBg = dark ? '#E8604C' : 'rgba(27,26,23,0.75)';
     var playFill = dark ? '#FAF3EA' : '#FAF3EA';
     if (data.type === 'text') {
       content.innerHTML =
-        '<div style="font-family:\'Newsreader\',serif;font-size:40px;line-height:1;margin-bottom:8px;color:#0097B2;">"</div>' +
-        '<div style="font-family:\'Newsreader\',serif;font-size:22px;line-height:1.5;margin-bottom:20px;">' + data.quote + '</div>' +
+        '<div style="font-family:\'Crimson Pro\',serif;font-size:40px;line-height:1;margin-bottom:8px;color:#0097B2;">"</div>' +
+        '<div style="font-family:\'Crimson Pro\',serif;font-size:22px;line-height:1.5;margin-bottom:20px;">' + data.quote + '</div>' +
         '<div style="font-family:\'JetBrains Mono\',monospace;font-size:12px;color:' + textColor + ';">' + data.author + '</div>';
     } else if (data.embedUrl) {
       inner.style.padding = '14px';
