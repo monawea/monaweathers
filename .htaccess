@@ -1,5 +1,8 @@
 RewriteEngine On
 
+# Custom 404
+ErrorDocument 404 /404.html
+
 # Root → serve mona-shelly-site as homepage
 RewriteRule ^$ mona-shelly-site.html [L]
 
@@ -7,6 +10,9 @@ RewriteRule ^$ mona-shelly-site.html [L]
 RewriteRule ^offers(\.html)?$ /coaching [R=301,L]
 RewriteRule ^cohort(\.html)?$ /coaching [R=301,L]
 RewriteRule ^work-with-me(\.html)?$ /coaching [R=301,L]
+
+# Redirect /diagnostic to 404
+RewriteRule ^diagnostic(\.html)?$ /404 [R=301,L]
 
 # Redirect /page.html → /page (strip .html from URL)
 RewriteCond %{THE_REQUEST} ^[A-Z]{3,}\s/+([^.]+)\.html[\s?] [NC]

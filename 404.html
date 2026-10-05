@@ -1,0 +1,181 @@
+<title>Lost Page</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,700;1,600&family=Hanken+Grotesk:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --bg:     #FAF3EA;
+    --paper:  #FFFCF6;
+    --ink:    #1B1A17;
+    --soft:   #5A544B;
+    --muted:  #6B645A;
+    --coral:  #E8604C;
+    --yellow: #F5CD4E;
+    --teal:   #1F6F7A;
+    --teal-2: #2D8196;
+    --sage:   #6E8B5E;
+    --serif:  'Crimson Pro', Georgia, serif;
+    --sans:   'Hanken Grotesk', system-ui, sans-serif;
+    --mono:   'JetBrains Mono', ui-monospace, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #15140F; --paper: #1F1D18; --ink: #F3ECE0; --soft: #C9C0B2; --muted: #A79E90;
+      --coral: #EE7562; --yellow: #F5D060; --teal: #3D9EAA; --teal-2: #4EB3C0; --sage: #88AA78;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #15140F; --paper: #1F1D18; --ink: #F3ECE0; --soft: #C9C0B2; --muted: #A79E90;
+    --coral: #EE7562; --yellow: #F5D060; --teal: #3D9EAA; --teal-2: #4EB3C0; --sage: #88AA78;
+    color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 24px;
+    text-align: center;
+  }
+
+  .card {
+    background: var(--paper);
+    border: 2.5px solid var(--ink);
+    border-radius: 20px;
+    box-shadow: 6px 6px 0 var(--ink);
+    padding: clamp(32px, 8vw, 60px) clamp(28px, 8vw, 64px);
+    max-width: 520px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .four-oh-four {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: clamp(80px, 22vw, 128px);
+    line-height: 1;
+    letter-spacing: -.02em;
+    display: flex;
+    gap: 4px;
+    align-items: baseline;
+  }
+  .four-oh-four .hl {
+    background: var(--yellow);
+    color: var(--ink);
+    padding: 0 10px;
+    border-radius: 8px;
+    display: inline-block;
+  }
+
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--teal-2);
+  }
+
+  h1 {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: clamp(24px, 5vw, 32px);
+    line-height: 1.15;
+    text-wrap: balance;
+  }
+
+  p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--soft);
+    max-width: 38ch;
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    margin-top: 4px;
+  }
+  .tag {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 999px;
+    border: 2px solid var(--ink);
+    text-decoration: none;
+    transition: transform .08s, box-shadow .08s;
+    box-shadow: 2px 2px 0 var(--ink);
+  }
+  .tag:hover { transform: translate(1px,1px); box-shadow: 1px 1px 0 var(--ink); }
+  .t-coral  { background: var(--coral);  color: #fff; }
+  .t-teal   { background: var(--teal-2); color: #fff; }
+  .t-sage   { background: var(--sage);   color: #fff; }
+  .t-yellow { background: var(--yellow); color: var(--ink); }
+
+  .cta {
+    display: inline-block;
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: 16px;
+    text-decoration: none;
+    color: var(--ink);
+    background: var(--coral);
+    border: 2.5px solid var(--ink);
+    border-radius: 999px;
+    padding: 13px 28px;
+    box-shadow: 4px 4px 0 var(--ink);
+    transition: transform .08s, box-shadow .08s;
+    margin-top: 4px;
+  }
+  .cta:hover { transform: translate(2px,2px); box-shadow: 2px 2px 0 var(--ink); }
+
+  .divider {
+    width: 100%;
+    border: none;
+    border-top: 2px dashed color-mix(in srgb, var(--ink) 20%, transparent);
+  }
+
+  .fine {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+  }
+</style>
+
+<div class="card">
+  <div class="eyebrow">Page not found</div>
+
+  <div class="four-oh-four">
+    <span>4</span><span class="hl">0</span><span>4</span>
+  </div>
+
+  <h1>You took a wrong turn.<br>Happens to the best coaches.</h1>
+
+  <p>This page doesn't exist — but getting back on track is kind of what we do here.</p>
+
+  <hr class="divider">
+
+  <div class="tags">
+    <a href="/" class="tag t-coral">Home</a>
+    <a href="/coaching" class="tag t-teal">Coaching</a>
+    <a href="/shelly-sites" class="tag t-sage">Shelly Sites</a>
+    <a href="/results" class="tag t-yellow">Results</a>
+  </div>
+
+  <a href="/" class="cta">Take me home →</a>
+
+  <span class="fine">monaweathers.com</span>
+</div>
