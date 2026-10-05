@@ -16,7 +16,7 @@ if(localStorage.getItem('cookie-ok')==='1'||localStorage.getItem('cookiesAccepte
 <link rel="icon" type="image/webp" href="shelly-logo.webp" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,600;0,700;1,600&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <!-- Open Graph / link preview -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Mona Weathers">
@@ -39,13 +39,14 @@ if(localStorage.getItem('cookie-ok')==='1'||localStorage.getItem('cookiesAccepte
   --muted:     #6B645A;
   --dim:       #BDB4A5;
   --rule:      rgba(27,26,23,.1);
-  --coral:     #D95C3C;
-  --yellow:    #D99A2B;
-  --teal:      #1F6F7A;
-  --teal-2:    #2D8196;
+  --coral:     #0097B2;
+  --yellow:    #B87216;
+  --gold-bg:   #FDF3E3;
+  --teal:      #06768C;
+  --teal-2:    #0097B2;
   --sage:      #6E8B5E;
   --sidebar-bg:#191713;
-  --serif:     'Crimson Pro', Georgia, serif;
+  --serif:     'Newsreader', Georgia, serif;
   --sans:      'Hanken Grotesk', system-ui, sans-serif;
   --mono:      'JetBrains Mono', ui-monospace, monospace;
 }
@@ -151,8 +152,8 @@ section:last-of-type { border-bottom: none; }
   text-wrap: balance;
 }
 .hl {
-  background: var(--yellow);
-  color: var(--ink);
+  background: var(--gold-bg);
+  color: var(--yellow);
   padding: 2px 8px;
   border-radius: 6px;
   display: inline;
@@ -467,7 +468,7 @@ section:last-of-type { border-bottom: none; }
   font-size: 11px;
   font-weight: 600;
   color: var(--coral);
-  background: rgba(217,92,60,.12);
+  background: rgba(0,151,178,.12);
   width: 34px;
   height: 34px;
   min-width: 34px;
@@ -534,7 +535,7 @@ section:last-of-type { border-bottom: none; }
   line-height: 1.75;
   color: var(--soft);
 }
-.faq-a a { color: var(--coral); border-bottom: 1px solid rgba(217,92,60,.35); }
+.faq-a a { color: var(--coral); border-bottom: 1px solid rgba(0,151,178,.35); }
 .faq-item.open .faq-a { display: block; }
 
 /* ── CTA DARK SECTION ── */
@@ -883,7 +884,7 @@ section:last-of-type { border-bottom: none; }
         <div class="plan-num">05</div>
         <div class="plan-text">
           <strong>Your Shelly Site is live</strong>
-          <p>Yours to keep. No ongoing fees to me. And if you ever want updates handled for you — new offers, fresh copy, anything that changes — ongoing support is available. <a href="mailto:contact@monaweathers.com" style="color:var(--coral);border-bottom:1px solid rgba(217,92,60,.4);">Reach out to discuss →</a></p>
+          <p>Yours to keep. No ongoing fees to me. And if you ever want updates handled for you — new offers, fresh copy, anything that changes — ongoing support is available. <a href="mailto:contact@monaweathers.com" style="color:var(--coral);border-bottom:1px solid rgba(0,151,178,.4);">Reach out to discuss →</a></p>
         </div>
       </div>
     </div>
@@ -964,10 +965,10 @@ section:last-of-type { border-bottom: none; }
 
 <!-- Cookie notice -->
 <div id="cookie-bar" style="position:fixed;bottom:0;left:0;right:0;background:rgba(25,23,19,0.92);color:rgba(250,243,234,0.8);font-family:'JetBrains Mono',monospace;font-size:11px;padding:10px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px;z-index:9999;backdrop-filter:blur(4px);">
-  <span>This site uses Google Analytics to understand how visitors use it. <a href="/privacy" style="color:#D99A2B;text-decoration:none;border-bottom:1px solid rgba(217,154,43,.4);">Privacy policy</a></span>
+  <span>This site uses Google Analytics to understand how visitors use it. <a href="/privacy" style="color:#0097B2;text-decoration:none;border-bottom:1px solid rgba(0,151,178,.4);">Privacy policy</a></span>
   <div style="display:flex;gap:8px;flex-shrink:0;">
     <button onclick="(function(){localStorage.setItem('cookie-ok','0');document.getElementById('cookie-bar').style.display='none';})()" style="background:transparent;color:rgba(250,243,234,0.6);border:1px solid rgba(250,243,234,0.3);border-radius:6px;padding:5px 12px;font-family:'JetBrains Mono',monospace;font-size:11px;cursor:pointer;white-space:nowrap;">Decline</button>
-    <button onclick="(function(){localStorage.setItem('cookie-ok','1');document.getElementById('cookie-bar').style.display='none';window._loadTracking&&window._loadTracking();})()" style="background:#D95C3C;color:#FAF3EA;border:none;border-radius:6px;padding:5px 12px;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;cursor:pointer;white-space:nowrap;">Accept</button>
+    <button onclick="(function(){localStorage.setItem('cookie-ok','1');document.getElementById('cookie-bar').style.display='none';window._loadTracking&&window._loadTracking();})()" style="background:#0097B2;color:#FAF3EA;border:none;border-radius:6px;padding:5px 12px;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;cursor:pointer;white-space:nowrap;">Accept</button>
   </div>
 </div>
 <script>if(localStorage.getItem('cookie-ok'))document.getElementById('cookie-bar').style.display='none';</script>
