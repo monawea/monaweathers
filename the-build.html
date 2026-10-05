@@ -23,8 +23,10 @@ if(localStorage.getItem('cookie-ok')==='1'||localStorage.getItem('cookiesAccepte
     --soft: #5A544B;
     --muted: #6B645A;
     --rule: #1B1A17;
-    --hl: #A9E1EA;
+    --hl: #F5CD4E;
     --hl-ink: #1B1A17;
+    --yellow: #F5CD4E;
+    --sage: #6E8B5E;
     --coral: #E8604C;
     --teal: #1F6F7A;
     --tint: #FAF3EA;
@@ -35,13 +37,13 @@ if(localStorage.getItem('cookie-ok')==='1'||localStorage.getItem('cookiesAccepte
   @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) {
       --desk: #15140F; --paper: #1F1D18; --ink: #F3ECE0; --soft: #C9C0B2; --muted: #A79E90;
-      --rule: #F3ECE0; --hl: #1E7F8F; --hl-ink: #F3ECE0; --coral: #EE7562; --teal: #5FB3BE; --tint: #2A2721;
+      --rule: #F3ECE0; --hl: #D4A820; --hl-ink: #1B1A17; --coral: #EE7562; --teal: #5FB3BE; --tint: #2A2721;
       color-scheme: dark;
     }
   }
   :root[data-theme="dark"] {
     --desk: #15140F; --paper: #1F1D18; --ink: #F3ECE0; --soft: #C9C0B2; --muted: #A79E90;
-    --rule: #F3ECE0; --hl: #1E7F8F; --hl-ink: #F3ECE0; --coral: #EE7562; --teal: #5FB3BE; --tint: #2A2721;
+    --rule: #F3ECE0; --hl: #D4A820; --hl-ink: #1B1A17; --coral: #EE7562; --teal: #5FB3BE; --tint: #2A2721;
     color-scheme: dark;
   }
 
@@ -76,14 +78,14 @@ if(localStorage.getItem('cookie-ok')==='1'||localStorage.getItem('cookiesAccepte
   ul, ol { padding-left: 1.3em; display: flex; flex-direction: column; gap: 8px; max-width: 64ch; }
   li::marker { color: var(--coral); font-weight: 700; }
   ol.phases { list-style: none; padding: 0; gap: 14px; counter-reset: ph; }
-  ol.phases li { counter-increment: ph; border: 2px solid var(--rule); border-radius: 12px; padding: 16px 18px; background: var(--tint); }
+  ol.phases li { counter-increment: ph; border: 2px solid var(--rule); border-left: 5px solid var(--coral); border-radius: 12px; padding: 16px 18px; background: var(--tint); }
   ol.phases li::before { content: "Phase " counter(ph); display: block; font-family: var(--mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--coral); margin-bottom: 4px; }
   ol.phases b { font-family: var(--serif); font-size: 21px; }
   .weeks { font-family: var(--mono); font-size: 12px; color: var(--muted); margin-left: 6px; }
 
   .table-scroll { overflow-x: auto; border: 2px solid var(--rule); border-radius: 12px; }
   table { border-collapse: collapse; width: 100%; min-width: 520px; font-size: 15.5px; line-height: 1.45; }
-  th { text-align: left; font-family: var(--mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--teal); background: var(--tint); padding: 12px 14px; border-bottom: 2px solid var(--rule); }
+  th { text-align: left; font-family: var(--mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink); background: var(--hl); padding: 12px 14px; border-bottom: 2px solid var(--rule); }
   td { padding: 12px 14px; border-top: 1px solid color-mix(in srgb, var(--rule) 22%, transparent); vertical-align: top; }
   td:first-child { font-weight: 700; white-space: nowrap; }
   .size { display: inline-block; font-family: var(--mono); font-size: 11px; letter-spacing: .06em; text-transform: uppercase; border: 1.5px solid var(--rule); border-radius: 999px; padding: 2px 9px; }
@@ -235,7 +237,7 @@ if(localStorage.getItem('cookie-ok')==='1'||localStorage.getItem('cookiesAccepte
   <span>We use cookies &amp; analytics to understand how this page is used. <a href="/privacy" style="color:rgba(246,241,231,0.9)">Privacy Policy</a></span>
   <div style="display:flex;gap:8px;flex-shrink:0;">
     <button onclick="(function(){localStorage.setItem('cookie-ok','0');document.getElementById('cookieBanner').style.display='none';})()" style="background:transparent;color:rgba(246,241,231,0.6);border:1px solid rgba(246,241,231,0.3);border-radius:6px;padding:5px 12px;font-family:'JetBrains Mono',monospace;font-size:11px;cursor:pointer;white-space:nowrap;">Decline</button>
-    <button onclick="(function(){localStorage.setItem('cookie-ok','1');document.getElementById('cookieBanner').style.display='none';window._loadTracking&&window._loadTracking();})()" style="background:#1F6F7A;color:#f6f1e7;border:none;border-radius:6px;padding:5px 12px;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;cursor:pointer;white-space:nowrap;">Accept</button>
+    <button onclick="(function(){localStorage.setItem('cookie-ok','1');document.getElementById('cookieBanner').style.display='none';window._loadTracking&&window._loadTracking();})()" style="background:#E8604C;color:#f6f1e7;border:none;border-radius:6px;padding:5px 12px;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;cursor:pointer;white-space:nowrap;">Accept</button>
   </div>
 </div>
 <script>if(localStorage.getItem('cookie-ok')||localStorage.getItem('cookiesAccepted'))document.getElementById('cookieBanner').style.display='none';</script>
