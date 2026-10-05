@@ -29,31 +29,6 @@ if(localStorage.getItem('cookie-ok')==='1'||localStorage.getItem('cookiesAccepte
 
   ::selection { background: #ffcc4d; }
 
-  /* LAUNCH STRIP */
-  .launch-strip {
-    background: #ff5a36;
-    color: #f6f1e7;
-    overflow: hidden;
-    white-space: nowrap;
-    padding: 9px 0;
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 13px;
-    font-weight: 600;
-    letter-spacing: 0.04em;
-    position: sticky;
-    top: 0;
-    z-index: 102;
-  }
-  .launch-track {
-    display: inline-block;
-    white-space: nowrap;
-    animation: launch-scroll 30s linear infinite;
-  }
-  @keyframes launch-scroll {
-    0%   { transform: translateX(0); }
-    100% { transform: translateX(-25%); }
-  }
-
   /* NAV */
   .site-nav {
     display: flex;
@@ -62,7 +37,7 @@ if(localStorage.getItem('cookie-ok')==='1'||localStorage.getItem('cookiesAccepte
     padding: 16px 32px;
     border-bottom: 1px solid rgba(25,23,19,.08);
     position: sticky;
-    top: 38px;
+    top: 0;
     background: #f6f1e7;
     z-index: 100;
   }
@@ -643,16 +618,6 @@ if(localStorage.getItem('cookie-ok')==='1'||localStorage.getItem('cookiesAccepte
 <body>
 
 <div id="cursor-dot"></div>
-
-<!-- LAUNCH STRIP -->
-<div class="launch-strip">
-  <div class="launch-track">
-    <span>Get your Shelly Site &nbsp;·&nbsp; Basic $349 &nbsp;·&nbsp; Premium $649 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-    <span>Get your Shelly Site &nbsp;·&nbsp; Basic $349 &nbsp;·&nbsp; Premium $649 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-    <span>Get your Shelly Site &nbsp;·&nbsp; Basic $349 &nbsp;·&nbsp; Premium $649 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-    <span>Get your Shelly Site &nbsp;·&nbsp; Basic $349 &nbsp;·&nbsp; Premium $649 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-  </div>
-</div>
 
 <!-- NAV -->
 <nav class="site-nav">

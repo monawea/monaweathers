@@ -36,6 +36,11 @@ if(localStorage.getItem('cookie-ok')==='1'||localStorage.getItem('cookiesAccepte
     50% { transform: translateY(-6px); }
   }
 
+  @keyframes marquee {
+    from { transform: translate3d(0, 0, 0); }
+    to { transform: translate3d(-50%, 0, 0); }
+  }
+
   /* Shell layout */
   .shell {
     display: flex;
@@ -193,6 +198,61 @@ if(localStorage.getItem('cookie-ok')==='1'||localStorage.getItem('cookiesAccepte
   /* Testimonials */
   .testi-heading { font-size: 30px; font-weight: 700; letter-spacing: -0.01em; line-height: 1.15; }
   .testi-sub { font-size: 15px; line-height: 1.6; color: rgba(25,23,19,0.7); max-width: 520px; margin-top: 10px; }
+
+  .marquee-outer {
+    overflow: hidden;
+    margin: 0 -56px;
+    padding: 4px 0;
+  }
+
+  .marquee-track {
+    display: flex;
+    width: max-content;
+    animation: marquee 32s linear infinite;
+    will-change: transform;
+    backface-visibility: hidden;
+  }
+
+  @media (hover: hover) {
+    .marquee-outer:hover .marquee-track {
+      animation-play-state: paused;
+    }
+    .testi-card:hover {
+      box-shadow: 0 8px 24px rgba(25,23,19,0.18);
+      transform: translateY(-3px) rotate(var(--card-rotate, 0deg));
+    }
+  }
+
+  .testi-card {
+    border: 2px solid #191713;
+    border-radius: 4px;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    width: 240px;
+    flex: none;
+    margin-right: 20px;
+    box-shadow: 4px 4px 0 rgba(25,23,19,0.12);
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .testi-card-text {
+    padding: 18px 20px;
+  }
+
+  .testi-quote-mark {
+    font-size: 20px;
+    line-height: 1;
+  }
+
+  .testi-quote-body {
+    margin: 4px 0 10px;
+  }
+
+  .testi-author {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: rgba(25,23,19,0.6);
+  }
 
 
   .testi-card {
@@ -502,6 +562,7 @@ if(localStorage.getItem('cookie-ok')==='1'||localStorage.getItem('cookiesAccepte
     .signup-section { padding: 32px 24px; }
 
     .signup-form input[type="email"] { min-width: 180px; }
+    .marquee-outer { margin: 0 -24px; }
   }
 
   @media (max-width: 560px) {
@@ -566,6 +627,99 @@ if(localStorage.getItem('cookie-ok')==='1'||localStorage.getItem('cookiesAccepte
       <div class="hero">
         <h1>You're great at coaching.<br>Growing online is <span class="highlight">the hard part.</span></h1>
         <p class="lead">You've built real expertise and real results. But when it comes to your offer, your systems, and how you show up online, it's hard to know what to focus on next. That's where I come in.</p>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section data-reveal style="display:flex;flex-direction:column;gap:16px;">
+      <div>
+        <div class="section-label">THE TESTIMONIAL BOARD</div>
+        <div class="testi-heading">Don't just take my word for it.</div>
+        <p class="testi-sub">Other coaches have been exactly where you are, stuck on the same things, unsure of the same next steps. Here's what they said once things started clicking.</p>
+      </div>
+      <div class="marquee-outer">
+        <div class="marquee-track" id="marqueeTrack">
+          <!-- Cards duplicated for seamless loop -->
+          <div class="testi-card testi-card-text" style="background:#ffcc4d;transform:rotate(-1deg);cursor:pointer;" data-bg="#ffcc4d" data-quote="I just never felt like I had a real clear path. I was just kind of making it up as I went along… You're giving it to me step by step, piece by piece. And it's been incredibly helpful." data-author="Steve Gast">
+            <div class="testi-quote-mark">"</div>
+            <div class="testi-quote-body">I just never felt like I had a real clear path. I was just kind of making it up as I went along&hellip; You&rsquo;re giving it to me step by step, piece by piece. And it&rsquo;s been incredibly helpful.</div>
+            <div class="testi-author">Steve Gast</div>
+          </div>
+          <div class="testi-card" style="background:#fff;transform:rotate(1.5deg);padding:14px;display:flex;flex-direction:column;gap:10px;cursor:pointer;" onclick="openModal({type:'video',bg:'#1e1e1e',author:'Steve Gast',embedUrl:'https://www.youtube.com/embed/1JUB5SNb2h4?autoplay=1&rel=0'})">
+            <div style="width:100%;height:140px;border-radius:4px;border:2px solid #191713;overflow:hidden;position:relative;">
+              <img src="https://img.youtube.com/vi/1JUB5SNb2h4/hqdefault.jpg" alt="Steve Gast" style="width:100%;height:100%;object-fit:cover;display:block;">
+              <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;">
+                <div style="width:44px;height:44px;border-radius:50%;background:#ff5a36;display:flex;align-items:center;justify-content:center;box-shadow:0 3px 10px rgba(0,0,0,.35);">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="#191713"><path d="M5 3l16 9-16 9V3z"/></svg>
+                </div>
+              </div>
+            </div>
+            <div class="testi-author">&#9654; Steve Gast</div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:rgba(25,23,19,0.5);margin-top:-4px;">Video Confidence &amp; Personal Branding Coach</div>
+          </div>
+          <div class="testi-card testi-card-text" style="background:#7dd3c0;transform:rotate(-0.5deg);cursor:pointer;" data-bg="#7dd3c0" data-quote="I have a clearer vision on the journey and how I can serve my customer… I know where I'm going." data-author="Isabelle Lesschaeve">
+            <div class="testi-quote-mark">"</div>
+            <div class="testi-quote-body">I have a clearer vision on the journey and how I can serve my customer&hellip; I know where I&rsquo;m going.</div>
+            <div class="testi-author">Isabelle Lesschaeve</div>
+          </div>
+          <div class="testi-card testi-card-text" style="background:#fff;transform:rotate(1deg);cursor:pointer;" data-bg="#fff" data-quote="I know my subject inside out — but Mona understood that building a business is a different skill set. She asked the right questions, identified my blind spots, and helped me set the right priorities without overwhelming me." data-author="Alexa Leitner">
+            <div class="testi-quote-mark">"</div>
+            <div class="testi-quote-body">I know my subject inside out &mdash; but Mona understood that building a business is a different skill set. She asked the right questions, identified my blind spots, and helped me set the right priorities without overwhelming me.</div>
+            <div class="testi-author">Alexa Leitner</div>
+          </div>
+          <div class="testi-card" style="background:#ffcc4d;transform:rotate(-1.2deg);padding:14px;display:flex;flex-direction:column;gap:10px;cursor:pointer;" onclick="openModal({type:'video',bg:'#1e1e1e',author:'Isabelle Lesschaeve',embedUrl:'https://www.youtube.com/embed/Ck-b0CkK-4A?autoplay=1&rel=0'})">
+            <div style="width:100%;height:140px;border-radius:4px;border:2px solid #191713;overflow:hidden;position:relative;">
+              <img src="https://img.youtube.com/vi/Ck-b0CkK-4A/hqdefault.jpg" alt="Isabelle Lesschaeve" style="width:100%;height:100%;object-fit:cover;display:block;">
+              <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;">
+                <div style="width:44px;height:44px;border-radius:50%;background:#ff5a36;display:flex;align-items:center;justify-content:center;box-shadow:0 3px 10px rgba(0,0,0,.35);">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="#191713"><path d="M5 3l16 9-16 9V3z"/></svg>
+                </div>
+              </div>
+            </div>
+            <div class="testi-author">&#9654; Isabelle Lesschaeve</div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:rgba(25,23,19,0.5);margin-top:-4px;">Wine Tasting Coach</div>
+          </div>
+          <!-- Duplicate for seamless loop -->
+          <div class="testi-card testi-card-text" style="background:#ffcc4d;transform:rotate(-1deg);cursor:pointer;" data-bg="#ffcc4d" data-quote="I just never felt like I had a real clear path. I was just kind of making it up as I went along… You're giving it to me step by step, piece by piece. And it's been incredibly helpful." data-author="Steve Gast">
+            <div class="testi-quote-mark">"</div>
+            <div class="testi-quote-body">I just never felt like I had a real clear path. I was just kind of making it up as I went along&hellip; You&rsquo;re giving it to me step by step, piece by piece. And it&rsquo;s been incredibly helpful.</div>
+            <div class="testi-author">Steve Gast</div>
+          </div>
+          <div class="testi-card" style="background:#fff;transform:rotate(1.5deg);padding:14px;display:flex;flex-direction:column;gap:10px;cursor:pointer;" onclick="openModal({type:'video',bg:'#1e1e1e',author:'Steve Gast',embedUrl:'https://www.youtube.com/embed/1JUB5SNb2h4?autoplay=1&rel=0'})">
+            <div style="width:100%;height:140px;border-radius:4px;border:2px solid #191713;overflow:hidden;position:relative;">
+              <img src="https://img.youtube.com/vi/1JUB5SNb2h4/hqdefault.jpg" alt="Steve Gast" style="width:100%;height:100%;object-fit:cover;display:block;">
+              <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;">
+                <div style="width:44px;height:44px;border-radius:50%;background:#ff5a36;display:flex;align-items:center;justify-content:center;box-shadow:0 3px 10px rgba(0,0,0,.35);">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="#191713"><path d="M5 3l16 9-16 9V3z"/></svg>
+                </div>
+              </div>
+            </div>
+            <div class="testi-author">&#9654; Steve Gast</div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:rgba(25,23,19,0.5);margin-top:-4px;">Video Confidence &amp; Personal Branding Coach</div>
+          </div>
+          <div class="testi-card testi-card-text" style="background:#7dd3c0;transform:rotate(-0.5deg);cursor:pointer;" data-bg="#7dd3c0" data-quote="I have a clearer vision on the journey and how I can serve my customer… I know where I'm going." data-author="Isabelle Lesschaeve">
+            <div class="testi-quote-mark">"</div>
+            <div class="testi-quote-body">I have a clearer vision on the journey and how I can serve my customer&hellip; I know where I&rsquo;m going.</div>
+            <div class="testi-author">Isabelle Lesschaeve</div>
+          </div>
+          <div class="testi-card testi-card-text" style="background:#fff;transform:rotate(1deg);cursor:pointer;" data-bg="#fff" data-quote="I know my subject inside out — but Mona understood that building a business is a different skill set. She asked the right questions, identified my blind spots, and helped me set the right priorities without overwhelming me." data-author="Alexa Leitner">
+            <div class="testi-quote-mark">"</div>
+            <div class="testi-quote-body">I know my subject inside out &mdash; but Mona understood that building a business is a different skill set. She asked the right questions, identified my blind spots, and helped me set the right priorities without overwhelming me.</div>
+            <div class="testi-author">Alexa Leitner</div>
+          </div>
+          <div class="testi-card" style="background:#ffcc4d;transform:rotate(-1.2deg);padding:14px;display:flex;flex-direction:column;gap:10px;cursor:pointer;" onclick="openModal({type:'video',bg:'#1e1e1e',author:'Isabelle Lesschaeve',embedUrl:'https://www.youtube.com/embed/Ck-b0CkK-4A?autoplay=1&rel=0'})">
+            <div style="width:100%;height:140px;border-radius:4px;border:2px solid #191713;overflow:hidden;position:relative;">
+              <img src="https://img.youtube.com/vi/Ck-b0CkK-4A/hqdefault.jpg" alt="Isabelle Lesschaeve" style="width:100%;height:100%;object-fit:cover;display:block;">
+              <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;">
+                <div style="width:44px;height:44px;border-radius:50%;background:#ff5a36;display:flex;align-items:center;justify-content:center;box-shadow:0 3px 10px rgba(0,0,0,.35);">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="#191713"><path d="M5 3l16 9-16 9V3z"/></svg>
+                </div>
+              </div>
+            </div>
+            <div class="testi-author">&#9654; Isabelle Lesschaeve</div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:rgba(25,23,19,0.5);margin-top:-4px;">Wine Tasting Coach</div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -910,7 +1064,7 @@ if(localStorage.getItem('cookie-ok')==='1'||localStorage.getItem('cookiesAccepte
   });
 
   /* Testimonial modal */
-  var marqueeTrack = null;
+  var marqueeTrack = document.getElementById('marqueeTrack');
   function openModal(data) {
     var modal = document.getElementById('testiModal');
     var inner = document.getElementById('testiModalInner');
