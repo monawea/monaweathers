@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Growth Circle — Mona Weathers</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,600;0,700;1,600&family=Hanken+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<script>
+window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+!function(f){if(f.fbq)return;var n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[]}(window);
+!function(w){if(w.oaiq)return;var q=function(){q.q.push(arguments)};q.q=[];w.oaiq=q}(window);
+window._loadTracking=function(){if(window._tl)return;window._tl=1;var s=document.createElement('script');s.async=1;s.src='https://www.googletagmanager.com/gtag/js?id=G-EC1B7WJ2PE';document.head.appendChild(s);s.onload=function(){gtag('js',new Date());gtag('config','G-EC1B7WJ2PE');};fbq('init','1596541782072028');fbq('track','PageView');var f=document.createElement('script');f.async=1;f.src='https://connect.facebook.net/en_US/fbevents.js';document.head.appendChild(f);oaiq('init',{pixelId:'6uDnseGUA4oEWbSawFkXim'});var o=document.createElement('script');o.async=1;o.src='https://bzrcdn.openai.com/sdk/oaiq.min.js';document.head.appendChild(o);};
+if(localStorage.getItem('cookie-ok')==='1'||localStorage.getItem('cookiesAccepted')==='1')window._loadTracking();
+</script>
+<style>
+  :root {
+    --desk: #FAF3EA;
+    --paper: #FFFCF6;
+    --ink: #1B1A17;
+    --soft: #5A544B;
+    --muted: #6B645A;
+    --rule: #1B1A17;
+    --hl: #E8604C;
+    --hl-ink: #ffffff;
+    --coral: #E8604C;
+    --yellow: #F5CD4E;
+    --teal: #1F6F7A;
+    --teal-2: #2D8196;
+    --sage: #6E8B5E;
+    --tint: #FAF3EA;
+    --serif: 'Crimson Pro', Georgia, 'Times New Roman', serif;
+    --sans: 'Hanken Grotesk', system-ui, -apple-system, sans-serif;
+    --mono: 'JetBrains Mono', ui-monospace, Menlo, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --desk: #15140F; --paper: #1F1D18; --ink: #F3ECE0; --soft: #C9C0B2; --muted: #A79E90;
+      --rule: #F3ECE0; --hl: #EE7562; --hl-ink: #ffffff; --coral: #EE7562; --teal: #5FB3BE; --tint: #2A2721;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --desk: #15140F; --paper: #1F1D18; --ink: #F3ECE0; --soft: #C9C0B2; --muted: #A79E90;
+    --rule: #F3ECE0; --hl: #EE7562; --hl-ink: #ffffff; --coral: #EE7562; --teal: #5FB3BE; --tint: #2A2721;
+    color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--desk); color: var(--ink); font-family: var(--sans); font-size: 17px; line-height: 1.6; }
+  a { color: var(--teal); }
+
+  .topbar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10; background: var(--desk); border-bottom: 2px solid var(--rule); }
+  .topbar-in { max-width: 960px; margin: 0 auto; padding: 14px 20px; display: flex; flex-wrap: wrap; gap: 6px 16px; justify-content: space-between; align-items: baseline; }
+  .brand { font-family: var(--serif); font-weight: 700; font-size: 22px; text-decoration: none; color: var(--ink); }
+  .brand span { font-family: var(--mono); font-weight: 400; font-size: 12px; color: var(--teal); margin-left: 8px; }
+  .brand:hover { opacity: .75; }
+
+  .wrap { padding: 40px 16px 72px; }
+  .sheet {
+    max-width: 816px; margin: 0 auto; background: var(--paper);
+    border: 2.5px solid var(--rule); border-radius: 6px; box-shadow: 8px 8px 0 var(--rule);
+    padding: clamp(28px, 7vw, 72px) clamp(22px, 8vw, 88px);
+    display: flex; flex-direction: column; gap: 18px;
+  }
+  .sheet > * { margin: 0; }
+
+  .eyebrow { font-family: var(--mono); font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--teal); }
+  h1 { font-family: var(--serif); font-weight: 700; font-size: clamp(46px, 9vw, 72px); line-height: 1; letter-spacing: -.01em; }
+  .byline { font-family: var(--mono); font-size: 13px; color: var(--muted); padding-bottom: 18px; border-bottom: 2px dashed var(--rule); }
+
+  h2 { font-family: var(--serif); font-weight: 700; font-size: clamp(28px, 5vw, 34px); line-height: 1.15; margin-top: 22px; text-wrap: balance; }
+  .hl { background: var(--hl); color: var(--hl-ink); padding: 0 8px; border-radius: 5px; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+
+  p { max-width: 64ch; }
+  .greet { font-family: var(--serif); font-style: italic; font-weight: 600; font-size: 22px; }
+  ul, ol { padding-left: 1.3em; display: flex; flex-direction: column; gap: 8px; max-width: 64ch; }
+  li::marker { color: var(--coral); font-weight: 700; }
+
+  ol.phases { list-style: none; padding: 0; gap: 14px; counter-reset: ph; }
+  ol.phases li { border: 2px solid var(--rule); border-left: 5px solid var(--coral); border-radius: 12px; padding: 16px 18px; background: var(--tint); }
+  ol.phases li .phase-label { display: block; font-family: var(--mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--coral); margin-bottom: 4px; }
+  ol.phases li:nth-child(2) { border-left-color: var(--teal-2); }
+  ol.phases li:nth-child(2) .phase-label { color: var(--teal-2); }
+  ol.phases li:nth-child(3) { border-left-color: var(--yellow); }
+  ol.phases li:nth-child(3) .phase-label { color: var(--ink); }
+  ol.phases li:nth-child(4) { border-left-color: var(--sage); }
+  ol.phases li:nth-child(4) .phase-label { color: var(--sage); }
+  ol.phases b { font-family: var(--serif); font-size: 21px; }
+
+  .quote { margin: 6px 0 0; border: 2.5px solid var(--rule); border-radius: 12px; background: var(--tint); box-shadow: 4px 4px 0 var(--coral); padding: 20px 22px; display: flex; flex-direction: column; gap: 10px; }
+  .quote blockquote { margin: 0; display: flex; flex-direction: column; gap: 8px; }
+  .quote blockquote p { margin: 0; font-family: var(--serif); font-style: italic; font-weight: 600; font-size: 21px; line-height: 1.35; }
+  .quote figcaption { font-family: var(--mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--teal); }
+
+  .promise { border: 2.5px solid var(--rule); border-radius: 12px; padding: 18px 20px; background: var(--tint); box-shadow: 4px 4px 0 var(--coral); }
+
+  .price-block { display: flex; flex-direction: column; gap: 10px; }
+  .price { font-family: var(--serif); font-weight: 700; font-size: 44px; line-height: 1; }
+  .price-options { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 4px; }
+  .price-option { border: 2px solid var(--rule); border-radius: 12px; padding: 14px 18px; background: var(--tint); flex: 1; min-width: 180px; }
+  .price-option .amount { font-family: var(--serif); font-weight: 700; font-size: 26px; line-height: 1.1; }
+  .price-option .desc { font-size: 14px; color: var(--soft); margin-top: 2px; }
+  .price-option.featured { border-color: var(--coral); box-shadow: 3px 3px 0 var(--coral); }
+  .price-option.featured .amount { color: var(--coral); }
+
+  .cta { align-self: flex-start; display: inline-block; text-decoration: none; font-weight: 700; font-size: 18px; color: #1B1A17; background: var(--coral); border: 2.5px solid var(--rule); border-radius: 999px; padding: 14px 26px; box-shadow: 4px 4px 0 var(--rule); transition: transform .08s, box-shadow .08s; }
+  .cta:hover { transform: translate(2px, 2px); box-shadow: 2px 2px 0 var(--rule); }
+  .cta:focus-visible { outline: 3px solid var(--teal); outline-offset: 3px; }
+  .sign { font-family: var(--serif); font-style: italic; font-weight: 600; font-size: 24px; }
+  hr { border: 0; border-top: 2px dashed var(--rule); width: 100%; margin: 10px 0; }
+  .fine { font-size: 13.5px; color: var(--muted); }
+
+  footer { text-align: center; font-family: var(--mono); font-size: 12px; color: var(--muted); padding-bottom: 40px; }
+  @media (prefers-reduced-motion: reduce) { .cta { transition: none; } }
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar-in">
+    <a href="/" class="brand">Mona Weathers<span>// the growth circle</span></a>
+  </div>
+</header>
+
+<div class="wrap">
+  <article class="sheet">
+    <div class="eyebrow">12 months · 1:1 + group · coaches only</div>
+    <h1>The <span class="hl">Growth Circle</span></h1>
+    <div class="byline">From Coach Mona · October 2026</div>
+
+    <p class="greet">Hey coach,</p>
+    <p>You've built your foundation in The Build. Your pieces are live, your tech is connected, and you know what to focus on next. Now comes the part most coaches try to do alone: turning that foundation into a steady flow of right-fit clients.</p>
+    <p>The Growth Circle is my 12-month program for coaches who want support while they grow. You keep your seat with me and the Squad, and we work on connecting with the right people, converting them into clients, and refining what works.</p>
+
+    <h2><span class="hl">What we'll work on together</span></h2>
+    <ul>
+      <li>A program you love delivering, priced and packaged so it's easy to sell</li>
+      <li>A repeatable way to fill your calendar with right-fit clients</li>
+      <li>A sales process that feels natural, plus numbers you understand, as you grow toward $10K months</li>
+    </ul>
+
+    <h2><span class="hl">Why me</span></h2>
+    <p>One of my clients signed his first high-ticket client just weeks after joining my program. Growth happens when things are set on a good foundation. I moved into coaching coaches about a year ago and signed my first high-ticket client within weeks. Behind that is 15 years of building businesses online and 3 years of coaching.</p>
+    <p>And since you've already been through The Build, I know your business well. I won't spend our year catching up. We get to work.</p>
+
+    <h2><span class="hl">Who The Growth Circle is for</span></h2>
+    <ul>
+      <li>Coaches who finished The Build and want to keep their momentum</li>
+      <li>Coaches who know a good business takes time and want steady support for the whole year</li>
+      <li>Coaches who want a program they're proud of and the clients to fill it</li>
+      <li>Coaches who learn best by doing, with someone in their corner</li>
+    </ul>
+
+    <h2><span class="hl">Who it isn't for</span></h2>
+    <ul>
+      <li>Anyone looking for overnight success</li>
+      <li>Anyone who wants to buy a program and never show up to it</li>
+      <li>Anyone who isn't ready to put in steady, weekly effort</li>
+    </ul>
+
+    <h2><span class="hl">How the year works</span></h2>
+    <p>You can join any time after your Build wrap-up call. There are no start dates and no waiting for a group to fill. Everyone starts with the same first step, and then we move at your pace.</p>
+    <ol class="phases">
+      <li>
+        <span class="phase-label">Months 1&ndash;2</span>
+        <b>Design Your Program</b><br>Map your stages, create your paths, define what your clients walk away with, and set your price.
+      </li>
+      <li>
+        <span class="phase-label">Months 3&ndash;5</span>
+        <b>Connect</b><br>Conversations, follow-up, and community, all pointing to your program.
+      </li>
+      <li>
+        <span class="phase-label">Months 6&ndash;8</span>
+        <b>Convert</b><br>Sales calls and an offer presentation for the program you designed.
+      </li>
+      <li>
+        <span class="phase-label">Months 9&ndash;12</span>
+        <b>Activate and Refine</b><br>Templates built from real client work, numbers reviewed, delivery tightened, and prices raised.
+      </li>
+    </ol>
+
+    <h2><span class="hl">What's included</span></h2>
+    <ul>
+      <li><strong>Weekly group coaching calls</strong> with me and the Squad (join live or watch the replay when it fits your week)</li>
+      <li><strong>One 1:1 call with me each month</strong> (30 to 45 minutes, with a short prep form so we use every minute)</li>
+      <li><strong>The Growth Circle on Skool</strong> for questions between calls, plus templates and replays</li>
+      <li><strong>Small website updates each month</strong>, so your site keeps up with your business</li>
+    </ul>
+
+    <h2><span class="hl">What you'll have by the end</span></h2>
+    <ul>
+      <li>Your own program, designed, priced, and delivered</li>
+      <li>A repeatable way to fill your calendar with right-fit clients</li>
+      <li>A sales process that feels natural and converts</li>
+      <li>Numbers you understand, so you know exactly what's working toward your $10K month goal</li>
+    </ul>
+
+    <h2><span class="hl">My promise to you</span></h2>
+    <p class="promise">Give it 60 days. If The Growth Circle isn't right for you, let me know and we'll stop your payments, no hard feelings.</p>
+
+    <h2><span class="hl">The investment</span></h2>
+    <div class="price-block">
+      <p class="price">$3,500 <span style="font-size:20px;font-weight:400;color:var(--soft)">/ year</span></p>
+      <p>The $850 you paid for The Build is already credited, so you pay the remaining $2,650:</p>
+      <div class="price-options">
+        <div class="price-option">
+          <div class="amount">$221 / month</div>
+          <div class="desc">12 monthly payments</div>
+        </div>
+        <div class="price-option featured">
+          <div class="amount">$2,350</div>
+          <div class="desc">Paid in full &mdash; save $300</div>
+        </div>
+      </div>
+    </div>
+
+    <h2><span class="hl">Is this a fit?</span></h2>
+    <ol>
+      <li>You've completed The Build.</li>
+      <li>You can make your monthly 1:1 and keep up with the weekly calls, live or on replay.</li>
+      <li>You're ready to design or refine your own program this year.</li>
+      <li>You know good things take time, and you're in it for the long game.</li>
+    </ol>
+
+    <h2><span class="hl">How to join</span></h2>
+    <p>We talk about it on your Build wrap-up call. You choose monthly or paid in full, and you start Design Your Program right away.</p>
+    <a class="cta" href="/apply">Apply for The Build first &rarr;</a>
+
+    <p>See you in the Circle,</p>
+    <p class="sign">Coach Mona</p>
+
+    <hr>
+    <p class="fine">Results vary. Your income depends on your effort, your offer, your market, and many other factors. The Growth Circle gives you the systems and support. I can't promise a specific income.</p>
+  </article>
+</div>
+
+<footer>"Slowly is the fastest way to get to where you want to be." · &copy; 2026 Mona Weathers</footer>
+
+<div id="cookieBanner" style="position:fixed;bottom:0;left:0;right:0;background:rgba(25,23,19,0.92);color:rgba(246,241,231,0.8);font-family:'JetBrains Mono',monospace;font-size:11px;padding:10px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px;z-index:9999;backdrop-filter:blur(4px);">
+  <span>We use cookies &amp; analytics to understand how this page is used. <a href="/privacy" style="color:rgba(246,241,231,0.9)">Privacy Policy</a></span>
+  <div style="display:flex;gap:8px;flex-shrink:0;">
+    <button onclick="(function(){localStorage.setItem('cookie-ok','0');document.getElementById('cookieBanner').style.display='none';})()" style="background:transparent;color:rgba(246,241,231,0.6);border:1px solid rgba(246,241,231,0.3);border-radius:6px;padding:5px 12px;font-family:'JetBrains Mono',monospace;font-size:11px;cursor:pointer;white-space:nowrap;">Decline</button>
+    <button onclick="(function(){localStorage.setItem('cookie-ok','1');document.getElementById('cookieBanner').style.display='none';window._loadTracking&&window._loadTracking();})()" style="background:#E8604C;color:#f6f1e7;border:none;border-radius:6px;padding:5px 12px;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;cursor:pointer;white-space:nowrap;">Accept</button>
+  </div>
+</div>
+<script>if(localStorage.getItem('cookie-ok')||localStorage.getItem('cookiesAccepted'))document.getElementById('cookieBanner').style.display='none';</script>
+</body>
+</html>
