@@ -94,7 +94,7 @@ input,textarea{font:inherit}
               <div style="font-family:'Crimson Pro',serif;font-weight:700;font-size:30px;line-height:1.12;flex:1">I can describe my ideal client in one sentence: who they are and what they're struggling with.</div>
               <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px">
                 <span style="text-align:center;border:2px solid #1B1A17;border-radius:999px;padding:10px 4px;font-weight:700;font-size:14px;background:#F5CD4E">Yes</span>
-                <span style="text-align:center;border:2px solid #1B1A17;border-radius:999px;padding:10px 4px;font-weight:700;font-size:14px">Sometimes</span>
+                <span style="text-align:center;border:2px solid #1B1A17;border-radius:999px;padding:10px 4px;font-weight:700;font-size:14px">Working on it</span>
                 <span style="text-align:center;border:2px solid #1B1A17;border-radius:999px;padding:10px 4px;font-weight:700;font-size:14px">Not yet</span>
               </div>
             </div>
@@ -323,7 +323,7 @@ class Component extends DCLogic {
       body: 'You\'ve built a real client attraction system. Your message is clear, people trust you and leads keep coming in. Your next level is about refining and scaling, with more of the right clients, less effort and room to raise your prices.',
       ctaEyebrow: 'READY FOR MORE?', ctaTitle: 'Apply to work with Mona', ctaBody: 'My coaching program helps established coaches and consultants fine-tune what\'s working, so they can fill their calendar with ideal clients and grow without burning out.', ctaButton: 'Apply now →', urlProp: 'applyUrl', url: 'https://monaweathers.com/coaching' },
   ];
-  OPTS = [['Yes', 2], ['Sometimes', 1], ['Not yet', 0]];
+  OPTS = [['Yes', 2], ['Working on it', 1], ['Not yet', 0]];
   get Q() { return this._q || (this._q = this.P.flatMap((p, pi) => p.items.map((text, ii) => ({ id: p.key + ii, text, p, pi })))); }
 
   componentDidMount() {
