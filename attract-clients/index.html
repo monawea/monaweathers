@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>The Client Magnet Score | Mona Weathers</title>
+<title>The Client Magnet Scorecard | Mona Weathers</title>
 <meta name="description" content="A free 5-minute score for coaches and consultants. Find out how client-magnetic your business is and get your top 3 next steps.">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script>
@@ -105,7 +105,7 @@ input,textarea{font:inherit}
           <div style="display:flex;flex-direction:column;gap:18px">
             <div style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.08em;color:#F5CD4E">IT'S NOT THAT YOU'RE BAD AT MARKETING</div>
             <h2 style="margin:0;font-family:'Crimson Pro',serif;font-weight:700;font-size:clamp(36px,4.4vw,52px);line-height:1.25;text-wrap:balance">Clients don't come from one big thing. They come from <span style="background:#F5CD4E;color:#1B1A17;padding:0 10px;border-radius:6px;box-decoration-break:clone;-webkit-box-decoration-break:clone">eight small ones working together.</span></h2>
-            <p style="margin:0;font-size:18px;line-height:1.6;color:#D9D0C2;text-wrap:pretty">You're probably already strong in some areas. But if even one piece is missing, like an offer that's hard to explain or no follow-up after a call, it can hold back everything else. The Client Magnet Score shows you which piece that is.</p>
+            <p style="margin:0;font-size:18px;line-height:1.6;color:#D9D0C2;text-wrap:pretty">You're probably already strong in some areas. But if even one piece is missing, like an offer that's hard to explain or no follow-up after a call, it can hold back everything else. The Client Magnet Scorecard shows you which piece that is.</p>
           </div>
           <div style="background:#FFFCF6;color:#1B1A17;border:2.5px solid #FAF3EA;border-radius:18px;padding:26px 28px;display:flex;flex-direction:column;gap:6px">
             <div style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.08em;color:#E8604C">SOUND FAMILIAR?</div>
@@ -147,7 +147,7 @@ input,textarea{font:inherit}
           </div>
         </div>
 
-        <div style="display:flex;justify-content:center"><span onClick="{{ start }}" style="cursor:pointer;background:#E8604C;border:2.5px solid #1B1A17;border-radius:999px;padding:16px 30px;font-weight:700;font-size:18px;box-shadow:4px 4px 0 #1B1A17" style-hover="box-shadow:2px 2px 0 #1B1A17;transform:translate(2px,2px)">Get my Client Magnet Score →</span></div>
+        <div style="display:flex;justify-content:center"><span onClick="{{ start }}" style="cursor:pointer;background:#E8604C;border:2.5px solid #1B1A17;border-radius:999px;padding:16px 30px;font-weight:700;font-size:18px;box-shadow:4px 4px 0 #1B1A17" style-hover="box-shadow:2px 2px 0 #1B1A17;transform:translate(2px,2px)">Get your score →</span></div>
       </div>
     </sc-if>
 
@@ -468,7 +468,7 @@ class Component extends DCLogic {
         const el = document.createElement('div');
         el.id = '__plan';
         el.style.cssText = 'position:fixed;left:-10000px;top:0;width:1px;height:1px;overflow:hidden';
-        el.innerHTML = `<div class="lbl">The Client Magnet Score</div><div class="lbl" style="margin-top:1px">monaweathers.com/attract-clients</div><hr>${nm ? `<div class="lbl" style="margin-bottom:2px">Results for</div><div style="font-family:'Crimson Pro',serif;font-weight:700;font-size:17pt;margin-bottom:14px">${nm}</div>` : ''}<div class="lbl">Your profile</div><h1>${profile.name}</h1><div class="tgl">${profile.tagline}</div><p>${profile.body}</p><div style="margin-top:14px"><div class="lbl">Your score</div><span class="sc-big">${score}</span><span class="sc-of"> / 48</span></div><hr><h2>Top 3 next steps</h2><p style="color:#5A544B;margin-bottom:16px">Your lowest-scoring areas. Fixing these first will make the biggest difference.</p>${fxHtml}<hr><h2>Full breakdown</h2><p style="color:#5A544B">Each area scored out of 6.</p><table>${bdHtml}</table><div class="note">monaweathers.com/attract-clients</div>`;
+        el.innerHTML = `<div class="lbl">The Client Magnet Scorecard</div><div class="lbl" style="margin-top:1px">monaweathers.com/attract-clients</div><hr>${nm ? `<div class="lbl" style="margin-bottom:2px">Results for</div><div style="font-family:'Crimson Pro',serif;font-weight:700;font-size:17pt;margin-bottom:14px">${nm}</div>` : ''}<div class="lbl">Your profile</div><h1>${profile.name}</h1><div class="tgl">${profile.tagline}</div><p>${profile.body}</p><div style="margin-top:14px"><div class="lbl">Your score</div><span class="sc-big">${score}</span><span class="sc-of"> / 48</span></div><hr><h2>Top 3 next steps</h2><p style="color:#5A544B;margin-bottom:16px">Your lowest-scoring areas. Fixing these first will make the biggest difference.</p>${fxHtml}<hr><h2>Full breakdown</h2><p style="color:#5A544B">Each area scored out of 6.</p><table>${bdHtml}</table><div class="note">monaweathers.com/attract-clients</div>`;
         document.body.appendChild(el);
         document.body.classList.add('pp');
         const cleanup = () => { el.remove(); document.body.classList.remove('pp'); };
