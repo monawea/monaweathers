@@ -105,6 +105,9 @@ if(localStorage.getItem('cookie-ok')==='1'||localStorage.getItem('cookiesAccepte
   .quote figcaption { font-family: var(--mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--teal); }
   .promise { border: 2.5px solid var(--rule); border-radius: 12px; padding: 18px 20px; background: var(--tint); box-shadow: 4px 4px 0 var(--coral); }
   .price { font-family: var(--serif); font-weight: 700; font-size: 44px; line-height: 1; }
+  .price-notice { border: 2.5px solid var(--ink); border-radius: 12px; background: var(--yellow); color: var(--ink); padding: 14px 18px; display: flex; flex-wrap: wrap; gap: 4px 10px; align-items: baseline; }
+  .price-notice strong { font-family: var(--serif); font-weight: 700; font-size: 20px; }
+  .price-notice span { font-size: 15px; }
 
   .cta { align-self: flex-start; display: inline-block; text-decoration: none; font-weight: 700; font-size: 18px; color: #1B1A17; background: var(--coral); border: 2.5px solid var(--rule); border-radius: 999px; padding: 14px 26px; box-shadow: 4px 4px 0 var(--rule); transition: transform .08s, box-shadow .08s; }
   .cta:hover { transform: translate(2px, 2px); box-shadow: 2px 2px 0 var(--rule); }
@@ -210,6 +213,7 @@ if(localStorage.getItem('cookie-ok')==='1'||localStorage.getItem('cookiesAccepte
     <p class="promise">I'll keep working with you until the work is done. If you get me your intake materials within the first two weeks and complete your action steps, and everything on your Build Map isn't live by week 8, we keep going until it is. No extra cost.</p>
 
     <h2><span class="hl">The investment</span></h2>
+    <div class="price-notice"><strong>Price increases to $1,200 on November 1.</strong> <span>Lock in $850 by applying before then.</span></div>
     <p class="price">$850</p>
     <p>When you finish, you're invited to join The Growth Circle, my optional 12-month program for coaches who want steady support as they grow. Love it and want to stay? Your $850 is credited toward your first year, so you're never paying twice to keep going. Leave it? No pressure. The work you built is yours either way.</p>
 
