@@ -38,7 +38,7 @@ if(localStorage.getItem('cookie-ok')==='1'||localStorage.getItem('cookiesAccepte
   --soft:      #5A544B;
   --muted:     #6B645A;
   --dim:       #BDB4A5;
-  --rule:      rgba(27,26,23,.1);
+  --rule:      #1B1A17;
   --coral:     #E8604C;
   --yellow:    #F5CD4E;
   --teal:      #1F6F7A;
@@ -63,52 +63,13 @@ body {
 ::selection { background: var(--yellow); color: var(--ink); }
 a { color: var(--teal); text-decoration: none; }
 
-/* ── NAV ── */
-.site-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 18px 40px;
-  border-bottom: 1.5px solid var(--ink);
-  background: var(--bg);
-  position: sticky;
-  top: 0;
-  z-index: 100;
-}
-.nav-brand {
-  font-family: var(--mono);
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  color: var(--ink);
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.nav-brand-sep {
-  color: var(--muted);
-  font-weight: 400;
-  margin: 0 2px;
-}
-.nav-logo {
-  width: 28px;
-  height: 28px;
-  object-fit: contain;
-}
-.nav-cta {
-  background: var(--coral);
-  color: var(--ink);
-  text-decoration: none;
-  font-family: var(--sans);
-  font-size: 13px;
-  font-weight: 700;
-  padding: 9px 20px;
-  border-radius: 999px;
-  border: 2px solid var(--ink);
-  box-shadow: 3px 3px 0 var(--ink);
-  transition: transform 0.1s, box-shadow 0.1s;
-}
+/* ── TOPBAR ── */
+.topbar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); border-bottom: 2px solid var(--ink); }
+.topbar-in { max-width: 960px; margin: 0 auto; padding: 14px 20px; display: flex; justify-content: space-between; align-items: baseline; gap: 16px; }
+.brand { font-family: var(--serif); font-weight: 700; font-size: 22px; text-decoration: none; color: var(--ink); }
+.brand span { font-family: var(--mono); font-weight: 400; font-size: 12px; color: var(--teal); margin-left: 8px; }
+.brand:hover { opacity: .75; }
+.nav-cta { background: var(--coral); color: var(--ink); text-decoration: none; font-family: var(--sans); font-size: 13px; font-weight: 700; padding: 9px 20px; border-radius: 999px; border: 2px solid var(--ink); box-shadow: 3px 3px 0 var(--ink); transition: transform 0.1s, box-shadow 0.1s; white-space: nowrap; }
 .nav-cta:hover { transform: translate(2px,2px); box-shadow: 1px 1px 0 var(--ink); color: var(--ink); }
 
 /* ── LAYOUT ── */
@@ -621,60 +582,25 @@ section:last-of-type { border-bottom: none; }
 .cta-contact a:hover { color: var(--yellow); border-bottom-color: var(--yellow); }
 
 /* ── FOOTER ── */
-.site-footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 24px 40px;
-  font-family: var(--mono);
-  font-size: 12px;
-  color: var(--muted);
-  border-top: 1.5px solid var(--ink);
-  flex-wrap: wrap;
-  gap: 10px;
-}
-.site-footer a {
-  color: var(--muted);
-  border-bottom: 1px solid rgba(107,100,90,.25);
-}
-.site-footer a:hover { color: var(--ink); }
-
-/* ── CURSOR DOT ── */
-#cursor-dot {
-  width: 22px; height: 22px;
-  border-radius: 50%;
-  background: var(--coral);
-  position: fixed;
-  top: 0; left: 0;
-  pointer-events: none;
-  z-index: 9999;
-  transform: translate(-50%,-50%);
-  transition: transform 0.08s ease, opacity 0.2s;
-  mix-blend-mode: multiply;
-}
-@media (hover: none) { #cursor-dot { display: none; } }
+.site-footer { text-align: center; font-family: var(--mono); font-size: 12px; color: var(--muted); padding: 0 16px 40px; }
+.site-footer a { color: var(--muted); }
 
 /* ── RESPONSIVE ── */
 @media (max-width: 600px) {
-  .site-nav { padding: 14px 20px; }
   section { padding: 52px 0; }
   .cta-section { padding: 40px 24px; }
-  .site-footer { padding: 20px 20px; flex-direction: column; text-align: center; }
 }
 </style>
 </head>
 <body>
 
-<div id="cursor-dot"></div>
-
-<!-- NAV -->
-<nav class="site-nav">
-  <a href="/mona-shelly-site" class="nav-brand">
-    <img src="shelly-logo.webp" alt="Shelly Sites" class="nav-logo">
-    Mona Weathers <span class="nav-brand-sep">//</span> shelly sites
-  </a>
-  <a href="#pricing" class="nav-cta">Get Your Site →</a>
-</nav>
+<!-- TOPBAR -->
+<header class="topbar">
+  <div class="topbar-in">
+    <a href="/" class="brand">Mona Weathers<span>// shelly sites</span></a>
+    <a href="#pricing" class="nav-cta">Get Your Site →</a>
+  </div>
+</header>
 
 <div class="page-wrap">
 
@@ -953,14 +879,7 @@ section:last-of-type { border-bottom: none; }
 </div>
 
 <!-- FOOTER -->
-<footer class="site-footer">
-  <span>&copy; 2026 Mona Weathers Coaching</span>
-  <span style="display:flex;gap:16px;align-items:center;flex-wrap:wrap;">
-    <a href="/privacy">Privacy Policy</a>
-    <a href="/terms">Terms</a>
-    <a href="/mona-shelly-site">← Back to Mona's site</a>
-  </span>
-</footer>
+<footer class="site-footer">"Slowly is the fastest way to get to where you want to be." · © 2026 Mona Weathers · <a href="/privacy">Privacy</a> · <a href="/terms">Terms</a></footer>
 
 <!-- Cookie notice -->
 <div id="cookie-bar" style="position:fixed;bottom:0;left:0;right:0;background:rgba(25,23,19,0.92);color:rgba(250,243,234,0.8);font-family:'JetBrains Mono',monospace;font-size:11px;padding:10px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px;z-index:9999;backdrop-filter:blur(4px);">
@@ -1005,13 +924,6 @@ section:last-of-type { border-bottom: none; }
   updateCountdown();
   setInterval(updateCountdown, 1000);
 
-  /* Custom cursor */
-  (function() {
-    var dot = document.getElementById('cursor-dot');
-    document.addEventListener('mousemove', function(e) { dot.style.left=e.clientX+'px'; dot.style.top=e.clientY+'px'; });
-    document.addEventListener('mouseleave', function() { dot.style.opacity='0'; });
-    document.addEventListener('mouseenter', function() { dot.style.opacity='1'; });
-  })();
 </script>
 
 </body>
