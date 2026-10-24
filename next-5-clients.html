@@ -220,10 +220,10 @@ footer{border-top:2px solid var(--ink);padding-top:14px;display:flex;justify-con
     if(state.step===0){
       h=header()
         +'<form class="box" id="gate" novalidate style="--c:var(--blue)"><h2>Get your checklist</h2>'
-        +'<p>Enter your name and email to open the checklist. Your answers save as you go, and you\'ll get a copy of your results.</p>'
+        +'<p>Enter your name and email to open the checklist. A PDF copy goes straight to your inbox, and you can also download the interactive web version to save and fill in anytime.</p>'
         +'<ul class="howto"><li><b>1</b><span>Watch the short walkthrough video, then work through 4 sections and fill in your answers.</span></li>'
         +'<li><b>2</b><span>See your score and exactly what to work on next.</span></li>'
-        +'<li><b>3</b><span>Use the next 30 days to fill in every blank.</span></li></ul>'
+        +'<li><b>3</b><span>Download your results as a PDF or save the interactive version to your device.</span></li></ul>'
         +'<div class="field"><label for="f-name">First name</label><input type="text" id="f-name" autocomplete="given-name" value="'+esc(state.name)+'"></div>'
         +'<div class="field"><label for="f-email">Email</label><input type="email" id="f-email" autocomplete="email" value="'+esc(state.email)+'"></div>'
         +'<p class="err" id="err" hidden></p>'
