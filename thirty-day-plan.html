@@ -116,6 +116,9 @@ if(localStorage.getItem('cookie-ok')==='1'||localStorage.getItem('cookiesAccepte
   hr { border: 0; border-top: 2px dashed var(--rule); width: 100%; margin: 10px 0; }
   .fine { font-size: 13.5px; color: var(--muted); }
 
+  .video-block { width: 100%; border: 2.5px solid var(--rule); border-radius: 12px; overflow: hidden; aspect-ratio: 16/9; background: var(--teal); display: flex; align-items: center; justify-content: center; position: relative; }
+  .video-block .video-placeholder { font-family: var(--mono); font-size: 15px; color: var(--hl-ink); opacity: .6; }
+
   footer { text-align: center; font-family: var(--mono); font-size: 15px; color: var(--muted); padding-bottom: 40px; }
   @media (prefers-reduced-motion: reduce) { .cta { transition: none; } }
 </style>
@@ -136,6 +139,20 @@ if(localStorage.getItem('cookie-ok')==='1'||localStorage.getItem('cookiesAccepte
     <p class="greet">Hey coach,</p>
     <p>This is a 30-day course for coaches and consultants who are just getting started or have landed their first clients and want more. One short lesson and one small action a day, built on Attract, Connect, Convert.</p>
     <p>By the end of the month, you'll have your offer set, your content planned, your people reached, and your next offers made.</p>
+
+    <!-- VIDEO: replace src with embed URL when ready -->
+    <div class="video-block" id="videoBlock">
+      <span class="video-placeholder">[ video coming soon ]</span>
+    </div>
+    <script>
+    (function(){
+      var VIDEO='https://[VIDEO-LINK]';
+      if(VIDEO.indexOf('[')>-1)return;
+      var b=document.getElementById('videoBlock');
+      b.innerHTML='<iframe src="'+VIDEO+'" width="100%" height="100%" frameborder="0" allow="autoplay; fullscreen" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;"></iframe>';
+      b.style.position='relative';
+    })();
+    </script>
 
     <h2><span class="hl">How each lesson works</span></h2>
     <ul class="lesson-steps">
