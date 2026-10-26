@@ -315,7 +315,8 @@ footer{border-top:2px solid var(--ink);padding-top:14px;display:flex;justify-con
       h=progress();
       if(state.step===1){
         h+='<div class="video-wrap"><div class="video-embed"><div class="video-embed-placeholder"><svg width="28" height="28" viewBox="0 0 24 24" fill="rgba(255,255,255,0.5)"><polygon points="7 4 20 12 7 20"/></svg></div></div>'
-          +'<strong>Start here: watch the walkthrough</strong></div>';
+          +'<strong>Start here: watch the walkthrough</strong></div>'
+          +'<p class="mono" style="font-size:13px">Not sure what to coach on yet? <button class="btn" type="button" id="open-bonus-s1" style="min-height:34px;padding:0 14px;font-size:13px">Find your idea first &rarr;</button></p>';
       }else{
         h+='<a class="mono" href="'+VIDEO+'" target="_blank" rel="noopener" style="color:var(--teal);font-weight:600;align-self:flex-start">&#9654; Rewatch the walkthrough</a>';
       }
@@ -520,7 +521,9 @@ footer{border-top:2px solid var(--ink);padding-top:14px;display:flex;justify-con
 
   function bind(){
     var q=function(id){return document.getElementById(id);};
-    if(q('open-bonus'))q('open-bonus').onclick=function(){state.bonusOpen=true;save();render();window.scrollTo(0,0);};
+    function openBonus(){state.bonusOpen=true;save();render();window.scrollTo(0,0);}
+    if(q('open-bonus'))q('open-bonus').onclick=openBonus;
+    if(q('open-bonus-s1'))q('open-bonus-s1').onclick=openBonus;
     if(q('back'))q('back').onclick=function(){go(state.step-1);};
     if(q('next'))q('next').onclick=function(){go(state.step+1);};
     if(q('edit'))q('edit').onclick=function(){go(1);};
