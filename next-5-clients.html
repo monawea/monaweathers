@@ -15,6 +15,9 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 window._loadTracking=function(){if(window._tl)return;window._tl=1;var s=document.createElement('script');s.async=1;s.src='https://www.googletagmanager.com/gtag/js?id=G-EC1B7WJ2PE';document.head.appendChild(s);s.onload=function(){gtag('js',new Date());gtag('config','G-EC1B7WJ2PE');};fbq('init','1596541782072028');fbq('track','PageView');var f=document.createElement('script');f.async=1;f.src='https://connect.facebook.net/en_US/fbevents.js';document.head.appendChild(f);oaiq('init',{pixelId:'6uDnseGUA4oEWbSawFkXim'});var o=document.createElement('script');o.async=1;o.src='https://bzrcdn.openai.com/sdk/oaiq.min.js';document.head.appendChild(o);};
 if(localStorage.getItem('cookie-ok')==='1'||localStorage.getItem('cookiesAccepted')==='1')window._loadTracking();
 </script>
+<script>
+  (function(w,d,t,h,s,n){w.FlodeskObject=n;var fn=function(){(w[n].q=w[n].q||[]).push(arguments);};w[n]=w[n]||fn;var f=d.getElementsByTagName(t)[0];var v='?v='+Math.floor(new Date().getTime()/(120*1000))*60;var sm=d.createElement(t);sm.async=true;sm.type='module';sm.src=h+s+'.mjs'+v;f.parentNode.insertBefore(sm,f);var sn=d.createElement(t);sn.async=true;sn.noModule=true;sn.src=h+s+'.js'+v;f.parentNode.insertBefore(sn,f);})(window,document,'script','https://assets.flodesk.com','/universal','fd');
+</script>
 <style>
 :root{
   --bg:#FAF3EA; --card:#FFFCF6; --sand:#F2E7D6; --ink:#1B1A17; --ink-soft:#5A544B; --faint:#A59C8E; --line:#E2D4BF;
@@ -299,17 +302,14 @@ footer{border-top:2px solid var(--ink);padding-top:14px;display:flex;justify-con
     var h='';
     if(state.step===0){
       h=header()
-        +'<form class="box" id="gate" novalidate style="--c:var(--blue)"><h2>Get your checklist</h2>'
+        +'<div class="box" style="--c:var(--blue)"><h2>Get your checklist</h2>'
         +'<p>Enter your name and email and we\'ll send a fillable PDF checklist straight to your inbox. Or work through the interactive version right here and download your completed results when you\'re done.</p>'
-        +'<ul class="howto"><li><b>1</b><span>Watch the short walkthrough video, then work through 4 sections and fill in your answers.</span></li>'
-        +'<li><b>2</b><span>See your score and exactly what to work on next.</span></li>'
-        +'<li><b>3</b><span>Download your completed results as a PDF, or use the fillable PDF sent to your inbox.</span></li></ul>'
-        +'<div class="field"><label for="f-name">First name</label><input type="text" id="f-name" autocomplete="given-name" value="'+esc(state.name)+'"></div>'
-        +'<div class="field"><label for="f-email">Email</label><input type="email" id="f-email" autocomplete="email" value="'+esc(state.email)+'"></div>'
-        +'<p class="err" id="err" hidden></p>'
-        +'<div class="row"><button class="btn coral" type="submit">Open my checklist</button></div>'
-        +'<p class="mono" style="margin-top:4px">Not sure what you\'d coach on yet? <button class="btn" type="button" id="open-bonus" style="min-height:36px;padding:0 14px;font-size:13px">Find your idea first &rarr;</button></p>'
-        +'</form>';
+        +'<div id="fd-form-6adfde19da09fd14dc782189"></div>'
+        +'<div style="display:flex;align-items:center;gap:12px;margin:4px 0"><div style="flex:1;border-top:2px dashed var(--line)"></div><span class="mono" style="font-size:13px;color:var(--faint)">or</span><div style="flex:1;border-top:2px dashed var(--line)"></div></div>'
+        +'<p class="mono" style="font-size:14px">Skip the email and work through the interactive version right here.</p>'
+        +'<div class="row"><button class="btn coral" type="button" id="skip-gate">Open the interactive checklist &rarr;</button></div>'
+        +'<p class="mono" style="margin-top:4px;font-size:13px">Not sure what to coach on yet? <button class="btn" type="button" id="open-bonus" style="min-height:36px;padding:0 14px;font-size:13px">Find your idea first &rarr;</button></p>'
+        +'</div>';
     }else if(state.step<=4){
       var s=sections[state.step-1];
       h=progress();
@@ -539,16 +539,10 @@ footer{border-top:2px solid var(--ink);padding-top:14px;display:flex;justify-con
       vclose.onclick=function(){modal.classList.remove('open');};
       modal.onclick=function(e){if(e.target===modal)modal.classList.remove('open');};
     }
-    var gate=q('gate');
-    if(gate)gate.onsubmit=function(e){
-      e.preventDefault();
-      var name=q('f-name').value.trim(),email=q('f-email').value.trim(),err=q('err');
-      if(!name){err.textContent='Add your first name to open the checklist.';err.hidden=false;q('f-name').focus();return;}
-      if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){err.textContent='That email doesn\'t look complete. Check it and try again.';err.hidden=false;q('f-email').focus();return;}
-      state.name=name;state.email=email;state.unlocked=true;
-      // TODO: connect email capture — add Formspree or ConvertKit submit here before go(1)
-      go(1);
-    };
+    if(q('skip-gate')){q('skip-gate').onclick=function(){state.unlocked=true;go(1);};}
+    if(q('fd-form-6adfde19da09fd14dc782189')&&window.fd){
+      window.fd('form',{formId:'6adfde19da09fd14dc782189',containerEl:'#fd-form-6adfde19da09fd14dc782189'});
+    }
   }
 
   render();
