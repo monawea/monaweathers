@@ -301,7 +301,7 @@ footer{border-top:2px solid var(--ink);padding-top:14px;display:flex;justify-con
         +week('Week 3','var(--coral)','Connect','Build your warm list, start real conversations, and follow up without feeling pushy.')
         +week('Week 4','var(--sage)','Convert','Run your discovery calls or send your offer doc, make the invite, and know what to do after a yes.')
         +'</div>'
-        +'<div class="panel"><p class="eyebrow">Included with Clients for Coaches &middot; $29 a month</p><h2>Work through the 30 days with support beside you</h2>'
+        +'<div class="panel"><p class="eyebrow">Included with Clients for Coaches &middot; $97 one-time</p><h2>Work through the 30 days with support beside you</h2>'
         +'<p>Your membership includes the full 30-Day Plan plus monthly live workshops and challenges, and a community of coaches and consultants building right alongside you.</p>'
         +'<div><a class="btn coral" href="'+JOIN+'" target="_blank" rel="noopener">Join and start the plan</a></div></div>';
     }
@@ -392,7 +392,7 @@ footer{border-top:2px solid var(--ink);padding-top:14px;display:flex;justify-con
     doc.setFont('times','bold');doc.setFontSize(15);doc.setTextColor(255,252,246);
     doc.text('Next step: Your Next 5 Clients, The 30-Day Plan',M+16,y+24);
     doc.setFont('helvetica','normal');doc.setFontSize(10);doc.setTextColor(226,212,191);
-    doc.text('Included with Clients for Coaches ($29 a month). '+JOIN,M+16,y+44);
+    doc.text('Included with Clients for Coaches ($97 one-time).'+JOIN,M+16,y+44);
     var fname='next-5-clients-results'+(state.name?'-'+state.name.toLowerCase().replace(/[^a-z0-9]+/g,'-'):'')+'.pdf';
     saveFile(fname,doc.output('arraybuffer'),msg);
   }
