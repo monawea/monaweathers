@@ -105,6 +105,11 @@ if(localStorage.getItem('cookie-ok')==='1'||localStorage.getItem('cookiesAccepte
   .price-was { font-family: var(--serif); font-weight: 700; font-size: 32px; color: var(--muted); text-decoration: line-through; }
   .price-sale-row { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; }
   .sale-badge { font-family: var(--mono); font-size: 13px; font-weight: 600; background: var(--yellow); color: var(--ink); border: 1.5px solid var(--rule); border-radius: 999px; padding: 3px 10px; white-space: nowrap; }
+  .countdown { display: flex; align-items: center; gap: 4px; margin-top: 4px; }
+  .cd-unit { display: flex; flex-direction: column; align-items: center; min-width: 48px; background: var(--ink); color: var(--paper); border-radius: 8px; padding: 8px 10px; }
+  .cd-num { font-family: var(--mono); font-size: 26px; font-weight: 600; line-height: 1; font-variant-numeric: tabular-nums; }
+  .cd-lbl { font-family: var(--mono); font-size: 10px; letter-spacing: .08em; text-transform: uppercase; opacity: .6; margin-top: 2px; }
+  .cd-sep { font-family: var(--mono); font-size: 22px; font-weight: 700; color: var(--muted); padding-bottom: 12px; }
   .price-note { font-family: var(--mono); font-size: 15px; color: var(--muted); }
 
   .cta { align-self: flex-start; display: inline-block; text-decoration: none; font-weight: 700; font-size: 18px; color: #1B1A17; background: var(--coral); border: 2.5px solid var(--rule); border-radius: 999px; padding: 14px 26px; box-shadow: 4px 4px 0 var(--rule); transition: transform .08s, box-shadow .08s; }
@@ -252,17 +257,38 @@ if(localStorage.getItem('cookie-ok')==='1'||localStorage.getItem('cookiesAccepte
 <script>if(localStorage.getItem('cookie-ok')||localStorage.getItem('cookiesAccepted'))document.getElementById('cookieBanner').style.display='none';</script>
 <script>
 (function(){
-  var saleEnds = new Date('2026-11-01T00:00:00');
-  var now = new Date();
+  var saleEnds = new Date('2026-11-10T00:00:00');
   var box = document.getElementById('priceDisplay');
-  if(now < saleEnds){
+  var timerEl;
+
+  function render(){
+    var now = new Date();
+    if(now >= saleEnds){
+      box.innerHTML = '<div class="price-main">$97</div>';
+      return;
+    }
+    if(!timerEl){
+      box.innerHTML = '<div class="price-sale-row"><div class="price-main">$67</div><div class="price-was">$97</div></div>'
+        + '<span class="sale-badge">Sale ends Nov 10</span>'
+        + '<div class="countdown" id="countdown"></div>';
+      timerEl = document.getElementById('countdown');
+    }
     var diff = saleEnds - now;
-    var days = Math.ceil(diff / (1000*60*60*24));
-    box.innerHTML = '<div class="price-sale-row"><div class="price-main">$67</div><div class="price-was">$97</div></div>'
-      + '<span class="sale-badge">Sale ends Nov 1 &middot; ' + days + ' day' + (days===1?'':'s') + ' left</span>';
-  } else {
-    box.innerHTML = '<div class="price-main">$97</div>';
+    var d = Math.floor(diff / 86400000);
+    var h = Math.floor((diff % 86400000) / 3600000);
+    var m = Math.floor((diff % 3600000) / 60000);
+    var s = Math.floor((diff % 60000) / 1000);
+    timerEl.innerHTML =
+      '<span class="cd-unit"><span class="cd-num">' + d + '</span><span class="cd-lbl">days</span></span>'
+      + '<span class="cd-sep">:</span>'
+      + '<span class="cd-unit"><span class="cd-num">' + String(h).padStart(2,'0') + '</span><span class="cd-lbl">hrs</span></span>'
+      + '<span class="cd-sep">:</span>'
+      + '<span class="cd-unit"><span class="cd-num">' + String(m).padStart(2,'0') + '</span><span class="cd-lbl">min</span></span>'
+      + '<span class="cd-sep">:</span>'
+      + '<span class="cd-unit"><span class="cd-num">' + String(s).padStart(2,'0') + '</span><span class="cd-lbl">sec</span></span>';
   }
+  render();
+  setInterval(render, 1000);
 })();
 </script>
 </body>
