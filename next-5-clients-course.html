@@ -102,6 +102,9 @@ if(localStorage.getItem('cookie-ok')==='1'||localStorage.getItem('cookiesAccepte
 
   .price-box { border: 2.5px solid var(--rule); border-radius: 12px; padding: 22px 24px; background: var(--tint); box-shadow: 4px 4px 0 var(--teal-2); display: flex; flex-direction: column; gap: 10px; }
   .price-main { font-family: var(--serif); font-weight: 700; font-size: 68px; line-height: 1; color: var(--coral); }
+  .price-was { font-family: var(--serif); font-weight: 700; font-size: 32px; color: var(--muted); text-decoration: line-through; }
+  .price-sale-row { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; }
+  .sale-badge { font-family: var(--mono); font-size: 13px; font-weight: 600; background: var(--yellow); color: var(--ink); border: 1.5px solid var(--rule); border-radius: 999px; padding: 3px 10px; white-space: nowrap; }
   .price-note { font-family: var(--mono); font-size: 15px; color: var(--muted); }
 
   .cta { align-self: flex-start; display: inline-block; text-decoration: none; font-weight: 700; font-size: 18px; color: #1B1A17; background: var(--coral); border: 2.5px solid var(--rule); border-radius: 999px; padding: 14px 26px; box-shadow: 4px 4px 0 var(--rule); transition: transform .08s, box-shadow .08s; }
@@ -208,7 +211,9 @@ if(localStorage.getItem('cookie-ok')==='1'||localStorage.getItem('cookiesAccepte
 
     <h2><span class="hl">The investment</span></h2>
     <div class="price-box">
-      <div class="price-main">$97</div>
+      <div id="priceDisplay">
+        <!-- filled by script below -->
+      </div>
       <div class="price-note">One-time payment.</div>
       <p>Includes the full 30-Day Plan plus <strong>Clients for Coaches</strong>, the free community on Skool with monthly live workshops, challenges, and coaches and consultants doing the 30 days right alongside you.</p>
     </div>
@@ -245,5 +250,20 @@ if(localStorage.getItem('cookie-ok')==='1'||localStorage.getItem('cookiesAccepte
   </div>
 </div>
 <script>if(localStorage.getItem('cookie-ok')||localStorage.getItem('cookiesAccepted'))document.getElementById('cookieBanner').style.display='none';</script>
+<script>
+(function(){
+  var saleEnds = new Date('2026-11-01T00:00:00');
+  var now = new Date();
+  var box = document.getElementById('priceDisplay');
+  if(now < saleEnds){
+    var diff = saleEnds - now;
+    var days = Math.ceil(diff / (1000*60*60*24));
+    box.innerHTML = '<div class="price-sale-row"><div class="price-main">$67</div><div class="price-was">$97</div></div>'
+      + '<span class="sale-badge">Sale ends Nov 1 &middot; ' + days + ' day' + (days===1?'':'s') + ' left</span>';
+  } else {
+    box.innerHTML = '<div class="price-main">$97</div>';
+  }
+})();
+</script>
 </body>
 </html>
