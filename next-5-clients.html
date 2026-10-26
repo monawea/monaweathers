@@ -47,6 +47,9 @@ button:focus-visible,input:focus-visible,a:focus-visible{outline:3px solid var(-
 .video{display:flex;gap:16px;align-items:center;padding:16px 18px;border:2.5px solid var(--ink);border-radius:14px;box-shadow:3px 3px 0 var(--ink);background:var(--sand);color:var(--ink);text-decoration:none}
 .play{flex:none;width:52px;height:52px;border-radius:50%;border:2px solid var(--ink);background:var(--coral);display:flex;align-items:center;justify-content:center}
 .video strong{font-family:var(--display);font-size:22px;line-height:1.1}
+.video-embed{border:2.5px solid var(--ink);border-radius:14px;box-shadow:5px 5px 0 var(--ink);overflow:hidden;position:relative;aspect-ratio:16/9;background:var(--teal)}
+.video-embed iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.video-embed-placeholder{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;color:rgba(255,255,255,0.7);font-family:var(--mono);font-size:15px}
 .field{display:flex;flex-direction:column;gap:6px}
 .field label{font-family:var(--mono);font-size:15px;font-weight:600;letter-spacing:.04em;text-transform:uppercase}
 input[type=text],input[type=email]{width:100%;min-height:48px;padding:10px 14px;border:2px solid var(--ink);border-radius:10px;background:var(--card);color:var(--ink);font:inherit;font-size:16px}
@@ -232,8 +235,7 @@ footer{border-top:2px solid var(--ink);padding-top:14px;display:flex;justify-con
       var s=sections[state.step-1];
       h=progress();
       if(state.step===1){
-        h+='<a class="video" href="'+VIDEO+'" target="_blank" rel="noopener"><span class="play"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="#1B1A17"><polygon points="7 4 20 12 7 20"></polygon></svg></span>'
-          +'<span style="display:flex;flex-direction:column;gap:2px;min-width:0"><strong>Start here: watch the walkthrough</strong><span class="mono">About 10 minutes with Coach Mona. I\'ll go through every section with you.</span></span></a>';
+        h+='<div class="video-embed"><div class="video-embed-placeholder"><svg width="48" height="48" viewBox="0 0 24 24" fill="rgba(255,255,255,0.4)"><circle cx="12" cy="12" r="11" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" fill="none"/><polygon points="10 8 17 12 10 16"/></svg><span>Video coming soon</span></div></div>';
       }else{
         h+='<a class="mono" href="'+VIDEO+'" target="_blank" rel="noopener" style="color:var(--teal);font-weight:600;align-self:flex-start">&#9654; Rewatch the walkthrough</a>';
       }
