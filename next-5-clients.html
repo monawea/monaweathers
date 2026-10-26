@@ -114,6 +114,22 @@ input::placeholder{color:var(--faint)}
 .panel p{color:#E2D4BF}
 footer{border-top:2px solid var(--ink);padding-top:14px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 @media (prefers-reduced-motion:reduce){.btn,.fill{transition:none}}
+.bonus-tag{font-family:var(--mono);font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--teal);display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.bonus-badge{background:var(--gold);color:var(--ink);border:2px solid var(--ink);border-radius:999px;padding:2px 12px;font-weight:700}
+.bstep{border:2px solid var(--ink);border-left:5px solid var(--bc,var(--gold));border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:12px}
+.bstep-lbl{font-family:var(--mono);font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft)}
+.bonus-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media(max-width:520px){.bonus-grid{grid-template-columns:1fr}}
+.idea-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px}
+.idea-cat{border:2px solid var(--ink);border-radius:10px;padding:12px 14px;display:flex;flex-direction:column;gap:4px;cursor:pointer;background:var(--card);box-shadow:2px 2px 0 var(--ink);transition:background .1s}
+.idea-cat:has(input:checked){background:var(--gold)}
+.idea-cat strong{font-family:var(--mono);font-size:14px;pointer-events:none}
+.idea-cat span{font-size:13px;color:var(--ink-soft);pointer-events:none}
+.idea-cat:has(input:checked) span{color:var(--ink)}
+.idea-row{display:flex;flex-wrap:wrap;align-items:center;gap:6px 8px}
+.idea-row .mono{white-space:nowrap}
+.idea-row input{flex:1 1 120px;min-width:80px}
+.btest{display:flex;flex-direction:column;gap:8px}
 </style>
 </head>
 <body>
@@ -183,7 +199,7 @@ footer{border-top:2px solid var(--ink);padding-top:14px;display:flex;justify-con
     ]}
   ];
 
-  var state={step:0,checks:{},answers:{},path:'',name:'',email:'',unlocked:false};
+  var state={step:0,checks:{},answers:{},path:'',name:'',email:'',unlocked:false,bonusOpen:false};
   try{var saved=JSON.parse(localStorage.getItem(KEY)||'null');if(saved)state=Object.assign(state,saved);}catch(e){}
   if(!state.unlocked)state.step=0;
   function save(){try{localStorage.setItem(KEY,JSON.stringify(state));}catch(e){}
@@ -240,7 +256,44 @@ footer{border-top:2px solid var(--ink);padding-top:14px;display:flex;justify-con
     return '<div class="box week" style="--c:'+c+'"><span class="mono">'+tag+'</span><h3>'+title+'</h3><p>'+text+'</p></div>';
   }
 
+  function renderBonus(){
+    var a=state.answers;
+    var h=header();
+    h+='<div class="bonus-tag"><span class="bonus-badge">Bonus</span>Start here if you haven\'t started yet</div>';
+    h+='<section class="box" style="--c:var(--gold)">';
+    h+='<h2>Find Your Coaching Idea</h2>';
+    h+='<p class="tip">Your best idea is usually hiding in what you already know and what people already ask you about. Fill this in, pick one idea, then start the checklist.</p>';
+    h+='<div class="bstep" style="--bc:var(--blue)"><div class="bstep-lbl">Step 1 · What You Already Know</div><div class="bonus-grid">';
+    [{id:'bj',l:'Jobs I\'ve had'},{id:'ba',l:'People ask me about'},{id:'bhi',l:'Hard thing I figured out'},{id:'bt',l:'I could talk for hours on'},{id:'bsk',l:'Skills or training'},{id:'bho',l:'Hobbies I\'m good at'}].forEach(function(f){
+      h+='<div class="field"><label for="ans-'+f.id+'">'+f.l+'</label><input type="text" id="ans-'+f.id+'" data-ans="'+f.id+'" value="'+esc(a[f.id]||'')+'"></div>';
+    });
+    h+='</div></div>';
+    h+='<div class="bstep" style="--bc:var(--teal)"><div class="bstep-lbl">Step 2 · Idea Starters (check any that fit)</div><div class="idea-grid">';
+    [{id:'bcat1',l:'Career and work',d:'Career changers, new managers, job seekers'},{id:'bcat2',l:'Business skills',d:'Marketing, sales, systems or tech for small businesses'},{id:'bcat3',l:'Life transitions',d:'New parents, empty nesters, starting over'},{id:'bcat4',l:'Home and money',d:'Budgeting, organizing, homemaking, simple living'},{id:'bcat5',l:'Creative skills',d:'Writing, photos, design, crafts, hobby to income'},{id:'bcat6',l:'Mindset and habits',d:'Confidence, time, routines, follow-through'}].forEach(function(c){
+      h+='<label class="idea-cat"><input type="checkbox" data-check="'+c.id+'"'+(state.checks[c.id]?' checked':'')+'style="display:none"><strong>'+c.l+'</strong><span>'+c.d+'</span></label>';
+    });
+    h+='</div></div>';
+    h+='<div class="bstep" style="--bc:var(--coral)"><div class="bstep-lbl">Step 3 · Write 3 Ideas</div><p class="mono">I\'ve [done or lived this], so I could help [these people] get [this result].</p>';
+    for(var i=1;i<=3;i++){
+      h+='<div class="idea-row"><span class="mono">'+i+'.</span><span class="mono">I\'ve</span><input type="text" data-ans="bi'+i+'a" placeholder="done or lived this" value="'+esc(a['bi'+i+'a']||'')+'">'
+        +'<span class="mono">so I could help</span><input type="text" data-ans="bi'+i+'b" placeholder="these people" value="'+esc(a['bi'+i+'b']||'')+'">'
+        +'<span class="mono">get</span><input type="text" data-ans="bi'+i+'c" placeholder="this result" value="'+esc(a['bi'+i+'c']||'')+'"></div>';
+    }
+    h+='</div>';
+    h+='<div class="bstep" style="--bc:var(--sage)"><div class="bstep-lbl">Step 4 · Quick Test (check for your favorite idea)</div><div class="btest">';
+    [{id:'bt1',t:'People already ask me about this'},{id:'bt2',t:"I'd enjoy talking about it every week"},{id:'bt3',t:"They'd pay to get there faster"},{id:'bt4',t:'I know where to find these people'}].forEach(function(t){
+      h+='<label class="check" style="--c:var(--sage)"><input type="checkbox" id="chk-'+t.id+'" data-check="'+t.id+'"'+(state.checks[t.id]?' checked':'')+'><span>'+t.t+'</span></label>';
+    });
+    h+='</div><p class="mono" style="color:var(--teal)">3 or more checks = a strong start</p>';
+    h+='<div class="field"><label for="ans-bidea">The idea I\'m going with</label><input type="text" id="ans-bidea" data-ans="bidea" placeholder="Write it here" value="'+esc(a.bidea||'')+'"></div></div>';
+    h+='<div class="nav"><button class="btn" type="button" id="bonus-back">Back</button><button class="btn gold" type="button" id="bonus-start">I have my idea &rarr; Start the checklist</button></div>';
+    h+='</section>';
+    h+='<footer><span class="mono">Mona Weathers Coaching</span><a href="/" class="mono" style="color:var(--teal)">monaweathers.com</a></footer>';
+    return h;
+  }
+
   function render(){
+    if(state.bonusOpen){app.innerHTML=renderBonus();bindBonus();return;}
     var h='';
     if(state.step===0){
       h=header()
@@ -252,7 +305,9 @@ footer{border-top:2px solid var(--ink);padding-top:14px;display:flex;justify-con
         +'<div class="field"><label for="f-name">First name</label><input type="text" id="f-name" autocomplete="given-name" value="'+esc(state.name)+'"></div>'
         +'<div class="field"><label for="f-email">Email</label><input type="email" id="f-email" autocomplete="email" value="'+esc(state.email)+'"></div>'
         +'<p class="err" id="err" hidden></p>'
-        +'<div><button class="btn coral" type="submit">Open my checklist</button></div></form>';
+        +'<div class="row"><button class="btn coral" type="submit">Open my checklist</button></div>'
+        +'<p class="mono" style="margin-top:4px">Not sure what you\'d coach on yet? <button class="btn" type="button" id="open-bonus" style="min-height:36px;padding:0 14px;font-size:13px">Find your idea first &rarr;</button></p>'
+        +'</form>';
     }else if(state.step<=4){
       var s=sections[state.step-1];
       h=progress();
@@ -397,8 +452,18 @@ footer{border-top:2px solid var(--ink);padding-top:14px;display:flex;justify-con
     saveFile(fname,doc.output('arraybuffer'),msg);
   }
 
+  function bindBonus(){
+    var q=function(id){return document.getElementById(id);};
+    function closeBonus(){state.bonusOpen=false;save();render();window.scrollTo(0,0);}
+    if(q('bonus-back'))q('bonus-back').onclick=closeBonus;
+    if(q('bonus-start'))q('bonus-start').onclick=closeBonus;
+    app.querySelectorAll('[data-check]').forEach(function(el){el.onchange=function(){state.checks[el.dataset.check]=el.checked;save();};});
+    app.querySelectorAll('[data-ans]').forEach(function(el){el.oninput=function(){state.answers[el.dataset.ans]=el.value;save();};});
+  }
+
   function bind(){
     var q=function(id){return document.getElementById(id);};
+    if(q('open-bonus'))q('open-bonus').onclick=function(){state.bonusOpen=true;save();render();window.scrollTo(0,0);};
     if(q('back'))q('back').onclick=function(){go(state.step-1);};
     if(q('next'))q('next').onclick=function(){go(state.step+1);};
     if(q('edit'))q('edit').onclick=function(){go(1);};
