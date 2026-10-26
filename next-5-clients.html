@@ -286,7 +286,9 @@ footer{border-top:2px solid var(--ink);padding-top:14px;display:flex;justify-con
     });
     h+='</div><p class="mono" style="color:var(--teal)">3 or more checks = a strong start</p>';
     h+='<div class="field"><label for="ans-bidea">The idea I\'m going with</label><input type="text" id="ans-bidea" data-ans="bidea" placeholder="Write it here" value="'+esc(a.bidea||'')+'"></div></div>';
-    h+='<div class="nav"><button class="btn" type="button" id="bonus-back">Back</button><button class="btn gold" type="button" id="bonus-start">I have my idea &rarr; Start the checklist</button></div>';
+    h+='<div class="nav"><button class="btn" type="button" id="bonus-back">Back</button>'
+      +'<div style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn" type="button" id="bonus-dl">Download my worksheet (PDF)</button><button class="btn gold" type="button" id="bonus-start">I have my idea &rarr; Start the checklist</button></div></div>'
+      +'<span class="mono" id="bdlmsg" role="status" style="font-size:13px"></span>';
     h+='</section>';
     h+='<footer><span class="mono">Mona Weathers Coaching</span><a href="/" class="mono" style="color:var(--teal)">monaweathers.com</a></footer>';
     return h;
@@ -452,11 +454,66 @@ footer{border-top:2px solid var(--ink);padding-top:14px;display:flex;justify-con
     saveFile(fname,doc.output('arraybuffer'),msg);
   }
 
+  function downloadBonusPDF(){
+    var msg=document.getElementById('bdlmsg');msg.textContent='';
+    if(!(window.jspdf&&window.jspdf.jsPDF)){msg.textContent='The PDF maker didn\'t load. Reload and try again.';return;}
+    var doc=new window.jspdf.jsPDF({unit:'pt',format:'letter'});
+    var W=doc.internal.pageSize.getWidth(),H=doc.internal.pageSize.getHeight(),M=48,y=0;
+    var INK=[27,26,23],SOFT=[90,84,75],GOLD=[217,154,43],TEAL=[31,111,122],CORAL=[232,96,76],SAGE=[110,139,94];
+    function newPage(){doc.addPage();y=M;}
+    function need(h){if(y+h>H-M)newPage();}
+    function text(str,size,font,style,color,indent){
+      doc.setFont(font,style);doc.setFontSize(size);doc.setTextColor.apply(doc,color);
+      var lines=doc.splitTextToSize(str,W-2*M-(indent||0));
+      lines.forEach(function(l){need(size*1.4);doc.text(l,M+(indent||0),y+size);y+=size*1.4;});
+    }
+    function rule(color){doc.setDrawColor.apply(doc,color||INK);doc.setLineWidth(1.5);doc.line(M,y,W-M,y);y+=14;}
+    function sectionBar(color){doc.setFillColor.apply(doc,color);doc.rect(M,y,W-2*M,6,'F');y+=14;}
+    doc.setFillColor.apply(doc,GOLD);doc.rect(0,0,W,10,'F');
+    y=M;
+    text('MONA WEATHERS COACHING',9,'courier','normal',TEAL);y+=4;
+    text('Find Your Coaching Idea',24,'times','bold',INK);
+    text('Bonus Worksheet  ·  '+new Date().toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'}),10,'courier','normal',SOFT);
+    y+=6;rule();
+    var a=state.answers,chk=state.checks;
+    sectionBar(TEAL);
+    text('STEP 1 · WHAT YOU ALREADY KNOW',11,'courier','bold',TEAL);y+=4;
+    [{id:'bj',l:'Jobs I\'ve had'},{id:'ba',l:'People ask me about'},{id:'bhi',l:'Hard thing I figured out'},{id:'bt',l:'I could talk for hours on'},{id:'bsk',l:'Skills or training'},{id:'bho',l:'Hobbies I\'m good at'}].forEach(function(f){
+      text(f.l+':  '+(a[f.id]||''),11,'helvetica','normal',INK);
+    });
+    y+=8;sectionBar(TEAL);
+    text('STEP 2 · IDEA STARTERS',11,'courier','bold',TEAL);y+=4;
+    [{id:'bcat1',l:'Career and work'},{id:'bcat2',l:'Business skills'},{id:'bcat3',l:'Life transitions'},{id:'bcat4',l:'Home and money'},{id:'bcat5',l:'Creative skills'},{id:'bcat6',l:'Mindset and habits'}].forEach(function(c){
+      need(20);
+      var on=!!chk[c.id];
+      doc.setDrawColor.apply(doc,INK);doc.setLineWidth(1.2);doc.rect(M,y+1,10,10);
+      if(on){doc.setLineWidth(1.6);doc.line(M+2,y+6,M+4.5,y+9);doc.line(M+4.5,y+9,M+9,y+2.5);}
+      text(c.l,11,'helvetica',on?'bold':'normal',INK,16);
+    });
+    y+=8;sectionBar(CORAL);
+    text('STEP 3 · WRITE 3 IDEAS',11,'courier','bold',TEAL);y+=4;
+    for(var i=1;i<=3;i++){
+      var idea=(a['bi'+i+'a']||'___')+' / '+(a['bi'+i+'b']||'___')+' / '+(a['bi'+i+'c']||'___');
+      text(i+'.  I\'ve '+  (a['bi'+i+'a']||'___')+', so I could help '+(a['bi'+i+'b']||'___')+' get '+(a['bi'+i+'c']||'___')+'.',11,'helvetica','normal',INK);
+    }
+    y+=8;sectionBar(SAGE);
+    text('STEP 4 · QUICK TEST',11,'courier','bold',TEAL);y+=4;
+    [{id:'bt1',t:'People already ask me about this'},{id:'bt2',t:"I'd enjoy talking about it every week"},{id:'bt3',t:"They'd pay to get there faster"},{id:'bt4',t:'I know where to find these people'}].forEach(function(t){
+      need(20);var on=!!chk[t.id];
+      doc.setDrawColor.apply(doc,INK);doc.setLineWidth(1.2);doc.rect(M,y+1,10,10);
+      if(on){doc.setLineWidth(1.6);doc.line(M+2,y+6,M+4.5,y+9);doc.line(M+4.5,y+9,M+9,y+2.5);}
+      text(t.t,11,'helvetica',on?'bold':'normal',INK,16);
+    });
+    y+=6;text('The idea I\'m going with:  '+(a.bidea||''),12,'times','bold',INK);
+    try{var url=URL.createObjectURL(new Blob([doc.output('arraybuffer')],{type:'application/pdf'}));var link=document.createElement('a');link.href=url;link.download='find-your-coaching-idea.pdf';document.body.appendChild(link);link.click();link.remove();setTimeout(function(){URL.revokeObjectURL(url);},10000);msg.textContent='Downloaded';}catch(e){msg.textContent='Download isn\'t available here.';}
+  }
+
   function bindBonus(){
     var q=function(id){return document.getElementById(id);};
     function closeBonus(){state.bonusOpen=false;save();render();window.scrollTo(0,0);}
     if(q('bonus-back'))q('bonus-back').onclick=closeBonus;
     if(q('bonus-start'))q('bonus-start').onclick=closeBonus;
+    if(q('bonus-dl'))q('bonus-dl').onclick=downloadBonusPDF;
     app.querySelectorAll('[data-check]').forEach(function(el){el.onchange=function(){state.checks[el.dataset.check]=el.checked;save();};});
     app.querySelectorAll('[data-ans]').forEach(function(el){el.oninput=function(){state.answers[el.dataset.ans]=el.value;save();};});
   }
