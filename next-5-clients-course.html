@@ -110,6 +110,8 @@ if(localStorage.getItem('cookie-ok')==='1'||localStorage.getItem('cookiesAccepte
   .cd-num { font-family: var(--mono); font-size: 26px; font-weight: 600; line-height: 1; font-variant-numeric: tabular-nums; }
   .cd-lbl { font-family: var(--mono); font-size: 10px; letter-spacing: .08em; text-transform: uppercase; opacity: .6; margin-top: 2px; }
   .cd-sep { font-family: var(--mono); font-size: 22px; font-weight: 700; color: var(--muted); padding-bottom: 12px; }
+  .price-cta { display: inline-block; text-decoration: none; font-weight: 700; font-size: 16px; color: #1B1A17; background: var(--coral); border: 2.5px solid var(--rule); border-radius: 999px; padding: 11px 22px; box-shadow: 3px 3px 0 var(--rule); transition: transform .08s, box-shadow .08s; white-space: nowrap; align-self: center; }
+  .price-cta:hover { transform: translate(2px,2px); box-shadow: 1px 1px 0 var(--rule); }
   .price-note { font-family: var(--mono); font-size: 15px; color: var(--muted); }
 
   .cta { align-self: flex-start; display: inline-block; text-decoration: none; font-weight: 700; font-size: 18px; color: #1B1A17; background: var(--coral); border: 2.5px solid var(--rule); border-radius: 999px; padding: 14px 26px; box-shadow: 4px 4px 0 var(--rule); transition: transform .08s, box-shadow .08s; }
@@ -264,11 +266,11 @@ if(localStorage.getItem('cookie-ok')==='1'||localStorage.getItem('cookiesAccepte
   function render(){
     var now = new Date();
     if(now >= saleEnds){
-      box.innerHTML = '<div class="price-main">$97</div>';
+      box.innerHTML = '<div class="price-sale-row"><div class="price-main">$97</div><a class="price-cta" href="https://www.skool.com/clients/about">Join now &rarr;</a></div>';
       return;
     }
     if(!timerEl){
-      box.innerHTML = '<div class="price-sale-row"><div class="price-main">$67</div><div class="price-was">$97</div></div>'
+      box.innerHTML = '<div class="price-sale-row"><div class="price-main">$67</div><div class="price-was">$97</div><a class="price-cta" href="https://www.skool.com/clients/about">Join now &rarr;</a></div>'
         + '<span class="sale-badge">Sale ends Nov 10</span>'
         + '<div class="countdown" id="countdown"></div>';
       timerEl = document.getElementById('countdown');
