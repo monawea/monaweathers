@@ -305,9 +305,6 @@ footer{border-top:2px solid var(--ink);padding-top:14px;display:flex;justify-con
         +'<div class="box" style="--c:var(--blue)"><h2>Get your checklist</h2>'
         +'<p>Enter your name and email and we\'ll send a fillable PDF checklist straight to your inbox. Or work through the interactive version right here and download your completed results when you\'re done.</p>'
         +'<div id="fd-form-6adfde19da09fd14dc782189"></div>'
-        +'<div style="display:flex;align-items:center;gap:12px;margin:4px 0"><div style="flex:1;border-top:2px dashed var(--line)"></div><span class="mono" style="font-size:13px;color:var(--faint)">or</span><div style="flex:1;border-top:2px dashed var(--line)"></div></div>'
-        +'<p class="mono" style="font-size:14px">Skip the email and work through the interactive version right here.</p>'
-        +'<div class="row"><button class="btn coral" type="button" id="skip-gate">Open the interactive checklist &rarr;</button></div>'
         +'<p class="mono" style="margin-top:4px;font-size:13px">Not sure what to coach on yet? <button class="btn" type="button" id="open-bonus" style="min-height:36px;padding:0 14px;font-size:13px">Find your idea first &rarr;</button></p>'
         +'</div>';
     }else if(state.step<=4){
@@ -539,7 +536,6 @@ footer{border-top:2px solid var(--ink);padding-top:14px;display:flex;justify-con
       vclose.onclick=function(){modal.classList.remove('open');};
       modal.onclick=function(e){if(e.target===modal)modal.classList.remove('open');};
     }
-    if(q('skip-gate')){q('skip-gate').onclick=function(){state.unlocked=true;go(1);};}
     if(q('fd-form-6adfde19da09fd14dc782189')&&window.fd){
       window.fd('form',{formId:'6adfde19da09fd14dc782189',containerEl:'#fd-form-6adfde19da09fd14dc782189'});
     }
