@@ -540,7 +540,11 @@ footer{border-top:2px solid var(--ink);padding-top:14px;display:flex;justify-con
       modal.onclick=function(e){if(e.target===modal)modal.classList.remove('open');};
     }
     if(q('fd-form-6adfde19da09fd14dc782189')&&window.fd){
-      window.fd('form',{formId:'6adfde19da09fd14dc782189',containerEl:'#fd-form-6adfde19da09fd14dc782189'});
+      window.fd('form',{
+        formId:'6adfde19da09fd14dc782189',
+        containerEl:'#fd-form-6adfde19da09fd14dc782189',
+        onSuccess:function(){state.unlocked=true;save();setTimeout(function(){go(1);},400);}
+      });
     }
   }
 
