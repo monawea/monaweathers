@@ -539,12 +539,20 @@ footer{border-top:2px solid var(--ink);padding-top:14px;display:flex;justify-con
       vclose.onclick=function(){modal.classList.remove('open');};
       modal.onclick=function(e){if(e.target===modal)modal.classList.remove('open');};
     }
-    if(q('fd-form-6adfde19da09fd14dc782189')&&window.fd){
-      window.fd('form',{
-        formId:'6adfde19da09fd14dc782189',
-        containerEl:'#fd-form-6adfde19da09fd14dc782189',
-        onSuccess:function(){state.unlocked=true;save();setTimeout(function(){go(1);},400);}
+    var fdEl=q('fd-form-6adfde19da09fd14dc782189');
+    if(fdEl&&window.fd){
+      window.fd('form',{formId:'6adfde19da09fd14dc782189',containerEl:'#fd-form-6adfde19da09fd14dc782189'});
+      var fdObserver=new MutationObserver(function(){
+        // Flodesk replaces the form with a success/thank-you block on submit
+        var hasInput=fdEl.querySelector('input[type="email"],input[type="text"]');
+        var hasContent=fdEl.children.length>0;
+        if(hasContent&&!hasInput){
+          fdObserver.disconnect();
+          state.unlocked=true;save();
+          setTimeout(function(){go(1);},1200);
+        }
       });
+      fdObserver.observe(fdEl,{childList:true,subtree:true});
     }
   }
 
