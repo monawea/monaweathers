@@ -359,7 +359,7 @@ footer{border-top:2px solid var(--ink);padding-top:14px;display:flex;justify-con
         +week('Week 3','var(--coral)','Connect','Build your warm list, start real conversations, and follow up without feeling pushy.')
         +week('Week 4','var(--sage)','Convert','Run your discovery calls or send your offer doc, make the invite, and know what to do after a yes.')
         +'</div>'
-        +'<div class="panel"><p class="eyebrow">Your Next 5 Clients: The 30-Day Plan &middot; $97 one-time</p><h2>One lesson and one action a day for 30 days</h2>'
+        +'<div class="panel"><p class="eyebrow">Your Next 5 Clients: The 30-Day Plan</p><h2>One lesson and one action a day for 30 days</h2>'
         +'<p>By the end of the month, you\'ll have your offer set, your content planned, your people reached, and your next offers made. Includes Clients for Coaches, the free community on Skool with monthly live workshops and coaches doing the 30 days right alongside you.</p>'
         +'<div><a class="btn coral" href="'+JOIN+'" target="_blank" rel="noopener">Join and start the plan</a></div></div>';
     }
@@ -450,7 +450,7 @@ footer{border-top:2px solid var(--ink);padding-top:14px;display:flex;justify-con
     doc.setFont('times','bold');doc.setFontSize(15);doc.setTextColor(255,252,246);
     doc.text('Next step: Your Next 5 Clients, The 30-Day Plan',M+16,y+24);
     doc.setFont('helvetica','normal');doc.setFontSize(10);doc.setTextColor(226,212,191);
-    doc.text('Included with Clients for Coaches ($97 one-time).'+JOIN,M+16,y+44);
+    doc.text('Next step: '+JOIN,M+16,y+44);
     var fname='next-5-clients-results'+(state.name?'-'+state.name.toLowerCase().replace(/[^a-z0-9]+/g,'-'):'')+'.pdf';
     saveFile(fname,doc.output('arraybuffer'),msg);
   }
