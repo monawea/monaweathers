@@ -208,6 +208,7 @@ footer{border-top:2px solid var(--ink);padding-top:14px;display:flex;justify-con
   var state={step:0,checks:{},answers:{},path:'',name:'',email:'',unlocked:false,bonusOpen:false};
   try{var saved=JSON.parse(localStorage.getItem(KEY)||'null');if(saved)state=Object.assign(state,saved);}catch(e){}
   if(!state.unlocked)state.step=0;
+  else if(state.step===0)state.step=1;
   function save(){try{localStorage.setItem(KEY,JSON.stringify(state));}catch(e){}
 }
   function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
