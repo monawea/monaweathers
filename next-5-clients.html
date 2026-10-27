@@ -315,7 +315,9 @@ footer{border-top:2px solid var(--ink);padding-top:14px;display:flex;justify-con
       var s=sections[state.step-1];
       h=progress();
       if(state.step===1){
-        h+='<div class="video-wrap"><div class="video-embed"><div class="video-embed-placeholder"><svg width="28" height="28" viewBox="0 0 24 24" fill="rgba(255,255,255,0.5)"><polygon points="7 4 20 12 7 20"/></svg></div></div>'
+        var thumbId=VIDEO.split('/').pop().split('?')[0];
+        var thumbBg=VIDEO.indexOf('[')<0?'url(https://img.youtube.com/vi/'+thumbId+'/mqdefault.jpg) center/cover':'';
+        h+='<div class="video-wrap"><div class="video-embed" style="background:'+thumbBg+';"><div class="video-embed-placeholder"><svg width="36" height="36" viewBox="0 0 24 24" fill="rgba(255,255,255,0.9)"><circle cx="12" cy="12" r="11" fill="rgba(0,0,0,0.45)"/><polygon points="10 8 17 12 10 16"/></svg></div></div>'
           +'<strong>Start here: watch the walkthrough</strong></div>'
           +'<p class="mono" style="font-size:13px">Not sure what to coach on yet? <button class="btn" type="button" id="open-bonus-s1" style="min-height:34px;padding:0 14px;font-size:13px">Find your idea first &rarr;</button></p>';
       }else{
@@ -536,9 +538,27 @@ footer{border-top:2px solid var(--ink);padding-top:14px;display:flex;justify-con
     var modal=document.getElementById('videoModal');
     var vclose=document.getElementById('videoClose');
     if(vw&&modal){
-      vw.onclick=function(){modal.classList.add('open');};
-      vclose.onclick=function(){modal.classList.remove('open');};
-      modal.onclick=function(e){if(e.target===modal)modal.classList.remove('open');};
+      vw.onclick=function(){
+        if(VIDEO.indexOf('[')<0){
+          var embed=modal.querySelector('.video-modal-embed');
+          if(!embed.querySelector('iframe')){
+            var ifr=document.createElement('iframe');
+            ifr.src=VIDEO+'?autoplay=1&rel=0';
+            ifr.allow='autoplay; fullscreen';
+            ifr.allowFullscreen=true;
+            ifr.style.cssText='position:absolute;inset:0;width:100%;height:100%;border:0';
+            embed.appendChild(ifr);
+          }
+        }
+        modal.classList.add('open');
+      };
+      function closeModal(){
+        modal.classList.remove('open');
+        var ifr=modal.querySelector('iframe');
+        if(ifr)ifr.remove();
+      }
+      vclose.onclick=closeModal;
+      modal.onclick=function(e){if(e.target===modal)closeModal();};
     }
     var fdEl=q('fd-form-6adfde19da09fd14dc782189');
     if(fdEl&&window.fd){
