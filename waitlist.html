@@ -131,8 +131,8 @@ if(localStorage.getItem('cookie-ok')==='1'||localStorage.getItem('cookiesAccepte
 
     <div class="grid">
       <section class="panel" aria-labelledby="cd-h">
-        <h2 id="cd-h">Doors open November 1st</h2>
-        <p class="lead">Get on the waitlist and be first in line.</p>
+        <h2 id="cd-h">The course is coming</h2>
+        <p class="lead">Get on the waitlist and we'll email you when it's ready.</p>
         <div class="count" role="timer" aria-live="off">
           <div class="unit"><span class="n" id="d">00</span><span class="l">Days</span></div>
           <div class="unit"><span class="n" id="h">00</span><span class="l">Hours</span></div>
@@ -145,6 +145,7 @@ if(localStorage.getItem('cookie-ok')==='1'||localStorage.getItem('cookiesAccepte
       <section class="panel" aria-labelledby="f-h">
         <h2 id="f-h">Join the waitlist</h2>
         <p class="lead">Drop your details and we'll email you when it opens.</p>
+        <p style="margin-bottom:16px;color:var(--muted);font-size:.95rem">Or <a href="https://www.skool.com/clients/about" style="color:var(--gold);font-weight:700;">join Clients for Coaches today</a> and get access to the community now while the course is being built.</p>
 <script>
   (function(w, d, t, h, s, n) {
     w.FlodeskObject = n;
@@ -183,26 +184,20 @@ if(localStorage.getItem('cookie-ok')==='1'||localStorage.getItem('cookiesAccepte
 </div>
 
 <script>
-  // Launch: November 1st at midnight, visitor's local time.
   var now = new Date();
   var target = new Date(now.getFullYear(), 10, 1, 0, 0, 0);
-  var pad = function (n) { return String(n).padStart(2, "0"); };
-  function tick() {
-    var diff = target - new Date();
-    if (diff <= 0) {
-      ["d","h","m","s"].forEach(function (id) { document.getElementById(id).textContent = "00"; });
-      document.getElementById("note").textContent = "It's November 1st. Doors are open!";
-      return;
-    }
-    var s = Math.floor(diff / 1000);
-    document.getElementById("d").textContent = pad(Math.floor(s / 86400));
-    document.getElementById("h").textContent = pad(Math.floor(s % 86400 / 3600));
-    document.getElementById("m").textContent = pad(Math.floor(s % 3600 / 60));
-    document.getElementById("s").textContent = pad(s % 60);
+  var pad = function(n){return String(n).padStart(2,'0');};
+  function tick(){
+    var diff=target-new Date();
+    if(diff<=0){["d","h","m","s"].forEach(function(id){document.getElementById(id).textContent="00";});document.getElementById("note").textContent="The course is ready!";return;}
+    var s=Math.floor(diff/1000);
+    document.getElementById("d").textContent=pad(Math.floor(s/86400));
+    document.getElementById("h").textContent=pad(Math.floor(s%86400/3600));
+    document.getElementById("m").textContent=pad(Math.floor(s%3600/60));
+    document.getElementById("s").textContent=pad(s%60);
   }
-  document.getElementById("note").textContent =
-    "Counting down to " + target.toLocaleDateString(undefined, { month: "long", day: "numeric", year: "numeric" }) + ".";
-  tick(); setInterval(tick, 1000);
+  document.getElementById("note").textContent="Launching "+target.toLocaleDateString(undefined,{month:"long",day:"numeric",year:"numeric"})+".";
+  tick();setInterval(tick,1000);
 </script>
 <div id="cookieBanner" style="position:fixed;bottom:0;left:0;right:0;background:rgba(25,23,19,0.92);color:rgba(246,241,231,0.8);font-family:'JetBrains Mono',monospace;font-size:11px;padding:10px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px;z-index:9999;backdrop-filter:blur(4px);">
   <span>We use cookies &amp; analytics to understand how this page is used. <a href="/privacy" style="color:rgba(246,241,231,0.9)">Privacy Policy</a></span>
