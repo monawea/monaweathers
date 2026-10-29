@@ -115,6 +115,13 @@ if(localStorage.getItem('cookie-ok')==='1'||localStorage.getItem('cookiesAccepte
   .sign { font-family: var(--serif); font-style: italic; font-weight: 600; font-size: 24px; }
   hr { border: 0; border-top: 2px dashed var(--rule); width: 100%; margin: 10px 0; }
   .fine { font-size: 13.5px; color: var(--muted); }
+  .faq { display: flex; flex-direction: column; gap: 8px; margin-top: 12px; }
+  .faq details { border: 1.5px solid var(--rule); border-radius: 10px; padding: 0; }
+  .faq summary { font-weight: 700; font-size: 16px; padding: 16px 18px; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after { content: '+'; font-size: 20px; font-weight: 400; flex-shrink: 0; color: var(--coral); }
+  .faq details[open] summary::after { content: '−'; }
+  .faq details p { margin: 0; padding: 0 18px 16px; color: var(--muted); }
 
   footer { text-align: center; font-family: var(--mono); font-size: 12px; color: var(--muted); padding-bottom: 40px; }
   @media (prefers-reduced-motion: reduce) { .cta { transition: none; } }
@@ -243,6 +250,34 @@ if(localStorage.getItem('cookie-ok')==='1'||localStorage.getItem('cookiesAccepte
 
     <hr>
     <p class="fine">Results vary. Your income depends on your effort, your offer, your market, and many other factors. The Build gives you the systems and support. I can't promise a specific income.</p>
+
+    <h2><span class="hl">Frequently asked questions</span></h2>
+    <div class="faq">
+      <details>
+        <summary>Can I choose my start date?</summary>
+        <p>Yes. Once you join, you pick a kickoff date that works for you. The only ask is that it's within a few weeks of joining so we keep the momentum going.</p>
+      </details>
+      <details>
+        <summary>What if we don't finish everything in 8 weeks?</summary>
+        <p>We keep going. My promise is that if you submit your intake materials in the first two weeks and complete your action steps, I'll work with you until everything on your Build Map is live. No extra cost, no rush to wrap up early.</p>
+      </details>
+      <details>
+        <summary>What does "done for you" actually mean?</summary>
+        <p>I do the building. You give me your intake materials, approve the work, and show up for your calls. You're not on your own watching videos and figuring it out. We build it together, and I do the heavy lifting.</p>
+      </details>
+      <details>
+        <summary>Do I need to be tech-savvy?</summary>
+        <p>No. That's part of what we sort out together. I'll set up your tech, connect your tools, and show you how to use what we build so you can keep it going after we're done.</p>
+      </details>
+      <details>
+        <summary>What if I already have some of these pieces?</summary>
+        <p>Great, we start from where you are. On our kickoff call we'll look at what's already working and build around it. You pick the pieces you actually need, not a cookie-cutter package.</p>
+      </details>
+      <details>
+        <summary>How do I know if this is the right time?</summary>
+        <p>If you're already coaching and feel like your business doesn't look or run as well as your coaching actually is, it's probably time. Apply and we'll talk it through on a quick call.</p>
+      </details>
+    </div>
   </article>
 </div>
 
