@@ -107,7 +107,7 @@ input::placeholder{color:var(--faint)}
 .missing li::before{content:"";flex:none;width:22px;height:22px;margin-top:1px;border:2px solid var(--ink);border-radius:5px;background:var(--card);box-sizing:border-box}
 .missing li.done::before{background:var(--c) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231B1A17' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='5 12 10 17 19 7'/%3E%3C/svg%3E") center/16px no-repeat}
 .missing li.todo{color:var(--ink-soft)}
-.weeks{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+.weeks{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
 .week{padding:26px 16px 16px;gap:6px;border-radius:16px;box-shadow:4px 4px 0 var(--ink)}
 .week h3{font-family:var(--display);font-weight:700;font-size:24px;line-height:1.1}
 .week p{font-size:15px}
@@ -306,8 +306,38 @@ footer{border-top:2px solid var(--ink);padding-top:14px;display:flex;justify-con
     var h='';
     if(state.step===0){
       h=header()
-        +'<div class="box" style="--c:var(--blue)"><h2>Get your checklist</h2>'
-        +'<p>Enter your name and email and we\'ll send a fillable PDF checklist straight to your inbox. Or work through the interactive version right here and download your completed results when you\'re done.</p>'
+        // What's inside
+        +'<section class="box" style="--c:var(--gold)">'
+        +'<h2>4 sections. 30 days. Your next 5 clients.</h2>'
+        +'<p class="sub" style="font-size:17px;color:var(--ink-soft)">Most coaches know what they should be doing. This checklist tells you exactly what to do first, second, and third — so you stop spinning and start signing clients.</p>'
+        +'<div class="weeks">'
+        +'<div class="box week" style="--c:var(--gold)"><span class="mono">Section 1</span><h3>Get Clear</h3><p>Nail your one-sentence pitch, name the problem you solve, and lock in a price you can say out loud.</p></div>'
+        +'<div class="box week" style="--c:var(--blue)"><span class="mono">Section 2</span><h3>Get Set Up</h3><p>Pick the one platform where your clients actually are, clean up your profile, and make it easy for people to book with you.</p></div>'
+        +'<div class="box week" style="--c:var(--coral)"><span class="mono">Section 3</span><h3>Get Visible</h3><p>Map your 30-day content plan, post about what your ideal client actually struggles with, and start real conversations.</p></div>'
+        +'<div class="box week" style="--c:var(--sage)"><span class="mono">Section 4</span><h3>Get Clients</h3><p>Learn how to close on a discovery call or through an offer doc, and track every conversation until it turns into a yes.</p></div>'
+        +'</div></section>'
+        // Who it's for
+        +'<section class="box" style="--c:var(--teal)">'
+        +'<h2>This is for you if&hellip;</h2>'
+        +'<ul class="howto" style="gap:14px">'
+        +'<li><b style="background:var(--teal);color:#fff">1</b><span>You\'re already coaching (or ready to start) and you want more paying clients, not more prep work</span></li>'
+        +'<li><b style="background:var(--teal);color:#fff">2</b><span>You\'ve been posting and showing up but can\'t tell if any of it is actually working</span></li>'
+        +'<li><b style="background:var(--teal);color:#fff">3</b><span>You want a clear, step-by-step plan you can follow instead of trying to piece one together on your own</span></li>'
+        +'<li><b style="background:var(--teal);color:#fff">4</b><span>You\'re done overthinking it and ready to take real action in the next 30 days</span></li>'
+        +'</ul></section>'
+        // What you get
+        +'<section class="box" style="--c:var(--sage)">'
+        +'<h2>What you\'ll get</h2>'
+        +'<ul class="howto">'
+        +'<li><b>&#10003;</b><span><strong>An interactive checklist</strong> you fill out right here in your browser — your answers save as you go so you can come back any time</span></li>'
+        +'<li><b>&#10003;</b><span><strong>A downloadable PDF</strong> of your completed results when you\'re done, so you have your plan in one place</span></li>'
+        +'<li><b>&#10003;</b><span><strong>A bonus worksheet</strong> to find your coaching idea if you haven\'t landed on one yet</span></li>'
+        +'</ul>'
+        +'<p class="mono" style="color:var(--teal);font-size:14px">Free. No catch. Just a checklist that actually helps.</p>'
+        +'</section>'
+        // Form
+        +'<div class="box" style="--c:var(--blue)"><h2>Get your free checklist</h2>'
+        +'<p style="color:var(--ink-soft)">Drop your email and get straight to the interactive checklist. We\'ll also send a copy to your inbox.</p>'
         +'<div id="fd-form-6adfde19da09fd14dc782189"></div>'
         +'<p class="mono" style="margin-top:4px;font-size:13px">Not sure what to coach on yet? <button class="btn" type="button" id="open-bonus" style="min-height:36px;padding:0 14px;font-size:13px">Find your idea first &rarr;</button></p>'
         +'</div>';
