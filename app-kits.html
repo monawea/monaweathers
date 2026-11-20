@@ -33,21 +33,91 @@ if(localStorage.getItem('cookie-ok')==='1'||localStorage.getItem('cookiesAccepte
 </div>
 </header>
 
-<section style="max-width: 1120px; margin: 0 auto; padding: 72px 24px 64px; display: flex; flex-direction: column; align-items: flex-start; gap: 22px">
+<section style="max-width: 1120px; margin: 0 auto; padding: 64px 24px 72px; display: flex; flex-wrap: wrap; gap: 48px; align-items: center; justify-content: space-between">
+
+<!-- Left: copy -->
+<div style="flex: 1 1 480px; min-width: 0; display: flex; flex-direction: column; align-items: flex-start; gap: 22px">
 <p style="margin: 0; font-family: 'JetBrains Mono', Menlo, monospace; font-size: 13px; letter-spacing: 0.08em; color: #1F6F7A">PERSONAL PRODUCTIVITY APPS FOR COACHES</p>
-<h1 style="margin: 0; max-width: 900px; font-family: 'Crimson Pro', Georgia, serif; font-weight: 700; font-size: clamp(44px, 6.5vw, 80px); line-height: 1.18; letter-spacing: -0.015em">Simple apps that keep your business <span style="background: #D99A2B; padding: 0 10px; border-radius: 6px; -webkit-box-decoration-break: clone; box-decoration-break: clone">on track</span></h1>
-<p style="margin: 0; max-width: 660px; font-size: 20px; color: #3A362F">Five ready-to-use tools for planning your week, running your sessions, mapping your content, writing your emails and building your offers. They run inside Claude, take about five minutes to set up, and you pay once.</p>
-<div style="display: flex; flex-wrap: wrap; gap: 12px; margin-top: 8px">
+<h1 style="margin: 0; font-family: 'Crimson Pro', Georgia, serif; font-weight: 700; font-size: clamp(44px, 5.5vw, 72px); line-height: 1.1; letter-spacing: -0.015em">Simple apps that keep your business <span style="background: #D99A2B; padding: 0 10px; border-radius: 6px; -webkit-box-decoration-break: clone; box-decoration-break: clone">on track</span></h1>
+<p style="margin: 0; max-width: 560px; font-size: 19px; color: #3A362F">Five ready-to-use tools for planning your week, running your sessions, mapping your content, writing your emails and building your offers. They run inside Claude, take about five minutes to set up, and you pay once.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 12px; margin-top: 4px">
 <a href="#bundle" style="display: inline-flex; align-items: center; height: 52px; padding: 0 26px; border: 2px solid #1B1A17; border-radius: 999px; background: #D99A2B; color: #1B1A17; box-shadow: 4px 4px 0 #1B1A17; font-family: 'JetBrains Mono', Menlo, monospace; font-weight: 600; font-size: 15px; text-decoration: none">Get all five for $27</a>
 <a href="#kits" style="display: inline-flex; align-items: center; height: 52px; padding: 0 26px; border: 2px solid #1B1A17; border-radius: 999px; background: #FFFCF6; color: #1B1A17; box-shadow: 4px 4px 0 #1B1A17; font-family: 'JetBrains Mono', Menlo, monospace; font-weight: 600; font-size: 15px; text-decoration: none">See the apps</a>
 </div>
 <p style="margin: 0; font-family: 'JetBrains Mono', Menlo, monospace; font-size: 13px; color: #3A362F"><span style="background: #FBE7C2; border: 1.5px solid #1B1A17; border-radius: 999px; padding: 2px 10px; font-weight: 600">Introductory prices</span> end November 30</p>
-<div style="display: flex; flex-wrap: wrap; gap: 8px 22px; margin-top: 10px; padding-top: 18px; border-top: 2px dashed #1B1A17; align-self: stretch; font-family: 'JetBrains Mono', Menlo, monospace; font-size: 13px; color: #3A362F">
+<div style="display: flex; flex-wrap: wrap; gap: 8px 22px; padding-top: 18px; border-top: 2px dashed #1B1A17; align-self: stretch; font-family: 'JetBrains Mono', Menlo, monospace; font-size: 13px; color: #3A362F">
 <span>✓ 5 apps built for coaches</span>
 <span>✓ One-time payment</span>
 <span>✓ No coding needed</span>
 <span>✓ Step-by-step setup guide for each app</span>
 </div>
+</div>
+
+<!-- Right: app shelf mockup -->
+<div style="flex: 0 1 400px; min-width: 280px; display: flex; flex-direction: column; gap: 10px">
+
+<div style="background: #FFFCF6; border: 2.5px solid #1B1A17; border-radius: 18px; box-shadow: 6px 6px 0 #1B1A17; overflow: hidden">
+<div style="height: 8px; background: #1F6F7A"></div>
+<div style="padding: 16px 20px; display: flex; align-items: center; justify-content: space-between; gap: 12px">
+<div style="display: flex; flex-direction: column; gap: 3px">
+<span style="font-family: 'JetBrains Mono', Menlo, monospace; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; color: #1F6F7A">PLAN YOUR WEEK</span>
+<span style="font-family: 'Crimson Pro', Georgia, serif; font-weight: 700; font-size: 22px; line-height: 1.1">Focus Planner</span>
+</div>
+<span style="font-family: 'Crimson Pro', Georgia, serif; font-weight: 800; font-size: 32px; color: #1F6F7A; line-height: 1">$17</span>
+</div>
+</div>
+
+<div style="background: #FFFCF6; border: 2.5px solid #1B1A17; border-radius: 18px; box-shadow: 6px 6px 0 #1B1A17; overflow: hidden">
+<div style="height: 8px; background: #2D8196"></div>
+<div style="padding: 16px 20px; display: flex; align-items: center; justify-content: space-between; gap: 12px">
+<div style="display: flex; flex-direction: column; gap: 3px">
+<span style="font-family: 'JetBrains Mono', Menlo, monospace; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; color: #2D8196">RUN YOUR SESSIONS</span>
+<span style="font-family: 'Crimson Pro', Georgia, serif; font-weight: 700; font-size: 22px; line-height: 1.1">Session Map</span>
+</div>
+<span style="font-family: 'Crimson Pro', Georgia, serif; font-weight: 800; font-size: 32px; color: #2D8196; line-height: 1">$12</span>
+</div>
+</div>
+
+<div style="background: #FFFCF6; border: 2.5px solid #1B1A17; border-radius: 18px; box-shadow: 6px 6px 0 #1B1A17; overflow: hidden">
+<div style="height: 8px; background: #E8604C"></div>
+<div style="padding: 16px 20px; display: flex; align-items: center; justify-content: space-between; gap: 12px">
+<div style="display: flex; flex-direction: column; gap: 3px">
+<span style="font-family: 'JetBrains Mono', Menlo, monospace; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; color: #E8604C">MAP YOUR CONTENT</span>
+<span style="font-family: 'Crimson Pro', Georgia, serif; font-weight: 700; font-size: 22px; line-height: 1.1">Content Planner</span>
+</div>
+<span style="font-family: 'Crimson Pro', Georgia, serif; font-weight: 800; font-size: 32px; color: #E8604C; line-height: 1">$12</span>
+</div>
+</div>
+
+<div style="background: #FFFCF6; border: 2.5px solid #1B1A17; border-radius: 18px; box-shadow: 6px 6px 0 #1B1A17; overflow: hidden">
+<div style="height: 8px; background: #D99A2B"></div>
+<div style="padding: 16px 20px; display: flex; align-items: center; justify-content: space-between; gap: 12px">
+<div style="display: flex; flex-direction: column; gap: 3px">
+<span style="font-family: 'JetBrains Mono', Menlo, monospace; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; color: #B8821F">WRITE YOUR EMAILS</span>
+<span style="font-family: 'Crimson Pro', Georgia, serif; font-weight: 700; font-size: 22px; line-height: 1.1">Email Map</span>
+</div>
+<span style="font-family: 'Crimson Pro', Georgia, serif; font-weight: 800; font-size: 32px; color: #D99A2B; line-height: 1">$12</span>
+</div>
+</div>
+
+<div style="background: #FFFCF6; border: 2.5px solid #1B1A17; border-radius: 18px; box-shadow: 6px 6px 0 #1B1A17; overflow: hidden">
+<div style="height: 8px; background: #6E8B5E"></div>
+<div style="padding: 16px 20px; display: flex; align-items: center; justify-content: space-between; gap: 12px">
+<div style="display: flex; flex-direction: column; gap: 3px">
+<span style="font-family: 'JetBrains Mono', Menlo, monospace; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; color: #6E8B5E">BUILD YOUR OFFERS</span>
+<span style="font-family: 'Crimson Pro', Georgia, serif; font-weight: 700; font-size: 22px; line-height: 1.1">Offer Builder</span>
+</div>
+<span style="font-family: 'Crimson Pro', Georgia, serif; font-weight: 800; font-size: 32px; color: #6E8B5E; line-height: 1">$12</span>
+</div>
+</div>
+
+<div style="background: #D99A2B; border: 2.5px solid #1B1A17; border-radius: 14px; box-shadow: 4px 4px 0 #1B1A17; padding: 12px 20px; display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 2px">
+<span style="font-family: 'JetBrains Mono', Menlo, monospace; font-size: 13px; font-weight: 600; color: #1B1A17">Bundle — all five</span>
+<span style="font-family: 'Crimson Pro', Georgia, serif; font-weight: 800; font-size: 28px; color: #1B1A17; line-height: 1">$27</span>
+</div>
+
+</div>
+
 </section>
 
 <section style="max-width: 1120px; margin: 0 auto; padding: 0 24px 72px; display: flex; flex-direction: column; gap: 22px">
@@ -99,7 +169,7 @@ if(localStorage.getItem('cookie-ok')==='1'||localStorage.getItem('cookiesAccepte
 <p style="margin: 0; font-size: 14.5px; color: #3A362F"><b>Use it when:</b> your week feels busy but scattered, and you want to know if you're on pace for your income goal.</p>
 <div style="margin-top: auto; padding-top: 14px; border-top: 2px dashed #1B1A17; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap">
 <span style="display: flex; flex-direction: column; gap: 4px"><span style="align-self: flex-start; font-family: 'JetBrains Mono', Menlo, monospace; font-size: 11px; font-weight: 600; background: #FBE7C2; border: 1.5px solid #1B1A17; border-radius: 999px; padding: 1px 9px">Intro price</span><span style="display: flex; align-items: baseline; gap: 8px"><span style="font-family: 'Crimson Pro', Georgia, serif; font-size: 54px; font-weight: 800; line-height: 1; letter-spacing: -0.01em">$17</span><s style="font-family: 'JetBrains Mono', Menlo, monospace; font-size: 17px; color: #5A544B">$27</s></span></span>
-<a href="https://monaweathers.myflodesk.com/app-kit-bundle" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; height: 46px; padding: 0 20px; border: 2px solid #1B1A17; border-radius: 999px; background: #D99A2B; color: #1B1A17; box-shadow: 3px 3px 0 #1B1A17; font-family: 'JetBrains Mono', Menlo, monospace; font-weight: 600; font-size: 14px; text-decoration: none">Buy the kit</a>
+<a href="#bundle" style="display: inline-flex; align-items: center; height: 46px; padding: 0 20px; border: 2px solid #1B1A17; border-radius: 999px; background: #D99A2B; color: #1B1A17; box-shadow: 3px 3px 0 #1B1A17; font-family: 'JetBrains Mono', Menlo, monospace; font-weight: 600; font-size: 14px; text-decoration: none">Buy the kit</a>
 
 </div>
 </div>
@@ -120,7 +190,7 @@ if(localStorage.getItem('cookie-ok')==='1'||localStorage.getItem('cookiesAccepte
 <p style="margin: 0; font-size: 14.5px; color: #3A362F"><b>Use it when:</b> you run calls, workshops or challenges and the follow-up keeps slipping.</p>
 <div style="margin-top: auto; padding-top: 14px; border-top: 2px dashed #1B1A17; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap">
 <span style="display: flex; flex-direction: column; gap: 4px"><span style="align-self: flex-start; font-family: 'JetBrains Mono', Menlo, monospace; font-size: 11px; font-weight: 600; background: #FBE7C2; border: 1.5px solid #1B1A17; border-radius: 999px; padding: 1px 9px">Intro price</span><span style="display: flex; align-items: baseline; gap: 8px"><span style="font-family: 'Crimson Pro', Georgia, serif; font-size: 54px; font-weight: 800; line-height: 1; letter-spacing: -0.01em">$12</span><s style="font-family: 'JetBrains Mono', Menlo, monospace; font-size: 17px; color: #5A544B">$19</s></span></span>
-<a href="https://monaweathers.myflodesk.com/app-kit-bundle" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; height: 46px; padding: 0 20px; border: 2px solid #1B1A17; border-radius: 999px; background: #D99A2B; color: #1B1A17; box-shadow: 3px 3px 0 #1B1A17; font-family: 'JetBrains Mono', Menlo, monospace; font-weight: 600; font-size: 14px; text-decoration: none">Buy the kit</a>
+<a href="#bundle" style="display: inline-flex; align-items: center; height: 46px; padding: 0 20px; border: 2px solid #1B1A17; border-radius: 999px; background: #D99A2B; color: #1B1A17; box-shadow: 3px 3px 0 #1B1A17; font-family: 'JetBrains Mono', Menlo, monospace; font-weight: 600; font-size: 14px; text-decoration: none">Buy the kit</a>
 
 </div>
 </div>
@@ -141,7 +211,7 @@ if(localStorage.getItem('cookie-ok')==='1'||localStorage.getItem('cookiesAccepte
 <p style="margin: 0; font-size: 14.5px; color: #3A362F"><b>Use it when:</b> you sit down to create and can't decide what to make next.</p>
 <div style="margin-top: auto; padding-top: 14px; border-top: 2px dashed #1B1A17; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap">
 <span style="display: flex; flex-direction: column; gap: 4px"><span style="align-self: flex-start; font-family: 'JetBrains Mono', Menlo, monospace; font-size: 11px; font-weight: 600; background: #FBE7C2; border: 1.5px solid #1B1A17; border-radius: 999px; padding: 1px 9px">Intro price</span><span style="display: flex; align-items: baseline; gap: 8px"><span style="font-family: 'Crimson Pro', Georgia, serif; font-size: 54px; font-weight: 800; line-height: 1; letter-spacing: -0.01em">$12</span><s style="font-family: 'JetBrains Mono', Menlo, monospace; font-size: 17px; color: #5A544B">$19</s></span></span>
-<a href="https://monaweathers.myflodesk.com/app-kit-bundle" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; height: 46px; padding: 0 20px; border: 2px solid #1B1A17; border-radius: 999px; background: #D99A2B; color: #1B1A17; box-shadow: 3px 3px 0 #1B1A17; font-family: 'JetBrains Mono', Menlo, monospace; font-weight: 600; font-size: 14px; text-decoration: none">Buy the kit</a>
+<a href="#bundle" style="display: inline-flex; align-items: center; height: 46px; padding: 0 20px; border: 2px solid #1B1A17; border-radius: 999px; background: #D99A2B; color: #1B1A17; box-shadow: 3px 3px 0 #1B1A17; font-family: 'JetBrains Mono', Menlo, monospace; font-weight: 600; font-size: 14px; text-decoration: none">Buy the kit</a>
 
 </div>
 </div>
@@ -162,7 +232,7 @@ if(localStorage.getItem('cookie-ok')==='1'||localStorage.getItem('cookiesAccepte
 <p style="margin: 0; font-size: 14.5px; color: #3A362F"><b>Use it when:</b> you know you should email your list, but the blank page wins every week.</p>
 <div style="margin-top: auto; padding-top: 14px; border-top: 2px dashed #1B1A17; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap">
 <span style="display: flex; flex-direction: column; gap: 4px"><span style="align-self: flex-start; font-family: 'JetBrains Mono', Menlo, monospace; font-size: 11px; font-weight: 600; background: #FBE7C2; border: 1.5px solid #1B1A17; border-radius: 999px; padding: 1px 9px">Intro price</span><span style="display: flex; align-items: baseline; gap: 8px"><span style="font-family: 'Crimson Pro', Georgia, serif; font-size: 54px; font-weight: 800; line-height: 1; letter-spacing: -0.01em">$12</span><s style="font-family: 'JetBrains Mono', Menlo, monospace; font-size: 17px; color: #5A544B">$19</s></span></span>
-<a href="https://monaweathers.myflodesk.com/app-kit-bundle" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; height: 46px; padding: 0 20px; border: 2px solid #1B1A17; border-radius: 999px; background: #D99A2B; color: #1B1A17; box-shadow: 3px 3px 0 #1B1A17; font-family: 'JetBrains Mono', Menlo, monospace; font-weight: 600; font-size: 14px; text-decoration: none">Buy the kit</a>
+<a href="#bundle" style="display: inline-flex; align-items: center; height: 46px; padding: 0 20px; border: 2px solid #1B1A17; border-radius: 999px; background: #D99A2B; color: #1B1A17; box-shadow: 3px 3px 0 #1B1A17; font-family: 'JetBrains Mono', Menlo, monospace; font-weight: 600; font-size: 14px; text-decoration: none">Buy the kit</a>
 
 </div>
 </div>
@@ -183,7 +253,7 @@ if(localStorage.getItem('cookie-ok')==='1'||localStorage.getItem('cookiesAccepte
 <p style="margin: 0; font-size: 14.5px; color: #3A362F"><b>Use it when:</b> people ask how to work with you and you don't have a clear answer yet.</p>
 <div style="margin-top: auto; padding-top: 14px; border-top: 2px dashed #1B1A17; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap">
 <span style="display: flex; flex-direction: column; gap: 4px"><span style="align-self: flex-start; font-family: 'JetBrains Mono', Menlo, monospace; font-size: 11px; font-weight: 600; background: #FBE7C2; border: 1.5px solid #1B1A17; border-radius: 999px; padding: 1px 9px">Intro price</span><span style="display: flex; align-items: baseline; gap: 8px"><span style="font-family: 'Crimson Pro', Georgia, serif; font-size: 54px; font-weight: 800; line-height: 1; letter-spacing: -0.01em">$12</span><s style="font-family: 'JetBrains Mono', Menlo, monospace; font-size: 17px; color: #5A544B">$19</s></span></span>
-<a href="https://monaweathers.myflodesk.com/app-kit-bundle" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; height: 46px; padding: 0 20px; border: 2px solid #1B1A17; border-radius: 999px; background: #D99A2B; color: #1B1A17; box-shadow: 3px 3px 0 #1B1A17; font-family: 'JetBrains Mono', Menlo, monospace; font-weight: 600; font-size: 14px; text-decoration: none">Buy the kit</a>
+<a href="#bundle" style="display: inline-flex; align-items: center; height: 46px; padding: 0 20px; border: 2px solid #1B1A17; border-radius: 999px; background: #D99A2B; color: #1B1A17; box-shadow: 3px 3px 0 #1B1A17; font-family: 'JetBrains Mono', Menlo, monospace; font-weight: 600; font-size: 14px; text-decoration: none">Buy the kit</a>
 
 </div>
 </div>
