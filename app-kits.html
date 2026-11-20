@@ -26,8 +26,17 @@ if(localStorage.getItem('cookie-ok')==='1'||localStorage.getItem('cookiesAccepte
 <!-- Left: copy -->
 <div style="flex: 1 1 480px; min-width: 0; display: flex; flex-direction: column; align-items: flex-start; gap: 22px">
 <p style="margin: 0; font-family: 'JetBrains Mono', Menlo, monospace; font-size: 13px; letter-spacing: 0.08em; color: #1F6F7A">PERSONAL PRODUCTIVITY APPS FOR COACHES</p>
-<h1 style="margin: 0; font-family: 'Crimson Pro', Georgia, serif; font-weight: 700; font-size: clamp(32px, 4vw, 52px); line-height: 1.1; letter-spacing: -0.015em">Simple apps that keep your business <span style="background: #D99A2B; padding: 0 10px; border-radius: 6px; -webkit-box-decoration-break: clone; box-decoration-break: clone">on track</span></h1>
+<h1 style="margin: 0; font-family: 'Crimson Pro', Georgia, serif; font-weight: 700; font-size: clamp(32px, 4vw, 52px); line-height: 1.1; letter-spacing: -0.015em">Stop rebuilding the same plans from <span style="background: #D99A2B; padding: 0 10px; border-radius: 6px; -webkit-box-decoration-break: clone; box-decoration-break: clone">scratch every week</span></h1>
 <p style="margin: 0; max-width: 560px; font-size: 19px; color: #3A362F">Five ready-to-use tools for planning your week, running your sessions, mapping your content, writing your emails and building your offers. They run inside Claude, take about five minutes to set up, and you pay once.</p>
+<div style="display: flex; flex-direction: column; gap: 8px; padding: 16px 20px; background: #FBE7C2; border: 2px solid #1B1A17; border-radius: 14px; align-self: stretch; max-width: 520px">
+<span style="font-family: 'JetBrains Mono', Menlo, monospace; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; color: #1F6F7A">THIS IS FOR YOU IF...</span>
+<div style="display: flex; flex-direction: column; gap: 6px; font-size: 15px; color: #1B1A17">
+<span>→ You're a coach or consultant running your own business</span>
+<span>→ You use Claude (or you're ready to start)</span>
+<span>→ You're tired of starting from scratch every week</span>
+<span>→ You want tools that actually fit how you work</span>
+</div>
+</div>
 <div style="display: flex; flex-wrap: wrap; gap: 12px; margin-top: 4px">
 <a href="#bundle" style="display: inline-flex; align-items: center; height: 52px; padding: 0 26px; border: 2px solid #1B1A17; border-radius: 999px; background: #D99A2B; color: #1B1A17; box-shadow: 4px 4px 0 #1B1A17; font-family: 'JetBrains Mono', Menlo, monospace; font-weight: 600; font-size: 15px; text-decoration: none">Get all five for $27</a>
 <a href="#kits" style="display: inline-flex; align-items: center; height: 52px; padding: 0 26px; border: 2px solid #1B1A17; border-radius: 999px; background: #FFFCF6; color: #1B1A17; box-shadow: 4px 4px 0 #1B1A17; font-family: 'JetBrains Mono', Menlo, monospace; font-weight: 600; font-size: 15px; text-decoration: none">See the apps</a>
@@ -397,6 +406,12 @@ if(localStorage.getItem('cookie-ok')==='1'||localStorage.getItem('cookiesAccepte
 <span style="font-family: 'JetBrains Mono', Menlo, monospace; font-size: 12px; color: #5A544B; padding-bottom: 10px; border-bottom: 2px dashed #1B1A17; align-self: stretch">$65 if you buy all five separately</span>
 <a href="https://monaweathers.myflodesk.com/app-kit-bundle" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; justify-content: center; align-self: stretch; height: 52px; padding: 0 26px; border: 2px solid #1B1A17; border-radius: 999px; background: #1B1A17; color: #FFFCF6; box-shadow: 4px 4px 0 #D99A2B; font-family: 'JetBrains Mono', Menlo, monospace; font-weight: 600; font-size: 15px; text-decoration: none">Get the bundle</a>
 <span style="font-family: 'JetBrains Mono', Menlo, monospace; font-size: 12px; color: #5A544B">Instant download · One-time payment</span>
+<div style="display: flex; flex-direction: column; gap: 6px; padding-top: 10px; border-top: 2px dashed #1B1A17; align-self: stretch; font-size: 13.5px; color: #3A362F">
+<span>✓ Yours to keep and customize forever</span>
+<span>✓ Works with a free Claude account</span>
+<span>✓ Set up your first app in about 5 minutes</span>
+<span>✓ Fix-it prompts included if you get stuck</span>
+</div>
 </div>
 </div>
 </div>
@@ -487,5 +502,30 @@ if(localStorage.getItem('cookie-ok')==='1'||localStorage.getItem('cookiesAccepte
   </div>
 </div>
 <script>if(localStorage.getItem('cookie-ok')||localStorage.getItem('cookiesAccepted'))document.getElementById('cookieBanner').style.display='none';</script>
+<div id="sticky-cta" style="position:fixed;bottom:0;left:0;right:0;background:#1B1A17;border-top:2px solid #D99A2B;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px;z-index:999;display:none">
+<div style="display:flex;flex-direction:column;gap:1px">
+<span style="font-family:'Crimson Pro',Georgia,serif;font-weight:700;font-size:16px;color:#FFFCF6;line-height:1.1">App Kit Bundle</span>
+<span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#D99A2B">All 5 apps · One-time payment</span>
+</div>
+<a href="https://monaweathers.myflodesk.com/app-kit-bundle" target="_blank" rel="noopener" style="flex-shrink:0;display:inline-flex;align-items:center;height:44px;padding:0 20px;border:2px solid #D99A2B;border-radius:999px;background:#D99A2B;color:#1B1A17;font-family:'JetBrains Mono',monospace;font-weight:600;font-size:14px;text-decoration:none;white-space:nowrap">Get it for $27</a>
+</div>
+<script>
+(function(){
+  var bar = document.getElementById('sticky-cta');
+  var bundle = document.getElementById('bundle');
+  if(!bar || !bundle) return;
+  function check(){
+    var rect = bundle.getBoundingClientRect();
+    // show once user has scrolled past the hero (200px) and bundle isn't visible
+    if(window.scrollY > 300 && rect.bottom < 0){
+      bar.style.display = 'flex';
+    } else if(window.scrollY < 300 || (rect.top < window.innerHeight && rect.bottom > 0)){
+      bar.style.display = 'none';
+    }
+  }
+  window.addEventListener('scroll', check, {passive:true});
+  check();
+})();
+</script>
 </body>
 </html>
